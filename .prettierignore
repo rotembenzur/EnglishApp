@@ -1,0 +1,12 @@
+dist
+dev-dist
+node_modules
+pnpm-lock.yaml
+content/lemmas.json
+content/shards
+content/curated
+content/families.json
+public/icons
+playwright-report
+test-results
+scripts/.cache

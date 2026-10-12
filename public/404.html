@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <title>LexBites</title>
+    <script>
+      // GitHub Pages SPA fallback: keep the path, bounce to the app shell.
+      (function () {
+        var segments = location.pathname.split('/').filter(Boolean);
+        // On project pages the first segment is the repository name.
+        var base =
+          location.hostname.endsWith('github.io') && segments.length
+            ? '/' + segments[0] + '/'
+            : '/';
+        var rest = location.pathname.slice(base.length);
+        sessionStorage.setItem('lexbites.redirect', rest + location.search + location.hash);
+        location.replace(base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
