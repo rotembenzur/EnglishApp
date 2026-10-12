@@ -1,0 +1,6107 @@
+[
+  {
+    "id": "make-a-decision",
+    "text": "make a decision",
+    "kind": "collocation",
+    "d": 30,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקבל החלטה"
+    ],
+    "definition": "to decide something",
+    "sentences": [
+      {
+        "en": "We need to make a decision by Friday.",
+        "he": "אנחנו צריכים לקבל החלטה עד יום שישי."
+      },
+      {
+        "en": "It was hard to make a decision between the two offers.",
+        "he": "היה קשה לקבל החלטה בין שתי ההצעות."
+      },
+      {
+        "en": "Never make a decision when you're angry.",
+        "he": "אף פעם לא כדאי לקבל החלטה כשכועסים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "pay-attention-to",
+    "text": "pay attention to",
+    "kind": "collocation",
+    "d": 30,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשים לב ל",
+      "להקשיב ל"
+    ],
+    "definition": "to watch, listen to or think about something carefully",
+    "sentences": [
+      {
+        "en": "Please pay attention to the safety instructions.",
+        "he": "בבקשה שימו לב להוראות הבטיחות."
+      },
+      {
+        "en": "He never pays attention to what I say.",
+        "he": "הוא אף פעם לא שם לב לדברים שלי."
+      },
+      {
+        "en": "Paying attention to small details makes a big difference.",
+        "he": "תשומת לב לפרטים קטנים עושה הבדל גדול."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-a-break",
+    "text": "take a break",
+    "kind": "collocation",
+    "d": 31,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקחת הפסקה",
+      "לעשות הפסקה"
+    ],
+    "definition": "to stop working or doing something for a short time",
+    "sentences": [
+      {
+        "en": "Let's take a break and get some coffee.",
+        "he": "בואו ניקח הפסקה ונשתה קפה."
+      },
+      {
+        "en": "You've been working for hours, so take a break.",
+        "he": "אתם עובדים כבר שעות, אז קחו הפסקה."
+      },
+      {
+        "en": "I took a break from social media for a month.",
+        "he": "לקחתי הפסקה מהרשתות החברתיות לחודש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-mistake",
+    "text": "make a mistake",
+    "kind": "collocation",
+    "d": 31,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות טעות",
+      "לטעות"
+    ],
+    "definition": "to do something wrong without intending to",
+    "sentences": [
+      {
+        "en": "Everyone makes mistakes when learning a new language.",
+        "he": "כולם עושים טעויות כשלומדים שפה חדשה."
+      },
+      {
+        "en": "I made a mistake in the report and had to fix it.",
+        "he": "עשיתי טעות בדוח ונאלצתי לתקן אותה."
+      },
+      {
+        "en": "Don't be afraid to make a mistake in class.",
+        "he": "אל תפחדו לטעות בשיעור."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-sense",
+    "text": "make sense",
+    "kind": "collocation",
+    "d": 31,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להיות הגיוני",
+      "להבין"
+    ],
+    "definition": "to be logical or easy to understand",
+    "sentences": [
+      {
+        "en": "Your explanation really makes sense to me.",
+        "he": "ההסבר שלכם באמת נשמע לי הגיוני."
+      },
+      {
+        "en": "It doesn't make sense to buy a car if you live downtown.",
+        "he": "אין היגיון לקנות אוטו אם גרים במרכז העיר."
+      },
+      {
+        "en": "Does this sentence make sense in English?",
+        "he": "המשפט הזה הגיוני באנגלית?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-care-of",
+    "text": "take care of",
+    "kind": "collocation",
+    "d": 31,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לטפל ב",
+      "לדאוג ל"
+    ],
+    "definition": "to look after someone or something, or deal with a task",
+    "sentences": [
+      {
+        "en": "Who will take care of the dog while we're away?",
+        "he": "מי יטפל בכלב כשנהיה בחופשה?"
+      },
+      {
+        "en": "Don't worry about the bill; I'll take care of it.",
+        "he": "אל תדאגו לגבי החשבון; אני אטפל בזה."
+      },
+      {
+        "en": "She takes care of her elderly parents.",
+        "he": "היא דואגת להורים המבוגרים שלה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-a-good-time",
+    "text": "have a good time",
+    "kind": "collocation",
+    "d": 32,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ליהנות",
+      "לבלות יפה"
+    ],
+    "definition": "to enjoy yourself",
+    "sentences": [
+      {
+        "en": "Did you have a good time at the party?",
+        "he": "נהניתם במסיבה?"
+      },
+      {
+        "en": "We had a really good time at the beach yesterday.",
+        "he": "נהנינו מאוד בים אתמול."
+      },
+      {
+        "en": "Have a good time in Barcelona, and send photos!",
+        "he": "תבלו יפה בברצלונה, ותשלחו תמונות!"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "do-your-best",
+    "text": "do your best",
+    "kind": "collocation",
+    "d": 32,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות כמיטב יכולתך",
+      "להשתדל"
+    ],
+    "definition": "to try as hard as you can",
+    "sentences": [
+      {
+        "en": "Just do your best, and don't worry about the result.",
+        "he": "פשוט תעשו כמיטב יכולתכם ואל תדאגו לתוצאה."
+      },
+      {
+        "en": "I did my best, but I didn't finish on time.",
+        "he": "עשיתי כמיטב יכולתי, אבל לא סיימתי בזמן."
+      },
+      {
+        "en": "The team did their best against a much stronger opponent.",
+        "he": "הקבוצה עשתה כמיטב יכולתה מול יריבה חזקה בהרבה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-a-look-at",
+    "text": "take a look at",
+    "kind": "collocation",
+    "d": 32,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להעיף מבט על",
+      "להסתכל על"
+    ],
+    "definition": "to look at or examine something",
+    "sentences": [
+      {
+        "en": "Can you take a look at my car? It's making a strange noise.",
+        "he": "תוכלו להעיף מבט על האוטו שלי? הוא עושה רעש מוזר."
+      },
+      {
+        "en": "Let's take a look at the numbers before we decide.",
+        "he": "בואו נעיף מבט על המספרים לפני שנחליט."
+      },
+      {
+        "en": "The doctor took a look at my knee and said it's fine.",
+        "he": "הרופא הסתכל על הברך שלי ואמר שהכול בסדר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "spend-time",
+    "text": "spend time",
+    "kind": "collocation",
+    "d": 32,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבלות זמן",
+      "להקדיש זמן"
+    ],
+    "definition": "to use your time doing something or being with someone",
+    "sentences": [
+      {
+        "en": "I want to spend more time with my family.",
+        "he": "אני רוצה לבלות יותר זמן עם המשפחה."
+      },
+      {
+        "en": "We spent a lot of time looking for a parking spot.",
+        "he": "השקענו המון זמן בחיפוש חניה."
+      },
+      {
+        "en": "How much time do you spend on your phone every day?",
+        "he": "כמה זמן אתם מבלים בטלפון כל יום?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "save-money",
+    "text": "save money",
+    "kind": "collocation",
+    "d": 33,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לחסוך כסף"
+    ],
+    "definition": "to keep money instead of spending it, or to spend less",
+    "sentences": [
+      {
+        "en": "We're trying to save money for a new apartment.",
+        "he": "אנחנו מנסים לחסוך כסף לדירה חדשה."
+      },
+      {
+        "en": "Cooking at home is a great way to save money.",
+        "he": "בישול בבית הוא דרך מצוינת לחסוך כסף."
+      },
+      {
+        "en": "You can save money by buying in bulk.",
+        "he": "אפשר לחסוך כסף כשקונים בכמויות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-money",
+    "text": "make money",
+    "kind": "collocation",
+    "d": 33,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להרוויח כסף"
+    ],
+    "definition": "to earn money",
+    "sentences": [
+      {
+        "en": "Her small online shop makes good money.",
+        "he": "החנות הקטנה שלה ברשת מרוויחה יפה."
+      },
+      {
+        "en": "Many students make money by tutoring.",
+        "he": "הרבה סטודנטים מרוויחים כסף משיעורים פרטיים."
+      },
+      {
+        "en": "It's hard to make money in the first year of a business.",
+        "he": "קשה להרוויח כסף בשנה הראשונה של עסק."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "waste-time",
+    "text": "waste time",
+    "kind": "collocation",
+    "d": 33,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבזבז זמן"
+    ],
+    "definition": "to use time badly or on things that are not useful",
+    "sentences": [
+      {
+        "en": "Don't waste time arguing about small things.",
+        "he": "אל תבזבזו זמן על ויכוחים על דברים קטנים."
+      },
+      {
+        "en": "I wasted so much time in pointless meetings today.",
+        "he": "ביזבזתי היום כל כך הרבה זמן בפגישות מיותרות."
+      },
+      {
+        "en": "Let's not waste time; the train leaves in ten minutes.",
+        "he": "בואו לא נבזבז זמן; הרכבת יוצאת בעוד עשר דקות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-part-in",
+    "text": "take part in",
+    "kind": "collocation",
+    "d": 33,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להשתתף ב",
+      "לקחת חלק ב"
+    ],
+    "definition": "to be involved in an activity or event",
+    "sentences": [
+      {
+        "en": "Over a thousand runners took part in the marathon.",
+        "he": "יותר מאלף רצים השתתפו במרתון."
+      },
+      {
+        "en": "All employees are invited to take part in the training.",
+        "he": "כל העובדים מוזמנים להשתתף בהדרכה."
+      },
+      {
+        "en": "I'd love to take part in the project.",
+        "he": "אשמח לקחת חלק בפרויקט."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-progress",
+    "text": "make progress",
+    "kind": "collocation",
+    "d": 34,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתקדם"
+    ],
+    "definition": "to improve or move forward",
+    "sentences": [
+      {
+        "en": "You're making great progress with your English.",
+        "he": "אתם מתקדמים יפה מאוד עם האנגלית."
+      },
+      {
+        "en": "The peace talks made little progress this week.",
+        "he": "שיחות השלום כמעט לא התקדמו השבוע."
+      },
+      {
+        "en": "We made real progress on the new design today.",
+        "he": "היום התקדמנו מאוד עם העיצוב החדש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-an-effort",
+    "text": "make an effort",
+    "kind": "collocation",
+    "d": 34,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתאמץ",
+      "לעשות מאמץ"
+    ],
+    "definition": "to try hard to do something",
+    "sentences": [
+      {
+        "en": "Please make an effort to arrive on time.",
+        "he": "בבקשה תתאמצו להגיע בזמן."
+      },
+      {
+        "en": "He made a real effort to learn Hebrew.",
+        "he": "הוא עשה מאמץ אמיתי ללמוד עברית."
+      },
+      {
+        "en": "If you make an effort, people will notice.",
+        "he": "כשמתאמצים, אנשים שמים לב."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-difference",
+    "text": "make a difference",
+    "kind": "collocation",
+    "d": 34,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות הבדל",
+      "לשנות"
+    ],
+    "definition": "to have an important effect on a situation",
+    "sentences": [
+      {
+        "en": "Small changes in your diet can make a big difference.",
+        "he": "שינויים קטנים בתזונה יכולים לעשות הבדל גדול."
+      },
+      {
+        "en": "Volunteers really make a difference in our community.",
+        "he": "מתנדבים באמת משנים את פני הקהילה שלנו."
+      },
+      {
+        "en": "Does it make a difference if I pay by card?",
+        "he": "זה משנה משהו אם אשלם בכרטיס?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-place",
+    "text": "take place",
+    "kind": "collocation",
+    "d": 34,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתקיים",
+      "להתרחש"
+    ],
+    "definition": "to happen, especially as planned",
+    "sentences": [
+      {
+        "en": "The concert will take place in the park.",
+        "he": "ההופעה תתקיים בפארק."
+      },
+      {
+        "en": "The meeting took place online because of the strike.",
+        "he": "הפגישה התקיימה באופן מקוון בגלל השביתה."
+      },
+      {
+        "en": "Where exactly did the accident take place?",
+        "he": "איפה בדיוק התרחשה התאונה?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-friends",
+    "text": "make friends",
+    "kind": "collocation",
+    "d": 35,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להכיר חברים",
+      "לרכוש חברים"
+    ],
+    "definition": "to start a friendship with people",
+    "sentences": [
+      {
+        "en": "It's not easy to make friends in a new city.",
+        "he": "לא קל להכיר חברים בעיר חדשה."
+      },
+      {
+        "en": "Our son made friends quickly at his new school.",
+        "he": "הבן שלנו הכיר חברים מהר בבית הספר החדש."
+      },
+      {
+        "en": "Joining a sports club is a great way to make friends.",
+        "he": "הצטרפות למועדון ספורט היא דרך מצוינת להכיר חברים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "keep-in-touch",
+    "text": "keep in touch",
+    "kind": "collocation",
+    "d": 35,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשמור על קשר"
+    ],
+    "definition": "to continue to communicate with someone",
+    "sentences": [
+      {
+        "en": "Let's keep in touch after the course ends.",
+        "he": "בואו נשמור על קשר אחרי שהקורס ייגמר."
+      },
+      {
+        "en": "We've kept in touch since high school.",
+        "he": "אנחנו שומרים על קשר מאז התיכון."
+      },
+      {
+        "en": "It's easier to keep in touch with friends abroad these days.",
+        "he": "היום קל יותר לשמור על קשר עם חברים בחוץ לארץ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "change-your-mind",
+    "text": "change your mind",
+    "kind": "collocation",
+    "d": 35,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשנות את דעתך",
+      "להתחרט"
+    ],
+    "definition": "to change a decision or opinion",
+    "sentences": [
+      {
+        "en": "If you change your mind, just let me know.",
+        "he": "אם תשנו את דעתכם, פשוט תגידו לי."
+      },
+      {
+        "en": "I was going to buy it, but I changed my mind.",
+        "he": "התכוונתי לקנות את זה, אבל שיניתי את דעתי."
+      },
+      {
+        "en": "Nothing will change her mind about moving.",
+        "he": "שום דבר לא ישנה את דעתה לגבי המעבר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "tell-the-truth",
+    "text": "tell the truth",
+    "kind": "collocation",
+    "d": 35,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להגיד את האמת"
+    ],
+    "definition": "to say what is true",
+    "sentences": [
+      {
+        "en": "To tell the truth, I didn't enjoy the movie.",
+        "he": "האמת היא שלא נהניתי מהסרט."
+      },
+      {
+        "en": "Always tell the truth, even when it's hard.",
+        "he": "תמיד תגידו את האמת, גם כשזה קשה."
+      },
+      {
+        "en": "I don't think he's telling the truth.",
+        "he": "נראה לי שהוא לא אומר את האמת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "tell-a-lie",
+    "text": "tell a lie",
+    "kind": "collocation",
+    "d": 36,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשקר",
+      "לספר שקר"
+    ],
+    "definition": "to say something you know is not true",
+    "sentences": [
+      {
+        "en": "He told a lie to avoid getting in trouble.",
+        "he": "הוא שיקר כדי לא להסתבך."
+      },
+      {
+        "en": "I've never told a lie to my parents.",
+        "he": "אף פעם לא שיקרתי להורים שלי."
+      },
+      {
+        "en": "Kids usually tell lies when they're afraid.",
+        "he": "ילדים בדרך כלל משקרים כשהם מפחדים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "keep-a-secret",
+    "text": "keep a secret",
+    "kind": "collocation",
+    "d": 36,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשמור סוד"
+    ],
+    "definition": "to not tell anyone a secret",
+    "sentences": [
+      {
+        "en": "Can you keep a secret if I tell you?",
+        "he": "אתם יודעים לשמור סוד אם אספר לכם?"
+      },
+      {
+        "en": "My sister is terrible at keeping secrets.",
+        "he": "אחותי ממש לא יודעת לשמור סודות."
+      },
+      {
+        "en": "We kept the secret until the party.",
+        "he": "שמרנו את הסוד עד המסיבה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "keep-a-promise",
+    "text": "keep a promise",
+    "kind": "collocation",
+    "d": 36,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקיים הבטחה"
+    ],
+    "definition": "to do what you promised",
+    "sentences": [
+      {
+        "en": "He always keeps his promises, even small ones.",
+        "he": "הוא תמיד מקיים את ההבטחות שלו, גם הקטנות."
+      },
+      {
+        "en": "If you make a promise, you have to keep it.",
+        "he": "אם מבטיחים, צריך לקיים."
+      },
+      {
+        "en": "The mayor kept her promise and fixed the park.",
+        "he": "ראש העיר קיימה את ההבטחה שלה ושיפצה את הפארק."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "break-a-promise",
+    "text": "break a promise",
+    "kind": "collocation",
+    "d": 36,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להפר הבטחה"
+    ],
+    "definition": "to not do what you promised",
+    "sentences": [
+      {
+        "en": "I'm really sorry I broke my promise.",
+        "he": "אני ממש מצטער שהפרתי את ההבטחה שלי."
+      },
+      {
+        "en": "Try never to break a promise to a child.",
+        "he": "השתדלו אף פעם לא להפר הבטחה לילד."
+      },
+      {
+        "en": "The government broke its promise to lower taxes.",
+        "he": "הממשלה הפרה את ההבטחה שלה להוריד מסים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-ready",
+    "text": "get ready",
+    "kind": "collocation",
+    "d": 37,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתכונן",
+      "להתארגן"
+    ],
+    "definition": "to prepare yourself for something",
+    "sentences": [
+      {
+        "en": "Get ready; we're leaving in five minutes.",
+        "he": "תתארגנו; אנחנו יוצאים בעוד חמש דקות."
+      },
+      {
+        "en": "It takes me an hour to get ready in the morning.",
+        "he": "לוקח לי שעה להתארגן בבוקר."
+      },
+      {
+        "en": "The team is getting ready for the big game.",
+        "he": "הקבוצה מתכוננת למשחק הגדול."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-married",
+    "text": "get married",
+    "kind": "collocation",
+    "d": 37,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתחתן"
+    ],
+    "definition": "to become husband and wife, or partners in marriage",
+    "sentences": [
+      {
+        "en": "My sister is getting married in June.",
+        "he": "אחותי מתחתנת ביוני."
+      },
+      {
+        "en": "They got married on the beach in Eilat.",
+        "he": "הם התחתנו על החוף באילת."
+      },
+      {
+        "en": "More couples are choosing to get married later in life.",
+        "he": "יותר זוגות בוחרים להתחתן בגיל מאוחר יותר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-lost",
+    "text": "get lost",
+    "kind": "collocation",
+    "d": 37,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ללכת לאיבוד"
+    ],
+    "definition": "to not know where you are or how to get somewhere",
+    "sentences": [
+      {
+        "en": "We got lost in the old city without a map.",
+        "he": "הלכנו לאיבוד בעיר העתיקה בלי מפה."
+      },
+      {
+        "en": "It's easy to get lost in such a big airport.",
+        "he": "קל ללכת לאיבוד בשדה תעופה כל כך גדול."
+      },
+      {
+        "en": "Call me if you get lost on the way.",
+        "he": "תתקשרו אליי אם תלכו לאיבוד בדרך."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-started",
+    "text": "get started",
+    "kind": "collocation",
+    "d": 37,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתחיל"
+    ],
+    "definition": "to begin doing something",
+    "sentences": [
+      {
+        "en": "Let's get started; we have a lot to cover.",
+        "he": "בואו נתחיל; יש לנו הרבה חומר לעבור."
+      },
+      {
+        "en": "I need some coffee before I can get started.",
+        "he": "קודם קפה, ואז אפשר להתחיל."
+      },
+      {
+        "en": "Getting started is often the hardest part.",
+        "he": "להתחיל זה לעתים קרובות החלק הכי קשה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fall-asleep",
+    "text": "fall asleep",
+    "kind": "collocation",
+    "d": 38,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להירדם"
+    ],
+    "definition": "to start sleeping",
+    "sentences": [
+      {
+        "en": "I fell asleep on the couch watching TV.",
+        "he": "נרדמתי על הספה מול הטלוויזיה."
+      },
+      {
+        "en": "The baby finally fell asleep at midnight.",
+        "he": "התינוק סוף סוף נרדם בחצות."
+      },
+      {
+        "en": "It's hard for me to fall asleep after drinking coffee.",
+        "he": "קשה לי להירדם אחרי שאני שותה קפה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fall-in-love",
+    "text": "fall in love",
+    "kind": "collocation",
+    "d": 38,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתאהב"
+    ],
+    "definition": "to start to love someone or something",
+    "sentences": [
+      {
+        "en": "They fell in love on a trip to Italy.",
+        "he": "הם התאהבו בטיול באיטליה."
+      },
+      {
+        "en": "I fell in love with this city the moment I arrived.",
+        "he": "התאהבתי בעיר הזאת ברגע שהגעתי."
+      },
+      {
+        "en": "It's easy to fall in love with the food here.",
+        "he": "קל להתאהב באוכל כאן."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "catch-a-cold",
+    "text": "catch a cold",
+    "kind": "collocation",
+    "d": 38,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להצטנן",
+      "לחטוף הצטננות"
+    ],
+    "definition": "to become ill with a cold",
+    "sentences": [
+      {
+        "en": "Wear a jacket or you'll catch a cold.",
+        "he": "תלבשו מעיל, אחרת תצטננו."
+      },
+      {
+        "en": "I caught a cold from my kids last week.",
+        "he": "חטפתי הצטננות מהילדים בשבוע שעבר."
+      },
+      {
+        "en": "Many people catch a cold when the seasons change.",
+        "he": "הרבה אנשים מצטננים במעבר בין העונות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-a-photo",
+    "text": "take a photo",
+    "kind": "collocation",
+    "d": 38,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לצלם",
+      "לצלם תמונה"
+    ],
+    "definition": "to use a camera or phone to make a picture",
+    "sentences": [
+      {
+        "en": "Could you take a photo of us, please?",
+        "he": "תוכלו לצלם אותנו, בבקשה?"
+      },
+      {
+        "en": "You can't take photos inside the museum.",
+        "he": "אסור לצלם בתוך המוזיאון."
+      },
+      {
+        "en": "I took a photo of the sunset from the balcony.",
+        "he": "צילמתי את השקיעה מהמרפסת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-notes",
+    "text": "take notes",
+    "kind": "collocation",
+    "d": 39,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לרשום הערות",
+      "לסכם"
+    ],
+    "definition": "to write down information while listening or reading",
+    "sentences": [
+      {
+        "en": "Students should take notes during the lecture.",
+        "he": "סטודנטים צריכים לסכם במהלך ההרצאה."
+      },
+      {
+        "en": "It's smart to take notes in meetings so you don't forget anything.",
+        "he": "חכם לרשום הערות בפגישות כדי לא לשכוח כלום."
+      },
+      {
+        "en": "She took notes on her laptop during the interview.",
+        "he": "היא רשמה הערות בלפטופ במהלך הראיון."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-a-seat",
+    "text": "take a seat",
+    "kind": "collocation",
+    "d": 39,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשבת",
+      "להתיישב"
+    ],
+    "definition": "to sit down",
+    "sentences": [
+      {
+        "en": "Please take a seat; the doctor will see you soon.",
+        "he": "בבקשה שבו; הרופא יקבל אתכם בקרוב."
+      },
+      {
+        "en": "Come in and take a seat anywhere you like.",
+        "he": "היכנסו ושבו איפה שבא לכם."
+      },
+      {
+        "en": "He took a seat by the window and opened his laptop.",
+        "he": "הוא התיישב ליד החלון ופתח את הלפטופ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "go-wrong",
+    "text": "go wrong",
+    "kind": "collocation",
+    "d": 39,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להשתבש",
+      "לטעות"
+    ],
+    "definition": "to stop working well or to happen in a bad way",
+    "sentences": [
+      {
+        "en": "If anything goes wrong, call me immediately.",
+        "he": "אם משהו משתבש, תתקשרו אליי מיד."
+      },
+      {
+        "en": "Everything went wrong on our first day of vacation.",
+        "he": "הכול השתבש ביום הראשון של החופשה."
+      },
+      {
+        "en": "Let's figure out where we went wrong.",
+        "he": "בואו נבין איפה טעינו."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-phone-call",
+    "text": "make a phone call",
+    "kind": "collocation",
+    "d": 39,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות שיחת טלפון",
+      "להתקשר"
+    ],
+    "definition": "to call someone on the phone",
+    "sentences": [
+      {
+        "en": "Excuse me, I need to make a quick phone call.",
+        "he": "סליחה, יש לי שיחת טלפון קצרה לעשות."
+      },
+      {
+        "en": "Many young people prefer texting to making phone calls.",
+        "he": "הרבה צעירים מעדיפים לשלוח הודעות מאשר לעשות שיחות טלפון."
+      },
+      {
+        "en": "She made a phone call to the bank about the error.",
+        "he": "היא התקשרה לבנק בעניין הטעות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-an-appointment",
+    "text": "make an appointment",
+    "kind": "collocation",
+    "d": 40,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקבוע תור",
+      "לקבוע פגישה"
+    ],
+    "definition": "to arrange a time to see a doctor, professional or service",
+    "sentences": [
+      {
+        "en": "I'd like to make an appointment with Dr. Levi.",
+        "he": "אני רוצה לקבוע תור לדוקטור לוי."
+      },
+      {
+        "en": "You can make an appointment online in two minutes.",
+        "he": "אפשר לקבוע תור באינטרנט בשתי דקות."
+      },
+      {
+        "en": "Did you make an appointment for the car service?",
+        "he": "קבעתם תור לטיפול לאוטו?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-reservation",
+    "text": "make a reservation",
+    "kind": "collocation",
+    "d": 40,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להזמין מקום",
+      "לבצע הזמנה"
+    ],
+    "definition": "to book a table, room or seat in advance",
+    "sentences": [
+      {
+        "en": "Let's make a reservation for Friday night.",
+        "he": "בואו נזמין מקום לשישי בערב."
+      },
+      {
+        "en": "I made a reservation for four at eight o'clock.",
+        "he": "הזמנתי שולחן לארבעה בשמונה."
+      },
+      {
+        "en": "Do we need to make a reservation, or can we just walk in?",
+        "he": "צריך להזמין מקום מראש, או שאפשר פשוט להגיע?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-plans",
+    "text": "make plans",
+    "kind": "collocation",
+    "d": 40,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות תוכניות",
+      "לתכנן"
+    ],
+    "definition": "to decide what you are going to do",
+    "sentences": [
+      {
+        "en": "Have you made any plans for the weekend?",
+        "he": "יש לכם תוכניות לסוף השבוע?"
+      },
+      {
+        "en": "We're making plans to visit my grandparents.",
+        "he": "אנחנו מתכננים לבקר את סבא וסבתא שלי."
+      },
+      {
+        "en": "It's hard to make plans when everything keeps changing.",
+        "he": "קשה לעשות תוכניות כשהכול כל הזמן משתנה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-choice",
+    "text": "make a choice",
+    "kind": "collocation",
+    "d": 40,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבחור",
+      "לעשות בחירה"
+    ],
+    "definition": "to choose between options",
+    "sentences": [
+      {
+        "en": "You have to make a choice between the two.",
+        "he": "אתם צריכים לבחור בין השניים."
+      },
+      {
+        "en": "I think you made the right choice.",
+        "he": "נראה לי שבחרתם נכון."
+      },
+      {
+        "en": "It's hard to make a choice with so many options.",
+        "he": "קשה לבחור כשיש כל כך הרבה אפשרויות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-suggestion",
+    "text": "make a suggestion",
+    "kind": "collocation",
+    "d": 41,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להציע",
+      "להעלות הצעה"
+    ],
+    "definition": "to offer an idea",
+    "sentences": [
+      {
+        "en": "Can I make a suggestion about the menu?",
+        "he": "אפשר להציע משהו לגבי התפריט?"
+      },
+      {
+        "en": "She made a great suggestion during the meeting.",
+        "he": "היא העלתה הצעה מצוינת בפגישה."
+      },
+      {
+        "en": "If you have a better idea, feel free to make a suggestion.",
+        "he": "אם יש לכם רעיון טוב יותר, אתם מוזמנים להציע."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-complaint",
+    "text": "make a complaint",
+    "kind": "collocation",
+    "d": 41,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להגיש תלונה",
+      "להתלונן"
+    ],
+    "definition": "to formally say that you are unhappy about something",
+    "sentences": [
+      {
+        "en": "I'd like to make a complaint about the noise.",
+        "he": "אני רוצה להגיש תלונה על הרעש."
+      },
+      {
+        "en": "Several guests made complaints about the cold rooms.",
+        "he": "כמה אורחים התלוננו על החדרים הקרים."
+      },
+      {
+        "en": "You can make a complaint through the website.",
+        "he": "אפשר להגיש תלונה דרך האתר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-an-excuse",
+    "text": "make an excuse",
+    "kind": "collocation",
+    "d": 41,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לתרץ",
+      "למצוא תירוץ"
+    ],
+    "definition": "to give a reason, often not true, for not doing something",
+    "sentences": [
+      {
+        "en": "Stop making excuses and start working on it.",
+        "he": "די לתרץ, ותתחילו לעבוד על זה."
+      },
+      {
+        "en": "He made an excuse to leave the party early.",
+        "he": "הוא מצא תירוץ לעזוב את המסיבה מוקדם."
+      },
+      {
+        "en": "She always makes excuses for being late.",
+        "he": "היא תמיד מוצאת תירוצים לאיחורים שלה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-fun",
+    "text": "have fun",
+    "kind": "collocation",
+    "d": 41,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ליהנות",
+      "לעשות כיף"
+    ],
+    "definition": "to enjoy yourself",
+    "sentences": [
+      {
+        "en": "Have fun at the concert tonight!",
+        "he": "תיהנו בהופעה הערב!"
+      },
+      {
+        "en": "The kids had fun building a sandcastle.",
+        "he": "הילדים נהנו לבנות ארמון חול."
+      },
+      {
+        "en": "We always have fun when we travel together.",
+        "he": "תמיד כיף לנו כשאנחנו מטיילים ביחד."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-a-conversation",
+    "text": "have a conversation",
+    "kind": "collocation",
+    "d": 42,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לנהל שיחה",
+      "לשוחח"
+    ],
+    "definition": "to talk with someone",
+    "sentences": [
+      {
+        "en": "We had a long conversation about our future.",
+        "he": "ניהלנו שיחה ארוכה על העתיד שלנו."
+      },
+      {
+        "en": "I can finally have a conversation in English.",
+        "he": "סוף סוף אפשר לנהל איתי שיחה באנגלית."
+      },
+      {
+        "en": "It's hard to have a conversation in such a noisy place.",
+        "he": "קשה לנהל שיחה במקום כל כך רועש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-an-argument",
+    "text": "have an argument",
+    "kind": "collocation",
+    "d": 42,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתווכח",
+      "לריב"
+    ],
+    "definition": "to disagree angrily with someone",
+    "sentences": [
+      {
+        "en": "We had an argument about money last night.",
+        "he": "רבנו על כסף אתמול בלילה."
+      },
+      {
+        "en": "They often have arguments about politics.",
+        "he": "הם מתווכחים הרבה על פוליטיקה."
+      },
+      {
+        "en": "I don't want to have an argument in front of the kids.",
+        "he": "אני לא רוצה להתווכח ליד הילדים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-trouble",
+    "text": "have trouble",
+    "kind": "collocation",
+    "d": 42,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתקשות",
+      "להיות בבעיה"
+    ],
+    "definition": "to find something difficult",
+    "sentences": [
+      {
+        "en": "I'm having trouble with my laptop again.",
+        "he": "שוב יש לי בעיה עם הלפטופ."
+      },
+      {
+        "en": "Many people have trouble sleeping in hot weather.",
+        "he": "הרבה אנשים מתקשים לישון במזג אוויר חם."
+      },
+      {
+        "en": "Did you have any trouble finding the place?",
+        "he": "היה לכם קשה למצוא את המקום?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-a-chance",
+    "text": "have a chance",
+    "kind": "collocation",
+    "d": 42,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "יש סיכוי",
+      "יש הזדמנות"
+    ],
+    "definition": "to have the opportunity or possibility to do something",
+    "sentences": [
+      {
+        "en": "Did you have a chance to read my email?",
+        "he": "הספקתם לקרוא את המייל שלי?"
+      },
+      {
+        "en": "I think we have a good chance of winning.",
+        "he": "נראה לי שיש לנו סיכוי טוב לנצח."
+      },
+      {
+        "en": "If you have a chance, visit the old market.",
+        "he": "אם תהיה לכם הזדמנות, תבקרו בשוק הישן."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "give-advice",
+    "text": "give advice",
+    "kind": "collocation",
+    "d": 43,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לתת עצה",
+      "לייעץ"
+    ],
+    "definition": "to tell someone what you think they should do",
+    "sentences": [
+      {
+        "en": "My grandmother always gives great advice.",
+        "he": "סבתא שלי תמיד נותנת עצות מעולות."
+      },
+      {
+        "en": "Can you give me some advice about buying a car?",
+        "he": "תוכלו לייעץ לי לגבי קניית אוטו?"
+      },
+      {
+        "en": "Doctors give advice, but you have to follow it.",
+        "he": "רופאים נותנים עצות, אבל צריך גם ליישם אותן."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "give-someone-a-ride",
+    "text": "give someone a ride",
+    "kind": "collocation",
+    "d": 43,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לתת טרמפ",
+      "להקפיץ"
+    ],
+    "definition": "to take someone somewhere in your car",
+    "sentences": [
+      {
+        "en": "Can you give me a ride to the station?",
+        "he": "תוכלו להקפיץ אותי לתחנה?"
+      },
+      {
+        "en": "My neighbor gives me a ride to work every morning.",
+        "he": "השכן שלי נותן לי טרמפ לעבודה כל בוקר."
+      },
+      {
+        "en": "I'll give you a ride home after the party.",
+        "he": "אקפיץ אתכם הביתה אחרי המסיבה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "give-a-presentation",
+    "text": "give a presentation",
+    "kind": "collocation",
+    "d": 43,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להציג מצגת",
+      "להעביר הרצאה"
+    ],
+    "definition": "to talk to a group about a subject, often with slides",
+    "sentences": [
+      {
+        "en": "I have to give a presentation to the board tomorrow.",
+        "he": "מחר יש לי מצגת מול הדירקטוריון."
+      },
+      {
+        "en": "She gave a great presentation on climate change.",
+        "he": "היא העבירה הרצאה מצוינת על שינויי האקלים."
+      },
+      {
+        "en": "Giving a presentation in English can be stressful.",
+        "he": "להציג מצגת באנגלית יכול להיות מלחיץ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "give-permission",
+    "text": "give permission",
+    "kind": "collocation",
+    "d": 43,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לתת רשות",
+      "לתת אישור"
+    ],
+    "definition": "to allow someone to do something",
+    "sentences": [
+      {
+        "en": "Who gave you permission to use my car?",
+        "he": "מי נתן לכם רשות להשתמש באוטו שלי?"
+      },
+      {
+        "en": "Parents must give permission for the school trip.",
+        "he": "ההורים חייבים לתת אישור לטיול השנתי."
+      },
+      {
+        "en": "The city gave permission to build a new park.",
+        "he": "העירייה נתנה אישור לבנות פארק חדש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-a-job",
+    "text": "get a job",
+    "kind": "collocation",
+    "d": 44,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "למצוא עבודה",
+      "להתקבל לעבודה"
+    ],
+    "definition": "to find work and be hired",
+    "sentences": [
+      {
+        "en": "He got a job at a tech company after graduation.",
+        "he": "הוא התקבל לעבודה בחברת הייטק אחרי הלימודים."
+      },
+      {
+        "en": "It took me six months to get a job.",
+        "he": "לקח לי חצי שנה למצוא עבודה."
+      },
+      {
+        "en": "Getting a job without experience is hard.",
+        "he": "למצוא עבודה בלי ניסיון זה קשה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "apply-for-a-job",
+    "text": "apply for a job",
+    "kind": "collocation",
+    "d": 44,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להגיש מועמדות למשרה"
+    ],
+    "definition": "to formally ask to be considered for a job",
+    "sentences": [
+      {
+        "en": "I applied for a job at the hospital.",
+        "he": "הגשתי מועמדות למשרה בבית החולים."
+      },
+      {
+        "en": "You can apply for the job online.",
+        "he": "אפשר להגיש מועמדות למשרה באינטרנט."
+      },
+      {
+        "en": "She applied for ten jobs before she got an interview.",
+        "he": "היא הגישה מועמדות לעשר משרות לפני שזומנה לראיון."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "earn-a-living",
+    "text": "earn a living",
+    "kind": "collocation",
+    "d": 44,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתפרנס"
+    ],
+    "definition": "to earn the money you need to live",
+    "sentences": [
+      {
+        "en": "He earns a living as a freelance photographer.",
+        "he": "הוא מתפרנס כצלם עצמאי."
+      },
+      {
+        "en": "It's hard to earn a living as a musician.",
+        "he": "קשה להתפרנס ממוזיקה."
+      },
+      {
+        "en": "Many people earn a living online today.",
+        "he": "הרבה אנשים מתפרנסים היום מהרשת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "solve-a-problem",
+    "text": "solve a problem",
+    "kind": "collocation",
+    "d": 44,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לפתור בעיה"
+    ],
+    "definition": "to find an answer to a problem",
+    "sentences": [
+      {
+        "en": "We need to solve this problem quickly.",
+        "he": "אנחנו צריכים לפתור את הבעיה הזאת מהר."
+      },
+      {
+        "en": "Restarting the router solved the problem.",
+        "he": "הפעלה מחדש של הראוטר פתרה את הבעיה."
+      },
+      {
+        "en": "Good engineers love to solve problems.",
+        "he": "מהנדסים טובים אוהבים לפתור בעיות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "face-a-challenge",
+    "text": "face a challenge",
+    "kind": "collocation",
+    "d": 45,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתמודד עם אתגר",
+      "לעמוד בפני אתגר"
+    ],
+    "definition": "to have to deal with something difficult",
+    "sentences": [
+      {
+        "en": "Every new business faces challenges in the first year.",
+        "he": "כל עסק חדש מתמודד עם אתגרים בשנה הראשונה."
+      },
+      {
+        "en": "We're facing a big challenge with the new deadline.",
+        "he": "אנחנו עומדים בפני אתגר גדול עם הדדליין החדש."
+      },
+      {
+        "en": "She faced the challenge with a smile.",
+        "he": "היא התמודדה עם האתגר בחיוך."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-a-risk",
+    "text": "take a risk",
+    "kind": "collocation",
+    "d": 45,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקחת סיכון"
+    ],
+    "definition": "to do something even though it might go badly",
+    "sentences": [
+      {
+        "en": "Sometimes you have to take a risk to succeed.",
+        "he": "לפעמים צריך לקחת סיכון כדי להצליח."
+      },
+      {
+        "en": "He took a big risk by quitting his job.",
+        "he": "הוא לקח סיכון גדול כשהתפטר מהעבודה."
+      },
+      {
+        "en": "I really don't want to take that risk.",
+        "he": "ממש לא בא לי לקחת את הסיכון הזה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-responsibility",
+    "text": "take responsibility",
+    "kind": "collocation",
+    "d": 45,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקחת אחריות"
+    ],
+    "definition": "to accept that something is your duty or your fault",
+    "sentences": [
+      {
+        "en": "Good leaders take responsibility for their mistakes.",
+        "he": "מנהיגים טובים לוקחים אחריות על הטעויות שלהם."
+      },
+      {
+        "en": "Nobody wanted to take responsibility for the delay.",
+        "he": "אף אחד לא רצה לקחת אחריות על העיכוב."
+      },
+      {
+        "en": "It's time for you to take responsibility for your own life.",
+        "he": "הגיע הזמן שתיקחו אחריות על החיים שלכם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-advantage-of",
+    "text": "take advantage of",
+    "kind": "collocation",
+    "d": 45,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לנצל"
+    ],
+    "definition": "to use an opportunity; also, to use someone unfairly",
+    "sentences": [
+      {
+        "en": "Take advantage of the sale before it ends.",
+        "he": "תנצלו את המבצע לפני שהוא נגמר."
+      },
+      {
+        "en": "We took advantage of the good weather and went hiking.",
+        "he": "ניצלנו את מזג האוויר הטוב ויצאנו לטייל."
+      },
+      {
+        "en": "Some companies take advantage of young workers.",
+        "he": "חלק מהחברות מנצלות עובדים צעירים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-action",
+    "text": "take action",
+    "kind": "collocation",
+    "d": 46,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לפעול",
+      "לנקוט צעדים"
+    ],
+    "definition": "to do something to deal with a situation",
+    "sentences": [
+      {
+        "en": "We need to take action before it's too late.",
+        "he": "אנחנו צריכים לפעול לפני שיהיה מאוחר מדי."
+      },
+      {
+        "en": "The city took action to reduce traffic.",
+        "he": "העירייה נקטה צעדים כדי להפחית את הפקקים."
+      },
+      {
+        "en": "Talking isn't enough; it's time to take action.",
+        "he": "לדבר זה לא מספיק; הגיע הזמן לפעול."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-into-account",
+    "text": "take into account",
+    "kind": "collocation",
+    "d": 46,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקחת בחשבון"
+    ],
+    "definition": "to consider something when making a decision",
+    "sentences": [
+      {
+        "en": "Please take into account that it's my first week.",
+        "he": "בבקשה תיקחו בחשבון שזה השבוע הראשון שלי."
+      },
+      {
+        "en": "Did you take traffic into account when you planned the trip?",
+        "he": "לקחתם בחשבון את הפקקים כשתכננתם את הטיול?"
+      },
+      {
+        "en": "The price takes into account all taxes and fees.",
+        "he": "המחיר לוקח בחשבון את כל המסים והעמלות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-turns",
+    "text": "take turns",
+    "kind": "collocation",
+    "d": 46,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתחלף",
+      "לפי תורות"
+    ],
+    "definition": "to do something one after another",
+    "sentences": [
+      {
+        "en": "The kids take turns on the swing.",
+        "he": "הילדים מתחלפים על הנדנדה."
+      },
+      {
+        "en": "We took turns driving on the long road trip.",
+        "he": "התחלפנו בנהיגה בטיול הארוך."
+      },
+      {
+        "en": "Let's take turns speaking so everyone is heard.",
+        "he": "בואו נדבר לפי תורות כדי שכולם יישמעו."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "take-a-day-off",
+    "text": "take a day off",
+    "kind": "collocation",
+    "d": 46,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקחת יום חופש"
+    ],
+    "definition": "to not go to work for one day",
+    "sentences": [
+      {
+        "en": "I'm taking a day off next Thursday.",
+        "he": "ביום חמישי הבא לקחתי יום חופש."
+      },
+      {
+        "en": "You look exhausted, so take a day off.",
+        "he": "אתם נראים מותשים, אז קחו יום חופש."
+      },
+      {
+        "en": "She took a day off to celebrate her birthday.",
+        "he": "היא לקחה יום חופש כדי לחגוג את יום ההולדת שלה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "call-in-sick",
+    "text": "call in sick",
+    "kind": "collocation",
+    "d": 47,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להודיע על מחלה",
+      "לקחת יום מחלה"
+    ],
+    "definition": "to tell your employer you are too ill to come to work",
+    "sentences": [
+      {
+        "en": "Half the team called in sick this morning.",
+        "he": "חצי מהצוות הודיע הבוקר על מחלה."
+      },
+      {
+        "en": "If you have a fever, call in sick and stay home.",
+        "he": "אם יש לכם חום, תודיעו שאתם חולים ותישארו בבית."
+      },
+      {
+        "en": "He called in sick, but we saw him at the beach.",
+        "he": "הוא לקח יום מחלה, אבל ראינו אותו בים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "meet-a-deadline",
+    "text": "meet a deadline",
+    "kind": "collocation",
+    "d": 47,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעמוד בדדליין",
+      "לעמוד בלוח הזמנים"
+    ],
+    "definition": "to finish something by the time it is due",
+    "sentences": [
+      {
+        "en": "We worked all weekend to meet the deadline.",
+        "he": "עבדנו כל סוף השבוע כדי לעמוד בדדליין."
+      },
+      {
+        "en": "If we can't meet the deadline, we should tell the client now.",
+        "he": "אם לא נוכל לעמוד בדדליין, כדאי לעדכן את הלקוח כבר עכשיו."
+      },
+      {
+        "en": "She always meets her deadlines, no matter what.",
+        "he": "היא תמיד עומדת בלוחות הזמנים שלה, לא משנה מה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "meet-expectations",
+    "text": "meet expectations",
+    "kind": "collocation",
+    "d": 47,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעמוד בציפיות"
+    ],
+    "definition": "to be as good as people expected",
+    "sentences": [
+      {
+        "en": "The new phone didn't meet my expectations.",
+        "he": "הטלפון החדש לא עמד בציפיות שלי."
+      },
+      {
+        "en": "Our sales this quarter met expectations.",
+        "he": "המכירות שלנו ברבעון הזה עמדו בציפיות."
+      },
+      {
+        "en": "It's impossible to meet everyone's expectations.",
+        "he": "אי אפשר לעמוד בציפיות של כולם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "set-a-goal",
+    "text": "set a goal",
+    "kind": "collocation",
+    "d": 47,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להציב מטרה",
+      "לקבוע יעד"
+    ],
+    "definition": "to decide on something you want to achieve",
+    "sentences": [
+      {
+        "en": "I set a goal to read twenty books this year.",
+        "he": "הצבתי לעצמי מטרה לקרוא עשרים ספרים השנה."
+      },
+      {
+        "en": "It's important to set realistic goals for yourself.",
+        "he": "חשוב להציב לעצמכם מטרות ריאליות."
+      },
+      {
+        "en": "The company set a goal of doubling its customers.",
+        "he": "החברה קבעה יעד להכפיל את מספר הלקוחות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "achieve-a-goal",
+    "text": "achieve a goal",
+    "kind": "collocation",
+    "d": 48,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להשיג מטרה",
+      "לעמוד ביעד"
+    ],
+    "definition": "to succeed in doing what you planned",
+    "sentences": [
+      {
+        "en": "She worked hard to achieve her goal of running a marathon.",
+        "he": "היא עבדה קשה כדי להשיג את המטרה שלה לרוץ מרתון."
+      },
+      {
+        "en": "We achieved our sales goal two months early.",
+        "he": "עמדנו ביעד המכירות חודשיים לפני הזמן."
+      },
+      {
+        "en": "Small daily steps help you achieve big goals.",
+        "he": "צעדים קטנים כל יום עוזרים להשיג מטרות גדולות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "reach-an-agreement",
+    "text": "reach an agreement",
+    "kind": "collocation",
+    "d": 48,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להגיע להסכם",
+      "להגיע להסכמה"
+    ],
+    "definition": "to agree after discussion",
+    "sentences": [
+      {
+        "en": "After long talks, the two sides reached an agreement.",
+        "he": "אחרי שיחות ארוכות, שני הצדדים הגיעו להסכם."
+      },
+      {
+        "en": "We couldn't reach an agreement on the price.",
+        "he": "לא הצלחנו להגיע להסכמה על המחיר."
+      },
+      {
+        "en": "The workers and management finally reached an agreement.",
+        "he": "העובדים וההנהלה הגיעו סוף סוף להסכם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "draw-a-conclusion",
+    "text": "draw a conclusion",
+    "kind": "collocation",
+    "d": 48,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להסיק מסקנה"
+    ],
+    "definition": "to decide what you believe after considering the facts",
+    "sentences": [
+      {
+        "en": "It's too early to draw any conclusions.",
+        "he": "מוקדם מדי להסיק מסקנות."
+      },
+      {
+        "en": "What conclusion can we draw from these results?",
+        "he": "איזו מסקנה אפשר להסיק מהתוצאות האלה?"
+      },
+      {
+        "en": "Don't draw conclusions from just one bad day.",
+        "he": "אל תסיקו מסקנות מיום רע אחד."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "hold-a-meeting",
+    "text": "hold a meeting",
+    "kind": "collocation",
+    "d": 48,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקיים פגישה",
+      "לכנס ישיבה"
+    ],
+    "definition": "to organize and have a meeting",
+    "sentences": [
+      {
+        "en": "We hold a team meeting every Monday morning.",
+        "he": "אנחנו מקיימים פגישת צוות כל יום שני בבוקר."
+      },
+      {
+        "en": "The residents held a meeting about the new road.",
+        "he": "התושבים קיימו אסיפה בנושא הכביש החדש."
+      },
+      {
+        "en": "Let's hold the meeting online this week.",
+        "he": "בואו נקיים את הפגישה השבוע באופן מקוון."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "attend-a-meeting",
+    "text": "attend a meeting",
+    "kind": "collocation",
+    "d": 49,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להשתתף בפגישה"
+    ],
+    "definition": "to be present at a meeting",
+    "sentences": [
+      {
+        "en": "I can't attend the meeting tomorrow because I'm sick.",
+        "he": "לא אוכל להשתתף בפגישה מחר בגלל מחלה."
+      },
+      {
+        "en": "All managers must attend the weekly meeting.",
+        "he": "כל המנהלים חייבים להשתתף בפגישה השבועית."
+      },
+      {
+        "en": "Over fifty parents attended the school meeting.",
+        "he": "יותר מחמישים הורים השתתפו באסיפת ההורים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "heavy-rain",
+    "text": "heavy rain",
+    "kind": "collocation",
+    "d": 49,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "גשם כבד",
+      "גשם חזק"
+    ],
+    "definition": "a lot of rain falling",
+    "sentences": [
+      {
+        "en": "Heavy rain caused flooding in the city center.",
+        "he": "גשם כבד גרם להצפות במרכז העיר."
+      },
+      {
+        "en": "The game was canceled because of heavy rain.",
+        "he": "המשחק בוטל בגלל גשם כבד."
+      },
+      {
+        "en": "Forecasters are expecting heavy rain this weekend.",
+        "he": "החזאים צופים גשם חזק בסוף השבוע."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "heavy-traffic",
+    "text": "heavy traffic",
+    "kind": "collocation",
+    "d": 49,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "עומס תנועה",
+      "פקקים"
+    ],
+    "definition": "a lot of cars on the road",
+    "sentences": [
+      {
+        "en": "We were stuck in heavy traffic for an hour.",
+        "he": "נתקענו בפקקים שעה."
+      },
+      {
+        "en": "Expect heavy traffic on the highway this evening.",
+        "he": "צפוי עומס תנועה כבד בכביש המהיר הערב."
+      },
+      {
+        "en": "I left early to avoid the heavy traffic.",
+        "he": "יצאתי מוקדם כדי להימנע מהפקקים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "strong-coffee",
+    "text": "strong coffee",
+    "kind": "collocation",
+    "d": 49,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "קפה חזק"
+    ],
+    "definition": "coffee with a lot of flavor and caffeine",
+    "sentences": [
+      {
+        "en": "A cup of strong coffee is the only way I wake up.",
+        "he": "כוס קפה חזק היא הדרך היחידה שלי להתעורר."
+      },
+      {
+        "en": "This café makes very strong coffee.",
+        "he": "בבית הקפה הזה מכינים קפה חזק מאוד."
+      },
+      {
+        "en": "Too much strong coffee keeps me awake at night.",
+        "he": "יותר מדי קפה חזק לא נותן לי להירדם בלילה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fast-asleep",
+    "text": "fast asleep",
+    "kind": "collocation",
+    "d": 50,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ישן עמוק",
+      "שקוע בשינה"
+    ],
+    "definition": "sleeping deeply",
+    "sentences": [
+      {
+        "en": "The kids were fast asleep by eight.",
+        "he": "עד שמונה הילדים כבר ישנו עמוק."
+      },
+      {
+        "en": "I was fast asleep when the phone rang.",
+        "he": "ישנתי עמוק כשהטלפון צלצל."
+      },
+      {
+        "en": "He fell fast asleep on the train home.",
+        "he": "הוא נרדם עמוק ברכבת הביתה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "wide-awake",
+    "text": "wide awake",
+    "kind": "collocation",
+    "d": 50,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ער לגמרי"
+    ],
+    "definition": "completely awake",
+    "sentences": [
+      {
+        "en": "It's two in the morning and I'm still wide awake.",
+        "he": "השעה שתיים בלילה ועדיין אין לי טיפת שינה."
+      },
+      {
+        "en": "The baby was wide awake at midnight.",
+        "he": "התינוק היה ער לגמרי בחצות."
+      },
+      {
+        "en": "After the scary movie, we were wide awake.",
+        "he": "אחרי הסרט המפחיד היינו ערים לגמרי."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "free-time",
+    "text": "free time",
+    "kind": "collocation",
+    "d": 50,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "זמן פנוי",
+      "שעות הפנאי"
+    ],
+    "definition": "time when you are not working or busy",
+    "sentences": [
+      {
+        "en": "What do you like to do in your free time?",
+        "he": "מה אתם אוהבים לעשות בזמן הפנוי?"
+      },
+      {
+        "en": "I don't have much free time these days.",
+        "he": "אין לי הרבה זמן פנוי בימים האלה."
+      },
+      {
+        "en": "She spends her free time volunteering at an animal shelter.",
+        "he": "היא מבלה את הזמן הפנוי שלה בהתנדבות במקלט לבעלי חיים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-busy-schedule",
+    "text": "a busy schedule",
+    "kind": "collocation",
+    "d": 50,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לוח זמנים עמוס"
+    ],
+    "definition": "a plan with many activities and little free time",
+    "sentences": [
+      {
+        "en": "Despite her busy schedule, she always makes time for her kids.",
+        "he": "למרות לוח הזמנים העמוס שלה, היא תמיד מוצאת זמן לילדים."
+      },
+      {
+        "en": "I have a really busy schedule this week.",
+        "he": "יש לי לוח זמנים ממש עמוס השבוע."
+      },
+      {
+        "en": "Thanks for meeting me despite your busy schedule.",
+        "he": "תודה שנפגשתם איתי למרות לוח הזמנים העמוס שלכם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-close-friend",
+    "text": "a close friend",
+    "kind": "collocation",
+    "d": 51,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "חבר קרוב"
+    ],
+    "definition": "a friend you know well and trust",
+    "sentences": [
+      {
+        "en": "She's a close friend from university.",
+        "he": "היא חברה קרובה מהאוניברסיטה."
+      },
+      {
+        "en": "Only close friends and family were invited to the wedding.",
+        "he": "רק חברים קרובים ובני משפחה הוזמנו לחתונה."
+      },
+      {
+        "en": "I told a close friend about my plans.",
+        "he": "סיפרתי לחבר קרוב על התוכניות שלי."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "common-sense",
+    "text": "common sense",
+    "kind": "collocation",
+    "d": 51,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "שכל ישר"
+    ],
+    "definition": "practical good judgment",
+    "sentences": [
+      {
+        "en": "It's just common sense to lock your car.",
+        "he": "זה פשוט שכל ישר לנעול את האוטו."
+      },
+      {
+        "en": "He's smart, but he has no common sense.",
+        "he": "הוא חכם, אבל אין לו שכל ישר."
+      },
+      {
+        "en": "Use your common sense and stay away from the edge.",
+        "he": "תפעילו שכל ישר ותתרחקו מהקצה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-sense-of-humor",
+    "text": "a sense of humor",
+    "kind": "collocation",
+    "d": 51,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "חוש הומור"
+    ],
+    "definition": "the ability to understand and enjoy funny things",
+    "sentences": [
+      {
+        "en": "What I like most about him is his sense of humor.",
+        "he": "מה שהכי מוצא חן בעיניי בו זה חוש ההומור שלו."
+      },
+      {
+        "en": "You need a good sense of humor to work with kids.",
+        "he": "צריך חוש הומור טוב כדי לעבוד עם ילדים."
+      },
+      {
+        "en": "My dad has a very dry sense of humor.",
+        "he": "לאבא שלי יש חוש הומור יבש מאוד."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-healthy-diet",
+    "text": "a healthy diet",
+    "kind": "collocation",
+    "d": 51,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "תזונה בריאה"
+    ],
+    "definition": "eating food that is good for your body",
+    "sentences": [
+      {
+        "en": "A healthy diet includes plenty of fruit and vegetables.",
+        "he": "תזונה בריאה כוללת הרבה פירות וירקות."
+      },
+      {
+        "en": "Exercise and a healthy diet help you sleep better.",
+        "he": "פעילות גופנית ותזונה בריאה עוזרות לישון טוב יותר."
+      },
+      {
+        "en": "It's hard to keep a healthy diet when you travel.",
+        "he": "קשה לשמור על תזונה בריאה כשמטיילים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-bad-habit",
+    "text": "a bad habit",
+    "kind": "collocation",
+    "d": 52,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "הרגל רע"
+    ],
+    "definition": "something you do regularly that is not good for you",
+    "sentences": [
+      {
+        "en": "Biting your nails is a bad habit.",
+        "he": "כסיסת ציפורניים היא הרגל רע."
+      },
+      {
+        "en": "I'm trying to break the bad habit of checking my phone in bed.",
+        "he": "אני מנסה להיגמל מההרגל הרע של בדיקת הטלפון במיטה."
+      },
+      {
+        "en": "Skipping breakfast became a bad habit during exams.",
+        "he": "לדלג על ארוחת בוקר הפך להרגל רע בתקופת המבחנים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-common-mistake",
+    "text": "a common mistake",
+    "kind": "collocation",
+    "d": 52,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "טעות נפוצה"
+    ],
+    "definition": "an error that many people make",
+    "sentences": [
+      {
+        "en": "Confusing 'its' and 'it's' is a common mistake.",
+        "he": "לבלבל בין its לבין it's זו טעות נפוצה."
+      },
+      {
+        "en": "A common mistake is to buy too much food for a party.",
+        "he": "טעות נפוצה היא לקנות יותר מדי אוכל למסיבה."
+      },
+      {
+        "en": "Forgetting to save your work is a common mistake.",
+        "he": "לשכוח לשמור את העבודה זו טעות נפוצה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-tough-decision",
+    "text": "a tough decision",
+    "kind": "collocation",
+    "d": 52,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "החלטה קשה"
+    ],
+    "definition": "a decision that is difficult to make",
+    "sentences": [
+      {
+        "en": "Leaving my hometown was a tough decision.",
+        "he": "לעזוב את העיר שבה גדלתי הייתה החלטה קשה."
+      },
+      {
+        "en": "The coach had to make a tough decision before the final.",
+        "he": "המאמן נאלץ לקבל החלטה קשה לפני הגמר."
+      },
+      {
+        "en": "Choosing between two great offers is a tough decision.",
+        "he": "לבחור בין שתי הצעות מעולות זו החלטה קשה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-serious-problem",
+    "text": "a serious problem",
+    "kind": "collocation",
+    "d": 52,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בעיה רצינית"
+    ],
+    "definition": "a problem that is important or dangerous",
+    "sentences": [
+      {
+        "en": "Air pollution is a serious problem in big cities.",
+        "he": "זיהום אוויר הוא בעיה רצינית בערים גדולות."
+      },
+      {
+        "en": "If the engine light comes on, it could be a serious problem.",
+        "he": "אם נורת המנוע נדלקת, זו יכולה להיות בעיה רצינית."
+      },
+      {
+        "en": "We have a serious problem with the server.",
+        "he": "יש לנו בעיה רצינית עם השרת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-quick-question",
+    "text": "a quick question",
+    "kind": "collocation",
+    "d": 53,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "שאלה קצרה",
+      "שאלה זריזה"
+    ],
+    "definition": "a short question that is easy to answer",
+    "sentences": [
+      {
+        "en": "Can I ask you a quick question?",
+        "he": "אפשר לשאול אתכם שאלה קצרה?"
+      },
+      {
+        "en": "Just a quick question before we start: is lunch included?",
+        "he": "רק שאלה זריזה לפני שמתחילים: ארוחת הצהריים כלולה?"
+      },
+      {
+        "en": "I had a quick question about my bill.",
+        "he": "הייתה לי שאלה קצרה לגבי החשבון."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-rough-idea",
+    "text": "a rough idea",
+    "kind": "collocation",
+    "d": 53,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מושג כללי"
+    ],
+    "definition": "a general, not exact, understanding",
+    "sentences": [
+      {
+        "en": "Can you give me a rough idea of the cost?",
+        "he": "תוכלו לתת לי מושג כללי לגבי העלות?"
+      },
+      {
+        "en": "I have a rough idea of what I want to say.",
+        "he": "יש לי מושג כללי מה אני רוצה להגיד."
+      },
+      {
+        "en": "This map gives you a rough idea of the area.",
+        "he": "המפה הזאת נותנת מושג כללי על האזור."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-wide-range-of",
+    "text": "a wide range of",
+    "kind": "collocation",
+    "d": 53,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מגוון רחב של"
+    ],
+    "definition": "many different kinds of",
+    "sentences": [
+      {
+        "en": "The store offers a wide range of products.",
+        "he": "החנות מציעה מגוון רחב של מוצרים."
+      },
+      {
+        "en": "The course covers a wide range of topics.",
+        "he": "הקורס מכסה מגוון רחב של נושאים."
+      },
+      {
+        "en": "People of a wide range of ages came to the festival.",
+        "he": "אנשים במגוון רחב של גילים הגיעו לפסטיבל."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "the-vast-majority",
+    "text": "the vast majority",
+    "kind": "collocation",
+    "d": 53,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "הרוב המכריע"
+    ],
+    "definition": "almost all",
+    "sentences": [
+      {
+        "en": "The vast majority of students passed the exam.",
+        "he": "הרוב המכריע של התלמידים עברו את המבחן."
+      },
+      {
+        "en": "The vast majority of our customers are happy with the service.",
+        "he": "הרוב המכריע של הלקוחות שלנו מרוצים מהשירות."
+      },
+      {
+        "en": "In the vast majority of cases, the problem is easy to fix.",
+        "he": "ברוב המכריע של המקרים, קל לתקן את הבעיה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "lose-weight",
+    "text": "lose weight",
+    "kind": "collocation",
+    "d": 54,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לרדת במשקל"
+    ],
+    "definition": "to become lighter in body weight",
+    "sentences": [
+      {
+        "en": "He lost a lot of weight after he started cycling.",
+        "he": "הוא ירד הרבה במשקל אחרי שהתחיל לרכוב על אופניים."
+      },
+      {
+        "en": "Many people want to lose weight before summer.",
+        "he": "הרבה אנשים רוצים לרדת במשקל לפני הקיץ."
+      },
+      {
+        "en": "Losing weight is easier with a friend.",
+        "he": "לרדת במשקל קל יותר עם חבר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "lose-your-temper",
+    "text": "lose your temper",
+    "kind": "collocation",
+    "d": 54,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לאבד את העשתונות",
+      "להתפוצץ"
+    ],
+    "definition": "to suddenly become very angry",
+    "sentences": [
+      {
+        "en": "I lost my temper and shouted at the kids.",
+        "he": "איבדתי את העשתונות וצעקתי על הילדים."
+      },
+      {
+        "en": "Try not to lose your temper with customers.",
+        "he": "נסו לא לאבד את העשתונות מול לקוחות."
+      },
+      {
+        "en": "He rarely loses his temper, even under pressure.",
+        "he": "הוא כמעט אף פעם לא מאבד את העשתונות, גם תחת לחץ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "break-the-law",
+    "text": "break the law",
+    "kind": "collocation",
+    "d": 54,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעבור על החוק",
+      "להפר את החוק"
+    ],
+    "definition": "to do something illegal",
+    "sentences": [
+      {
+        "en": "Driving without a license is breaking the law.",
+        "he": "נהיגה בלי רישיון היא עבירה על החוק."
+      },
+      {
+        "en": "The company broke the law by hiding the data.",
+        "he": "החברה הפרה את החוק כשהסתירה את הנתונים."
+      },
+      {
+        "en": "I didn't know I was breaking the law.",
+        "he": "לא ידעתי שזו עבירה על החוק."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "break-the-news",
+    "text": "break the news",
+    "kind": "collocation",
+    "d": 54,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבשר",
+      "למסור את החדשות"
+    ],
+    "definition": "to tell someone important, often bad, news",
+    "sentences": [
+      {
+        "en": "How should I break the news to my parents?",
+        "he": "איך כדאי לבשר את זה להורים שלי?"
+      },
+      {
+        "en": "The doctor broke the news gently.",
+        "he": "הרופא מסר את הבשורה בעדינות."
+      },
+      {
+        "en": "She broke the news that she was moving to Berlin.",
+        "he": "היא בישרה שהיא עוברת לברלין."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "follow-the-rules",
+    "text": "follow the rules",
+    "kind": "collocation",
+    "d": 55,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשמור על הכללים",
+      "לציית לכללים"
+    ],
+    "definition": "to do what the rules say",
+    "sentences": [
+      {
+        "en": "Everyone has to follow the rules, including the manager.",
+        "he": "כולם צריכים לשמור על הכללים, כולל המנהל."
+      },
+      {
+        "en": "If you don't follow the rules, you'll be disqualified.",
+        "he": "מי שלא מציית לכללים ייפסל."
+      },
+      {
+        "en": "Kids feel safer when they follow clear rules.",
+        "he": "ילדים מרגישים בטוחים יותר כשהם שומרים על כללים ברורים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "follow-instructions",
+    "text": "follow instructions",
+    "kind": "collocation",
+    "d": 55,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לפעול לפי ההוראות"
+    ],
+    "definition": "to do what the instructions tell you",
+    "sentences": [
+      {
+        "en": "Follow the instructions carefully when assembling the shelf.",
+        "he": "תפעלו לפי ההוראות בקפידה כשאתם מרכיבים את המדף."
+      },
+      {
+        "en": "He didn't follow the instructions, so the cake didn't rise.",
+        "he": "הוא לא פעל לפי ההוראות, אז העוגה לא תפחה."
+      },
+      {
+        "en": "Please follow the instructions on the screen.",
+        "he": "בבקשה פעלו לפי ההוראות שעל המסך."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "pass-an-exam",
+    "text": "pass an exam",
+    "kind": "collocation",
+    "d": 55,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעבור מבחן"
+    ],
+    "definition": "to succeed in an exam",
+    "sentences": [
+      {
+        "en": "She passed the exam with a high score.",
+        "he": "היא עברה את המבחן בציון גבוה."
+      },
+      {
+        "en": "You need to pass an exam to get a driver's license.",
+        "he": "צריך לעבור מבחן כדי לקבל רישיון נהיגה."
+      },
+      {
+        "en": "I studied for weeks, and I finally passed my English exam.",
+        "he": "למדתי שבועות, ובסוף עברתי את המבחן באנגלית."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "do-someone-a-favor",
+    "text": "do someone a favor",
+    "kind": "collocation",
+    "d": 55,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות טובה"
+    ],
+    "definition": "to do something helpful for someone",
+    "sentences": [
+      {
+        "en": "Could you do me a favor and water my plants?",
+        "he": "תוכלו לעשות לי טובה ולהשקות את העציצים?"
+      },
+      {
+        "en": "He did me a huge favor by lending me his car.",
+        "he": "הוא עשה לי טובה ענקית כשהשאיל לי את האוטו."
+      },
+      {
+        "en": "Do yourself a favor and get some sleep tonight.",
+        "he": "תעשו לעצמכם טובה ותישנו קצת הלילה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "do-research",
+    "text": "do research",
+    "kind": "collocation",
+    "d": 56,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לערוך מחקר",
+      "לעשות בירור"
+    ],
+    "definition": "to study a subject carefully to find information",
+    "sentences": [
+      {
+        "en": "Do some research before you buy a used car.",
+        "he": "תעשו קצת בירור לפני שאתם קונים רכב יד שנייה."
+      },
+      {
+        "en": "She's doing research on sleep and memory.",
+        "he": "היא עורכת מחקר על שינה וזיכרון."
+      },
+      {
+        "en": "We did a lot of research before choosing a school.",
+        "he": "עשינו המון בירורים לפני שבחרנו בית ספר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-in-touch",
+    "text": "get in touch",
+    "kind": "collocation",
+    "d": 56,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ליצור קשר"
+    ],
+    "definition": "to contact someone",
+    "sentences": [
+      {
+        "en": "Please get in touch if you have any questions.",
+        "he": "בבקשה צרו קשר אם יש לכם שאלות."
+      },
+      {
+        "en": "I'll get in touch with the landlord about the leak.",
+        "he": "אצור קשר עם בעל הבית בעניין הנזילה."
+      },
+      {
+        "en": "An old classmate got in touch with me on social media.",
+        "he": "חבר ותיק מהכיתה יצר איתי קשר ברשתות החברתיות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "run-out-of-time",
+    "text": "run out of time",
+    "kind": "collocation",
+    "d": 56,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להיגמר הזמן",
+      "לא להספיק"
+    ],
+    "definition": "to have no time left",
+    "sentences": [
+      {
+        "en": "We ran out of time and couldn't finish the test.",
+        "he": "נגמר לנו הזמן ולא הספקנו לסיים את המבחן."
+      },
+      {
+        "en": "Hurry up, we're running out of time!",
+        "he": "תזדרזו, הזמן אוזל!"
+      },
+      {
+        "en": "I always run out of time on the last question.",
+        "he": "תמיד נגמר לי הזמן בשאלה האחרונה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-point",
+    "text": "make a point",
+    "kind": "collocation",
+    "d": 56,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להעלות טענה",
+      "להבהיר נקודה"
+    ],
+    "definition": "to express an idea or opinion clearly",
+    "sentences": [
+      {
+        "en": "You make a good point about the cost.",
+        "he": "אתם מעלים טענה טובה לגבי העלות."
+      },
+      {
+        "en": "She made her point clearly and sat down.",
+        "he": "היא הבהירה את הנקודה שלה והתיישבה."
+      },
+      {
+        "en": "He arrived late just to make a point.",
+        "he": "הוא הגיע באיחור רק כדי להבהיר נקודה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "feel-free",
+    "text": "feel free",
+    "kind": "collocation",
+    "d": 57,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להרגיש בנוח",
+      "אתם מוזמנים"
+    ],
+    "definition": "used to tell someone they are welcome to do something",
+    "sentences": [
+      {
+        "en": "Feel free to call me if you need anything.",
+        "he": "אתם מוזמנים להתקשר אליי אם צריך משהו."
+      },
+      {
+        "en": "Please feel free to ask questions during the talk.",
+        "he": "תרגישו בנוח לשאול שאלות במהלך ההרצאה."
+      },
+      {
+        "en": "Feel free to help yourself to coffee and cookies.",
+        "he": "תרגישו חופשי לקחת קפה ועוגיות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "come-true",
+    "text": "come true",
+    "kind": "collocation",
+    "d": 57,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתגשם"
+    ],
+    "definition": "to happen in the way you hoped or expected",
+    "sentences": [
+      {
+        "en": "Her dream of opening a bakery finally came true.",
+        "he": "החלום שלה לפתוח מאפייה סוף סוף התגשם."
+      },
+      {
+        "en": "We hope all your wishes come true this year.",
+        "he": "מאחלים שכל המשאלות שלכם יתגשמו השנה."
+      },
+      {
+        "en": "Luckily, the worst predictions didn't come true.",
+        "he": "למזלנו, התחזיות הכי גרועות לא התגשמו."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "depend-on",
+    "text": "depend on",
+    "kind": "collocation",
+    "d": 57,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להיות תלוי ב",
+      "לסמוך על"
+    ],
+    "definition": "to be decided by something; also, to trust or need someone",
+    "sentences": [
+      {
+        "en": "Our plans for Saturday depend on the weather.",
+        "he": "התוכניות שלנו לשבת תלויות במזג האוויר."
+      },
+      {
+        "en": "The price depends on how many people come.",
+        "he": "המחיר תלוי בכמה אנשים יגיעו."
+      },
+      {
+        "en": "You can always depend on her to help.",
+        "he": "תמיד אפשר לסמוך עליה שתעזור."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "interested-in",
+    "text": "interested in",
+    "kind": "collocation",
+    "d": 57,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מתעניין ב",
+      "מעוניין ב"
+    ],
+    "definition": "wanting to know about or do something",
+    "sentences": [
+      {
+        "en": "I'm interested in learning more about photography.",
+        "he": "מעניין אותי ללמוד עוד על צילום."
+      },
+      {
+        "en": "Are you interested in joining our book club?",
+        "he": "מעניין אתכם להצטרף למועדון הספר שלנו?"
+      },
+      {
+        "en": "My son has always been interested in space.",
+        "he": "הבן שלי תמיד התעניין בחלל."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "good-at",
+    "text": "good at",
+    "kind": "collocation",
+    "d": 58,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "טוב ב",
+      "מוכשר ב"
+    ],
+    "definition": "able to do something well",
+    "sentences": [
+      {
+        "en": "She's really good at math and science.",
+        "he": "היא ממש טובה במתמטיקה ובמדעים."
+      },
+      {
+        "en": "I'm not very good at remembering names.",
+        "he": "זכירת שמות היא לא הצד החזק שלי."
+      },
+      {
+        "en": "Try to find a job doing what you're good at.",
+        "he": "נסו למצוא עבודה במה שאתם טובים בו."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "afraid-of",
+    "text": "afraid of",
+    "kind": "collocation",
+    "d": 58,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מפחד מ",
+      "חושש מ"
+    ],
+    "definition": "feeling fear about something",
+    "sentences": [
+      {
+        "en": "My daughter is afraid of the dark.",
+        "he": "הבת שלי מפחדת מהחושך."
+      },
+      {
+        "en": "Don't be afraid of making mistakes in English.",
+        "he": "אל תפחדו לעשות טעויות באנגלית."
+      },
+      {
+        "en": "Many people are afraid of flying.",
+        "he": "הרבה אנשים מפחדים לטוס."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "responsible-for",
+    "text": "responsible for",
+    "kind": "collocation",
+    "d": 58,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "אחראי על",
+      "אחראי ל"
+    ],
+    "definition": "having the duty to deal with something, or being the cause of it",
+    "sentences": [
+      {
+        "en": "Who's responsible for this mess in the kitchen?",
+        "he": "מי אחראי לבלגן הזה במטבח?"
+      },
+      {
+        "en": "She's responsible for the entire marketing team.",
+        "he": "היא אחראית על כל צוות השיווק."
+      },
+      {
+        "en": "Drivers are responsible for checking their tires.",
+        "he": "נהגים אחראים לבדוק את הצמיגים שלהם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "aware-of",
+    "text": "aware of",
+    "kind": "collocation",
+    "d": 58,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מודע ל",
+      "יודע על"
+    ],
+    "definition": "knowing that something exists or is happening",
+    "sentences": [
+      {
+        "en": "Are you aware of the risks of this treatment?",
+        "he": "אתם מודעים לסיכונים של הטיפול הזה?"
+      },
+      {
+        "en": "I wasn't aware of the new rules.",
+        "he": "לא ידעתי על הכללים החדשים."
+      },
+      {
+        "en": "More people are becoming aware of the importance of sleep.",
+        "he": "יותר ויותר אנשים נעשים מודעים לחשיבות של שינה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "proud-of",
+    "text": "proud of",
+    "kind": "collocation",
+    "d": 59,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "גאה ב"
+    ],
+    "definition": "feeling pleased about something you or someone else did",
+    "sentences": [
+      {
+        "en": "We're so proud of you for finishing the race.",
+        "he": "אנחנו כל כך גאים בכם שסיימתם את המרוץ."
+      },
+      {
+        "en": "She's proud of her Moroccan roots.",
+        "he": "היא גאה בשורשים המרוקאיים שלה."
+      },
+      {
+        "en": "I'm really proud of what our team achieved this year.",
+        "he": "אני ממש גאה במה שהצוות שלנו השיג השנה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "worried-about",
+    "text": "worried about",
+    "kind": "collocation",
+    "d": 59,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מודאג מ",
+      "דואג ל"
+    ],
+    "definition": "feeling anxious about something",
+    "sentences": [
+      {
+        "en": "I'm worried about my grandfather's health.",
+        "he": "הבריאות של סבא שלי מדאיגה אותי."
+      },
+      {
+        "en": "Don't be worried about the interview; you'll be great.",
+        "he": "אל תדאגו לגבי הראיון; אתם תהיו מעולים."
+      },
+      {
+        "en": "Many parents are worried about screen time.",
+        "he": "הרבה הורים מודאגים מזמן המסך."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "similar-to",
+    "text": "similar to",
+    "kind": "collocation",
+    "d": 59,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "דומה ל"
+    ],
+    "definition": "almost the same as something else",
+    "sentences": [
+      {
+        "en": "Your idea is very similar to mine.",
+        "he": "הרעיון שלכם מאוד דומה לשלי."
+      },
+      {
+        "en": "The weather in Tel Aviv is similar to Barcelona's.",
+        "he": "מזג האוויר בתל אביב דומה לזה של ברצלונה."
+      },
+      {
+        "en": "This phone looks very similar to the old model.",
+        "he": "הטלפון הזה נראה מאוד דומה לדגם הישן."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "different-from",
+    "text": "different from",
+    "kind": "collocation",
+    "d": 59,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "שונה מ"
+    ],
+    "definition": "not the same as something else",
+    "sentences": [
+      {
+        "en": "Life in the city is very different from village life.",
+        "he": "החיים בעיר שונים מאוד מהחיים בכפר."
+      },
+      {
+        "en": "My brother is completely different from me.",
+        "he": "אחי שונה ממני לגמרי."
+      },
+      {
+        "en": "How is this plan different from the last one?",
+        "he": "במה התוכנית הזאת שונה מהקודמת?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "look-forward-to",
+    "text": "look forward to",
+    "kind": "collocation",
+    "d": 60,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לצפות ל",
+      "לחכות בקוצר רוח ל"
+    ],
+    "definition": "to feel happy about something that is going to happen",
+    "sentences": [
+      {
+        "en": "I'm really looking forward to the weekend.",
+        "he": "אני ממש מחכה בקוצר רוח לסוף השבוע."
+      },
+      {
+        "en": "We look forward to hearing from you soon.",
+        "he": "נשמח לשמוע מכם בקרוב."
+      },
+      {
+        "en": "The kids are looking forward to summer vacation.",
+        "he": "הילדים מחכים בקוצר רוח לחופש הגדול."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "rely-on",
+    "text": "rely on",
+    "kind": "collocation",
+    "d": 60,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לסמוך על",
+      "להסתמך על"
+    ],
+    "definition": "to need or trust someone or something",
+    "sentences": [
+      {
+        "en": "You can always rely on me for help.",
+        "he": "תמיד אפשר לסמוך עליי שאעזור."
+      },
+      {
+        "en": "Many people rely on public transportation.",
+        "he": "הרבה אנשים מסתמכים על תחבורה ציבורית."
+      },
+      {
+        "en": "Don't rely on your phone's battery on a long hike.",
+        "he": "אל תסמכו על הסוללה של הטלפון בטיול ארוך."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "apologize-for",
+    "text": "apologize for",
+    "kind": "collocation",
+    "d": 60,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתנצל על"
+    ],
+    "definition": "to say you are sorry about something",
+    "sentences": [
+      {
+        "en": "We apologize for the delay in our reply.",
+        "he": "אנחנו מתנצלים על העיכוב בתשובה."
+      },
+      {
+        "en": "He apologized for being rude at dinner.",
+        "he": "הוא התנצל על כך שהיה גס רוח בארוחה."
+      },
+      {
+        "en": "The airline apologized for the long delay.",
+        "he": "חברת התעופה התנצלה על העיכוב הארוך."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "complain-about",
+    "text": "complain about",
+    "kind": "collocation",
+    "d": 60,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתלונן על"
+    ],
+    "definition": "to say that you are unhappy with something",
+    "sentences": [
+      {
+        "en": "The neighbors complained about the loud music.",
+        "he": "השכנים התלוננו על המוזיקה הרועשת."
+      },
+      {
+        "en": "He's always complaining about his job.",
+        "he": "הוא כל הזמן מתלונן על העבודה שלו."
+      },
+      {
+        "en": "Customers complained about the slow delivery.",
+        "he": "לקוחות התלוננו על המשלוח האיטי."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "concentrate-on",
+    "text": "concentrate on",
+    "kind": "collocation",
+    "d": 61,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתרכז ב"
+    ],
+    "definition": "to give all your attention to something",
+    "sentences": [
+      {
+        "en": "I can't concentrate on my work with this noise.",
+        "he": "קשה לי להתרכז בעבודה עם הרעש הזה."
+      },
+      {
+        "en": "Let's concentrate on the most important tasks first.",
+        "he": "בואו נתרכז קודם במשימות הכי חשובות."
+      },
+      {
+        "en": "She turned off her phone to concentrate on studying.",
+        "he": "היא כיבתה את הטלפון כדי להתרכז בלימודים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "insist-on",
+    "text": "insist on",
+    "kind": "collocation",
+    "d": 61,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתעקש על"
+    ],
+    "definition": "to say firmly that something must happen",
+    "sentences": [
+      {
+        "en": "My grandmother always insists on paying for dinner.",
+        "he": "סבתא שלי תמיד מתעקשת לשלם על ארוחת הערב."
+      },
+      {
+        "en": "He insisted on driving me home.",
+        "he": "הוא התעקש להסיע אותי הביתה."
+      },
+      {
+        "en": "The doctor insisted on a few more tests.",
+        "he": "הרופא התעקש על עוד כמה בדיקות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "capable-of",
+    "text": "capable of",
+    "kind": "collocation",
+    "d": 61,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מסוגל ל"
+    ],
+    "definition": "having the ability to do something",
+    "sentences": [
+      {
+        "en": "I know you're capable of doing better.",
+        "he": "ברור לי שאתם מסוגלים ליותר."
+      },
+      {
+        "en": "This car is capable of driving 500 kilometers on one charge.",
+        "he": "הרכב הזה מסוגל לנסוע 500 קילומטר בטעינה אחת."
+      },
+      {
+        "en": "Young children are capable of learning two languages at once.",
+        "he": "ילדים צעירים מסוגלים ללמוד שתי שפות בבת אחת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "familiar-with",
+    "text": "familiar with",
+    "kind": "collocation",
+    "d": 61,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מכיר את",
+      "מתמצא ב"
+    ],
+    "definition": "knowing something well",
+    "sentences": [
+      {
+        "en": "Are you familiar with this software?",
+        "he": "אתם מכירים את התוכנה הזאת?"
+      },
+      {
+        "en": "I'm not familiar with this part of town.",
+        "he": "החלק הזה של העיר לא מוכר לי."
+      },
+      {
+        "en": "She quickly became familiar with the new system.",
+        "he": "היא התמצאה מהר במערכת החדשה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fed-up-with",
+    "text": "fed up with",
+    "kind": "collocation",
+    "d": 62,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "נמאס מ"
+    ],
+    "definition": "annoyed and bored with something that has continued too long",
+    "sentences": [
+      {
+        "en": "I'm fed up with the noise from upstairs.",
+        "he": "נמאס לי מהרעש מהקומה למעלה."
+      },
+      {
+        "en": "Voters are fed up with broken promises.",
+        "he": "לבוחרים נמאס מהבטחות שלא קוימו."
+      },
+      {
+        "en": "She got fed up with her job and quit.",
+        "he": "נמאס לה מהעבודה, והיא התפטרה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "succeed-in",
+    "text": "succeed in",
+    "kind": "collocation",
+    "d": 62,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להצליח ב",
+      "להצליח ל"
+    ],
+    "definition": "to manage to do something you tried to do",
+    "sentences": [
+      {
+        "en": "She succeeded in getting a scholarship to study abroad.",
+        "he": "היא הצליחה לקבל מלגה ללימודים בחוץ לארץ."
+      },
+      {
+        "en": "We finally succeeded in fixing the leak.",
+        "he": "סוף סוף הצלחנו לתקן את הנזילה."
+      },
+      {
+        "en": "Few startups succeed in their first year.",
+        "he": "מעט סטארט-אפים מצליחים בשנה הראשונה שלהם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "in-charge-of",
+    "text": "in charge of",
+    "kind": "collocation",
+    "d": 62,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "אחראי על",
+      "ממונה על"
+    ],
+    "definition": "having control of or responsibility for something",
+    "sentences": [
+      {
+        "en": "Who's in charge of the project now that Dan left?",
+        "he": "מי אחראי על הפרויקט עכשיו כשדן עזב?"
+      },
+      {
+        "en": "She's in charge of hiring new staff.",
+        "he": "היא ממונה על גיוס עובדים חדשים."
+      },
+      {
+        "en": "I was left in charge of my little brother for the evening.",
+        "he": "השאירו לי את האחריות על אחי הקטן לערב."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "in-favor-of",
+    "text": "in favor of",
+    "kind": "collocation",
+    "d": 62,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בעד",
+      "תומך ב"
+    ],
+    "definition": "supporting an idea or plan",
+    "sentences": [
+      {
+        "en": "Most residents are in favor of the new park.",
+        "he": "רוב התושבים בעד הפארק החדש."
+      },
+      {
+        "en": "Are you in favor of a four-day work week?",
+        "he": "אתם בעד שבוע עבודה של ארבעה ימים?"
+      },
+      {
+        "en": "The committee voted in favor of the plan.",
+        "he": "הוועדה הצביעה בעד התוכנית."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "on-purpose",
+    "text": "on purpose",
+    "kind": "collocation",
+    "d": 63,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בכוונה"
+    ],
+    "definition": "intentionally, not by accident",
+    "sentences": [
+      {
+        "en": "Sorry, I didn't do it on purpose.",
+        "he": "סליחה, לא עשיתי את זה בכוונה."
+      },
+      {
+        "en": "He left the door open on purpose to let the cat in.",
+        "he": "הוא השאיר את הדלת פתוחה בכוונה כדי שהחתול ייכנס."
+      },
+      {
+        "en": "Do you think she ignored my message on purpose?",
+        "he": "נראה לכם שהיא התעלמה מההודעה שלי בכוונה?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "by-accident",
+    "text": "by accident",
+    "kind": "collocation",
+    "d": 63,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בטעות",
+      "במקרה"
+    ],
+    "definition": "without planning or intending it",
+    "sentences": [
+      {
+        "en": "I deleted the whole file by accident.",
+        "he": "מחקתי בטעות את כל הקובץ."
+      },
+      {
+        "en": "We met by accident at the airport.",
+        "he": "נפגשנו במקרה בשדה התעופה."
+      },
+      {
+        "en": "Many great inventions were discovered by accident.",
+        "he": "הרבה המצאות גדולות התגלו במקרה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "on-time",
+    "text": "on time",
+    "kind": "collocation",
+    "d": 63,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בזמן",
+      "בדיוק בשעה"
+    ],
+    "definition": "at the planned time, not late",
+    "sentences": [
+      {
+        "en": "The train arrived on time for once.",
+        "he": "הרכבת הגיעה בזמן לשם שינוי."
+      },
+      {
+        "en": "Please try to be on time for the meeting.",
+        "he": "בבקשה תשתדלו להגיע בזמן לפגישה."
+      },
+      {
+        "en": "She always pays her bills on time.",
+        "he": "היא תמיד משלמת את החשבונות בזמן."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "in-time",
+    "text": "in time",
+    "kind": "collocation",
+    "d": 63,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בעוד מועד",
+      "בזמן"
+    ],
+    "definition": "early enough, before it is too late",
+    "sentences": [
+      {
+        "en": "We got to the station just in time.",
+        "he": "הגענו לתחנה בדיוק בזמן."
+      },
+      {
+        "en": "Will the package arrive in time for her birthday?",
+        "he": "החבילה תגיע בעוד מועד ליום ההולדת שלה?"
+      },
+      {
+        "en": "The ambulance arrived in time to save him.",
+        "he": "האמבולנס הגיע בעוד מועד כדי להציל אותו."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "in-advance",
+    "text": "in advance",
+    "kind": "collocation",
+    "d": 64,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מראש"
+    ],
+    "definition": "before a particular time or event",
+    "sentences": [
+      {
+        "en": "Please book your tickets at least a week in advance.",
+        "he": "בבקשה הזמינו כרטיסים לפחות שבוע מראש."
+      },
+      {
+        "en": "Thanks in advance for all your help.",
+        "he": "תודה מראש על כל העזרה."
+      },
+      {
+        "en": "We paid for the hotel three months in advance.",
+        "he": "שילמנו על המלון שלושה חודשים מראש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "under-control",
+    "text": "under control",
+    "kind": "collocation",
+    "d": 64,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בשליטה"
+    ],
+    "definition": "being managed successfully",
+    "sentences": [
+      {
+        "en": "Don't worry, everything is under control.",
+        "he": "אל תדאגו, הכול בשליטה."
+      },
+      {
+        "en": "Firefighters finally got the fire under control.",
+        "he": "הכבאים הצליחו סוף סוף להביא את השריפה לשליטה."
+      },
+      {
+        "en": "It's important to keep your spending under control.",
+        "he": "חשוב לשמור על ההוצאות בשליטה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "at-risk",
+    "text": "at risk",
+    "kind": "collocation",
+    "d": 64,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בסיכון"
+    ],
+    "definition": "in danger of being harmed or lost",
+    "sentences": [
+      {
+        "en": "Thousands of jobs are at risk because of the crisis.",
+        "he": "אלפי משרות בסיכון בגלל המשבר."
+      },
+      {
+        "en": "Smoking puts your health at serious risk.",
+        "he": "עישון מעמיד את הבריאות שלכם בסיכון רציני."
+      },
+      {
+        "en": "Children are most at risk in very hot weather.",
+        "he": "ילדים נמצאים בסיכון הגבוה ביותר במזג אוויר חם מאוד."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "on-average",
+    "text": "on average",
+    "kind": "collocation",
+    "d": 64,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בממוצע"
+    ],
+    "definition": "usually, when calculated as an average",
+    "sentences": [
+      {
+        "en": "On average, I sleep about seven hours a night.",
+        "he": "בממוצע, יש לי בערך שבע שעות שינה בלילה."
+      },
+      {
+        "en": "Prices rose by five percent on average.",
+        "he": "המחירים עלו בממוצע בחמישה אחוזים."
+      },
+      {
+        "en": "On average, women live longer than men.",
+        "he": "בממוצע, נשים חיות יותר זמן מגברים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-something-in-common",
+    "text": "have something in common",
+    "kind": "collocation",
+    "d": 65,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "יש במשותף"
+    ],
+    "definition": "to share interests, qualities or experiences",
+    "sentences": [
+      {
+        "en": "We have a lot in common, like music and hiking.",
+        "he": "יש לנו הרבה במשותף, כמו מוזיקה וטיולים."
+      },
+      {
+        "en": "The two cases have nothing in common.",
+        "he": "אין שום דבר במשותף בין שני המקרים."
+      },
+      {
+        "en": "What do these successful companies have in common?",
+        "he": "מה משותף לחברות המצליחות האלה?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "on-behalf-of",
+    "text": "on behalf of",
+    "kind": "collocation",
+    "d": 65,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בשם",
+      "מטעם"
+    ],
+    "definition": "representing someone or acting for them",
+    "sentences": [
+      {
+        "en": "I'm writing on behalf of my client.",
+        "he": "אני פונה בשם הלקוח שלי."
+      },
+      {
+        "en": "She accepted the award on behalf of the whole team.",
+        "he": "היא קיבלה את הפרס בשם כל הצוות."
+      },
+      {
+        "en": "On behalf of the company, thank you for coming.",
+        "he": "בשם החברה, תודה שהגעתם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "express-an-opinion",
+    "text": "express an opinion",
+    "kind": "collocation",
+    "d": 65,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להביע דעה"
+    ],
+    "definition": "to say what you think about something",
+    "sentences": [
+      {
+        "en": "Everyone has the right to express an opinion.",
+        "he": "לכל אחד יש זכות להביע דעה."
+      },
+      {
+        "en": "She expressed her opinion clearly in the meeting.",
+        "he": "היא הביעה את דעתה בבירור בפגישה."
+      },
+      {
+        "en": "Students are encouraged to express their opinions in class.",
+        "he": "מעודדים את התלמידים להביע את דעתם בכיתה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-high-level-of",
+    "text": "a high level of",
+    "kind": "collocation",
+    "d": 65,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "רמה גבוהה של"
+    ],
+    "definition": "a large amount or degree of something",
+    "sentences": [
+      {
+        "en": "This job requires a high level of English.",
+        "he": "התפקיד הזה דורש רמה גבוהה של אנגלית."
+      },
+      {
+        "en": "The hotel offers a high level of service.",
+        "he": "המלון מציע רמה גבוהה של שירות."
+      },
+      {
+        "en": "A high level of stress can affect your sleep.",
+        "he": "רמה גבוהה של לחץ יכולה להשפיע על השינה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-reasonable-price",
+    "text": "a reasonable price",
+    "kind": "collocation",
+    "d": 66,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מחיר סביר"
+    ],
+    "definition": "a fair price that is not too high",
+    "sentences": [
+      {
+        "en": "We found a nice apartment at a reasonable price.",
+        "he": "מצאנו דירה נחמדה במחיר סביר."
+      },
+      {
+        "en": "The food is good and the prices are reasonable.",
+        "he": "האוכל טוב והמחירים סבירים."
+      },
+      {
+        "en": "Is ten dollars a reasonable price for a sandwich?",
+        "he": "עשרה דולר זה מחיר סביר לכריך?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "high-quality",
+    "text": "high quality",
+    "kind": "collocation",
+    "d": 66,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "איכות גבוהה"
+    ],
+    "definition": "very good standard",
+    "sentences": [
+      {
+        "en": "These shoes are expensive, but they're high quality.",
+        "he": "הנעליים האלה יקרות, אבל הן באיכות גבוהה."
+      },
+      {
+        "en": "Our bakery only uses ingredients of high quality.",
+        "he": "המאפייה שלנו משתמשת רק במרכיבים באיכות גבוהה."
+      },
+      {
+        "en": "The photos came out in surprisingly high quality.",
+        "he": "התמונות יצאו באיכות גבוהה להפתיע."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-full-time-job",
+    "text": "a full-time job",
+    "kind": "collocation",
+    "d": 66,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "משרה מלאה"
+    ],
+    "definition": "a job for the whole working week",
+    "sentences": [
+      {
+        "en": "She has a full-time job and two kids.",
+        "he": "יש לה משרה מלאה ושני ילדים."
+      },
+      {
+        "en": "I'm looking for a full-time job in marketing.",
+        "he": "אני בחיפוש אחר משרה מלאה בשיווק."
+      },
+      {
+        "en": "Taking care of a baby is a full-time job.",
+        "he": "טיפול בתינוק הוא משרה מלאה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-first-impression",
+    "text": "a first impression",
+    "kind": "collocation",
+    "d": 66,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "רושם ראשוני"
+    ],
+    "definition": "the opinion you form when you first meet someone or see something",
+    "sentences": [
+      {
+        "en": "You never get a second chance to make a first impression.",
+        "he": "אין הזדמנות שנייה ליצור רושם ראשוני."
+      },
+      {
+        "en": "My first impression of the city was very positive.",
+        "he": "הרושם הראשוני שלי מהעיר היה חיובי מאוד."
+      },
+      {
+        "en": "A good CV helps you make a strong first impression.",
+        "he": "קורות חיים טובים עוזרים ליצור רושם ראשוני חזק."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-positive-attitude",
+    "text": "a positive attitude",
+    "kind": "collocation",
+    "d": 67,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "גישה חיובית"
+    ],
+    "definition": "a hopeful and confident way of thinking",
+    "sentences": [
+      {
+        "en": "A positive attitude makes hard days easier.",
+        "he": "גישה חיובית הופכת ימים קשים לקלים יותר."
+      },
+      {
+        "en": "We're looking for someone with a positive attitude.",
+        "he": "אנחנו מחפשים מישהו עם גישה חיובית."
+      },
+      {
+        "en": "Despite the injury, he kept a positive attitude.",
+        "he": "למרות הפציעה, הוא שמר על גישה חיובית."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "mixed-feelings",
+    "text": "mixed feelings",
+    "kind": "collocation",
+    "d": 67,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "רגשות מעורבים"
+    ],
+    "definition": "both positive and negative feelings about the same thing",
+    "sentences": [
+      {
+        "en": "I have mixed feelings about moving to a new city.",
+        "he": "יש לי רגשות מעורבים לגבי המעבר לעיר חדשה."
+      },
+      {
+        "en": "Fans had mixed feelings about the final episode.",
+        "he": "לאוהדים היו רגשות מעורבים לגבי הפרק האחרון."
+      },
+      {
+        "en": "Finishing school gave me mixed feelings.",
+        "he": "סיום הלימודים עורר בי רגשות מעורבים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-last-resort",
+    "text": "a last resort",
+    "kind": "collocation",
+    "d": 67,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מוצא אחרון"
+    ],
+    "definition": "something you do only when everything else has failed",
+    "sentences": [
+      {
+        "en": "Surgery should only be a last resort.",
+        "he": "ניתוח צריך להיות רק מוצא אחרון."
+      },
+      {
+        "en": "As a last resort, we called a locksmith.",
+        "he": "כמוצא אחרון, הזמנו מנעולן."
+      },
+      {
+        "en": "Borrowing money from family was my last resort.",
+        "he": "ללוות כסף מהמשפחה היה המוצא האחרון שלי."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-golden-opportunity",
+    "text": "a golden opportunity",
+    "kind": "collocation",
+    "d": 67,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "הזדמנות פז"
+    ],
+    "definition": "an excellent chance that may not come again",
+    "sentences": [
+      {
+        "en": "This internship is a golden opportunity to learn.",
+        "he": "ההתמחות הזאת היא הזדמנות פז ללמוד."
+      },
+      {
+        "en": "Don't miss this golden opportunity to travel.",
+        "he": "אל תפספסו את הזדמנות הפז הזאת לטייל."
+      },
+      {
+        "en": "The team missed a golden opportunity to score.",
+        "he": "הקבוצה החמיצה הזדמנות פז להבקיע."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-huge-success",
+    "text": "a huge success",
+    "kind": "collocation",
+    "d": 68,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "הצלחה אדירה",
+      "הצלחה גדולה"
+    ],
+    "definition": "something that succeeds very well",
+    "sentences": [
+      {
+        "en": "The surprise party was a huge success.",
+        "he": "מסיבת ההפתעה הייתה הצלחה אדירה."
+      },
+      {
+        "en": "Her first album was a huge success.",
+        "he": "האלבום הראשון שלה היה הצלחה גדולה."
+      },
+      {
+        "en": "The new app has been a huge success with teenagers.",
+        "he": "האפליקציה החדשה הייתה הצלחה אדירה בקרב בני נוער."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-complete-waste-of-time",
+    "text": "a complete waste of time",
+    "kind": "collocation",
+    "d": 68,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בזבוז זמן מוחלט"
+    ],
+    "definition": "something that is not useful at all",
+    "sentences": [
+      {
+        "en": "That meeting was a complete waste of time.",
+        "he": "הפגישה הזאת הייתה בזבוז זמן מוחלט."
+      },
+      {
+        "en": "Arguing with him is a complete waste of time.",
+        "he": "להתווכח איתו זה בזבוז זמן מוחלט."
+      },
+      {
+        "en": "The movie was a complete waste of time and money.",
+        "he": "הסרט היה בזבוז מוחלט של זמן וכסף."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "the-main-reason",
+    "text": "the main reason",
+    "kind": "collocation",
+    "d": 68,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "הסיבה העיקרית"
+    ],
+    "definition": "the most important cause",
+    "sentences": [
+      {
+        "en": "The main reason I moved was the job.",
+        "he": "הסיבה העיקרית שעברתי הייתה העבודה."
+      },
+      {
+        "en": "What's the main reason for the delay?",
+        "he": "מה הסיבה העיקרית לעיכוב?"
+      },
+      {
+        "en": "Cost is the main reason people don't buy electric cars.",
+        "he": "המחיר הוא הסיבה העיקרית שאנשים לא קונים רכב חשמלי."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-top-priority",
+    "text": "a top priority",
+    "kind": "collocation",
+    "d": 68,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "עדיפות עליונה"
+    ],
+    "definition": "the most important thing to deal with",
+    "sentences": [
+      {
+        "en": "For us, safety is always a top priority.",
+        "he": "מבחינתנו, בטיחות היא תמיד בעדיפות עליונה."
+      },
+      {
+        "en": "Finding a new apartment is my top priority right now.",
+        "he": "למצוא דירה חדשה זה בעדיפות עליונה אצלי עכשיו."
+      },
+      {
+        "en": "The government says education is a top priority.",
+        "he": "הממשלה אומרת שחינוך נמצא בעדיפות עליונה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-tight-budget",
+    "text": "a tight budget",
+    "kind": "collocation",
+    "d": 69,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "תקציב מצומצם",
+      "תקציב דחוק"
+    ],
+    "definition": "a small amount of money that must be used carefully",
+    "sentences": [
+      {
+        "en": "We're on a tight budget this month.",
+        "he": "אנחנו בתקציב דחוק החודש."
+      },
+      {
+        "en": "They planned the wedding on a tight budget.",
+        "he": "הם תכננו את החתונה בתקציב מצומצם."
+      },
+      {
+        "en": "With a tight budget, every shekel counts.",
+        "he": "עם תקציב מצומצם, כל שקל חשוב."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "small-talk",
+    "text": "small talk",
+    "kind": "collocation",
+    "d": 69,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "שיחת חולין",
+      "סמול טוק"
+    ],
+    "definition": "light, polite conversation about unimportant things",
+    "sentences": [
+      {
+        "en": "I'm not good at small talk with strangers.",
+        "he": "שיחות חולין עם זרים הן לא הצד החזק שלי."
+      },
+      {
+        "en": "We made small talk about the weather while waiting.",
+        "he": "ניהלנו שיחת חולין על מזג האוויר בזמן שחיכינו."
+      },
+      {
+        "en": "Small talk helps build relationships at work.",
+        "he": "שיחות חולין עוזרות לבנות קשרים בעבודה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fresh-air",
+    "text": "fresh air",
+    "kind": "collocation",
+    "d": 69,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "אוויר צח"
+    ],
+    "definition": "clean air from outside",
+    "sentences": [
+      {
+        "en": "Let's go outside and get some fresh air.",
+        "he": "בואו נצא החוצה לנשום קצת אוויר צח."
+      },
+      {
+        "en": "Open the window and let in some fresh air.",
+        "he": "תפתחו את החלון ותכניסו קצת אוויר צח."
+      },
+      {
+        "en": "Kids need fresh air and time to play outside.",
+        "he": "ילדים צריכים אוויר צח וזמן לשחק בחוץ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-valid-point",
+    "text": "a valid point",
+    "kind": "collocation",
+    "d": 69,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "נקודה צודקת",
+      "טענה נכונה"
+    ],
+    "definition": "a reasonable and fair argument",
+    "sentences": [
+      {
+        "en": "That's a valid point; I hadn't thought of it.",
+        "he": "זו נקודה צודקת; לא חשבתי על זה."
+      },
+      {
+        "en": "Both sides made valid points during the debate.",
+        "he": "שני הצדדים העלו טענות נכונות בדיון."
+      },
+      {
+        "en": "She raised a valid point about the cost.",
+        "he": "היא העלתה נקודה צודקת לגבי העלות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-heated-argument",
+    "text": "a heated argument",
+    "kind": "collocation",
+    "d": 70,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "ויכוח סוער"
+    ],
+    "definition": "an angry and emotional disagreement",
+    "sentences": [
+      {
+        "en": "They got into a heated argument about politics.",
+        "he": "הם נכנסו לוויכוח סוער על פוליטיקה."
+      },
+      {
+        "en": "The meeting turned into a heated argument.",
+        "he": "הפגישה הפכה לוויכוח סוער."
+      },
+      {
+        "en": "After a heated argument, we finally agreed on a plan.",
+        "he": "אחרי ויכוח סוער, הסכמנו סוף סוף על תוכנית."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "strongly-recommend",
+    "text": "strongly recommend",
+    "kind": "collocation",
+    "d": 70,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להמליץ בחום"
+    ],
+    "definition": "to advise very firmly that someone should do something",
+    "sentences": [
+      {
+        "en": "I strongly recommend booking a table in advance.",
+        "he": "מומלץ בחום להזמין שולחן מראש."
+      },
+      {
+        "en": "Doctors strongly recommend getting enough sleep.",
+        "he": "רופאים ממליצים בחום לישון מספיק."
+      },
+      {
+        "en": "We strongly recommend that you back up your data.",
+        "he": "אנחנו ממליצים בחום לגבות את הנתונים שלכם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "highly-recommend",
+    "text": "highly recommend",
+    "kind": "collocation",
+    "d": 70,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להמליץ מאוד",
+      "מומלץ ביותר"
+    ],
+    "definition": "to praise something and say others should try it",
+    "sentences": [
+      {
+        "en": "I highly recommend this restaurant for families.",
+        "he": "המסעדה הזאת מומלצת ביותר למשפחות."
+      },
+      {
+        "en": "Her course is highly recommended by former students.",
+        "he": "הקורס שלה מומלץ מאוד על ידי בוגרים."
+      },
+      {
+        "en": "We highly recommend visiting the old city at sunset.",
+        "he": "אנחנו ממליצים מאוד לבקר בעיר העתיקה בשקיעה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "completely-different",
+    "text": "completely different",
+    "kind": "collocation",
+    "d": 70,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "שונה לגמרי"
+    ],
+    "definition": "not similar at all",
+    "sentences": [
+      {
+        "en": "The new version of the app looks completely different.",
+        "he": "הגרסה החדשה של האפליקציה נראית שונה לגמרי."
+      },
+      {
+        "en": "My sister and I have completely different personalities.",
+        "he": "לי ולאחותי יש אישיויות שונות לגמרי."
+      },
+      {
+        "en": "Living abroad is completely different from visiting.",
+        "he": "לגור בחוץ לארץ זה שונה לגמרי מלבקר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "absolutely-sure",
+    "text": "absolutely sure",
+    "kind": "collocation",
+    "d": 71,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "בטוח לחלוטין"
+    ],
+    "definition": "completely certain",
+    "sentences": [
+      {
+        "en": "Are you absolutely sure you locked the door?",
+        "he": "אתם בטוחים לחלוטין שנעלתם את הדלת?"
+      },
+      {
+        "en": "I'm absolutely sure I saw him yesterday.",
+        "he": "אין לי שום ספק שראיתי אותו אתמול."
+      },
+      {
+        "en": "Don't sign anything unless you're absolutely sure.",
+        "he": "אל תחתמו על כלום אם אתם לא בטוחים לחלוטין."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fully-aware",
+    "text": "fully aware",
+    "kind": "collocation",
+    "d": 71,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מודע לחלוטין"
+    ],
+    "definition": "knowing completely about something",
+    "sentences": [
+      {
+        "en": "We are fully aware of the problem.",
+        "he": "אנחנו מודעים לחלוטין לבעיה."
+      },
+      {
+        "en": "She was fully aware of the risks when she took the job.",
+        "he": "היא הייתה מודעת לחלוטין לסיכונים כשלקחה את התפקיד."
+      },
+      {
+        "en": "Make sure customers are fully aware of the cancellation policy.",
+        "he": "תוודאו שהלקוחות מודעים לחלוטין למדיניות הביטולים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "highly-unlikely",
+    "text": "highly unlikely",
+    "kind": "collocation",
+    "d": 71,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מאוד לא סביר",
+      "לא סביר בעליל"
+    ],
+    "definition": "very probably not going to happen",
+    "sentences": [
+      {
+        "en": "It's highly unlikely that it will snow in Tel Aviv.",
+        "he": "מאוד לא סביר שירד שלג בתל אביב."
+      },
+      {
+        "en": "A delay at this stage is highly unlikely.",
+        "he": "עיכוב בשלב הזה הוא לא סביר בעליל."
+      },
+      {
+        "en": "It's highly unlikely that he forgot; he never forgets anything.",
+        "he": "מאוד לא סביר שהוא שכח; הוא אף פעם לא שוכח כלום."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "bitterly-disappointed",
+    "text": "bitterly disappointed",
+    "kind": "collocation",
+    "d": 71,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מאוכזב מאוד",
+      "מאוכזב עמוקות"
+    ],
+    "definition": "extremely disappointed",
+    "sentences": [
+      {
+        "en": "The fans were bitterly disappointed by the loss.",
+        "he": "האוהדים היו מאוכזבים מאוד מההפסד."
+      },
+      {
+        "en": "She was bitterly disappointed not to get the part.",
+        "he": "היא הייתה מאוכזבת עמוקות שלא קיבלה את התפקיד."
+      },
+      {
+        "en": "Many customers were bitterly disappointed with the new update.",
+        "he": "לקוחות רבים היו מאוכזבים מאוד מהעדכון החדש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "perfectly-normal",
+    "text": "perfectly normal",
+    "kind": "collocation",
+    "d": 72,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "נורמלי לגמרי",
+      "תקין לחלוטין"
+    ],
+    "definition": "completely normal and nothing to worry about",
+    "sentences": [
+      {
+        "en": "It's perfectly normal to feel nervous before an exam.",
+        "he": "זה נורמלי לגמרי להרגיש לחץ לפני מבחן."
+      },
+      {
+        "en": "The doctor said my test results were perfectly normal.",
+        "he": "הרופא אמר שתוצאות הבדיקות שלי תקינות לחלוטין."
+      },
+      {
+        "en": "It's perfectly normal for babies to wake up at night.",
+        "he": "זה נורמלי לגמרי שתינוקות מתעוררים בלילה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "widely-available",
+    "text": "widely available",
+    "kind": "collocation",
+    "d": 72,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "זמין בכל מקום",
+      "נגיש לכולם"
+    ],
+    "definition": "easy to find or get in many places",
+    "sentences": [
+      {
+        "en": "This medicine is widely available in pharmacies.",
+        "he": "התרופה הזאת זמינה כמעט בכל בית מרקחת."
+      },
+      {
+        "en": "Fast internet is now widely available across the country.",
+        "he": "אינטרנט מהיר זמין היום כמעט בכל מקום בארץ."
+      },
+      {
+        "en": "Fresh strawberries aren't widely available in summer.",
+        "he": "תותים טריים לא זמינים בכל מקום בקיץ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "deeply-regret",
+    "text": "deeply regret",
+    "kind": "collocation",
+    "d": 72,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להצטער מאוד",
+      "להתחרט מאוד"
+    ],
+    "definition": "to feel very sorry about something",
+    "sentences": [
+      {
+        "en": "I deeply regret not visiting my grandmother more often.",
+        "he": "חבל לי מאוד שלא ביקרתי את סבתא שלי יותר."
+      },
+      {
+        "en": "The company deeply regrets any inconvenience caused.",
+        "he": "החברה מצטערת מאוד על כל אי נוחות שנגרמה."
+      },
+      {
+        "en": "He deeply regrets what he said during the argument.",
+        "he": "הוא מתחרט מאוד על מה שאמר בוויכוח."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "strongly-believe",
+    "text": "strongly believe",
+    "kind": "collocation",
+    "d": 72,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להאמין בתוקף",
+      "להיות משוכנע"
+    ],
+    "definition": "to be very sure that something is true or right",
+    "sentences": [
+      {
+        "en": "I strongly believe that education can change lives.",
+        "he": "יש לי אמונה חזקה שחינוך יכול לשנות חיים."
+      },
+      {
+        "en": "She strongly believes in equal pay for everyone.",
+        "he": "היא מאמינה בתוקף בשכר שווה לכולם."
+      },
+      {
+        "en": "Many scientists strongly believe the risks are real.",
+        "he": "מדענים רבים מאמינים בתוקף שהסיכונים אמיתיים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "strongly-disagree",
+    "text": "strongly disagree",
+    "kind": "collocation",
+    "d": 73,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לא להסכים בכלל",
+      "להתנגד בתוקף"
+    ],
+    "definition": "to completely disagree",
+    "sentences": [
+      {
+        "en": "I strongly disagree with that decision.",
+        "he": "ההחלטה הזאת לא מקובלת עליי בכלל."
+      },
+      {
+        "en": "Many teachers strongly disagree with the new policy.",
+        "he": "מורים רבים מתנגדים בתוקף למדיניות החדשה."
+      },
+      {
+        "en": "You can strongly disagree and still be polite.",
+        "he": "אפשר לא להסכים בכלל ועדיין להיות מנומסים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "fully-understand",
+    "text": "fully understand",
+    "kind": "collocation",
+    "d": 73,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להבין לגמרי",
+      "להבין עד הסוף"
+    ],
+    "definition": "to understand completely",
+    "sentences": [
+      {
+        "en": "I fully understand how you feel.",
+        "he": "ברור לי לגמרי איך אתם מרגישים."
+      },
+      {
+        "en": "Make sure you fully understand the contract before signing.",
+        "he": "תוודאו שאתם מבינים את החוזה עד הסוף לפני שאתם חותמים."
+      },
+      {
+        "en": "Scientists still don't fully understand how sleep works.",
+        "he": "מדענים עדיין לא מבינים לגמרי איך שינה עובדת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "greatly-appreciate",
+    "text": "greatly appreciate",
+    "kind": "collocation",
+    "d": 73,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להעריך מאוד"
+    ],
+    "definition": "to be very grateful for something",
+    "sentences": [
+      {
+        "en": "We greatly appreciate your help with the move.",
+        "he": "אנחנו מעריכים מאוד את העזרה שלכם במעבר."
+      },
+      {
+        "en": "Any feedback would be greatly appreciated.",
+        "he": "נעריך מאוד כל משוב."
+      },
+      {
+        "en": "Our family greatly appreciates everything you've done.",
+        "he": "המשפחה שלנו מעריכה מאוד את כל מה שעשיתם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "sincerely-apologize",
+    "text": "sincerely apologize",
+    "kind": "collocation",
+    "d": 73,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להתנצל מעומק הלב",
+      "להתנצל בכנות"
+    ],
+    "definition": "to say sorry in a very honest and serious way",
+    "sentences": [
+      {
+        "en": "We sincerely apologize for the inconvenience.",
+        "he": "אנחנו מתנצלים מעומק הלב על אי הנוחות."
+      },
+      {
+        "en": "He sincerely apologized to the whole team.",
+        "he": "הוא התנצל בכנות בפני כל הצוות."
+      },
+      {
+        "en": "I sincerely apologize for missing your call.",
+        "he": "אני מתנצל מעומק הלב שפספסתי את השיחה שלכם."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "deeply-concerned",
+    "text": "deeply concerned",
+    "kind": "collocation",
+    "d": 74,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מודאג מאוד",
+      "חושש מאוד"
+    ],
+    "definition": "very worried",
+    "sentences": [
+      {
+        "en": "Parents are deeply concerned about the new school schedule.",
+        "he": "ההורים מודאגים מאוד מלוח הזמנים החדש של בית הספר."
+      },
+      {
+        "en": "Doctors are deeply concerned about the rise in cases.",
+        "he": "רופאים מודאגים מאוד מהעלייה במספר המקרים."
+      },
+      {
+        "en": "We're deeply concerned about the safety of our staff.",
+        "he": "אנחנו מודאגים מאוד לגבי הביטחון של העובדים שלנו."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "burst-into-tears",
+    "text": "burst into tears",
+    "kind": "collocation",
+    "d": 74,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לפרוץ בבכי"
+    ],
+    "definition": "to suddenly start crying",
+    "sentences": [
+      {
+        "en": "She burst into tears when she heard the good news.",
+        "he": "היא פרצה בבכי כששמעה את החדשות הטובות."
+      },
+      {
+        "en": "The little boy burst into tears when he dropped his ice cream.",
+        "he": "הילד הקטן פרץ בבכי כשהגלידה שלו נפלה."
+      },
+      {
+        "en": "I almost burst into tears during the movie.",
+        "he": "כמעט פרצתי בבכי באמצע הסרט."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-piece-of-advice",
+    "text": "a piece of advice",
+    "kind": "collocation",
+    "d": 74,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "עצה",
+      "עצה טובה"
+    ],
+    "definition": "one suggestion about what to do",
+    "sentences": [
+      {
+        "en": "Can I give you a piece of advice?",
+        "he": "אפשר לתת לכם עצה?"
+      },
+      {
+        "en": "The best piece of advice I ever got was to be patient.",
+        "he": "העצה הכי טובה שקיבלתי אי פעם הייתה להתאזר בסבלנות."
+      },
+      {
+        "en": "Here's a piece of advice: always read the small print.",
+        "he": "הנה עצה טובה: תמיד תקראו את האותיות הקטנות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "keep-an-open-mind",
+    "text": "keep an open mind",
+    "kind": "collocation",
+    "d": 74,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשמור על ראש פתוח"
+    ],
+    "definition": "to be willing to consider new ideas",
+    "sentences": [
+      {
+        "en": "Try to keep an open mind about the new plan.",
+        "he": "נסו לשמור על ראש פתוח לגבי התוכנית החדשה."
+      },
+      {
+        "en": "When you travel, it's important to keep an open mind.",
+        "he": "כשמטיילים, חשוב לשמור על ראש פתוח."
+      },
+      {
+        "en": "I kept an open mind, and I actually loved the food.",
+        "he": "שמרתי על ראש פתוח, ובסוף ממש אהבתי את האוכל."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "bear-in-mind",
+    "text": "bear in mind",
+    "kind": "collocation",
+    "d": 75,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לזכור",
+      "לקחת בחשבון"
+    ],
+    "definition": "to remember and consider something",
+    "sentences": [
+      {
+        "en": "Bear in mind that the shops close early on Fridays.",
+        "he": "תזכרו שהחנויות נסגרות מוקדם בימי שישי."
+      },
+      {
+        "en": "Please bear in mind that prices may change.",
+        "he": "בבקשה קחו בחשבון שהמחירים עשויים להשתנות."
+      },
+      {
+        "en": "It's worth bearing in mind that he's still new.",
+        "he": "כדאי לזכור שהוא עדיין חדש."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "keep-track-of",
+    "text": "keep track of",
+    "kind": "collocation",
+    "d": 75,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעקוב אחרי",
+      "לנהל מעקב"
+    ],
+    "definition": "to stay informed about something or record it",
+    "sentences": [
+      {
+        "en": "I use an app to keep track of my spending.",
+        "he": "אפליקציה עוזרת לי לעקוב אחרי ההוצאות שלי."
+      },
+      {
+        "en": "It's hard to keep track of all these passwords.",
+        "he": "קשה לעקוב אחרי כל הסיסמאות האלה."
+      },
+      {
+        "en": "The teacher keeps track of every student's progress.",
+        "he": "המורה עוקבת אחרי ההתקדמות של כל תלמיד."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "raise-awareness",
+    "text": "raise awareness",
+    "kind": "collocation",
+    "d": 75,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להעלות את המודעות"
+    ],
+    "definition": "to help people understand an issue",
+    "sentences": [
+      {
+        "en": "The campaign aims to raise awareness about mental health.",
+        "he": "הקמפיין נועד להעלות את המודעות לבריאות הנפש."
+      },
+      {
+        "en": "Social media can help raise awareness of important issues.",
+        "he": "רשתות חברתיות יכולות לעזור להעלות את המודעות לנושאים חשובים."
+      },
+      {
+        "en": "The students ran a marathon to raise awareness of the disease.",
+        "he": "התלמידים רצו מרתון כדי להעלות את המודעות למחלה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "raise-money",
+    "text": "raise money",
+    "kind": "collocation",
+    "d": 75,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לגייס כסף",
+      "לגייס תרומות"
+    ],
+    "definition": "to collect money for a purpose",
+    "sentences": [
+      {
+        "en": "We're raising money for the local animal shelter.",
+        "he": "אנחנו מגייסים כסף למקלט לבעלי חיים באזור."
+      },
+      {
+        "en": "The startup raised money from several investors.",
+        "he": "הסטארט-אפ גייס כסף מכמה משקיעים."
+      },
+      {
+        "en": "The school held a bake sale to raise money for new books.",
+        "he": "בית הספר ערך מכירת עוגות כדי לגייס כסף לספרים חדשים."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "pay-a-visit",
+    "text": "pay a visit",
+    "kind": "collocation",
+    "d": 76,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבקר",
+      "לערוך ביקור"
+    ],
+    "definition": "to visit a person or place",
+    "sentences": [
+      {
+        "en": "We paid a visit to my grandparents last weekend.",
+        "he": "ביקרנו את סבא וסבתא שלי בסוף השבוע שעבר."
+      },
+      {
+        "en": "If you're in Haifa, pay a visit to the Bahai Gardens.",
+        "he": "אם אתם בחיפה, תבקרו בגנים הבהאיים."
+      },
+      {
+        "en": "A health inspector paid a surprise visit to the restaurant.",
+        "he": "פקח בריאות ערך ביקור פתע במסעדה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "pay-the-bills",
+    "text": "pay the bills",
+    "kind": "collocation",
+    "d": 76,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשלם את החשבונות"
+    ],
+    "definition": "to pay for regular costs such as rent, electricity and water; also, to earn enough to live",
+    "sentences": [
+      {
+        "en": "She works two jobs to pay the bills.",
+        "he": "היא עובדת בשתי עבודות כדי לשלם את החשבונות."
+      },
+      {
+        "en": "Writing poetry is great, but it doesn't pay the bills.",
+        "he": "לכתוב שירה זה נהדר, אבל זה לא משלם את החשבונות."
+      },
+      {
+        "en": "Don't forget to pay the bills before you go on vacation.",
+        "he": "אל תשכחו לשלם את החשבונות לפני שאתם יוצאים לחופשה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "place-an-order",
+    "text": "place an order",
+    "kind": "collocation",
+    "d": 76,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבצע הזמנה",
+      "להזמין"
+    ],
+    "definition": "to ask a company or restaurant for something you want to buy",
+    "sentences": [
+      {
+        "en": "You can place an order online or by phone.",
+        "he": "אפשר לבצע הזמנה באתר או בטלפון."
+      },
+      {
+        "en": "I placed an order for a new laptop yesterday.",
+        "he": "הזמנתי אתמול לפטופ חדש."
+      },
+      {
+        "en": "Are you ready to place your order now?",
+        "he": "אתם מוכנים להזמין עכשיו?"
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "run-a-business",
+    "text": "run a business",
+    "kind": "collocation",
+    "d": 76,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לנהל עסק"
+    ],
+    "definition": "to own and manage a business",
+    "sentences": [
+      {
+        "en": "My parents run a small business in the market.",
+        "he": "ההורים שלי מנהלים עסק קטן בשוק."
+      },
+      {
+        "en": "Running a business takes a lot of time and energy.",
+        "he": "ניהול עסק דורש הרבה זמן ואנרגיה."
+      },
+      {
+        "en": "She runs a successful online business from home.",
+        "he": "היא מנהלת עסק מקוון מצליח מהבית."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "run-errands",
+    "text": "run errands",
+    "kind": "collocation",
+    "d": 77,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעשות סידורים"
+    ],
+    "definition": "to go out to do small tasks such as shopping or going to the bank",
+    "sentences": [
+      {
+        "en": "I spent the morning running errands around town.",
+        "he": "ביליתי את הבוקר בסידורים ברחבי העיר."
+      },
+      {
+        "en": "Can you run a few errands for me while I'm at work?",
+        "he": "תוכלו לעשות בשבילי כמה סידורים בזמן שאני בעבודה?"
+      },
+      {
+        "en": "On Fridays, we usually run errands and shop for the weekend.",
+        "he": "בימי שישי אנחנו בדרך כלל עושים סידורים וקניות לסוף השבוע."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "make-a-profit",
+    "text": "make a profit",
+    "kind": "collocation",
+    "d": 77,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להפיק רווח",
+      "להרוויח"
+    ],
+    "definition": "to earn more money than you spend",
+    "sentences": [
+      {
+        "en": "The company made a profit for the first time this year.",
+        "he": "החברה הפיקה רווח בפעם הראשונה השנה."
+      },
+      {
+        "en": "It's hard to make a profit selling cheap products.",
+        "he": "קשה להפיק רווח ממכירת מוצרים זולים."
+      },
+      {
+        "en": "We sold the car and made a small profit.",
+        "he": "מכרנו את האוטו והרווחנו קצת."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "cut-costs",
+    "text": "cut costs",
+    "kind": "collocation",
+    "d": 77,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקצץ בעלויות",
+      "לצמצם הוצאות"
+    ],
+    "definition": "to reduce the amount of money spent",
+    "sentences": [
+      {
+        "en": "The company is cutting costs by closing two offices.",
+        "he": "החברה מקצצת בעלויות על ידי סגירת שני משרדים."
+      },
+      {
+        "en": "We need to cut costs without hurting quality.",
+        "he": "אנחנו צריכים לקצץ בעלויות בלי לפגוע באיכות."
+      },
+      {
+        "en": "Many families are cutting costs on eating out.",
+        "he": "משפחות רבות מצמצמות הוצאות על אוכל בחוץ."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "sign-a-contract",
+    "text": "sign a contract",
+    "kind": "collocation",
+    "d": 77,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לחתום על חוזה"
+    ],
+    "definition": "to write your name on a legal agreement",
+    "sentences": [
+      {
+        "en": "Read everything carefully before you sign a contract.",
+        "he": "תקראו הכול בעיון לפני שאתם חותמים על חוזה."
+      },
+      {
+        "en": "The player signed a three-year contract with the club.",
+        "he": "השחקן חתם על חוזה לשלוש שנים עם המועדון."
+      },
+      {
+        "en": "We signed the contract for the apartment yesterday.",
+        "he": "חתמנו אתמול על החוזה לדירה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-a-promotion",
+    "text": "get a promotion",
+    "kind": "collocation",
+    "d": 78,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקבל קידום"
+    ],
+    "definition": "to be given a more important job",
+    "sentences": [
+      {
+        "en": "She got a promotion after only one year.",
+        "he": "היא קיבלה קידום אחרי שנה אחת בלבד."
+      },
+      {
+        "en": "If you want to get a promotion, take on more responsibility.",
+        "he": "אם רוצים לקבל קידום, צריך לקחת יותר אחריות."
+      },
+      {
+        "en": "He was thrilled to get a promotion to team leader.",
+        "he": "הוא היה מאושר לקבל קידום לראש צוות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "get-a-raise",
+    "text": "get a raise",
+    "kind": "collocation",
+    "d": 78,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לקבל העלאה",
+      "לקבל העלאה במשכורת"
+    ],
+    "definition": "to receive an increase in salary",
+    "sentences": [
+      {
+        "en": "I finally got a raise after two years.",
+        "he": "סוף סוף קיבלתי העלאה אחרי שנתיים."
+      },
+      {
+        "en": "It's hard to get a raise without changing jobs.",
+        "he": "קשה לקבל העלאה בלי להחליף עבודה."
+      },
+      {
+        "en": "All the nurses got a raise this year.",
+        "he": "כל האחיות קיבלו העלאה במשכורת השנה."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "work-overtime",
+    "text": "work overtime",
+    "kind": "collocation",
+    "d": 78,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לעבוד שעות נוספות"
+    ],
+    "definition": "to work more hours than usual",
+    "sentences": [
+      {
+        "en": "We had to work overtime to finish the project.",
+        "he": "נאלצנו לעבוד שעות נוספות כדי לסיים את הפרויקט."
+      },
+      {
+        "en": "Do you get paid extra when you work overtime?",
+        "he": "מקבלים תוספת כשעובדים שעות נוספות?"
+      },
+      {
+        "en": "Nurses often work overtime during the winter.",
+        "he": "אחיות עובדות לעתים קרובות שעות נוספות בחורף."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "gain-experience",
+    "text": "gain experience",
+    "kind": "collocation",
+    "d": 78,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לצבור ניסיון"
+    ],
+    "definition": "to get knowledge and skills by doing something",
+    "sentences": [
+      {
+        "en": "Volunteering is a great way to gain experience.",
+        "he": "התנדבות היא דרך מצוינת לצבור ניסיון."
+      },
+      {
+        "en": "She gained a lot of experience working abroad.",
+        "he": "היא צברה הרבה ניסיון בעבודה בחוץ לארץ."
+      },
+      {
+        "en": "Young doctors gain experience by working long shifts.",
+        "he": "רופאים צעירים צוברים ניסיון במשמרות ארוכות."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "build-trust",
+    "text": "build trust",
+    "kind": "collocation",
+    "d": 79,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לבנות אמון"
+    ],
+    "definition": "to make people trust you over time",
+    "sentences": [
+      {
+        "en": "It takes time to build trust with new clients.",
+        "he": "לוקח זמן לבנות אמון עם לקוחות חדשים."
+      },
+      {
+        "en": "Honest communication helps build trust in a team.",
+        "he": "תקשורת כנה עוזרת לבנות אמון בצוות."
+      },
+      {
+        "en": "After the scandal, the company worked hard to build trust again.",
+        "he": "אחרי השערורייה, החברה עבדה קשה כדי לבנות מחדש את האמון."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "play-a-role",
+    "text": "play a role",
+    "kind": "collocation",
+    "d": 79,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "למלא תפקיד",
+      "לשחק תפקיד"
+    ],
+    "definition": "to be involved in something and influence it",
+    "sentences": [
+      {
+        "en": "Sleep plays an important role in learning.",
+        "he": "שינה ממלאת תפקיד חשוב בלמידה."
+      },
+      {
+        "en": "Luck played a big role in their success.",
+        "he": "המזל שיחק תפקיד גדול בהצלחה שלהם."
+      },
+      {
+        "en": "Everyone on the team plays a role in the project.",
+        "he": "לכל אחד בצוות יש תפקיד בפרויקט."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "have-an-impact-on",
+    "text": "have an impact on",
+    "kind": "collocation",
+    "d": 79,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "להשפיע על"
+    ],
+    "definition": "to have an effect on someone or something",
+    "sentences": [
+      {
+        "en": "Social media has a huge impact on teenagers.",
+        "he": "לרשתות החברתיות יש השפעה עצומה על בני נוער."
+      },
+      {
+        "en": "The new law will have an impact on small businesses.",
+        "he": "לחוק החדש תהיה השפעה על עסקים קטנים."
+      },
+      {
+        "en": "One good teacher can have an impact on a child's whole life.",
+        "he": "מורה טוב אחד יכול להשפיע על כל החיים של ילד."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "set-an-example",
+    "text": "set an example",
+    "kind": "collocation",
+    "d": 79,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לשמש דוגמה",
+      "להוות דוגמה"
+    ],
+    "definition": "to behave in a way that others should copy",
+    "sentences": [
+      {
+        "en": "Parents should set a good example for their kids.",
+        "he": "הורים צריכים לשמש דוגמה טובה לילדים שלהם."
+      },
+      {
+        "en": "As team captain, she sets an example for everyone.",
+        "he": "כקפטנית הקבוצה, היא משמשת דוגמה לכולם."
+      },
+      {
+        "en": "Managers need to set an example by arriving on time.",
+        "he": "מנהלים צריכים להוות דוגמה ולהגיע בזמן."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "a-growing-number-of",
+    "text": "a growing number of",
+    "kind": "collocation",
+    "d": 80,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "מספר הולך וגדל של"
+    ],
+    "definition": "more and more",
+    "sentences": [
+      {
+        "en": "A growing number of people work from home.",
+        "he": "מספר הולך וגדל של אנשים עובדים מהבית."
+      },
+      {
+        "en": "A growing number of schools are banning phones in class.",
+        "he": "מספר הולך וגדל של בתי ספר אוסרים טלפונים בכיתה."
+      },
+      {
+        "en": "There's a growing number of vegan restaurants in Tel Aviv.",
+        "he": "יש מספר הולך וגדל של מסעדות טבעוניות בתל אביב."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  },
+  {
+    "id": "vaguely-remember",
+    "text": "vaguely remember",
+    "kind": "collocation",
+    "d": 80,
+    "pos": [
+      "other"
+    ],
+    "hebrew": [
+      "לזכור במעורפל"
+    ],
+    "definition": "to remember something only a little",
+    "sentences": [
+      {
+        "en": "I vaguely remember meeting her at a party.",
+        "he": "יש לי זיכרון מעורפל שפגשתי אותה במסיבה."
+      },
+      {
+        "en": "He only vaguely remembers his early childhood.",
+        "he": "הוא זוכר רק במעורפל את הילדות המוקדמת שלו."
+      },
+      {
+        "en": "I vaguely remember the story, but not how it ends.",
+        "he": "את הסיפור יש לי בזיכרון מעורפל, אבל לא איך הוא נגמר."
+      }
+    ],
+    "tags": [
+      "collocations"
+    ]
+  }
+]

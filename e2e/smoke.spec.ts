@@ -66,7 +66,7 @@ test('new user: placement, then a learning session with answers saved', async ({
       await input.first().fill('test');
       await page.keyboard.press('Enter');
     } else {
-      const opts = page.locator('button.tap.rounded-2xl.border-2');
+      const opts = page.locator('button.tap.rounded-2xl.border-2:not([disabled])');
       if (await opts.count()) await opts.first().click();
     }
     await page.waitForTimeout(1300);

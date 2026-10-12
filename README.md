@@ -13,8 +13,16 @@ adaptive level, spaced repetition, and a friendly two-player rivalry.
 3. Choose "Add to Home Screen" and confirm.
 4. Open LexBites from the home screen. It runs full screen and keeps working offline.
 
-Screenshots are generated from the running app with `pnpm tsx scripts/screenshots.ts` and live in
-`docs/screenshots/`.
+|                                                          |                                                       |                                                                         |
+| -------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------- |
+| ![Profile picker](docs/screenshots/light-01-welcome.png) | ![Placement](docs/screenshots/light-02-placement.png) | ![Home](docs/screenshots/light-04-home.png)                             |
+| ![New word](docs/screenshots/dark-05-new-word.png)       | ![Question](docs/screenshots/dark-06-question.png)    | ![A mistake is a learning moment](docs/screenshots/dark-07-mistake.png) |
+| ![Summary](docs/screenshots/dark-08-summary.png)         | ![Stats](docs/screenshots/light-10-stats.png)         | ![Rivalry](docs/screenshots/light-11-rivalry.png)                       |
+
+Screenshots are generated from the running app with `pnpm screenshots` (after `pnpm build` and
+`pnpm preview`) and live in `docs/screenshots/`.
+
+> The live URL starts working once the owner finishes step 1 of `SETUP.md` (two settings toggles).
 
 ## Run locally
 
@@ -32,8 +40,11 @@ pnpm test            # Vitest unit tests (engine, content, data)
 pnpm test:e2e        # Playwright smoke tests against a production build
 pnpm build           # Production build into dist/
 pnpm icons           # Regenerate icons and iOS splash screens
-pnpm content:validate# Validate authored content against the schema and quality rules
-pnpm enrich --from 0 --to 200   # Print the authoring task for a content shard and validate it
+pnpm content:validate # Validate authored content against the schema and quality rules
+pnpm enrich --from 3001 --to 6000  # Write authoring tasks for missing shards in a rank range
+pnpm enrich --check 15          # Validate one shard and report coverage
+pnpm enrich --status            # Tier A coverage of the whole inventory
+pnpm screenshots                # README screenshots from the running app
 ```
 
 ## Content passes

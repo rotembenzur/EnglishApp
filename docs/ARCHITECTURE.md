@@ -36,28 +36,65 @@ docs/           Decisions, screens, voice, QA checklist, backlog
 
 ## Engine
 
-The engine is a set of pure functions. It takes plain data in and returns plain data out, so every
-rule in the spec has a unit test. Key modules (Phase 2): `difficulty`, `ability` (placement and
-Elo-style updates), `selection` (new-word window and sampling), `srs` (FSRS wrapper and behavior
-derived ratings), `session` (composer and exercise mix), `exercises` (distractors, typing tolerance).
+Pure functions in `src/engine/` (no IO, no DOM, the caller passes `now`), each with unit tests:
+
+- `difficulty`: rank, CEFR and minor signals to `d` (0..100) and bands. Mirrors `scripts/build_lemmas.py`.
+- `ability`: Bayesian placement (grid posterior, adaptive item difficulty, meaning checks that
+  lower trust in self-report), Elo-like updates with a K schedule, per-answer weights and a daily
+  movement budget.
+- `selection`: the i+1 window, gaussian sampling around theta + 5, Tier A boost, topic share,
+  family ordering, daily cap and cap suggestions, assumed-known probes.
+- `srs`: ts-fsrs wrapper, behavior-derived ratings from per-user speed percentiles, crowns, leeches.
+- `optimizer`: on-device FSRS personalization (coordinate descent on log loss).
+- `session`: composer for learn, review, hard, listening, speed, boss and duel sessions.
+- `exercises`: distractors, typing tolerance (Levenshtein, US/UK spellings), spelling diff, cloze
+  blanking with inflections, match boards.
+- `learn`: the single answer transition (word, behavior) to (word, review row, ability, XP), plus
+  ignore/unignore and rebuild-from-log.
+- `game`: XP, combos, levels, streaks with freezes, 40 badges. `stats`: recall after a gap, league,
+  head to head, duel seeding, forecasts.
+
+## Session runtime
+
+`src/session/build.ts` turns the engine plan into a ready session: selection, probe, content for
+every item (local first, online enrichment within a 4 second budget), distractor pool.
+`src/session/runner.ts` is the live state machine: each answer is written in one IndexedDB
+transaction (word row, review row, profile) and the plan position is persisted for resume.
+`src/session/prefetch.ts` enriches upcoming words while the app is idle.
 
 ## Content pipeline
 
-- `scripts/build_lemmas.py` builds `content/lemmas.json` (50k+ lemmas with rank, POS, difficulty,
-  band, tags, family) from open frequency data and WordNet.
-- Tier A shards (`content/shards/NNNN.json`, 200 lemmas each) are authored in frequency order and
-  validated by `scripts/validate-content.ts` against `content/schema.json` in CI.
-- `scripts/build-content.ts` packs the inventory and shards into `public/content/` at build time.
-- Tier B enrichment happens at runtime from free dictionary and translation endpoints and is cached
-  locally.
+- `scripts/fetch-data.sh` downloads the open sources into `scripts/.cache/` (git-ignored).
+- `scripts/build_lemmas.py` builds `content/lemmas.json`: 62,000 lemmas with rank, POS, `d`, band,
+  CEFR, topics and families. Ids are stable across rebuilds.
+- Tier A shards (`content/shards/NNNN.json`, 200 lemmas each, shard N = ranks N*200+1..N*200+200)
+  are authored through `pnpm enrich` and validated by `scripts/validate-content.ts` and
+  `scripts/content.test.ts` in CI.
+- `content/curated/*.json`: phrasal verbs, idioms, collocations (ids from 1,000,000).
+- `content/placement.json`: the placement bank with checked Hebrew meanings.
+- `scripts/build-content.ts` packs everything into `public/content/` at build time; the service
+  worker precaches it.
+- Tier B enrichment happens at runtime (`src/content/enrich.ts`: dictionaryapi.dev, MyMemory,
+  Google gtx fallback) and is cached in IndexedDB and the service worker. A word without Hebrew and
+  two real example sentences is never shown.
 
 ## Sync
 
-Local-first. Append-only tables (`reviews`, `events`) merge by union. Row tables (`userWords`,
-`dailyStats`) use last-write-wins by `updatedAt`, and the review log can always rebuild them.
-See `SETUP.md` for the backend steps.
+Local-first (`src/sync/engine.ts`). Every write goes to IndexedDB and an outbox. `syncNow()` pushes
+the outbox as upserts and pulls each table incrementally by the server's `server_at`. Row tables
+(`users`, `userWords`, `dailyStats`, `presence`) are last-write-wins by `updatedAt`, enforced on the
+server by a trigger; `reviews` and `events` are append-only unions. Pulls run on open, on focus,
+every 60 seconds and after each session. Access is gated by RLS on an `x-lexbites-key` header
+(sha256 of the shared passphrase). Schema: `supabase/schema.sql`. Steps: `SETUP.md`.
+
+## Push
+
+Behind a flag (`VITE_VAPID_PUBLIC_KEY`). Subscriptions go to `lb_push`; the scheduled workflow
+`.github/workflows/push-reminders.yml` runs `scripts/send-push.ts` every 30 minutes. The service
+worker imports `public/sw-push.js` for push and notification clicks.
 
 ## Deployment
 
 GitHub Actions on every push: lint, typecheck, content validation, unit tests, production build with
-`VITE_BASE=/EnglishApp/`, then deploy to GitHub Pages from the repository default branch.
+`VITE_BASE=/EnglishApp/`, Playwright smoke, then deploy to GitHub Pages from the repository default
+branch.

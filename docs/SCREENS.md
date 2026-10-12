@@ -2,7 +2,7 @@
 
 One paragraph of purpose and the key elements per screen. Routes are relative to the app base.
 
-1. **Profile picker** (`/profile`). First launch and profile switching. Two large cards, רתם and נועה,
+1. **Profile picker** (`/welcome`). First launch and profile switching. Two large cards, רתם and נועה,
    each in its own accent color, with the last-seen time and today's XP. Optional 4-digit PIN entry.
    Remembers the choice per device.
 2. **Placement** (`/placement`). A two to three minute game that finds the starting level. Intro
@@ -15,7 +15,7 @@ One paragraph of purpose and the key elements per screen. Routes are relative to
 4. **Session** (`/session/:kind`). The item view. Thin progress bar on top, exit button with
    confirmation only when mid-item, one exercise at a time with instant feedback and the full word
    card on mistakes, combo indicator, typing input that never zooms on iOS.
-5. **Session summary** (`/session/summary`). The win screen. XP earned, accuracy, new words, words
+5. **Session summary** (shown at the end of `/session/:kind`). The win screen. XP earned, accuracy, new words, words
    strengthened, rival comparison for today, "word of the session" with audio, continue buttons.
 6. **Word detail** (`/word/:id`). Everything about one word. Word in display font, IPA, POS, audio
    (tap, hold for slow), Hebrew meanings, sentences with Hebrew and audio, collocations, family,

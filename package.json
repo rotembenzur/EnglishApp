@@ -21,7 +21,8 @@
     "reports": "tsx scripts/reports.ts",
     "prepare": "husky",
     "content:fetch": "bash scripts/fetch-data.sh",
-    "content:lemmas": "scripts/.cache/venv/bin/python -I scripts/build_lemmas.py"
+    "content:lemmas": "scripts/.cache/venv/bin/python -I scripts/build_lemmas.py",
+    "screenshots": "tsx scripts/screenshots.ts"
   },
   "dependencies": {
     "@fontsource-variable/heebo": "^5.3.0",
