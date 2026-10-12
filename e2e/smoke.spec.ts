@@ -49,6 +49,7 @@ test('new user: placement, then a learning session with answers saved', async ({
 
   await page.getByRole('button', { name: /ללמוד/ }).first().click();
   await expect(page).toHaveURL(/session\/learn/);
+  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0, { timeout: 20_000 });
   // Work through a few items.
   for (let i = 0; i < 12; i++) {
     const got = page.getByRole('button', { name: 'הבנתי' });

@@ -11,6 +11,7 @@ import { CloseIcon } from '@/ui/icons';
 import { ExerciseView } from './session/ExerciseView';
 import { Summary } from './session/Summary';
 import { sfx } from '@/audio/sfx';
+import { schedulePrefetch } from '@/session/prefetch';
 import { duelLemmaIds, todayDuel } from '@/session/duel';
 import { todayKey, useApp } from '@/state/app';
 import { hashString } from '@/engine/rng';
@@ -60,7 +61,10 @@ export function Session() {
   }, [mode, start, resume, nav]);
 
   useEffect(() => {
-    if (status === 'done') void syncNow();
+    if (status === 'done') {
+      void syncNow();
+      schedulePrefetch(1500);
+    }
   }, [status]);
 
   const exit = async () => {

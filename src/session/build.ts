@@ -10,7 +10,12 @@ import {
   usable,
 } from '@/content/inventory';
 import { pickProbe, selectNewWords, newWordsLeft, MAX_CAP } from '@/engine/selection';
-import { composeSession, type PlanItem, type SessionMode } from '@/engine/session';
+import {
+  composeSession,
+  MAX_NEW_PER_SESSION,
+  type PlanItem,
+  type SessionMode,
+} from '@/engine/session';
 import { createRng, type Rng } from '@/engine/rng';
 import type { LemmaInfo, UserWord, WordContent } from '@/engine/types';
 import type { UserProfile, DailyStats } from '@/data/db';
@@ -27,6 +32,11 @@ export interface BuiltSession {
 }
 
 const DAY = 86_400_000;
+const ENRICH_BUDGET_MS = 4000;
+
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T | null> {
+  return Promise.race([p, new Promise<null>((r) => setTimeout(() => r(null), ms))]);
+}
 
 /** Families with a member first seen in the last 3 days (slow family introduction). */
 function recentFamilies(words: Iterable<UserWord>, byId: Map<number, LemmaInfo>, now: number) {
@@ -75,10 +85,20 @@ export async function buildSession(opts: {
       };
       // Over-select so words without usable content can be swapped out.
       const candidates = selectNewWords(inv.lemmas, ctx, Math.min(left, 5) + 8, rng, inv.byId);
+      const need = Math.min(left, MAX_NEW_PER_SESSION);
+      // Local content first (Tier A and cached Tier B): instant.
       const contents = await getContents(
         candidates.map((c) => c.id),
-        { online },
+        { online: false },
       );
+      const usableCount = () => [...contents.values()].filter(usable).length;
+      if (online && usableCount() < need) {
+        // Enrich the rest online, but never keep the user waiting more than a few seconds.
+        // Whatever finishes later is cached for the next session.
+        const missing = candidates.filter((c) => !contents.has(c.id)).map((c) => c.id);
+        const fetched = await withTimeout(getContents(missing, { online: true }), ENRICH_BUDGET_MS);
+        for (const [id, c] of fetched ?? []) contents.set(id, c);
+      }
       newWords = candidates
         .filter((c) => {
           const ct = contents.get(c.id);
@@ -109,7 +129,9 @@ export async function buildSession(opts: {
     for (let tries = 0; tries < 6 && !probe; tries++) {
       const p = pickProbe(inv.lemmas, { theta, studied }, rng);
       if (!p) break;
-      const c = await getContent(p.id, { online });
+      const c =
+        (await getContent(p.id, { online: false })) ??
+        (online ? await withTimeout(getContent(p.id, { online }), 2500) : null);
       if (c && usable(c)) probe = p;
       else studied.add(p.id); // do not pick it again this time
     }
@@ -136,7 +158,12 @@ export async function buildSession(opts: {
   }
 
   const ids = [...new Set(plan.flatMap((p) => p.matchIds ?? [p.lemmaId]))];
-  const contents = await getContents(ids, { online });
+  const contents = await getContents(ids, { online: false });
+  const missing = ids.filter((id) => !contents.has(id));
+  if (missing.length && online) {
+    const more = await withTimeout(getContents(missing, { online }), 2500);
+    for (const [id, c] of more ?? []) contents.set(id, c);
+  }
   plan = plan.filter((p) => (p.matchIds ?? [p.lemmaId]).every((id) => contents.has(id)));
 
   const infos = new Map<number, LemmaInfo>();

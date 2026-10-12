@@ -8,6 +8,7 @@ import { loadVoices } from '@/audio/speech';
 import { loadInventory } from '@/content/inventory';
 import { startSyncLoop, syncNow } from '@/sync/engine';
 import { setPresence } from '@/data/repo';
+import { schedulePrefetch } from '@/session/prefetch';
 import { Toasts } from '@/ui/kit';
 import { Announcements } from '@/ui/Announcements';
 import { ProfilePicker } from '@/screens/ProfilePicker';
@@ -70,6 +71,7 @@ export function App() {
   useEffect(() => {
     if (!userId) return;
     void setPresence(userId, false).then(() => syncNow());
+    schedulePrefetch();
   }, [userId]);
 
   return (
