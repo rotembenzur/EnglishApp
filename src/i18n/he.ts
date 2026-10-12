@@ -376,6 +376,7 @@ export const t = {
     syncTest: 'בדיקת חיבור',
     syncDisconnect: 'לנתק',
     syncHelp: 'הוראות הגדרה',
+    syncKeyHash: 'מזהה לתזכורות (LEXBITES_KEY_HASH)',
     syncConnected: 'מחובר',
     syncFailed: 'החיבור נכשל. כדאי לבדוק את הפרטים',
     notifications: 'תזכורות',

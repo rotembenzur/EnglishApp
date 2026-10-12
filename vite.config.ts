@@ -68,6 +68,7 @@ export default defineConfig({
         navigateFallback: `${base}index.html`,
         navigateFallbackDenylist: [/^\/api\//],
         cleanupOutdatedCaches: true,
+        importScripts: ['sw-push.js'],
         clientsClaim: true,
         skipWaiting: false,
         runtimeCaching: [

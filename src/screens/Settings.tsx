@@ -45,7 +45,8 @@ const TOPICS = [
   'slang',
 ];
 const KINDS = ['phrasal', 'idiom', 'collocation'];
-const SETUP_URL = 'https://github.com/rotembenzur/EnglishApp/blob/main/SETUP.md';
+const SETUP_URL =
+  'https://github.com/rotembenzur/EnglishApp/blob/claude/trusting-knuth-gbbnzv/SETUP.md';
 
 export function Settings() {
   const nav = useNavigate();
@@ -422,14 +423,16 @@ function SyncSection() {
   const [key, setKey] = useState('');
   const [pass, setPass] = useState('');
   const [busy, setBusy] = useState(false);
+  const [keyHash, setKeyHash] = useState('');
   useEffect(() => {
     void loadConfig().then((c) => {
       if (c) {
         setUrl(c.url);
         setKey(c.anonKey);
+        setKeyHash(c.keyHash);
       }
     });
-  }, []);
+  }, [configured]);
   const statusLabel =
     status === 'syncing' ? t.settings.syncStatus.pending : t.settings.syncStatus[status];
   return (
@@ -483,6 +486,14 @@ function SyncSection() {
           </Button>
         )}
       </div>
+      {configured && keyHash && (
+        <details className="text-xs text-ink-3">
+          <summary className="cursor-pointer">{t.settings.syncKeyHash}</summary>
+          <code dir="ltr" className="mt-1 block break-all rounded-lg bg-card-2 p-2 select-all">
+            {keyHash}
+          </code>
+        </details>
+      )}
       <a
         href={SETUP_URL}
         target="_blank"
