@@ -51,6 +51,7 @@ export function toOptionWord(c: WordContent, info?: LemmaInfo): OptionWord {
     d: info?.d ?? 50,
     hebrew: c.hebrew,
     ...(info?.family ? { family: info.family } : {}),
+    ...(info?.kind && info.kind !== 'word' ? { kind: info.kind } : {}),
   };
 }
 
@@ -130,6 +131,11 @@ export function buildExercise(item: PlanItem, ctx: BuildContext): Exercise | nul
     }
     case 'typing':
     case 'spell_audio': {
+      // Typing a whole idiom is a spelling test, not a vocabulary test: use a fill-in with options.
+      if (word.lemma.includes(' ')) {
+        const alt = buildExercise({ ...item, type: 'cloze' }, { ...ctx, crowns: () => 0 });
+        if (alt) return alt;
+      }
       const sentence = word.sentences.length ? pick(ctx.rng, word.sentences) : null;
       const cloze =
         sentence && item.type === 'typing' ? makeCloze(sentence, word.lemma, word.forms) : null;
@@ -167,12 +173,7 @@ export function buildExercise(item: PlanItem, ctx: BuildContext): Exercise | nul
       const typed = ctx.crowns(item.lemmaId) >= 2;
       let opts: Options | null = null;
       if (!typed) {
-        const ds = chooseDistractors(
-          target,
-          ctx.pool.filter((p) => !p.lemma.includes(' ')),
-          3,
-          ctx.rng,
-        );
+        const ds = chooseDistractors(target, ctx.pool, 3, ctx.rng);
         if (ds.length < 3) return null;
         const answer = cloze.answer;
         const labeled = [target, ...ds].map((w) => ({

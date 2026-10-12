@@ -173,6 +173,15 @@ export async function buildSession(opts: {
   }
   const poolContent = await distractorPool(ids);
   for (const c of contents.values()) poolContent.push(c);
+  // Curated items compete only with their own kind: add the whole list for each kind in play.
+  const kinds = new Set(ids.map((id) => inv.byId.get(id)?.kind).filter((k) => k && k !== 'word'));
+  if (kinds.size) {
+    for (const [id, item] of inv.curated) {
+      if (!kinds.has(item.kind) || contents.has(id)) continue;
+      const c = await getContent(id, { online: false });
+      if (c) poolContent.push(c);
+    }
+  }
   const pool = poolContent.map((c) => toOptionWord(c, inv.byId.get(c.lemmaId)));
   return { mode: opts.mode, plan, contents, infos, pool, seed };
 }

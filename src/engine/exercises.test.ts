@@ -144,3 +144,28 @@ describe('match pairs', () => {
     expect(matchTimeBonus(40000)).toBe(0);
   });
 });
+
+describe('distractors for curated items', () => {
+  it('never mixes idioms with single words', () => {
+    const idiom = (id: number, text: string, he: string): OptionWord => ({
+      lemmaId: id,
+      lemma: text,
+      pos: ['other'],
+      d: 40,
+      hebrew: [he],
+      kind: 'idiom',
+    });
+    const p = [
+      ...pool,
+      idiom(100, 'break the ice', 'לשבור את הקרח'),
+      idiom(101, 'piece of cake', 'קלי קלות'),
+      idiom(102, 'hit the road', 'לצאת לדרך'),
+      idiom(103, 'call it a day', 'לסיים להיום'),
+    ];
+    const ds = chooseDistractors(p[p.length - 1]!, p, 3, createRng(1));
+    expect(ds).toHaveLength(3);
+    expect(ds.every((d) => d.kind === 'idiom')).toBe(true);
+    const words = chooseDistractors(pool[0]!, p, 3, createRng(2));
+    expect(words.every((d) => !d.kind)).toBe(true);
+  });
+});

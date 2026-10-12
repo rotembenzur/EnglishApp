@@ -12,7 +12,11 @@ export interface OptionWord {
   d: number;
   hebrew: string[];
   family?: number;
+  /** Curated item kind (phrasal, idiom, collocation); undefined or 'word' for single words. */
+  kind?: string;
 }
+
+const kindOf = (w: OptionWord) => (w.kind && w.kind !== 'word' ? w.kind : 'word');
 
 const normHe = (s: string) =>
   s
@@ -37,6 +41,7 @@ export function chooseDistractors(
   const usedHe = new Set(targetHe);
   const usedEn = new Set([target.lemma.toLowerCase()]);
   const ok = (w: OptionWord) =>
+    kindOf(w) === kindOf(target) &&
     w.lemmaId !== target.lemmaId &&
     !(target.family && w.family === target.family) &&
     !usedEn.has(w.lemma.toLowerCase()) &&

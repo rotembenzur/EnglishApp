@@ -79,9 +79,13 @@ describe('FSRS integration', () => {
     expect(again.lapses).toBe(c.lapses + 1);
     expect(goodDue).toBeGreaterThan(now + DAY);
   });
-  it('known shortcut cards start with a long interval', () => {
+  it('known shortcut cards start with a long interval anchored at now', () => {
     const c = knownCard(now);
     expect(c.due - now).toBeGreaterThan(20 * DAY);
+    expect(c.lastReview).toBe(now);
+    // Reviewing it soon after (speed round, hard words) must not throw.
+    expect(() => review(c, 3, now + 60_000)).not.toThrow();
+    expect(() => review(c, 1, now + 2 * DAY)).not.toThrow();
   });
   it('higher retention target means shorter intervals', () => {
     const start = review(review(newCard(now), 3, now), 3, now + 600_000);

@@ -82,7 +82,10 @@ export function review(
   opts: { retention?: number; w?: readonly number[] } = {},
 ): SrsCard {
   const f = scheduler(opts.retention, opts.w);
-  return fromCard(f.next(toCard(card), new Date(now), rating as Grade).card);
+  // Clock skew between devices can leave lastReview slightly in the future: never let that throw.
+  const safe =
+    card.lastReview !== undefined && card.lastReview > now ? { ...card, lastReview: now } : card;
+  return fromCard(f.next(toCard(safe), new Date(now), rating as Grade).card);
 }
 
 /**
@@ -92,7 +95,9 @@ export function review(
 export function knownCard(now: number, opts: { retention?: number } = {}): SrsCard {
   const f = scheduler(opts.retention);
   const first = f.next(createEmptyCard(new Date(now)), new Date(now), 4 as Grade).card;
-  return fromCard(f.next(first, first.due, 4 as Grade).card);
+  const second = fromCard(f.next(first, first.due, 4 as Grade).card);
+  // The simulated second review must not sit in the future: anchor it to now.
+  return { ...second, lastReview: now, due: now + second.scheduledDays * DAY, elapsedDays: 0 };
 }
 
 export function retrievability(card: SrsCard, now: number, retention?: number): number {
