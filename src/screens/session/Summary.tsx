@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import type { SessionMode } from '@/engine/session';
 import type { WordContent } from '@/engine/types';
 import { getContent } from '@/content/inventory';
-import { t } from '@/i18n/he';
+import { levelTitle, t } from '@/i18n/he';
+import { levelForXp } from '@/engine/game';
+import { allDaily } from '@/data/repo';
+import { useLive } from '@/state/live';
 import { useSession } from '@/session/runner';
 import { useApp } from '@/state/app';
 import { sfx } from '@/audio/sfx';
@@ -30,7 +33,19 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
     if (s.goalReachedNow) sfx('goal');
   }, [s.goalReachedNow]);
   const delta = s.thetaAfter - s.thetaBefore;
-  const celebrate = s.goalReachedNow || s.perfect || s.badges.length > 0;
+  const userId = useApp((st) => st.userId);
+  const totalXp = useLive(
+    async () => (userId ? (await allDaily(userId)).reduce((a, d) => a + d.xp, 0) : 0),
+    [userId],
+  );
+  const levelUp =
+    totalXp !== undefined &&
+    s.xp > 0 &&
+    levelForXp(totalXp).level > levelForXp(totalXp - s.xp).level;
+  useEffect(() => {
+    if (levelUp) sfx('level');
+  }, [levelUp]);
+  const celebrate = s.goalReachedNow || s.perfect || s.badges.length > 0 || levelUp;
 
   return (
     <div
@@ -46,6 +61,11 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
           </h1>
           {s.goalReachedNow && (
             <p className="mt-1 font-semibold text-good">{t.summary.goalReached}</p>
+          )}
+          {levelUp && totalXp !== undefined && (
+            <p className="mt-2 animate-pop text-lg font-extrabold text-accent">
+              ⬆️ {t.celebrate.levelUp(levelTitle(levelForXp(totalXp).level))}
+            </p>
           )}
         </div>
 

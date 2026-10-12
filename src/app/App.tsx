@@ -4,11 +4,12 @@ import { Shell } from '@/ui/Shell';
 import { setupServiceWorker } from '@/pwa/registerSW';
 import { applyThemeToDocument, useTheme } from '@/state/theme';
 import { useApp } from '@/state/app';
-import { loadVoices } from '@/audio/speech';
+import { loadVoices, unlockAudio } from '@/audio/speech';
 import { loadInventory } from '@/content/inventory';
 import { startSyncLoop, syncNow } from '@/sync/engine';
 import { setPresence } from '@/data/repo';
 import { schedulePrefetch } from '@/session/prefetch';
+import { scheduleWeeklyOptimize } from '@/session/optimize';
 import { Toasts } from '@/ui/kit';
 import { Announcements } from '@/ui/Announcements';
 import { ProfilePicker } from '@/screens/ProfilePicker';
@@ -67,6 +68,9 @@ export function App() {
   useEffect(() => {
     void init();
     void loadVoices();
+    // iOS only allows speech from inside a user gesture: unlock on the first touch anywhere.
+    const unlock = () => unlockAudio();
+    document.addEventListener('pointerdown', unlock, { once: true, capture: true });
     void loadInventory();
     startSyncLoop();
     if (import.meta.env.PROD) setupServiceWorker();
@@ -76,6 +80,7 @@ export function App() {
     if (!userId) return;
     void setPresence(userId, false).then(() => syncNow());
     schedulePrefetch();
+    scheduleWeeklyOptimize();
   }, [userId]);
 
   return (
