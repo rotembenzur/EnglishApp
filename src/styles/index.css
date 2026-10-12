@@ -237,3 +237,8 @@ button {
 .no-scrollbar {
   scrollbar-width: none;
 }
+
+/* Direction-implying icons are drawn for LTR and mirrored in RTL (spec 8.3). */
+[dir='rtl'] .rtl-mirror {
+  transform: scaleX(-1);
+}

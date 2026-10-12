@@ -12,8 +12,8 @@ export const contentDir = path.join(root, 'content');
 export const shardsDir = path.join(contentDir, 'shards');
 export const SHARD_SIZE = 200;
 
-const HEBREW = /[֐-׿]/;
-const NIQQUD = /[֑-ׇ]/;
+const HEBREW = /[\u0590-\u05FF]/;
+const NIQQUD = /[\u0591-\u05BD\u05BF-\u05C7]/;
 
 export interface Sentence {
   en: string;

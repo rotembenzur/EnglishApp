@@ -95,6 +95,14 @@ export async function buildContent(opts: { quiet?: boolean } = {}): Promise<Cont
     }
   }
 
+  const placementPath = path.join(contentDir, 'placement.json');
+  if (await fileExists(placementPath)) {
+    await writeFile(
+      path.join(outDir, 'placement.json'),
+      JSON.stringify(JSON.parse(await readFile(placementPath, 'utf8'))),
+    );
+  }
+
   const familiesPath = path.join(contentDir, 'families.json');
   if (await fileExists(familiesPath)) {
     await writeFile(

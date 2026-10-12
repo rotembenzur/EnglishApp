@@ -37,3 +37,17 @@ One line each: decision, why, alternatives rejected. Newest at the bottom of eac
 - **Sessions: 3 slots per new word (intro, recognition 2 to 4 items later, typing production in the last third), max 5 new per session, reviews capped at half the session when new words are waiting.** Match pairs fold 5 mature reviews into one item. Typing rhythm and "end on a win" are enforced after layout.
 - **Speed rounds rate wrong answers Hard, not Again.** The spec allows only Hard/Good there; a rushed miss should not wreck a card.
 - **Streaks are derived from daily goal results every time (no stored counter).** Freezes are earned and spent during the derivation, so sync conflicts cannot corrupt the streak.
+
+## App and data
+
+- **One Dexie database for both profiles, rows keyed by user id.** The rival's synced rows live next to your own, so the rival card, league and read-only stats are plain local queries. Rejected: one database per profile (cross-profile views would need a second connection).
+- **Answers are written in one transaction (word row, review log, profile) before the UI advances.** Progress is saved per item; the session plan position is persisted in `kv` so an interrupted session resumes.
+- **Tier B words need two real dictionary example sentences or they are not shown.** No filler sentences: such words wait for Tier A authoring, and selection moves on to another candidate. Offline with nothing usable in the window, the session falls back to the nearest authored words so it is never empty.
+- **Placement uses a dedicated, hand-checked bank of 363 words across the whole difficulty range (`content/placement.json`).** High-difficulty words are beyond Tier A, so the meaning checks need their own reliable Hebrew. Rejected: runtime translation during placement (slow, unreliable offline).
+- **Curated items (phrasal verbs, idioms, collocations) get ids from 1,000,000 up, by list.** They never collide with lemma ids and stay stable as lists grow at the end.
+- **Daily duel = 10 Tier A words with d 25..55 shuffled by a date seed.** Both phones compute the same list from the same bundled inventory; duels log reviews but never touch the learning queue.
+- **Sync backend: Supabase over plain REST, no SDK.** Each table stores the row as JSON plus merge fields; a trigger enforces last-write-wins on `updated_at` and stamps `server_at` for incremental pulls. Access is gated by RLS comparing an `x-lexbites-key` header (sha256 of the shared passphrase) to the stored hash. Rejected: supabase-js (60 KB for four REST calls), Firebase (needs a Google project and SDK), Cloudflare KV (needs a Worker deploy step).
+- **React Compiler purity lint rule is off.** The app does not use the compiler; reading the clock in render is deliberate.
+- **Sound effects are synthesized with WebAudio, no audio files.** Zero bytes to precache, off by default.
+- **Share cards are drawn on a canvas and sent through the Web Share API (WhatsApp), with a PNG download fallback.**
+- **FSRS personalization is a small on-device coordinate descent over 8 weights (initial stabilities and growth), accepted only if log loss improves by 1%+, from 400 reviews.** ts-fsrs ships no optimizer; the full Rust optimizer would be a large WASM download.

@@ -16,7 +16,7 @@ import {
   type Sentence,
 } from './content-rules';
 
-const HEBREW = /[֐-׿]/;
+const HEBREW = /[\u0590-\u05FF]/;
 
 async function main(): Promise<void> {
   const problems: string[] = [];
@@ -83,6 +83,26 @@ async function main(): Promise<void> {
         }
       }
     }
+  }
+
+  const placementPath = path.join(contentDir, 'placement.json');
+  if (existsSync(placementPath)) {
+    const bank = JSON.parse(await readFile(placementPath, 'utf8')) as {
+      id: number;
+      lemma: string;
+      pos: string;
+      d: number;
+      he: string;
+    }[];
+    const ids = new Set<number>();
+    for (const b of bank) {
+      if (ids.has(b.id)) problems.push(`placement.json#${b.id}: duplicate`);
+      ids.add(b.id);
+      if (lemmaById.get(b.id)?.lemma !== b.lemma)
+        problems.push(`placement.json#${b.id}: does not match lemmas.json`);
+      if (!HEBREW.test(b.he)) problems.push(`placement.json#${b.id}: Hebrew missing`);
+    }
+    if (bank.length < 200) problems.push(`placement.json has only ${bank.length} items`);
   }
 
   if (problems.length) {

@@ -17,7 +17,7 @@ export interface OptionWord {
 const normHe = (s: string) =>
   s
     .replace(/\s*\(.*?\)\s*/g, ' ')
-    .replace(/[֑-ׇ]/g, '')
+    .replace(/[\u0591-\u05BD\u05BF-\u05C7]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 
