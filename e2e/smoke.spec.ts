@@ -110,3 +110,23 @@ test('tabs navigate and settings opens', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toContainText('הגדרות');
   expect(errors).toEqual([]);
 });
+
+test('works offline after the first load', async ({ page, context }) => {
+  await page.goto('/welcome');
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  // Wait until the precache has finished and the page is controlled.
+  await page.reload();
+  await expect
+    .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller), { timeout: 20_000 })
+    .toBe(true);
+  await page.getByRole('button', { name: /נועה/ }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('נועה');
+  await context.setOffline(true);
+  await page.reload();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('נועה');
+  await page.getByRole('link', { name: 'מילים', exact: true }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('המילים שלי');
+  await context.setOffline(false);
+});
