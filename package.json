@@ -19,7 +19,9 @@
     "content:validate": "tsx scripts/validate-content.ts",
     "enrich": "tsx scripts/enrich.ts",
     "reports": "tsx scripts/reports.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "content:fetch": "bash scripts/fetch-data.sh",
+    "content:lemmas": "scripts/.cache/venv/bin/python -I scripts/build_lemmas.py"
   },
   "dependencies": {
     "@fontsource-variable/heebo": "^5.3.0",
