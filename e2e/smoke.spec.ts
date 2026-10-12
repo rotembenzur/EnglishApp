@@ -130,3 +130,30 @@ test('works offline after the first load', async ({ page, context }) => {
   await expect(page.getByRole('heading', { level: 1 })).toContainText('המילים שלי');
   await context.setOffline(false);
 });
+
+test('an interrupted session can be resumed from home', async ({ page }) => {
+  const errors = trackErrors(page);
+  await page.goto('/welcome');
+  await page.getByRole('button', { name: /נועה/ }).click();
+  await page.getByRole('button', { name: 'למבחן רמה' }).click();
+  await page.getByRole('button', { name: 'מתחילים' }).click();
+  for (let i = 0; i < 40; i++) {
+    if (await page.getByRole('button', { name: 'יאללה, ללמוד' }).isVisible()) break;
+    const dont = page.getByRole('button', { name: 'לא מכיר' });
+    if (await dont.isVisible()) await dont.click();
+    await page.waitForTimeout(60);
+  }
+  await page.getByRole('button', { name: 'יאללה, ללמוד' }).click();
+  await page.getByRole('button', { name: /ללמוד/ }).first().click();
+  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0, { timeout: 20_000 });
+  // Acknowledge the first new word, then leave abruptly (like closing the app).
+  const got = page.getByRole('button', { name: 'הבנתי' });
+  if (await got.isVisible()) await got.click();
+  await page.waitForTimeout(500);
+  await page.goto('/');
+  await page.getByText('להמשיך מאיפה שעצרת?').click();
+  await expect(page).toHaveURL(/session\/resume/);
+  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0, { timeout: 20_000 });
+  await expect(page.getByRole('progressbar').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
