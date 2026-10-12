@@ -108,5 +108,7 @@ export function checkEntry(e: Entry, where: string): string[] {
     if (HEBREW.test(c)) p.push(`${where}: collocation contains Hebrew`);
   }
   if (e.hook && !HEBREW.test(e.hook)) p.push(`${where}: hook is not in Hebrew`);
+  if (e.hook && NIQQUD.test(e.hook)) p.push(`${where}: hook contains niqqud`);
+  if (NIQQUD.test(e.definition)) p.push(`${where}: definition contains niqqud`);
   return p;
 }

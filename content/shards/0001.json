@@ -937,7 +937,7 @@
       "lose touch",
       "nothing to lose"
     ],
-    "hook": "lose (לאבד, 'לוּז') ≠ loose (רפוי, 'לוּס')",
+    "hook": "lose (לאבד, 'לוז') ≠ loose (רפוי, 'לוס')",
     "context": {
       "en": "Last year I lost my job and almost lost hope. A friend told me I had nothing to lose by trying something new. I started a small business from home. I lost money at first, but now it's growing.",
       "he": "בשנה שעברה איבדתי את העבודה וכמעט איבדתי תקווה. חבר אמר לי שאין לי מה להפסיד אם אנסה משהו חדש. פתחתי עסק קטן מהבית. בהתחלה הפסדתי כסף, אבל היום הוא גדל."
@@ -2103,7 +2103,7 @@
       "close the door",
       "closing time"
     ],
-    "hook": "close (לסגור) נשמע 'קלוֹז'; close (קרוב) נשמע 'קלוֹס'",
+    "hook": "close (לסגור) נשמע 'קלוז'; close (קרוב) נשמע 'קלוס'",
     "context": {
       "en": "The supermarket close to our house closes at nine. Last night I got there at five to nine. The guard was about to close the door. That was close!",
       "he": "הסופר הקרוב לבית שלנו נסגר בתשע. אתמול הגעתי לשם בחמישה לתשע. השומר עמד לסגור את הדלת. זה היה קרוב!"

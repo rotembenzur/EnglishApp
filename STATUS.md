@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/ (goes live after step 1 of `SETUP.md`)
 
-Last updated: 2026-10-12 · version 0.2.0
+Last updated: 2026-10-12 · version 0.3.0
 
 ## Waiting on owner
 
@@ -28,19 +28,22 @@ Last updated: 2026-10-12 · version 0.2.0
   theme, large text, PIN, retake placement, FSRS tuning, sync, export, import, rebuild, reset.
 - Content: 62,000-lemma inventory, Tier A authored words (see below), 300 phrasal verbs, 300
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
-- Quality gates: 108 unit tests (engine, sync, export/import, content), Playwright e2e of the first
-  run, zero console errors, app shell about 190 KB gzipped.
+- Read mode with word import, confusable pairs.
+- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 113 unit tests (engine, sync, export/import, content), Playwright e2e (first run, all tabs, offline,
+  resume), zero console errors, app shell about 190 KB gzipped.
 
 ## Content progress
 
-- Tier A: shards 0 to 4, 6 to 8, 10 to 12 complete and committed. Shards 5, 9, 13, 14 (to reach
-  3,000) and 15 to 23 (toward 6,000) are being authored.
+- Tier A: 6,000 words fully authored (30 shards, all validated in CI). About 160 inventory entries
+  that turned out to be names, inflected forms or spelling variants are excluded from teaching.
+- Curated: 300 phrasal verbs, 300 idioms, 200 collocations, 120 confusable pairs, 363-word
+  placement bank.
 
 ## Next
 
-- Finish Tier A to 3,000, then 6,000 and 10,000 words.
-- Phase 7 hardening: Lighthouse pass, accessibility pass, update flow check, content reports tool.
-- Section 7.3 ideas: confusable pairs, word list import and read mode.
+- Tier A content pass to 10,000 words (`pnpm enrich --from 6001 --to 10000`).
+- Inventory cleanup pass (backlog B-005).
+- Real-device QA once the app is live (install, audio in standalone mode, two phones with sync).
 
 ## QA checklist
 

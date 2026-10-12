@@ -2855,7 +2855,7 @@
       "align the text",
       "align goals"
     ],
-    "hook": "ה-g ב-align לא נשמעת: אומרים \"אֲלַיין\", ובפנים יש line, קו",
+    "hook": "ה-g ב-align לא נשמעת: אומרים \"אליין\", ובפנים יש line, קו",
     "context": {
       "en": "Before the big launch, our manager called a meeting to align the teams. Marketing and engineering had different deadlines in mind. After an hour, we agreed on one clear plan. Everyone left the room finally aligned.",
       "he": "לפני ההשקה הגדולה, המנהל שלנו כינס פגישה כדי ליישר קו בין הצוותים. לשיווק ולפיתוח היו בראש תאריכי יעד שונים. אחרי שעה הסכמנו על תוכנית אחת ברורה. כולם יצאו מהחדר סוף סוף מתואמים."
@@ -2898,7 +2898,7 @@
       "subtle changes",
       "not very subtle"
     ],
-    "hook": "ה-b ב-subtle שקטה, ממש עדינה כמו המשמעות: אומרים \"סָאטֶל\"",
+    "hook": "ה-b ב-subtle שקטה, ממש עדינה כמו המשמעות: אומרים \"סאטל\"",
     "context": {
       "en": "My boss never says directly that she's unhappy with my work. Instead she gives subtle hints, like \"Maybe try another approach.\" It took me months to understand her style. Now I can read between the lines.",
       "he": "הבוסית שלי אף פעם לא אומרת ישירות שהיא לא מרוצה מהעבודה שלי. במקום זה היא נותנת רמזים עדינים, כמו \"אולי תנסה גישה אחרת\". לקח לי חודשים להבין את הסגנון שלה. עכשיו אני יודע לקרוא בין השורות."
