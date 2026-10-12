@@ -19,10 +19,10 @@
   --color-accent-soft: var(--c-accent-soft);
   --color-rival: var(--c-rival);
   --color-rival-soft: var(--c-rival-soft);
-  --color-good: #2fbf71;
-  --color-good-soft: color-mix(in oklab, #2fbf71 18%, transparent);
-  --color-bad: #ef476f;
-  --color-bad-soft: color-mix(in oklab, #ef476f 18%, transparent);
+  --color-good: var(--c-good);
+  --color-good-soft: color-mix(in oklab, var(--c-good) 18%, transparent);
+  --color-bad: var(--c-bad);
+  --color-bad-soft: color-mix(in oklab, var(--c-bad) 18%, transparent);
   --color-warn: #ffb347;
   --color-warn-soft: color-mix(in oklab, #ffb347 20%, transparent);
   --color-info: #4cc9f0;
@@ -90,22 +90,29 @@
   --c-card-2: #f6f1e8;
   --c-ink: #1b1d23;
   --c-ink-2: #4c5160;
-  --c-ink-3: #8a8f9c;
+  --c-ink-3: #6b7080;
   --c-line: rgb(27 29 35 / 0.09);
-  /* rotem: warm coral. noa: violet. Set per profile on <html data-user>. */
-  --c-accent: #ff6b4a;
-  --c-accent-ink: #ffffff;
-  --c-accent-soft: color-mix(in oklab, var(--c-accent) 16%, transparent);
-  --c-rival: #7c5cff;
-  --c-rival-soft: color-mix(in oklab, var(--c-rival) 16%, transparent);
+  --c-good: #157a43;
+  --c-bad: #d62f57;
+  /* rotem: coral. noa: violet. Light theme uses deeper tones so text and buttons pass WCAG AA. */
+  --c-rotem: #c63f17;
+  --c-rotem-ink: #ffffff;
+  --c-noa: #6a48f0;
+  --c-noa-ink: #ffffff;
+  --c-accent: var(--c-rotem);
+  --c-accent-ink: var(--c-rotem-ink);
+  --c-accent-soft: color-mix(in oklab, var(--c-accent) 14%, transparent);
+  --c-rival: var(--c-noa);
+  --c-rival-soft: color-mix(in oklab, var(--c-rival) 14%, transparent);
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
   --tabbar-h: 64px;
 }
 
 :root[data-user='noa'] {
-  --c-accent: #7c5cff;
-  --c-rival: #ff6b4a;
+  --c-accent: var(--c-noa);
+  --c-accent-ink: var(--c-noa-ink);
+  --c-rival: var(--c-rotem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -116,8 +123,14 @@
     --c-card-2: #222736;
     --c-ink: #f2f3f7;
     --c-ink-2: #b4b9c8;
-    --c-ink-3: #767c8c;
+    --c-ink-3: #8a91a3;
     --c-line: rgb(255 255 255 / 0.09);
+    --c-good: #2fbf71;
+    --c-bad: #ef476f;
+    --c-rotem: #ff6b4a;
+    --c-rotem-ink: #1b1d23;
+    --c-noa: #9b82ff;
+    --c-noa-ink: #12131a;
   }
 }
 :root[data-theme='dark'] {
@@ -127,8 +140,14 @@
   --c-card-2: #222736;
   --c-ink: #f2f3f7;
   --c-ink-2: #b4b9c8;
-  --c-ink-3: #767c8c;
+  --c-ink-3: #8a91a3;
   --c-line: rgb(255 255 255 / 0.09);
+  --c-good: #2fbf71;
+  --c-bad: #ef476f;
+  --c-rotem: #ff6b4a;
+  --c-rotem-ink: #1b1d23;
+  --c-noa: #9b82ff;
+  --c-noa-ink: #12131a;
 }
 
 html,

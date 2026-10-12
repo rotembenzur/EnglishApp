@@ -51,3 +51,10 @@ One line each: decision, why, alternatives rejected. Newest at the bottom of eac
 - **Sound effects are synthesized with WebAudio, no audio files.** Zero bytes to precache, off by default.
 - **Share cards are drawn on a canvas and sent through the Web Share API (WhatsApp), with a PNG download fallback.**
 - **FSRS personalization is a small on-device coordinate descent over 8 weights (initial stabilities and growth), accepted only if log loss improves by 1%+, from 400 reviews.** ts-fsrs ships no optimizer; the full Rust optimizer would be a large WASM download.
+
+## Hardening
+
+- **Theme-aware accent colors.** Light mode uses deeper coral (#c63f17) and violet (#6a48f0) with white text; dark mode keeps the bright coral (#ff6b4a) and a lighter violet (#9b82ff) with dark text on buttons. Every text and button pair passes WCAG AA (Lighthouse accessibility 100). Rejected: one bright accent everywhere (2.8:1 on white).
+- **Pinch zoom allowed.** `maximum-scale=1` was removed from the viewport (accessibility); inputs are 16px and `touch-action: manipulation` still prevents the iOS focus zoom and double-tap zoom.
+- **Secondary screens are lazy-loaded.** Initial JS dropped from 126 KB to 99 KB gzipped; all chunks are precached so offline navigation stays instant.
+- **robots.txt disallows indexing.** A private two-person app; the SEO score is irrelevant by design.

@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react';
+import { lazy, Suspense, useEffect, type ReactNode } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Shell } from '@/ui/Shell';
 import { setupServiceWorker } from '@/pwa/registerSW';
@@ -14,16 +14,19 @@ import { Announcements } from '@/ui/Announcements';
 import { ProfilePicker } from '@/screens/ProfilePicker';
 import { PinPad } from '@/screens/PinGate';
 import { Home } from '@/screens/Home';
-import { Placement } from '@/screens/Placement';
-import { Session } from '@/screens/Session';
-import { LearnHub } from '@/screens/LearnHub';
-import { Library } from '@/screens/Library';
-import { WordDetail } from '@/screens/WordDetail';
-import { Stats } from '@/screens/Stats';
-import { Rivalry } from '@/screens/Rivalry';
-import { Settings } from '@/screens/Settings';
-import { Today } from '@/screens/Today';
-import { BidiTest } from '@/screens/BidiTest';
+
+const Placement = lazy(() => import('@/screens/Placement').then((m) => ({ default: m.Placement })));
+const Session = lazy(() => import('@/screens/Session').then((m) => ({ default: m.Session })));
+const LearnHub = lazy(() => import('@/screens/LearnHub').then((m) => ({ default: m.LearnHub })));
+const Library = lazy(() => import('@/screens/Library').then((m) => ({ default: m.Library })));
+const WordDetail = lazy(() =>
+  import('@/screens/WordDetail').then((m) => ({ default: m.WordDetail })),
+);
+const Stats = lazy(() => import('@/screens/Stats').then((m) => ({ default: m.Stats })));
+const Rivalry = lazy(() => import('@/screens/Rivalry').then((m) => ({ default: m.Rivalry })));
+const Settings = lazy(() => import('@/screens/Settings').then((m) => ({ default: m.Settings })));
+const Today = lazy(() => import('@/screens/Today').then((m) => ({ default: m.Today })));
+const BidiTest = lazy(() => import('@/screens/BidiTest').then((m) => ({ default: m.BidiTest })));
 
 /** Requires a selected, unlocked profile. */
 function Gate({ children }: { children: ReactNode }) {
@@ -78,51 +81,53 @@ export function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Toasts />
       <Announcements />
-      <Routes>
-        <Route path="welcome" element={<ProfilePicker />} />
-        <Route
-          path="placement"
-          element={
-            <Gate>
-              <Placement />
-            </Gate>
-          }
-        />
-        <Route
-          path="session/:mode"
-          element={
-            <Gate>
-              <Session />
-            </Gate>
-          }
-        />
-        <Route
-          path="today"
-          element={
-            <Gate>
-              <Today />
-            </Gate>
-          }
-        />
-        <Route path="dev/bidi" element={<BidiTest />} />
-        <Route
-          element={
-            <Gate>
-              <Shell />
-            </Gate>
-          }
-        >
-          <Route index element={<Home />} />
-          <Route path="learn" element={<LearnHub />} />
-          <Route path="words" element={<Library />} />
-          <Route path="word/:id" element={<WordDetail />} />
-          <Route path="rivalry" element={<Rivalry />} />
-          <Route path="stats" element={<Stats />} />
-          <Route path="stats/:user" element={<Stats />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="welcome" element={<ProfilePicker />} />
+          <Route
+            path="placement"
+            element={
+              <Gate>
+                <Placement />
+              </Gate>
+            }
+          />
+          <Route
+            path="session/:mode"
+            element={
+              <Gate>
+                <Session />
+              </Gate>
+            }
+          />
+          <Route
+            path="today"
+            element={
+              <Gate>
+                <Today />
+              </Gate>
+            }
+          />
+          <Route path="dev/bidi" element={<BidiTest />} />
+          <Route
+            element={
+              <Gate>
+                <Shell />
+              </Gate>
+            }
+          >
+            <Route index element={<Home />} />
+            <Route path="learn" element={<LearnHub />} />
+            <Route path="words" element={<Library />} />
+            <Route path="word/:id" element={<WordDetail />} />
+            <Route path="rivalry" element={<Rivalry />} />
+            <Route path="stats" element={<Stats />} />
+            <Route path="stats/:user" element={<Stats />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

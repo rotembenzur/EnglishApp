@@ -9,7 +9,7 @@ import { unlockAudio } from '@/audio/speech';
 import { PinPad } from './PinGate';
 import { db } from '@/data/db';
 
-const ACCENT: Record<UserId, string> = { rotem: '#ff6b4a', noa: '#7c5cff' };
+const ACCENT: Record<UserId, string> = { rotem: 'var(--c-rotem)', noa: 'var(--c-noa)' };
 const EMOJI: Record<UserId, string> = { rotem: '🦊', noa: '🦉' };
 
 export function ProfilePicker() {
