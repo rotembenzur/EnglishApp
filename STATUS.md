@@ -34,7 +34,7 @@ Last updated: 2026-10-12 · version 0.3.0
 
 ## Content progress
 
-- Tier A: 6,000 words fully authored (30 shards, all validated in CI). About 160 inventory entries
+- Tier A: 6,000 words fully authored (30 shards, all validated in CI). 176 inventory entries
   that turned out to be names, inflected forms or spelling variants are excluded from teaching.
 - Curated: 300 phrasal verbs, 300 idioms, 200 collocations, 120 confusable pairs, 363-word
   placement bank.
