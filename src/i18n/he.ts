@@ -489,6 +489,13 @@ export const t = {
     num: 'מספר',
     other: 'ביטוי',
   } as Record<string, string>,
+  confusables: {
+    title: 'מילים מבלבלות',
+    intro:
+      'זוגות מילים שקל להתבלבל ביניהן, במיוחד כשבעברית יש מילה אחת לשתיהן. לחיצה פותחת הסבר ודוגמאות.',
+    onWord: 'אל תתבלבלו',
+    entry: 'זוגות כמו affect ו־effect, עם הסבר קצר',
+  },
   read: {
     title: 'מצב קריאה',
     intro:

@@ -23,6 +23,7 @@ const DESCRIPTIONS: Record<string, string> = {
   boss: '30 פריטים מעורבבים. לנצח את הבוס של השבוע',
   duel: '10 מילים זהות לשניכם, פעם ביום',
   read: 'מדביקים טקסט באנגלית ולוקחים ממנו מילים',
+  confusables: 'זוגות כמו affect ו־effect, עם הסבר קצר',
 };
 
 export function LearnHub() {
@@ -73,6 +74,12 @@ export function LearnHub() {
     },
     { key: 'duel', label: t.home.duel, icon: <SwordsIcon />, to: '/session/duel' },
     { key: 'read', label: t.read.title, icon: <span className="text-xl">📖</span>, to: '/read' },
+    {
+      key: 'confusables',
+      label: t.confusables.title,
+      icon: <span className="text-xl">🔀</span>,
+      to: '/confusables',
+    },
   ];
   return (
     <div className="flex flex-col gap-4 pb-8">

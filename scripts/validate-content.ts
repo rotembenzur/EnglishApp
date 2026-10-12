@@ -85,6 +85,31 @@ async function main(): Promise<void> {
     }
   }
 
+  const confPath = path.join(contentDir, 'confusables.json');
+  if (existsSync(confPath)) {
+    const items = JSON.parse(await readFile(confPath, 'utf8')) as {
+      id: string;
+      words: string[];
+      explanation: string;
+      tip: string;
+      examples: { word: string; en: string; he: string }[];
+    }[];
+    const ids = new Set<string>();
+    for (const c of items) {
+      const where = `confusables.json#${c.id}`;
+      if (ids.has(c.id)) problems.push(`${where}: duplicate`);
+      ids.add(c.id);
+      if (c.words.length < 2) problems.push(`${where}: fewer than 2 words`);
+      if (!HEBREW.test(c.explanation) || !HEBREW.test(c.tip))
+        problems.push(`${where}: Hebrew missing`);
+      for (const e of c.examples) {
+        if (!c.words.includes(e.word)) problems.push(`${where}: example for unknown word`);
+        if (HEBREW.test(e.en) || !HEBREW.test(e.he))
+          problems.push(`${where}: example language mix-up`);
+      }
+    }
+  }
+
   const placementPath = path.join(contentDir, 'placement.json');
   if (existsSync(placementPath)) {
     const bank = JSON.parse(await readFile(placementPath, 'utf8')) as {

@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import type { LemmaInfo, WordContent } from '@/engine/types';
 import { ignoreWord, introduceWord, unignoreWord } from '@/engine/learn';
 import { getContent, loadInventory } from '@/content/inventory';
+import { confusablesFor, type Confusable } from '@/content/confusables';
+import { ConfusableCard } from '@/ui/ConfusableCard';
 import { deviceId } from '@/data/db';
 import { addEvent, putWord } from '@/data/repo';
 import { relTime, t } from '@/i18n/he';
@@ -25,6 +27,7 @@ export function WordDetail() {
   const [family, setFamily] = useState<LemmaInfo[]>([]);
   const [note, setNote] = useState(word?.note ?? '');
   const [reporting, setReporting] = useState(false);
+  const [confusing, setConfusing] = useState<Confusable[]>([]);
 
   useEffect(() => {
     let alive = true;
@@ -40,6 +43,7 @@ export function WordDetail() {
             .sort((a, b) => a.rank - b.rank)
             .slice(0, 12),
         );
+      if (l) void confusablesFor(l.lemma).then((x) => alive && setConfusing(x));
       const c = await getContent(lemmaId);
       if (alive) setContent(c);
     })();
@@ -143,6 +147,14 @@ export function WordDetail() {
                 </span>
               ))}
             </div>
+          </Section>
+        )}
+
+        {confusing.length > 0 && (
+          <Section title={t.confusables.onWord}>
+            {confusing.map((c) => (
+              <ConfusableCard key={c.id} c={c} />
+            ))}
           </Section>
         )}
 

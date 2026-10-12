@@ -95,6 +95,14 @@ export async function buildContent(opts: { quiet?: boolean } = {}): Promise<Cont
     }
   }
 
+  const confusablesPath = path.join(contentDir, 'confusables.json');
+  if (await fileExists(confusablesPath)) {
+    await writeFile(
+      path.join(outDir, 'confusables.json'),
+      JSON.stringify(JSON.parse(await readFile(confusablesPath, 'utf8'))),
+    );
+  }
+
   const placementPath = path.join(contentDir, 'placement.json');
   if (await fileExists(placementPath)) {
     await writeFile(
