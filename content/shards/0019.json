@@ -1,0 +1,2089 @@
+[
+  {
+    "id": 3801,
+    "lemma": "alpha",
+    "pos": [
+      "noun",
+      "adj"
+    ],
+    "ipa": "/ˈælfə/",
+    "hebrew": [
+      "אלפא (אות יוונית)",
+      "גרסת אלפא (גרסה ניסיונית)",
+      "שליט, דומיננטי (alpha male)"
+    ],
+    "definition": "the first letter of the Greek alphabet; also an early test version of software, or the strongest member of a group",
+    "sentences": [
+      {
+        "en": "Alpha is the first letter of the Greek alphabet.",
+        "he": "אלפא היא האות הראשונה באלף־בית היווני."
+      },
+      {
+        "en": "The app is still in alpha, so expect some bugs.",
+        "he": "האפליקציה עדיין בגרסת אלפא, אז צפו לכמה באגים."
+      },
+      {
+        "en": "In a wolf pack, the alpha leads the hunt.",
+        "he": "בלהקת זאבים, הזאב השליט מוביל את הציד."
+      }
+    ],
+    "collocations": [
+      "alpha male",
+      "alpha version",
+      "alpha and omega",
+      "alpha test"
+    ],
+    "hook": "alpha + beta = alphabet: שתי האותיות הראשונות ביוונית, כמו אלף־בית",
+    "context": {
+      "en": "Our startup released an alpha version of the app to fifty friends and family members. They found dozens of bugs in the first week. Some buttons didn't work, and the app crashed often. Their feedback helped us build a much better beta version.",
+      "he": "הסטארטאפ שלנו שחרר גרסת אלפא של האפליקציה לחמישים חברים ובני משפחה. הם מצאו עשרות באגים כבר בשבוע הראשון. חלק מהכפתורים לא עבדו, והאפליקציה קרסה הרבה. המשוב שלהם עזר לנו לבנות גרסת בטא הרבה יותר טובה."
+    },
+    "tags": [
+      "tech",
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3802,
+    "lemma": "neighbour",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/ˈneɪbər/",
+    "ipaUk": "/ˈneɪbə/",
+    "hebrew": [
+      "שכן",
+      "מדינה שכנה"
+    ],
+    "definition": "British spelling of neighbor: a person who lives near you, or a country next to another",
+    "sentences": [
+      {
+        "en": "Our new neighbours brought us a cake when they moved in.",
+        "he": "השכנים החדשים שלנו הביאו לנו עוגה כשהם עברו לגור כאן."
+      },
+      {
+        "en": "I asked my neighbour to water the plants while we're away.",
+        "he": "ביקשתי מהשכנה להשקות את העציצים כשאנחנו לא בבית."
+      },
+      {
+        "en": "Israel has peace agreements with some of its neighbours.",
+        "he": "לישראל יש הסכמי שלום עם חלק משכנותיה."
+      }
+    ],
+    "collocations": [
+      "next-door neighbour",
+      "friendly neighbour",
+      "neighbouring country",
+      "good neighbours"
+    ],
+    "hook": "neighbour באנגלית בריטית, neighbor באמריקאית: אותה מילה, איות שונה",
+    "context": {
+      "en": "In our building in Haifa, the neighbours really look out for each other. When my daughter was born, they cooked meals for us for a whole week. In return, we feed their cat whenever they travel. I can't imagine living anywhere else.",
+      "he": "בבניין שלנו בחיפה, השכנים באמת דואגים אחד לשני. כשהבת שלי נולדה, הם בישלו לנו ארוחות במשך שבוע שלם. בתמורה, אנחנו מאכילים את החתול שלהם בכל פעם שהם נוסעים. אני לא מסוגל לדמיין לגור במקום אחר."
+    },
+    "tags": [
+      "family",
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3803,
+    "lemma": "barry",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈbæri/",
+    "hebrew": [
+      "אחלה, מעולה (סלנג סקוטי)"
+    ],
+    "definition": "in Scottish slang, very good or excellent",
+    "sentences": [
+      {
+        "en": "That gig last night was pure barry!",
+        "he": "ההופעה אתמול בלילה הייתה פשוט אחלה!"
+      },
+      {
+        "en": "My cousin from Edinburgh calls everything good barry.",
+        "he": "בן הדוד שלי מאדינבורו אומר barry על כל דבר טוב."
+      },
+      {
+        "en": "We had a barry weekend camping by the lake.",
+        "he": "היה לנו סוף שבוע מעולה בקמפינג ליד האגם."
+      }
+    ],
+    "collocations": [
+      "pure barry",
+      "a barry night",
+      "that's barry"
+    ],
+    "hook": "barry בסקוטלנד זה בדיוק כמו אחלה בעברית",
+    "context": {
+      "en": "When I studied in Edinburgh, I had to learn a whole new set of words. My flatmates said barry when something was great and wee for anything small. At first I just nodded and smiled. By the end of the year, I was calling everything barry too.",
+      "he": "כשלמדתי באדינבורו, הייתי צריך ללמוד אוסף שלם של מילים חדשות. השותפים שלי לדירה אמרו barry כשמשהו היה מעולה ו-wee על כל דבר קטן. בהתחלה רק הנהנתי וחייכתי. עד סוף השנה גם אני כבר קראתי לכל דבר barry."
+    },
+    "tags": [
+      "slang"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3804,
+    "lemma": "classical",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈklæsɪkəl/",
+    "hebrew": [
+      "קלאסי (מוזיקה, אמנות)",
+      "של העת העתיקה (יוון ורומא)"
+    ],
+    "definition": "belonging to a traditional style of music or art; also connected with ancient Greece and Rome",
+    "sentences": [
+      {
+        "en": "My father listens to classical music while he cooks.",
+        "he": "אבא שלי מקשיב למוזיקה קלאסית כשהוא מבשל."
+      },
+      {
+        "en": "She studied classical Greek and Latin at university.",
+        "he": "היא למדה יוונית ולטינית קלאסיות באוניברסיטה."
+      },
+      {
+        "en": "The building is a fine example of classical architecture.",
+        "he": "הבניין הוא דוגמה יפה לאדריכלות קלאסית."
+      }
+    ],
+    "collocations": [
+      "classical music",
+      "classical ballet",
+      "classical period",
+      "classical guitar"
+    ],
+    "hook": "classical = קלאסי מבחינת סגנון או תקופה; classic = קלאסיקה, הכי טוב מסוגו",
+    "context": {
+      "en": "My son started playing the classical guitar at the age of eight. At first he only wanted to learn rock songs. His teacher patiently showed him pieces by Spanish composers. Now he says classical music is more challenging and more beautiful.",
+      "he": "הבן שלי התחיל לנגן בגיטרה קלאסית בגיל שמונה. בהתחלה הוא רצה ללמוד רק שירי רוק. המורה שלו הראה לו בסבלנות יצירות של מלחינים ספרדים. היום הוא אומר שמוזיקה קלאסית מאתגרת ויפה יותר."
+    },
+    "tags": [
+      "media",
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3805,
+    "lemma": "fiscal",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈfɪskəl/",
+    "hebrew": [
+      "פיסקלי, תקציבי",
+      "כספים (שנת כספים)"
+    ],
+    "definition": "connected with government money, taxes and spending, or with a company's financial year",
+    "sentences": [
+      {
+        "en": "The government's fiscal policy includes cutting public spending.",
+        "he": "המדיניות הפיסקלית של הממשלה כוללת קיצוץ בהוצאה הציבורית."
+      },
+      {
+        "en": "Our fiscal year ends in March, not December.",
+        "he": "שנת הכספים שלנו מסתיימת במרץ, לא בדצמבר."
+      },
+      {
+        "en": "Economists warned about the country's growing fiscal deficit.",
+        "he": "כלכלנים הזהירו מפני הגירעון התקציבי ההולך וגדל של המדינה."
+      }
+    ],
+    "collocations": [
+      "fiscal year",
+      "fiscal policy",
+      "fiscal deficit",
+      "fiscal responsibility"
+    ],
+    "context": {
+      "en": "At my company, the last month of the fiscal year is always crazy. Every department rushes to use its remaining budget. Suddenly there are new laptops, chairs and training courses. Then in April, everyone is told to save money again.",
+      "he": "בחברה שלי, החודש האחרון של שנת הכספים תמיד מטורף. כל מחלקה ממהרת לנצל את מה שנשאר לה בתקציב. פתאום יש מחשבים ניידים חדשים, כיסאות וקורסים. ואז באפריל אומרים לכולם שוב לחסוך."
+    },
+    "tags": [
+      "finance"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3806,
+    "lemma": "homeless",
+    "pos": [
+      "adj",
+      "noun"
+    ],
+    "ipa": "/ˈhoʊmləs/",
+    "hebrew": [
+      "חסר בית",
+      "דרי רחוב (the homeless)"
+    ],
+    "definition": "having no place to live",
+    "sentences": [
+      {
+        "en": "More people are homeless in the city this winter.",
+        "he": "בחורף הזה יש בעיר יותר אנשים חסרי בית."
+      },
+      {
+        "en": "She volunteers at a shelter for the homeless.",
+        "he": "היא מתנדבת במקלט לדרי רחוב."
+      },
+      {
+        "en": "The fire left three families homeless.",
+        "he": "השריפה הותירה שלוש משפחות בלי קורת גג."
+      }
+    ],
+    "collocations": [
+      "homeless people",
+      "homeless shelter",
+      "the homeless",
+      "become homeless"
+    ],
+    "context": {
+      "en": "Every Thursday evening, my teenage daughter volunteers at a soup kitchen. She serves hot meals to homeless people near the central bus station. At first she was nervous, but now she knows many of them by name. It has made her much more grateful for what she has.",
+      "he": "כל יום חמישי בערב הבת המתבגרת שלי מתנדבת בבית תמחוי. היא מגישה ארוחות חמות לדרי רחוב ליד התחנה המרכזית. בהתחלה היא הייתה לחוצה, אבל היום היא מכירה רבים מהם בשמם. זה גרם לה להעריך הרבה יותר את מה שיש לה."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3807,
+    "lemma": "mutual",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈmjutʃuəl/",
+    "hebrew": [
+      "הדדי",
+      "משותף"
+    ],
+    "definition": "felt or done by two or more people toward each other; also shared by two or more people",
+    "sentences": [
+      {
+        "en": "We met through a mutual friend at a party.",
+        "he": "הכרנו דרך חבר משותף במסיבה."
+      },
+      {
+        "en": "Their respect for each other is completely mutual.",
+        "he": "הכבוד ביניהם הדדי לגמרי."
+      },
+      {
+        "en": "The two companies reached a mutual agreement.",
+        "he": "שתי החברות הגיעו להסכמה הדדית."
+      }
+    ],
+    "collocations": [
+      "mutual friend",
+      "mutual respect",
+      "mutual agreement",
+      "mutual fund"
+    ],
+    "context": {
+      "en": "My best friend and I met through a mutual friend fifteen years ago. We were both new in the city and didn't know many people. Our friendship is built on mutual trust and a lot of laughter. Even when we argue, we always make up within a day.",
+      "he": "אני והחברה הכי טובה שלי הכרנו דרך חברה משותפת לפני חמש־עשרה שנה. שתינו היינו חדשות בעיר ולא הכרנו הרבה אנשים. החברות שלנו בנויה על אמון הדדי והמון צחוק. גם כשאנחנו רבות, אנחנו תמיד משלימות תוך יום."
+    },
+    "tags": [
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3808,
+    "lemma": "nope",
+    "pos": [
+      "interj"
+    ],
+    "ipa": "/noʊp/",
+    "hebrew": [
+      "לא (בדיבור)"
+    ],
+    "definition": "an informal way of saying no",
+    "sentences": [
+      {
+        "en": "Did you finish your homework? Nope, not yet.",
+        "he": "סיימת את שיעורי הבית? לא, עוד לא."
+      },
+      {
+        "en": "Nope, I've never been to Eilat.",
+        "he": "לא, אף פעם לא הייתי באילת."
+      },
+      {
+        "en": "I looked everywhere for my keys, but nope, nothing.",
+        "he": "חיפשתי את המפתחות בכל מקום, אבל כלום, אין."
+      }
+    ],
+    "collocations": [
+      "nope, not me",
+      "nope, never",
+      "yep or nope"
+    ],
+    "tags": [
+      "slang",
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3809,
+    "lemma": "scope",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/skoʊp/",
+    "hebrew": [
+      "היקף, תחום",
+      "מקום, אפשרות (ל־)"
+    ],
+    "definition": "the range of things that a subject, project or activity deals with; also the chance to do something",
+    "sentences": [
+      {
+        "en": "That question is outside the scope of this course.",
+        "he": "השאלה הזאת מחוץ לתחום של הקורס."
+      },
+      {
+        "en": "There's plenty of scope for improvement in our service.",
+        "he": "יש הרבה מקום לשיפור בשירות שלנו."
+      },
+      {
+        "en": "The project grew in scope and took two extra years.",
+        "he": "היקף הפרויקט גדל, והוא נמשך שנתיים נוספות."
+      }
+    ],
+    "collocations": [
+      "scope of the project",
+      "within the scope",
+      "broad scope",
+      "scope for improvement"
+    ],
+    "context": {
+      "en": "When we started renovating the kitchen, the plan was small. Then we decided to move the sink, then change the floor, then knock down a wall. The scope of the project doubled, and so did the cost. Next time, we'll agree on everything before work begins.",
+      "he": "כשהתחלנו לשפץ את המטבח, התוכנית הייתה קטנה. ואז החלטנו להזיז את הכיור, אחר כך להחליף את הרצפה, ואז להפיל קיר. היקף הפרויקט הוכפל, וגם העלות. בפעם הבאה נסכים על הכול לפני שהעבודה מתחילה."
+    },
+    "tags": [
+      "work",
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3810,
+    "lemma": "virtually",
+    "pos": [
+      "adv"
+    ],
+    "ipa": "/ˈvɝtʃuəli/",
+    "hebrew": [
+      "כמעט, למעשה",
+      "באופן וירטואלי"
+    ],
+    "definition": "almost completely; also by using computers and the internet rather than in person",
+    "sentences": [
+      {
+        "en": "Virtually everyone in the office came to the party.",
+        "he": "כמעט כל העובדים במשרד באו למסיבה."
+      },
+      {
+        "en": "It's virtually impossible to find parking here on Fridays.",
+        "he": "כמעט בלתי אפשרי למצוא כאן חניה בימי שישי."
+      },
+      {
+        "en": "We met virtually for a year before meeting in person.",
+        "he": "נפגשנו באופן וירטואלי במשך שנה לפני שנפגשנו פנים אל פנים."
+      }
+    ],
+    "collocations": [
+      "virtually impossible",
+      "virtually all",
+      "virtually nothing",
+      "meet virtually"
+    ],
+    "context": {
+      "en": "During the pandemic, my grandmother learned to see her family virtually. At first she couldn't find the camera button and only showed us her ceiling. After a few weeks, she was organizing video calls herself. Now virtually every Friday, we all light candles together on screen.",
+      "he": "בזמן המגפה סבתא שלי למדה לראות את המשפחה באופן וירטואלי. בהתחלה היא לא מצאה את כפתור המצלמה והראתה לנו רק את התקרה. אחרי כמה שבועות היא כבר ארגנה בעצמה שיחות וידאו. עכשיו כמעט בכל יום שישי כולנו מדליקים נרות יחד מול המסך."
+    },
+    "tags": [
+      "tech",
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3811,
+    "lemma": "khan",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/kɑn/",
+    "hebrew": [
+      "חאן (תואר של שליט)",
+      "ח'אן, פונדק דרכים"
+    ],
+    "definition": "a title for a ruler in Central Asia, as in Genghis Khan; also an old inn where travelers and their animals stayed",
+    "sentences": [
+      {
+        "en": "Genghis Khan built one of the largest empires in history.",
+        "he": "ג'ינגיס חאן הקים את אחת האימפריות הגדולות בהיסטוריה."
+      },
+      {
+        "en": "Travelers once rested with their camels at the old khan.",
+        "he": "פעם נוסעים נחו עם הגמלים שלהם בח'אן העתיק."
+      },
+      {
+        "en": "The old khan in Acre has been turned into a hotel.",
+        "he": "הח'אן העתיק בעכו הוסב למלון."
+      }
+    ],
+    "collocations": [
+      "Genghis Khan",
+      "the great khan",
+      "old khan",
+      "caravan khan"
+    ],
+    "context": {
+      "en": "In the old city of Acre, we visited a huge stone khan from the Ottoman period. Merchants once slept upstairs while their animals and goods were kept below. The guide showed us where the camels drank water. It was easy to imagine the noise and smells of a busy trading day.",
+      "he": "בעיר העתיקה של עכו ביקרנו בח'אן אבן ענק מהתקופה העות'מאנית. פעם סוחרים ישנו בקומה העליונה, והבהמות והסחורות שלהם נשמרו למטה. המדריך הראה לנו איפה הגמלים שתו מים. היה קל לדמיין את הרעש והריחות של יום מסחר סואן."
+    },
+    "tags": [
+      "travel",
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3812,
+    "lemma": "corrupt",
+    "pos": [
+      "adj",
+      "verb"
+    ],
+    "ipa": "/kəˈrʌpt/",
+    "hebrew": [
+      "מושחת",
+      "להשחית",
+      "פגום (קובץ)"
+    ],
+    "definition": "dishonest and using power to get money or advantages; to make someone dishonest; (of computer data) damaged",
+    "sentences": [
+      {
+        "en": "The corrupt official took bribes from builders.",
+        "he": "הפקיד המושחת לקח שוחד מקבלנים."
+      },
+      {
+        "en": "Power can corrupt even good people.",
+        "he": "כוח יכול להשחית אפילו אנשים טובים."
+      },
+      {
+        "en": "The file is corrupt, so I can't open it.",
+        "he": "הקובץ פגום, אז אני לא יכול לפתוח אותו."
+      }
+    ],
+    "collocations": [
+      "corrupt politician",
+      "corrupt system",
+      "corrupted file",
+      "deeply corrupt"
+    ],
+    "context": {
+      "en": "The documentary followed a journalist who investigated corrupt police officers. For two years, she collected recordings and documents. When the film came out, three officers were arrested. The journalist received threats but said she would do it all again.",
+      "he": "הסרט התיעודי עקב אחרי עיתונאית שחקרה שוטרים מושחתים. במשך שנתיים היא אספה הקלטות ומסמכים. כשהסרט יצא, שלושה שוטרים נעצרו. העיתונאית קיבלה איומים, אבל אמרה שהייתה עושה את הכול שוב."
+    },
+    "tags": [
+      "law",
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3813,
+    "lemma": "explode",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/ɪkˈsploʊd/",
+    "hebrew": [
+      "להתפוצץ",
+      "להתפרץ (בכעס)",
+      "לזנק (במספר)"
+    ],
+    "definition": "to burst suddenly and violently; also to suddenly show strong emotion, or to increase very quickly",
+    "sentences": [
+      {
+        "en": "A gas tank exploded in the restaurant kitchen.",
+        "he": "מכל גז התפוצץ במטבח המסעדה."
+      },
+      {
+        "en": "My dad exploded when he saw the scratch on his new car.",
+        "he": "אבא שלי התפוצץ מכעס כשראה את השריטה על המכונית החדשה."
+      },
+      {
+        "en": "The number of electric scooters in the city has exploded.",
+        "he": "מספר הקורקינטים החשמליים בעיר זינק."
+      }
+    ],
+    "collocations": [
+      "explode with anger",
+      "the bomb exploded",
+      "explode in popularity",
+      "about to explode"
+    ],
+    "context": {
+      "en": "I forgot an egg in the microwave last week. After thirty seconds, it exploded with a loud bang. Pieces of egg covered every corner inside. It took me twenty minutes to clean, and now I never microwave eggs.",
+      "he": "בשבוע שעבר שכחתי ביצה במיקרוגל. אחרי שלושים שניות היא התפוצצה בקול נפץ. חתיכות ביצה כיסו כל פינה בפנים. לקח לי עשרים דקות לנקות, ומאז אני אף פעם לא מחמם ביצים במיקרוגל."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3814,
+    "lemma": "rude",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/rud/",
+    "hebrew": [
+      "גס רוח, חצוף",
+      "לא מנומס"
+    ],
+    "definition": "not polite; speaking or behaving in a way that offends people",
+    "sentences": [
+      {
+        "en": "It's rude to look at your phone during dinner.",
+        "he": "לא מנומס להסתכל בטלפון בזמן ארוחה."
+      },
+      {
+        "en": "The waiter was so rude that we didn't leave a tip.",
+        "he": "המלצר היה כל כך גס רוח שלא השארנו טיפ."
+      },
+      {
+        "en": "Sorry to be rude, but I really have to go.",
+        "he": "סליחה שאני לא מנומס, אבל אני באמת חייב ללכת."
+      }
+    ],
+    "collocations": [
+      "rude to someone",
+      "rude behavior",
+      "rude awakening",
+      "how rude"
+    ],
+    "context": {
+      "en": "In Israel, people are often very direct, and visitors sometimes think we're rude. A tourist once told me that a shop owner had shouted at her. I explained that he was probably just being friendly and loud. By the end of her trip, she said she loved our honesty.",
+      "he": "בישראל אנשים הרבה פעמים מאוד ישירים, ולפעמים מבקרים חושבים שאנחנו גסי רוח. תיירת סיפרה לי פעם שבעל חנות צעק עליה. הסברתי לה שהוא כנראה פשוט היה ידידותי ורעשני. בסוף הטיול שלה היא אמרה שהיא אוהבת את הכנות שלנו."
+    },
+    "tags": [
+      "emotions",
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3815,
+    "lemma": "ai",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˌeɪˈaɪ/",
+    "hebrew": [
+      "בינה מלאכותית (AI)",
+      "עצלן תלת־אצבעי"
+    ],
+    "definition": "short for artificial intelligence, usually written AI; also (pronounced /ˈɑi/) a three-toed sloth from South America",
+    "sentences": [
+      {
+        "en": "Our company uses AI to answer simple customer questions.",
+        "he": "החברה שלנו משתמשת בבינה מלאכותית כדי לענות על שאלות פשוטות של לקוחות."
+      },
+      {
+        "en": "Some people worry that AI will replace their jobs.",
+        "he": "יש אנשים שחוששים שבינה מלאכותית תחליף אותם בעבודה."
+      },
+      {
+        "en": "The ai, a three-toed sloth, sleeps up to fifteen hours a day.",
+        "he": "העצלן התלת־אצבעי, שנקרא באנגלית ai, ישן עד חמש־עשרה שעות ביום."
+      }
+    ],
+    "collocations": [
+      "AI tools",
+      "generative AI",
+      "AI chatbot",
+      "use AI"
+    ],
+    "context": {
+      "en": "My sister is a teacher, and at first she was against AI in the classroom. She worried that students would let it write their essays. Now she uses AI tools to create practice questions and lesson plans. She says the key is teaching students to use it wisely.",
+      "he": "אחותי מורה, ובהתחלה היא התנגדה לבינה מלאכותית בכיתה. היא חששה שהתלמידים ייתנו לה לכתוב להם את החיבורים. היום היא משתמשת בכלי בינה מלאכותית כדי ליצור שאלות תרגול ומערכי שיעור. היא אומרת שהעיקר הוא ללמד את התלמידים להשתמש בה בתבונה."
+    },
+    "tags": [
+      "tech",
+      "nature"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3816,
+    "lemma": "coalition",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˌkoʊəˈlɪʃən/",
+    "hebrew": [
+      "קואליציה"
+    ],
+    "definition": "a group of political parties or organizations that agree to work together",
+    "sentences": [
+      {
+        "en": "The new coalition has a majority of only one seat.",
+        "he": "לקואליציה החדשה יש רוב של מנדט אחד בלבד."
+      },
+      {
+        "en": "A coalition of parents' groups is fighting the budget cuts.",
+        "he": "קואליציה של ארגוני הורים נאבקת בקיצוצים בתקציב."
+      },
+      {
+        "en": "The party refused to join the coalition.",
+        "he": "המפלגה סירבה להצטרף לקואליציה."
+      }
+    ],
+    "collocations": [
+      "coalition government",
+      "form a coalition",
+      "join the coalition",
+      "broad coalition"
+    ],
+    "context": {
+      "en": "In Israel, no party has ever won a majority on its own. After every election, parties spend weeks negotiating to form a coalition. Small parties often get a lot of power in these talks. When a coalition falls apart, we sometimes go to elections again within a year.",
+      "he": "בישראל אף מפלגה מעולם לא זכתה ברוב לבדה. אחרי כל בחירות, המפלגות מנהלות שבועות של משא ומתן כדי להרכיב קואליציה. מפלגות קטנות מקבלות הרבה פעמים כוח רב בשיחות האלה. כשקואליציה מתפרקת, לפעמים הולכים שוב לבחירות תוך שנה."
+    },
+    "tags": [
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3817,
+    "lemma": "crying",
+    "pos": [
+      "noun",
+      "adj"
+    ],
+    "ipa": "/ˈkraɪɪŋ/",
+    "hebrew": [
+      "בכי",
+      "בוכה",
+      "זועק, דחוף (צורך)"
+    ],
+    "definition": "the act of producing tears and sounds because you are sad or hurt; as an adjective, also very serious or urgent",
+    "sentences": [
+      {
+        "en": "The crying of the baby next door kept me awake.",
+        "he": "הבכי של התינוק מהדירה הסמוכה לא נתן לי לישון."
+      },
+      {
+        "en": "There's no point crying over spilled milk.",
+        "he": "אין טעם לבכות על חלב שנשפך."
+      },
+      {
+        "en": "The old school is in crying need of repairs.",
+        "he": "בית הספר הישן זקוק נואשות לשיפוצים."
+      }
+    ],
+    "collocations": [
+      "crying baby",
+      "stop crying",
+      "a crying shame",
+      "in crying need of"
+    ],
+    "context": {
+      "en": "The first months with a newborn were exhausting. Our son would start crying at two every morning, and nothing seemed to help. We took turns walking around the apartment with him. Then one night he suddenly slept until six, and we almost cried with joy.",
+      "he": "החודשים הראשונים עם תינוק חדש היו מתישים. הבן שלנו היה מתחיל לבכות כל לילה בשתיים, ושום דבר לא עזר. התחלפנו בהליכות איתו בדירה. ואז לילה אחד הוא פתאום ישן עד שש, וכמעט בכינו מאושר."
+    },
+    "tags": [
+      "emotions",
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3818,
+    "lemma": "defined",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/dɪˈfaɪnd/",
+    "hebrew": [
+      "מוגדר",
+      "חטוב, בולט"
+    ],
+    "definition": "clearly described or limited; also having a clear, sharp shape",
+    "sentences": [
+      {
+        "en": "Each team member has a clearly defined role.",
+        "he": "לכל חבר צוות יש תפקיד מוגדר בבירור."
+      },
+      {
+        "en": "After months at the gym, his arms are well defined.",
+        "he": "אחרי חודשים בחדר הכושר, הזרועות שלו חטובות."
+      },
+      {
+        "en": "The term isn't well defined, so people use it differently.",
+        "he": "המונח לא מוגדר היטב, אז אנשים משתמשים בו בצורות שונות."
+      }
+    ],
+    "collocations": [
+      "clearly defined",
+      "well defined",
+      "defined by",
+      "poorly defined"
+    ],
+    "context": {
+      "en": "At my last job, nobody had clearly defined responsibilities. Everyone did a bit of everything, and important tasks were often forgotten. At my new company, each person knows exactly what they're in charge of. It makes the work calmer and much more efficient.",
+      "he": "בעבודה הקודמת שלי, לאף אחד לא היו תחומי אחריות מוגדרים. כולם עשו קצת מהכול, ומשימות חשובות נשכחו לא פעם. בחברה החדשה שלי, כל אחד יודע בדיוק על מה הוא אחראי. זה הופך את העבודה לרגועה ויעילה הרבה יותר."
+    },
+    "tags": [
+      "academic",
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3819,
+    "lemma": "laid",
+    "pos": [
+      "adj",
+      "verb"
+    ],
+    "ipa": "/leɪd/",
+    "hebrew": [
+      "ערוך, מונח",
+      "נינוח (laid-back)",
+      "מפוטר (laid off)"
+    ],
+    "definition": "put down or arranged; past form of lay; used in 'laid-back' (relaxed) and 'laid off' (dismissed from a job)",
+    "sentences": [
+      {
+        "en": "He's very laid-back and never gets stressed.",
+        "he": "הוא מאוד נינוח ואף פעם לא נלחץ."
+      },
+      {
+        "en": "Two hundred workers were laid off when the factory closed.",
+        "he": "מאתיים עובדים פוטרו כשהמפעל נסגר."
+      },
+      {
+        "en": "The table was laid for twelve guests.",
+        "he": "השולחן נערך לשנים־עשר אורחים."
+      }
+    ],
+    "collocations": [
+      "laid-back",
+      "laid off",
+      "well-laid plans",
+      "newly laid"
+    ],
+    "context": {
+      "en": "My new manager is very laid-back compared to my old one. She doesn't mind if I come in at ten, as long as the work gets done. At first I wasn't sure how to deal with so much freedom. Now I'm more productive than ever.",
+      "he": "המנהלת החדשה שלי מאוד נינוחה בהשוואה לקודם. לא אכפת לה אם אני מגיע בעשר, כל עוד העבודה נעשית. בהתחלה לא ידעתי איך להתמודד עם כל כך הרבה חופש. היום אני יותר פרודוקטיבי מאי פעם."
+    },
+    "tags": [
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3820,
+    "lemma": "mining",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈmaɪnɪŋ/",
+    "hebrew": [
+      "כרייה",
+      "כריית נתונים (data mining)"
+    ],
+    "definition": "the industry or process of digging coal, metal or minerals out of the ground",
+    "sentences": [
+      {
+        "en": "Mining is still a major industry in Australia.",
+        "he": "כרייה היא עדיין תעשייה מרכזית באוסטרליה."
+      },
+      {
+        "en": "The town grew up around a copper mining company.",
+        "he": "העיירה צמחה סביב חברה לכריית נחושת."
+      },
+      {
+        "en": "Data mining helps shops understand what customers want.",
+        "he": "כריית נתונים עוזרת לחנויות להבין מה הלקוחות רוצים."
+      }
+    ],
+    "collocations": [
+      "coal mining",
+      "mining company",
+      "data mining",
+      "mining town"
+    ],
+    "context": {
+      "en": "Near Eilat, you can visit copper mines that are thousands of years old. Timna Park shows how people dug for metal long before modern machines. Walking through the narrow tunnels, I couldn't imagine working there in the desert heat. Mining was clearly one of the hardest jobs in the ancient world.",
+      "he": "ליד אילת אפשר לבקר במכרות נחושת בני אלפי שנים. פארק תמנע מראה איך אנשים חפרו מתכת הרבה לפני המכונות המודרניות. כשהלכתי במנהרות הצרות, לא הצלחתי לדמיין עבודה שם בחום של המדבר. כרייה הייתה כנראה אחת העבודות הקשות ביותר בעולם העתיק."
+    },
+    "tags": [
+      "work",
+      "nature"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3821,
+    "lemma": "rooms",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/rumz/",
+    "hebrew": [
+      "חדרים"
+    ],
+    "definition": "plural of room: separate areas inside a building",
+    "sentences": [
+      {
+        "en": "The hotel has two hundred rooms and a rooftop pool.",
+        "he": "במלון יש מאתיים חדרים ובריכה על הגג."
+      },
+      {
+        "en": "Our new apartment has four rooms and a big balcony.",
+        "he": "בדירה החדשה שלנו יש ארבעה חדרים ומרפסת גדולה."
+      },
+      {
+        "en": "Are there any rooms available for this weekend?",
+        "he": "יש חדרים פנויים לסוף השבוע הזה?"
+      }
+    ],
+    "collocations": [
+      "hotel rooms",
+      "rooms available",
+      "meeting rooms",
+      "spare rooms"
+    ],
+    "hook": "בישראל דירת 4 חדרים כוללת את הסלון; באנגלית סופרים בדרך כלל רק bedrooms",
+    "context": {
+      "en": "When Israelis look for an apartment, they count the living room as one of the rooms. So a four-room apartment usually has three bedrooms. Americans count only bedrooms, which can be confusing. I learned this the hard way when I booked a two-room flat in New York.",
+      "he": "כשישראלים מחפשים דירה, הם סופרים את הסלון כאחד החדרים. כך שבדירת ארבעה חדרים יש בדרך כלל שלושה חדרי שינה. אמריקאים סופרים רק חדרי שינה, וזה יכול לבלבל. למדתי את זה בדרך הקשה כשהזמנתי דירת שני חדרים בניו יורק."
+    },
+    "tags": [
+      "travel",
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3822,
+    "lemma": "sleeping",
+    "pos": [
+      "noun",
+      "adj"
+    ],
+    "ipa": "/ˈslipɪŋ/",
+    "hebrew": [
+      "שינה",
+      "ישן, רדום"
+    ],
+    "definition": "the state of being asleep; as an adjective, asleep or used for sleep",
+    "sentences": [
+      {
+        "en": "Please be quiet, you'll wake the sleeping baby.",
+        "he": "בבקשה תהיו בשקט, אתם תעירו את התינוק הישן."
+      },
+      {
+        "en": "I've had trouble sleeping since I started the new job.",
+        "he": "יש לי קשיי שינה מאז שהתחלתי בעבודה החדשה."
+      },
+      {
+        "en": "Don't forget to pack your sleeping bag.",
+        "he": "אל תשכח לארוז את שק השינה."
+      }
+    ],
+    "collocations": [
+      "sleeping bag",
+      "sleeping pills",
+      "Sleeping Beauty",
+      "let sleeping dogs lie"
+    ],
+    "context": {
+      "en": "Before our camping trip in the Negev, we bought warm sleeping bags. Everyone told us the desert gets very cold at night. They were right: by two in the morning, it was almost freezing. Thanks to the sleeping bags, we slept like babies under the stars.",
+      "he": "לפני הקמפינג שלנו בנגב, קנינו שקי שינה חמים. כולם אמרו לנו שבמדבר נהיה קר מאוד בלילה. הם צדקו: בשתיים בלילה כבר כמעט קפאנו. בזכות שקי השינה, ישנו כמו תינוקות מתחת לכוכבים."
+    },
+    "tags": [
+      "health",
+      "travel"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3823,
+    "lemma": "notion",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈnoʊʃən/",
+    "hebrew": [
+      "רעיון, מושג",
+      "תפיסה, אמונה"
+    ],
+    "definition": "an idea or belief about something",
+    "sentences": [
+      {
+        "en": "The notion that money brings happiness is too simple.",
+        "he": "הרעיון שכסף מביא אושר פשטני מדי."
+      },
+      {
+        "en": "Even small children have a strong notion of what is fair.",
+        "he": "אפילו לילדים קטנים יש תחושה חזקה של מה הוגן."
+      },
+      {
+        "en": "She had a sudden notion to dye her hair pink.",
+        "he": "פתאום עלה לה רעיון לצבוע את השיער בוורוד."
+      }
+    ],
+    "collocations": [
+      "the notion that",
+      "a vague notion",
+      "reject the notion",
+      "romantic notion"
+    ],
+    "context": {
+      "en": "Many people still hold the notion that working from home means not really working. My experience has been the opposite. Without a commute, I often start earlier and finish later. The hard part is actually knowing when to stop.",
+      "he": "הרבה אנשים עדיין מחזיקים בתפיסה שעבודה מהבית היא בעצם לא עבודה. הניסיון שלי הפוך לגמרי. בלי הנסיעות, אני הרבה פעמים מתחיל מוקדם יותר ומסיים מאוחר יותר. החלק הקשה הוא דווקא לדעת מתי להפסיק."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3824,
+    "lemma": "dine",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/daɪn/",
+    "hebrew": [
+      "לסעוד"
+    ],
+    "definition": "to eat dinner, especially in a formal way or at a restaurant",
+    "sentences": [
+      {
+        "en": "We dined at a lovely fish restaurant by the port.",
+        "he": "סעדנו במסעדת דגים מקסימה ליד הנמל."
+      },
+      {
+        "en": "Tonight we're dining out to celebrate her promotion.",
+        "he": "הערב אנחנו יוצאים לאכול במסעדה לכבוד הקידום שלה."
+      },
+      {
+        "en": "The hotel offers guests the chance to dine on the roof.",
+        "he": "המלון מציע לאורחים לסעוד על הגג."
+      }
+    ],
+    "collocations": [
+      "dine out",
+      "dine in",
+      "wine and dine",
+      "fine dining"
+    ],
+    "context": {
+      "en": "For our tenth anniversary, my husband booked a table at a fancy restaurant. We dined on seven small courses, each one more beautiful than the last. The portions were tiny, and the bill was huge. On the way home we stopped for shawarma, and it was perfect.",
+      "he": "ליום הנישואים העשירי שלנו, בעלי הזמין שולחן במסעדה יוקרתית. סעדנו שבע מנות קטנות, כל אחת יפה יותר מהקודמת. המנות היו קטנטנות, והחשבון היה ענק. בדרך הביתה עצרנו לשווארמה, וזה היה מושלם."
+    },
+    "tags": [
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3825,
+    "lemma": "spoil",
+    "pos": [
+      "verb",
+      "noun"
+    ],
+    "ipa": "/spɔɪl/",
+    "hebrew": [
+      "לקלקל, להרוס",
+      "לפנק",
+      "להתקלקל (אוכל)"
+    ],
+    "definition": "to ruin something; to give someone too much of what they want; (of food) to go bad",
+    "sentences": [
+      {
+        "en": "Don't tell me the ending, you'll spoil the movie!",
+        "he": "אל תספר לי את הסוף, אתה תהרוס לי את הסרט!"
+      },
+      {
+        "en": "Grandparents love to spoil their grandchildren.",
+        "he": "סבים וסבתות אוהבים לפנק את הנכדים."
+      },
+      {
+        "en": "The milk spoiled because I left it out all night.",
+        "he": "החלב התקלקל כי השארתי אותו בחוץ כל הלילה."
+      }
+    ],
+    "collocations": [
+      "spoil the fun",
+      "spoil a child",
+      "spoiled food",
+      "spoiler alert"
+    ],
+    "hook": "spoiler הוא מי שהורס לך את הסוף של הסדרה",
+    "context": {
+      "en": "My parents were strict with me, but they completely spoil my kids. They buy them sweets and toys and let them stay up late. When the children come home, they're exhausted and grumpy. I've decided to accept it, because that's what grandparents are for.",
+      "he": "ההורים שלי היו קפדנים איתי, אבל את הילדים שלי הם מפנקים לגמרי. הם קונים להם ממתקים וצעצועים ונותנים להם להישאר ערים עד מאוחר. כשהילדים חוזרים הביתה, הם מותשים ועצבניים. החלטתי להשלים עם זה, כי בשביל זה יש סבא וסבתא."
+    },
+    "tags": [
+      "family",
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3826,
+    "lemma": "lesbian",
+    "pos": [
+      "noun",
+      "adj"
+    ],
+    "ipa": "/ˈlɛzbiən/",
+    "hebrew": [
+      "לסבית"
+    ],
+    "definition": "a woman who is romantically or sexually attracted to other women",
+    "sentences": [
+      {
+        "en": "She came out as a lesbian when she was twenty.",
+        "he": "היא יצאה מהארון כלסבית כשהייתה בת עשרים."
+      },
+      {
+        "en": "The festival shows gay and lesbian films from around the world.",
+        "he": "בפסטיבל מוקרנים סרטים גאים ולסביים מכל העולם."
+      },
+      {
+        "en": "Her mothers are a lesbian couple who have been together for twenty years.",
+        "he": "האימהות שלה הן זוג לסביות שנמצאות יחד כבר עשרים שנה."
+      }
+    ],
+    "collocations": [
+      "lesbian couple",
+      "gay and lesbian",
+      "lesbian rights",
+      "come out as a lesbian"
+    ],
+    "context": {
+      "en": "My cousin and her wife are a lesbian couple living in Tel Aviv. Last year they welcomed their first baby. The whole family came to the celebration with gifts and food. Grandma held the baby all evening and wouldn't let anyone else have a turn.",
+      "he": "בת הדודה שלי ואשתה הן זוג לסביות שגר בתל אביב. בשנה שעברה נולד להן התינוק הראשון. כל המשפחה הגיעה לחגיגה עם מתנות ואוכל. סבתא החזיקה את התינוק כל הערב ולא נתנה לאף אחד אחר תור."
+    },
+    "tags": [
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3827,
+    "lemma": "neutral",
+    "pos": [
+      "adj",
+      "noun"
+    ],
+    "ipa": "/ˈnutrəl/",
+    "hebrew": [
+      "ניטרלי",
+      "ניוטרל (הילוך סרק)"
+    ],
+    "definition": "not supporting either side in an argument or war; also (of colors) not strong or bright; the gear position in which a car's engine is not connected to the wheels",
+    "sentences": [
+      {
+        "en": "Switzerland stayed neutral during both world wars.",
+        "he": "שווייץ נשארה ניטרלית בשתי מלחמות העולם."
+      },
+      {
+        "en": "I painted the walls a neutral color like beige.",
+        "he": "צבעתי את הקירות בצבע ניטרלי כמו בז'."
+      },
+      {
+        "en": "Put the car in neutral before you start the engine.",
+        "he": "תעביר את הרכב לניוטרל לפני שאתה מתניע."
+      }
+    ],
+    "collocations": [
+      "remain neutral",
+      "neutral colors",
+      "in neutral",
+      "carbon neutral"
+    ],
+    "context": {
+      "en": "When my two best friends had a big fight, both of them wanted my support. I decided to stay neutral and not take sides. It wasn't easy, because each one told me a different story. In the end they made up, and both thanked me for staying out of it.",
+      "he": "כששתי החברות הכי טובות שלי רבו ריב גדול, כל אחת מהן רצתה את התמיכה שלי. החלטתי להישאר ניטרלית ולא לבחור צד. זה לא היה קל, כי כל אחת סיפרה לי סיפור אחר. בסוף הן השלימו, ושתיהן הודו לי שלא התערבתי."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3828,
+    "lemma": "inspection",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ɪnˈspɛkʃən/",
+    "hebrew": [
+      "בדיקה, ביקורת",
+      "טסט (לרכב)"
+    ],
+    "definition": "an official visit or careful check to make sure something is correct, safe or in good condition",
+    "sentences": [
+      {
+        "en": "The car failed its annual inspection because of the brakes.",
+        "he": "הרכב נכשל בטסט השנתי בגלל הבלמים."
+      },
+      {
+        "en": "Health inspectors made a surprise inspection of the restaurant.",
+        "he": "פקחי בריאות ערכו ביקורת פתע במסעדה."
+      },
+      {
+        "en": "On closer inspection, I noticed a small crack in the screen.",
+        "he": "במבט מקרוב יותר שמתי לב לסדק קטן במסך."
+      }
+    ],
+    "collocations": [
+      "safety inspection",
+      "on closer inspection",
+      "carry out an inspection",
+      "home inspection"
+    ],
+    "context": {
+      "en": "Before we bought our apartment, we paid an engineer for a full inspection. He found water damage behind the bathroom wall that we hadn't noticed. Thanks to his report, we negotiated a lower price. The inspection cost a little but saved us a lot.",
+      "he": "לפני שקנינו את הדירה, שילמנו למהנדס על בדיקה מקיפה. הוא מצא נזקי מים מאחורי קיר האמבטיה שלא שמנו לב אליהם. בזכות הדוח שלו, התמקחנו על מחיר נמוך יותר. הבדיקה עלתה קצת, אבל חסכה לנו הרבה."
+    },
+    "tags": [
+      "work",
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3829,
+    "lemma": "sketch",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/skɛtʃ/",
+    "hebrew": [
+      "סקיצה, רישום",
+      "מערכון",
+      "לשרטט, לרשום"
+    ],
+    "definition": "a quick, simple drawing; a short funny scene in a show; to draw quickly",
+    "sentences": [
+      {
+        "en": "The artist made a quick sketch of the old port.",
+        "he": "האמן עשה סקיצה מהירה של הנמל הישן."
+      },
+      {
+        "en": "They performed a funny sketch about a family dinner.",
+        "he": "הם הציגו מערכון מצחיק על ארוחה משפחתית."
+      },
+      {
+        "en": "She sketched the plan of the house on a napkin.",
+        "he": "היא שרטטה את תוכנית הבית על מפית."
+      }
+    ],
+    "collocations": [
+      "rough sketch",
+      "comedy sketch",
+      "sketch out a plan",
+      "sketch book"
+    ],
+    "context": {
+      "en": "Whenever I travel, I take a small sketch book with me. Instead of only taking photos, I sit in a café and draw what I see. My sketches aren't perfect, but they bring back memories better than pictures. I remember the sounds and smells of every place I drew.",
+      "he": "בכל פעם שאני נוסע, אני לוקח איתי מחברת סקיצות קטנה. במקום רק לצלם, אני יושב בבית קפה ומצייר את מה שאני רואה. הסקיצות שלי לא מושלמות, אבל הן מעוררות זיכרונות טוב יותר מתמונות. אני זוכר את הקולות והריחות של כל מקום שציירתי."
+    },
+    "tags": [
+      "media"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3830,
+    "lemma": "grandfather",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈɡrænˌfɑðər/",
+    "hebrew": [
+      "סבא"
+    ],
+    "definition": "the father of your father or mother",
+    "sentences": [
+      {
+        "en": "My grandfather taught me how to play chess.",
+        "he": "סבא שלי לימד אותי לשחק שחמט."
+      },
+      {
+        "en": "Her grandfather came to Israel from Morocco in 1956.",
+        "he": "סבא שלה עלה לארץ ממרוקו ב-1956."
+      },
+      {
+        "en": "The old grandfather clock in the hall still works.",
+        "he": "שעון המטוטלת הישן במסדרון עדיין עובד."
+      }
+    ],
+    "collocations": [
+      "great-grandfather",
+      "grandfather clock",
+      "my late grandfather",
+      "on my grandfather's side"
+    ],
+    "context": {
+      "en": "My grandfather was a carpenter for fifty years. His hands were rough, but he could make the most delicate furniture. When I was little, he built me a wooden rocking horse. I still have it, and now my own children ride it.",
+      "he": "סבא שלי היה נגר חמישים שנה. הידיים שלו היו מחוספסות, אבל הוא ידע לבנות את הרהיטים הכי עדינים. כשהייתי קטן, הוא בנה לי סוס נדנדה מעץ. הוא עדיין אצלי, ועכשיו הילדים שלי רוכבים עליו."
+    },
+    "tags": [
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3831,
+    "lemma": "scandal",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈskændəl/",
+    "hebrew": [
+      "שערורייה"
+    ],
+    "definition": "an event that shocks people because it involves dishonest or immoral behavior",
+    "sentences": [
+      {
+        "en": "The minister resigned after a corruption scandal.",
+        "he": "השר התפטר בעקבות שערוריית שחיתות."
+      },
+      {
+        "en": "It's a scandal that so many children go to school hungry.",
+        "he": "זו שערורייה שכל כך הרבה ילדים הולכים לבית הספר רעבים."
+      },
+      {
+        "en": "The newspapers were full of the latest celebrity scandal.",
+        "he": "העיתונים היו מלאים בשערוריית הסלבריטאים האחרונה."
+      }
+    ],
+    "collocations": [
+      "political scandal",
+      "cause a scandal",
+      "corruption scandal",
+      "scandal breaks"
+    ],
+    "context": {
+      "en": "When I was in high school, our principal was caught in a small scandal. He had been using school money for private trips. The story was in the local newspaper for weeks. In the end he was fired, and a much stricter principal replaced him.",
+      "he": "כשהייתי בתיכון, המנהל שלנו נקלע לשערורייה קטנה. הוא השתמש בכסף של בית הספר לטיולים פרטיים. הסיפור הופיע בעיתון המקומי במשך שבועות. בסוף הוא פוטר, ובמקומו הגיעה מנהלת הרבה יותר קפדנית."
+    },
+    "tags": [
+      "media",
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3832,
+    "lemma": "proportion",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/prəˈpɔrʃən/",
+    "hebrew": [
+      "חלק, שיעור",
+      "יחס, פרופורציה"
+    ],
+    "definition": "a part or share of a whole; also the correct relationship in size or amount between things",
+    "sentences": [
+      {
+        "en": "A large proportion of our customers are young families.",
+        "he": "חלק גדול מהלקוחות שלנו הם משפחות צעירות."
+      },
+      {
+        "en": "The head in the drawing is out of proportion to the body.",
+        "he": "הראש בציור לא פרופורציונלי לגוף."
+      },
+      {
+        "en": "Don't worry, you're blowing this out of proportion.",
+        "he": "אל תדאג, אתה מוציא את זה מכל פרופורציה."
+      }
+    ],
+    "collocations": [
+      "a large proportion of",
+      "out of proportion",
+      "in proportion to",
+      "sense of proportion"
+    ],
+    "context": {
+      "en": "My mother has a great sense of proportion. When I panicked about a bad grade, she reminded me that one test doesn't decide my life. When I was too relaxed about a real problem, she made me take it seriously. I still call her whenever I need some perspective.",
+      "he": "לאמא שלי יש חוש פרופורציה מעולה. כשנכנסתי ללחץ בגלל ציון רע, היא הזכירה לי שמבחן אחד לא קובע את החיים שלי. כשהייתי רגוע מדי לגבי בעיה אמיתית, היא גרמה לי להתייחס אליה ברצינות. עד היום אני מתקשר אליה בכל פעם שאני צריך קצת פרספקטיבה."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3833,
+    "lemma": "rumor",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/ˈrumər/",
+    "hebrew": [
+      "שמועה",
+      "להישמע כשמועה (be rumored)"
+    ],
+    "definition": "a story that people pass on that may or may not be true",
+    "sentences": [
+      {
+        "en": "There's a rumor that the company is going to be sold.",
+        "he": "יש שמועה שהחברה הולכת להימכר."
+      },
+      {
+        "en": "Don't believe every rumor you hear at work.",
+        "he": "אל תאמין לכל שמועה שאתה שומע בעבודה."
+      },
+      {
+        "en": "The singer is rumored to be planning a world tour.",
+        "he": "לפי השמועות, הזמרת מתכננת סיבוב הופעות עולמי."
+      }
+    ],
+    "collocations": [
+      "spread a rumor",
+      "rumor has it",
+      "unfounded rumor",
+      "rumor mill"
+    ],
+    "context": {
+      "en": "Last month, a rumor spread in our school that the principal was leaving. Within a day, every student and parent had heard it. Some were happy, others were upset. In the end, it turned out she was only going on a two-week vacation.",
+      "he": "בחודש שעבר התפשטה בבית הספר שלנו שמועה שהמנהלת עוזבת. תוך יום, כל התלמידים וההורים כבר שמעו. חלק שמחו, אחרים היו מבואסים. בסוף התברר שהיא רק יוצאת לחופשה של שבועיים."
+    },
+    "tags": [
+      "media"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3834,
+    "lemma": "mama",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈmɑmə/",
+    "hebrew": [
+      "אמא"
+    ],
+    "definition": "an informal word for mother, often used by children",
+    "sentences": [
+      {
+        "en": "Mama, can I have some more soup?",
+        "he": "אמא, אפשר עוד קצת מרק?"
+      },
+      {
+        "en": "The baby's very first word was mama.",
+        "he": "המילה הראשונה של התינוק הייתה אמא."
+      },
+      {
+        "en": "My mama always said that family comes first.",
+        "he": "אמא שלי תמיד אמרה שהמשפחה באה קודם."
+      }
+    ],
+    "collocations": [
+      "mama's boy",
+      "mama bear",
+      "my mama"
+    ],
+    "context": {
+      "en": "In many languages, the word for mother sounds almost the same. Babies everywhere start with easy sounds like ma and pa. That's why mama, ima and mamma are so similar. Parents in every country are thrilled when they hear it for the first time.",
+      "he": "בהרבה שפות, המילה לאמא נשמעת כמעט אותו דבר. תינוקות בכל העולם מתחילים בצלילים קלים כמו מה ופה. בגלל זה מאמא, אימא ומאמה כל כך דומות. הורים בכל מדינה מתרגשים כשהם שומעים את זה בפעם הראשונה."
+    },
+    "tags": [
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3835,
+    "lemma": "divine",
+    "pos": [
+      "adj",
+      "verb"
+    ],
+    "ipa": "/dɪˈvaɪn/",
+    "hebrew": [
+      "אלוהי",
+      "נפלא, מושלם (בדיבור)",
+      "לנחש, לחזות"
+    ],
+    "definition": "connected with God or a god; informally, extremely good or pleasant",
+    "sentences": [
+      {
+        "en": "Many people believed the storm was a sign of divine anger.",
+        "he": "הרבה אנשים האמינו שהסערה הייתה סימן לזעם אלוהי."
+      },
+      {
+        "en": "This chocolate cake is absolutely divine!",
+        "he": "עוגת השוקולד הזאת פשוט אלוהית!"
+      },
+      {
+        "en": "Ancient kings often claimed a divine right to rule.",
+        "he": "מלכים בעת העתיקה טענו לא פעם לזכות אלוהית לשלוט."
+      }
+    ],
+    "collocations": [
+      "divine intervention",
+      "divine right",
+      "absolutely divine",
+      "divine power"
+    ],
+    "context": {
+      "en": "My aunt runs a small café in the Galilee. Everyone who tries her cheesecake says it's divine. People drive from Tel Aviv just for one slice. She refuses to share the recipe, even with family.",
+      "he": "הדודה שלי מנהלת בית קפה קטן בגליל. כל מי שטועם את עוגת הגבינה שלה אומר שהיא אלוהית. אנשים נוסעים מתל אביב רק בשביל פרוסה אחת. היא מסרבת לשתף את המתכון, אפילו עם המשפחה."
+    },
+    "tags": [
+      "academic",
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3836,
+    "lemma": "lazy",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈleɪzi/",
+    "hebrew": [
+      "עצלן"
+    ],
+    "definition": "not wanting to work or make an effort; also (of time) relaxed and calm",
+    "sentences": [
+      {
+        "en": "I was too lazy to cook, so we ordered pizza.",
+        "he": "התעצלתי לבשל, אז הזמנו פיצה."
+      },
+      {
+        "en": "My teenage son is so lazy he won't even make his bed.",
+        "he": "הבן המתבגר שלי כל כך עצלן, שהוא אפילו לא מסדר את המיטה."
+      },
+      {
+        "en": "We spent a lazy Saturday morning in bed with coffee.",
+        "he": "בילינו בוקר שבת עצלני במיטה עם קפה."
+      }
+    ],
+    "collocations": [
+      "lazy day",
+      "too lazy to",
+      "lazy afternoon",
+      "lazy eye"
+    ],
+    "context": {
+      "en": "Saturday used to be my lazy day. I slept until noon and watched TV in my pajamas. Since I got a dog, those days are over. Now I'm out walking at seven every morning, and honestly, I feel much better.",
+      "he": "שבת הייתה פעם היום העצלני שלי. ישנתי עד הצהריים וצפיתי בטלוויזיה בפיג'מה. מאז שאימצתי כלב, הימים האלה נגמרו. עכשיו אני יוצא להליכה כל בוקר בשבע, ובאמת, אני מרגיש הרבה יותר טוב."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3837,
+    "lemma": "disagree",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/ˌdɪsəˈɡri/",
+    "hebrew": [
+      "לא להסכים",
+      "לא לעשות טוב (אוכל)"
+    ],
+    "definition": "to have a different opinion from someone else; (of food) to make you feel slightly ill",
+    "sentences": [
+      {
+        "en": "I completely disagree with what you just said.",
+        "he": "אני לא מסכים בכלל עם מה שאמרת עכשיו."
+      },
+      {
+        "en": "My parents often disagree about money.",
+        "he": "ההורים שלי הרבה פעמים לא מסכימים בענייני כסף."
+      },
+      {
+        "en": "Spicy food really disagrees with my stomach.",
+        "he": "אוכל חריף ממש לא עושה טוב לבטן שלי."
+      }
+    ],
+    "collocations": [
+      "disagree with",
+      "strongly disagree",
+      "agree to disagree",
+      "disagree about"
+    ],
+    "context": {
+      "en": "My husband and I disagree about almost everything, from politics to how to load the dishwasher. Our friends find it funny. But we've learned to listen to each other and sometimes just agree to disagree. After twenty years, it seems to work.",
+      "he": "אני ובעלי לא מסכימים כמעט על שום דבר, מפוליטיקה ועד איך מסדרים את המדיח. החברים שלנו חושבים שזה מצחיק. אבל למדנו להקשיב אחד לשני, ולפעמים פשוט להסכים שאנחנו לא מסכימים. אחרי עשרים שנה, נראה שזה עובד."
+    },
+    "tags": [
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3838,
+    "lemma": "doll",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/dɑl/",
+    "hebrew": [
+      "בובה",
+      "להתגנדר (doll up)"
+    ],
+    "definition": "a toy in the shape of a small person or baby",
+    "sentences": [
+      {
+        "en": "My daughter sleeps with her favorite doll every night.",
+        "he": "הבת שלי ישנה עם הבובה האהובה עליה כל לילה."
+      },
+      {
+        "en": "Grandma collects old dolls from around the world.",
+        "he": "סבתא אוספת בובות ישנות מכל העולם."
+      },
+      {
+        "en": "She got all dolled up for her cousin's wedding.",
+        "he": "היא התגנדרה לגמרי לחתונה של בת הדודה שלה."
+      }
+    ],
+    "collocations": [
+      "rag doll",
+      "Barbie doll",
+      "doll's house",
+      "dolled up"
+    ],
+    "context": {
+      "en": "When I was six, my grandmother sewed me a rag doll from old clothes. It had button eyes and yellow wool hair. I took it everywhere, even to kindergarten. Thirty years later, it sits on a shelf in my daughter's room.",
+      "he": "כשהייתי בת שש, סבתא שלי תפרה לי בובת בד מבגדים ישנים. היו לה עיני כפתורים ושיער מצמר צהוב. לקחתי אותה לכל מקום, אפילו לגן. שלושים שנה אחר כך, היא יושבת על מדף בחדר של הבת שלי."
+    },
+    "tags": [
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3839,
+    "lemma": "exploit",
+    "pos": [
+      "verb",
+      "noun"
+    ],
+    "ipa": "/ɪkˈsplɔɪt/",
+    "hebrew": [
+      "לנצל (לרעה)",
+      "לנצל (משאבים)",
+      "מעללים, מעשה נועז"
+    ],
+    "definition": "to use someone unfairly for your own advantage; to use something fully; as a noun (/ˈɛksplɔɪt/), a brave or exciting act",
+    "sentences": [
+      {
+        "en": "Some companies exploit young workers by paying them very little.",
+        "he": "חברות מסוימות מנצלות עובדים צעירים ומשלמות להם מעט מאוד."
+      },
+      {
+        "en": "We need to fully exploit the sun as a source of energy.",
+        "he": "אנחנו צריכים לנצל עד הסוף את השמש כמקור אנרגיה."
+      },
+      {
+        "en": "Grandpa loves telling stories about his exploits as a young sailor.",
+        "he": "סבא אוהב לספר על המעללים שלו כמלח צעיר."
+      }
+    ],
+    "collocations": [
+      "exploit workers",
+      "exploit a weakness",
+      "exploit resources",
+      "daring exploits"
+    ],
+    "context": {
+      "en": "Hackers look for weaknesses in software that they can exploit. Once they find one, they can steal data or take control of computers. That's why companies release updates so often. Installing them quickly is one of the easiest ways to stay safe.",
+      "he": "האקרים מחפשים חולשות בתוכנה שהם יכולים לנצל. ברגע שהם מוצאים אחת, הם יכולים לגנוב מידע או להשתלט על מחשבים. בגלל זה חברות משחררות עדכונים כל כך הרבה. להתקין אותם מהר זו אחת הדרכים הפשוטות להישאר מוגנים."
+    },
+    "tags": [
+      "academic",
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3840,
+    "lemma": "treasury",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈtrɛʒəri/",
+    "hebrew": [
+      "משרד האוצר",
+      "קופה, אוצר"
+    ],
+    "definition": "the government department that controls a country's money; also the money an organization has",
+    "sentences": [
+      {
+        "en": "The Treasury announced new tax cuts for families.",
+        "he": "משרד האוצר הודיע על הפחתות מס חדשות למשפחות."
+      },
+      {
+        "en": "The party's treasury is almost empty after the election.",
+        "he": "הקופה של המפלגה כמעט ריקה אחרי הבחירות."
+      },
+      {
+        "en": "Investors buy treasury bonds because they're considered safe.",
+        "he": "משקיעים קונים איגרות חוב ממשלתיות כי הן נחשבות בטוחות."
+      }
+    ],
+    "collocations": [
+      "the Treasury",
+      "treasury bonds",
+      "state treasury",
+      "Treasury officials"
+    ],
+    "context": {
+      "en": "Every year before the budget, the Treasury and the other ministries argue about money. The defense ministry wants more, and so do education and health. The Treasury tries to keep spending under control. In the end, nobody gets everything they asked for.",
+      "he": "כל שנה לפני התקציב, משרד האוצר ושאר המשרדים מתווכחים על כסף. משרד הביטחון רוצה יותר, וגם החינוך והבריאות. האוצר מנסה לשמור על ההוצאות תחת שליטה. בסוף, אף אחד לא מקבל את כל מה שביקש."
+    },
+    "tags": [
+      "finance"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3841,
+    "lemma": "container",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/kənˈteɪnər/",
+    "hebrew": [
+      "מכל, קופסה",
+      "מכולה"
+    ],
+    "definition": "an object such as a box or bottle used for holding things; also a large metal box for moving goods on ships or trucks",
+    "sentences": [
+      {
+        "en": "Keep the leftovers in a plastic container in the fridge.",
+        "he": "שמרו את השאריות בקופסת פלסטיק במקרר."
+      },
+      {
+        "en": "Huge ships carry thousands of containers across the ocean.",
+        "he": "ספינות ענק מובילות אלפי מכולות על פני האוקיינוס."
+      },
+      {
+        "en": "Put the old batteries in the special recycling container.",
+        "he": "שימו את הסוללות הישנות במכל המיחזור המיוחד."
+      }
+    ],
+    "collocations": [
+      "plastic container",
+      "shipping container",
+      "container ship",
+      "airtight container"
+    ],
+    "context": {
+      "en": "My mother sends me home with food every time I visit. She fills plastic containers with soup, rice and cookies. The problem is that I never remember to return them. Now she writes her name on every container.",
+      "he": "אמא שלי שולחת אותי הביתה עם אוכל בכל פעם שאני מבקר. היא ממלאת קופסאות פלסטיק במרק, באורז ובעוגיות. הבעיה היא שאני אף פעם לא זוכר להחזיר אותן. עכשיו היא כותבת את השם שלה על כל קופסה."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3842,
+    "lemma": "ceiling",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈsilɪŋ/",
+    "hebrew": [
+      "תקרה"
+    ],
+    "definition": "the inside surface at the top of a room; also an upper limit on something",
+    "sentences": [
+      {
+        "en": "There's a crack in the bedroom ceiling.",
+        "he": "יש סדק בתקרה של חדר השינה."
+      },
+      {
+        "en": "The apartment has high ceilings and big windows.",
+        "he": "בדירה יש תקרות גבוהות וחלונות גדולים."
+      },
+      {
+        "en": "The government set a ceiling on rent increases.",
+        "he": "הממשלה קבעה תקרה להעלאות שכר הדירה."
+      }
+    ],
+    "collocations": [
+      "high ceilings",
+      "glass ceiling",
+      "ceiling fan",
+      "price ceiling"
+    ],
+    "context": {
+      "en": "My mother was the first woman to manage a branch at her bank. She says she hit the glass ceiling many times before that. Male colleagues with less experience were promoted ahead of her. She kept working hard, and in the end she broke through.",
+      "he": "אמא שלי הייתה האישה הראשונה שניהלה סניף בבנק שלה. היא אומרת שלפני כן היא נתקלה שוב ושוב בתקרת הזכוכית. עמיתים גברים עם פחות ניסיון קודמו לפניה. היא המשיכה לעבוד קשה, ובסוף פרצה את התקרה."
+    },
+    "tags": [
+      "everyday",
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3843,
+    "lemma": "serial",
+    "pos": [
+      "adj",
+      "noun"
+    ],
+    "ipa": "/ˈsɪriəl/",
+    "hebrew": [
+      "סדרתי",
+      "סידורי (מספר)",
+      "סדרה בהמשכים"
+    ],
+    "definition": "happening again and again in a series; also a story told in parts on TV, radio or in a magazine",
+    "sentences": [
+      {
+        "en": "Please enter the serial number on the back of the device.",
+        "he": "נא להזין את המספר הסידורי שבגב המכשיר."
+      },
+      {
+        "en": "He's a serial entrepreneur who has started five companies.",
+        "he": "הוא יזם סדרתי שהקים חמש חברות."
+      },
+      {
+        "en": "Police believe a serial thief is behind the robberies.",
+        "he": "המשטרה מאמינה שגנב סדרתי עומד מאחורי מעשי השוד."
+      }
+    ],
+    "collocations": [
+      "serial number",
+      "serial killer",
+      "serial entrepreneur",
+      "TV serial"
+    ],
+    "hook": "serial (סדרתי) נשמע בדיוק כמו cereal (דגני בוקר)",
+    "context": {
+      "en": "My friend is a serial entrepreneur. She has started four companies in ten years. Two of them failed, one was sold, and one is still growing. She says every failure taught her something the next company needed.",
+      "he": "חברה שלי היא יזמית סדרתית. היא הקימה ארבע חברות בעשר שנים. שתיים מהן נכשלו, אחת נמכרה ואחת עדיין גדלה. היא אומרת שכל כישלון לימד אותה משהו שהחברה הבאה הייתה צריכה."
+    },
+    "tags": [
+      "academic",
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3844,
+    "lemma": "nest",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/nɛst/",
+    "hebrew": [
+      "קן",
+      "לקנן"
+    ],
+    "definition": "a structure that birds build to lay their eggs in; to build or live in a nest",
+    "sentences": [
+      {
+        "en": "A pair of birds built a nest on our balcony.",
+        "he": "זוג ציפורים בנה קן במרפסת שלנו."
+      },
+      {
+        "en": "When the kids left home, we suddenly had an empty nest.",
+        "he": "כשהילדים עזבו את הבית, פתאום נשארנו בקן ריק."
+      },
+      {
+        "en": "Storks nest on rooftops and electricity poles.",
+        "he": "חסידות מקננות על גגות ועל עמודי חשמל."
+      }
+    ],
+    "collocations": [
+      "bird's nest",
+      "empty nest",
+      "leave the nest",
+      "nest egg"
+    ],
+    "context": {
+      "en": "This spring, a pigeon built a nest in a flower pot on our balcony. Soon there were two small eggs inside. My kids checked on them every morning before school. When the chicks finally flew away, everyone was a little sad.",
+      "he": "באביב הזה יונה בנתה קן בעציץ במרפסת שלנו. מהר מאוד היו בפנים שתי ביצים קטנות. הילדים שלי בדקו אותן כל בוקר לפני בית הספר. כשהגוזלים סוף סוף עפו, כולם היו קצת עצובים."
+    },
+    "tags": [
+      "nature",
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3845,
+    "lemma": "verify",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/ˈvɛrəˌfaɪ/",
+    "hebrew": [
+      "לאמת, לוודא"
+    ],
+    "definition": "to check or prove that something is true or correct",
+    "sentences": [
+      {
+        "en": "Please verify your email address by clicking the link.",
+        "he": "נא לאמת את כתובת המייל בלחיצה על הקישור."
+      },
+      {
+        "en": "Journalists must verify the facts before publishing a story.",
+        "he": "עיתונאים חייבים לוודא את העובדות לפני שהם מפרסמים כתבה."
+      },
+      {
+        "en": "The bank called to verify a large payment from my card.",
+        "he": "הבנק התקשר כדי לאמת חיוב גדול בכרטיס שלי."
+      }
+    ],
+    "collocations": [
+      "verify your identity",
+      "verify the facts",
+      "independently verified",
+      "verify an account"
+    ],
+    "context": {
+      "en": "My grandmother almost fell for a phone scam last month. A man said he was from her bank and asked for her card details. Luckily, she said she would call the bank herself to verify. Of course, the bank had never called her.",
+      "he": "סבתא שלי כמעט נפלה בחודש שעבר בהונאה טלפונית. אדם אמר שהוא מהבנק שלה וביקש את פרטי הכרטיס. למזלה, היא אמרה שתתקשר לבנק בעצמה כדי לוודא. כמובן, הבנק מעולם לא התקשר אליה."
+    },
+    "tags": [
+      "tech",
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3846,
+    "lemma": "stir",
+    "pos": [
+      "verb",
+      "noun"
+    ],
+    "ipa": "/stɝ/",
+    "hebrew": [
+      "לבחוש, לערבב",
+      "לעורר",
+      "מהומה, סערה"
+    ],
+    "definition": "to mix a liquid or food by moving a spoon around in it; to cause a feeling or reaction; a feeling of excitement or anger among people",
+    "sentences": [
+      {
+        "en": "Stir the sauce slowly so it doesn't burn.",
+        "he": "בחשו את הרוטב לאט כדי שלא יישרף."
+      },
+      {
+        "en": "His speech caused quite a stir on social media.",
+        "he": "הנאום שלו עורר סערה לא קטנה ברשתות."
+      },
+      {
+        "en": "The smell of coffee stirred memories of my grandmother's kitchen.",
+        "he": "ריח הקפה עורר זיכרונות מהמטבח של סבתא שלי."
+      }
+    ],
+    "collocations": [
+      "stir the soup",
+      "cause a stir",
+      "stir up trouble",
+      "stir-fry"
+    ],
+    "context": {
+      "en": "My dad makes risotto every Friday. The secret, he says, is to stir it constantly for twenty minutes. Nobody else is allowed near the pot while he cooks. The result is always creamy and perfect.",
+      "he": "אבא שלי מכין ריזוטו בכל יום שישי. הסוד, לדבריו, הוא לבחוש בלי הפסקה במשך עשרים דקות. אף אחד אחר לא מורשה להתקרב לסיר בזמן שהוא מבשל. התוצאה תמיד קרמית ומושלמת."
+    },
+    "tags": [
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3847,
+    "lemma": "seventh",
+    "pos": [
+      "num"
+    ],
+    "ipa": "/ˈsɛvənθ/",
+    "hebrew": [
+      "שביעי",
+      "שביעית (חלק)"
+    ],
+    "definition": "coming after six others in order; also one of seven equal parts",
+    "sentences": [
+      {
+        "en": "We live on the seventh floor, and the elevator is broken again.",
+        "he": "אנחנו גרים בקומה השביעית, והמעלית שוב מקולקלת."
+      },
+      {
+        "en": "My daughter has just started seventh grade.",
+        "he": "הבת שלי התחילה עכשיו כיתה ז'."
+      },
+      {
+        "en": "After winning the lottery, he felt like he was in seventh heaven.",
+        "he": "אחרי שזכה בלוטו, הוא הרגיש ברקיע השביעי."
+      }
+    ],
+    "collocations": [
+      "seventh grade",
+      "seventh heaven",
+      "the seventh day",
+      "seventh floor"
+    ],
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3848,
+    "lemma": "oxygen",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈɑksɪdʒən/",
+    "hebrew": [
+      "חמצן"
+    ],
+    "definition": "a gas in the air that people, animals and plants need to live",
+    "sentences": [
+      {
+        "en": "Plants produce oxygen during the day.",
+        "he": "צמחים מייצרים חמצן במהלך היום."
+      },
+      {
+        "en": "The patient was given oxygen in the ambulance.",
+        "he": "המטופל קיבל חמצן באמבולנס."
+      },
+      {
+        "en": "At the top of the mountain, there's less oxygen in the air.",
+        "he": "בפסגת ההר יש פחות חמצן באוויר."
+      }
+    ],
+    "collocations": [
+      "oxygen mask",
+      "lack of oxygen",
+      "oxygen tank",
+      "oxygen levels"
+    ],
+    "context": {
+      "en": "When my father climbed Kilimanjaro, he felt the lack of oxygen near the top. Every step was slow and heavy, and he had a headache. The guide told him to drink water and breathe deeply. Reaching the summit at sunrise made every difficult step worth it.",
+      "he": "כשאבא שלי טיפס על הקילימנג'רו, הוא הרגיש את המחסור בחמצן ליד הפסגה. כל צעד היה איטי וכבד, והיה לו כאב ראש. המדריך אמר לו לשתות מים ולנשום עמוק. ההגעה לפסגה בזריחה הצדיקה כל צעד קשה."
+    },
+    "tags": [
+      "health",
+      "nature"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3849,
+    "lemma": "prediction",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/prɪˈdɪkʃən/",
+    "hebrew": [
+      "תחזית, ניבוי"
+    ],
+    "definition": "a statement about what you think will happen in the future",
+    "sentences": [
+      {
+        "en": "My prediction is that our team will win by two goals.",
+        "he": "התחזית שלי היא שהקבוצה שלנו תנצח בהפרש של שני שערים."
+      },
+      {
+        "en": "Economic predictions for next year are not very optimistic.",
+        "he": "התחזיות הכלכליות לשנה הבאה לא מאוד אופטימיות."
+      },
+      {
+        "en": "His prediction that it would rain turned out to be wrong.",
+        "he": "התחזית שלו שירד גשם התבררה כשגויה."
+      }
+    ],
+    "collocations": [
+      "make a prediction",
+      "accurate prediction",
+      "prediction for",
+      "contrary to predictions"
+    ],
+    "context": {
+      "en": "Every year before the World Cup, my uncle writes his predictions on a big sheet of paper. He sticks it on the fridge and checks it after every game. Usually almost all his predictions are wrong. Still, he does it again every four years with the same excitement.",
+      "he": "כל פעם לפני המונדיאל, הדוד שלי כותב את התחזיות שלו על דף גדול. הוא תולה אותו על המקרר ובודק אחרי כל משחק. בדרך כלל כמעט כל התחזיות שלו שגויות. ובכל זאת, הוא עושה את זה שוב כל ארבע שנים באותה התלהבות."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 3850,
+    "lemma": "racism",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈreɪˌsɪzəm/",
+    "hebrew": [
+      "גזענות"
+    ],
+    "definition": "unfair treatment of people, or the belief that some people are better than others, because of their race or origin",
+    "sentences": [
+      {
+        "en": "The club launched a campaign against racism in football.",
+        "he": "המועדון השיק קמפיין נגד גזענות בכדורגל."
+      },
+      {
+        "en": "Many immigrants have experienced racism at work.",
+        "he": "הרבה מהגרים חוו גזענות בעבודה."
+      },
+      {
+        "en": "Schools should teach children to recognize and fight racism.",
+        "he": "בתי ספר צריכים ללמד ילדים לזהות גזענות ולהיאבק בה."
+      }
+    ],
+    "collocations": [
+      "fight racism",
+      "institutional racism",
+      "racism against",
+      "accused of racism"
+    ],
+    "context": {
+      "en": "When my grandfather arrived in Israel from Yemen, he faced racism from some of his neighbors. People made fun of his accent and his food. He worked hard, raised six children and never stopped smiling. Today his grandchildren are doctors, teachers and engineers.",
+      "he": "כשסבא שלי עלה לארץ מתימן, הוא נתקל בגזענות מצד חלק מהשכנים. אנשים צחקו על המבטא שלו ועל האוכל שלו. הוא עבד קשה, גידל שישה ילדים ולא הפסיק לחייך. היום הנכדים שלו רופאים, מורים ומהנדסים."
+    },
+    "tags": [
+      "academic",
+      "law"
+    ],
+    "tier": "A"
+  }
+]
