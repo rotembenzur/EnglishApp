@@ -177,3 +177,15 @@ describe('sanity probes', () => {
     expect(pickProbe(inventory(), { theta: 2, studied: new Set() }, createRng(1))).toBeNull();
   });
 });
+
+describe('non-teachable entries', () => {
+  it('are never selected as new words or probes', () => {
+    const lemmas = inventory().map((l) => (l.id % 3 === 0 ? { ...l, kind: 'skip' as const } : l));
+    const rng = createRng(11);
+    for (let i = 0; i < 20; i++) {
+      for (const p of selectNewWords(lemmas, { theta: 50, studied: new Set() }, 10, rng))
+        expect(p.kind).not.toBe('skip');
+      expect(pickProbe(lemmas, { theta: 60, studied: new Set() }, rng)?.kind).not.toBe('skip');
+    }
+  });
+});

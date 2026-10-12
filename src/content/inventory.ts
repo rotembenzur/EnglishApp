@@ -16,6 +16,7 @@ export interface Manifest {
   lemmaCount: number;
   shards: { id: string; from: number; to: number; count: number }[];
   curated: string[];
+  skip?: number[];
 }
 
 /** Raw shard entry (content/schema.json). */
@@ -89,6 +90,7 @@ export function loadInventory(): Promise<Inventory> {
     ]);
     const tierAIds = new Set<number>();
     const shardRanks = new Set(manifest.shards.map((s) => Number(s.id)));
+    const skip = new Set(manifest.skip ?? []);
     const lemmas: LemmaInfo[] = packed.map(([id, lemma, rank, pos, d, band, tags, family]) => {
       const shard = Math.floor((rank - 1) / SHARD_SIZE);
       const tier = shardRanks.has(shard) ? 'A' : 'C';
@@ -103,7 +105,7 @@ export function loadInventory(): Promise<Inventory> {
         tags: tags ? tags.split(',') : [],
         family,
         tier,
-        kind: 'word',
+        kind: skip.has(id) ? 'skip' : 'word',
       };
     });
     const curated = new Map<number, CuratedItem>();

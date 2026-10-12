@@ -39,7 +39,7 @@ function tierBoost(l: LemmaInfo): number {
 }
 
 function eligible(l: LemmaInfo, ctx: SelectionContext): boolean {
-  if (ctx.studied.has(l.id)) return false;
+  if (ctx.studied.has(l.id) || l.kind === 'skip') return false;
   if (l.kind && l.kind !== 'word' && ctx.disabledKinds?.includes(l.kind)) return false;
   return true;
 }

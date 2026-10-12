@@ -115,6 +115,7 @@ export async function buildSession(opts: {
             (l) =>
               l.tier === 'A' &&
               !studied.has(l.id) &&
+              l.kind !== 'skip' &&
               (!l.kind || l.kind === 'word' || !settings.disabledKinds.includes(l.kind)),
           )
           .sort((a, b) => Math.abs(a.d - target) - Math.abs(b.d - target))

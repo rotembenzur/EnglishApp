@@ -33,8 +33,11 @@ export interface LemmaInfo {
   family: number;
   /** Content tier available locally: A authored, B enriched, C lemma only. */
   tier?: 'A' | 'B' | 'C';
-  /** Curated items (phrasal verbs, idioms, collocations) use their own namespace. */
-  kind?: 'word' | 'phrasal' | 'idiom' | 'collocation';
+  /**
+   * Curated items (phrasal verbs, idioms, collocations) use their own namespace. 'skip' marks
+   * inventory entries that are not teachable words (names, inflected forms, spelling variants).
+   */
+  kind?: 'word' | 'phrasal' | 'idiom' | 'collocation' | 'skip';
 }
 
 export interface Sentence {

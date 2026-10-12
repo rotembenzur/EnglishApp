@@ -66,3 +66,4 @@ One line each: decision, why, alternatives rejected. Newest at the bottom of eac
 - **Weekly boss review: shipped** (30 mixed items, badge).
 - **Synonym/antonym mini-exercises: deferred (B-003).** They need authored synonym sets per C1 word to avoid ambiguous answers; revisit after Tier A reaches C1 ranks.
 - **Pronunciation self-check: deferred (B-004).** Safari's SpeechRecognition support is partial and unreliable in standalone mode.
+- **Non-teachable inventory entries are skipped, not deleted.** About 3% of authored entries turned out to be inflected forms, first names or spelling variants. Deleting them would shift ranks and therefore shard membership, so the build derives a skip list from their Tier A definitions; they keep their cards but are never introduced, probed, offered as distractors or used in duels. Abbreviations ("info", "lab") stay teachable.

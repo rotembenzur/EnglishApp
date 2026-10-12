@@ -13,7 +13,16 @@ export interface ContentManifest {
   lemmaCount: number;
   shards: { id: string; from: number; to: number; count: number }[];
   curated: string[];
+  /** Inventory entries that are not teachable words (names, inflected forms, spelling variants). */
+  skip: number[];
 }
+
+/**
+ * Definitions written by Tier A authors reveal inventory entries that slipped past the lemma
+ * filters. They keep their content (word detail, read mode) but are never introduced as new words.
+ */
+export const NOT_TEACHABLE =
+  /\b(first name|surname|family name|given name|proper name|a name for|plural (form )?of|past tense|past participle|third[- ]person|British spelling|(alternative|variant) spelling|spelling of)\b/i;
 
 async function fileExists(p: string): Promise<boolean> {
   try {
@@ -37,6 +46,7 @@ export async function buildContent(opts: { quiet?: boolean } = {}): Promise<Cont
     lemmaCount: 0,
     shards: [],
     curated: [],
+    skip: [],
   };
 
   const lemmasPath = path.join(contentDir, 'lemmas.json');
@@ -72,7 +82,9 @@ export async function buildContent(opts: { quiet?: boolean } = {}): Promise<Cont
     const files = (await readdir(shardsDir)).filter((f) => /^\d{4}\.json$/.test(f)).sort();
     for (const f of files) {
       const raw = await readFile(path.join(shardsDir, f), 'utf8');
-      const entries = JSON.parse(raw) as { id: number }[];
+      const entries = JSON.parse(raw) as { id: number; definition?: string }[];
+      for (const e of entries)
+        if (e.definition && NOT_TEACHABLE.test(e.definition)) manifest.skip.push(e.id);
       const id = f.replace('.json', '');
       await writeFile(path.join(outDir, 'shards', f), JSON.stringify(entries));
       const ids = entries.map((e) => e.id);
@@ -122,7 +134,7 @@ export async function buildContent(opts: { quiet?: boolean } = {}): Promise<Cont
   await writeFile(path.join(outDir, 'manifest.json'), JSON.stringify(manifest));
   if (!opts.quiet) {
     console.info(
-      `content: ${manifest.lemmaCount} lemmas, ${manifest.shards.length} shards, ${manifest.curated.length} curated lists`,
+      `content: ${manifest.lemmaCount} lemmas, ${manifest.shards.length} shards, ${manifest.curated.length} curated lists, ${manifest.skip.length} skipped`,
     );
   }
   return manifest;
