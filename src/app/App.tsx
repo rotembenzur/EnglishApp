@@ -26,6 +26,7 @@ const Stats = lazy(() => import('@/screens/Stats').then((m) => ({ default: m.Sta
 const Rivalry = lazy(() => import('@/screens/Rivalry').then((m) => ({ default: m.Rivalry })));
 const Settings = lazy(() => import('@/screens/Settings').then((m) => ({ default: m.Settings })));
 const Today = lazy(() => import('@/screens/Today').then((m) => ({ default: m.Today })));
+const ReadMode = lazy(() => import('@/screens/ReadMode').then((m) => ({ default: m.ReadMode })));
 const BidiTest = lazy(() => import('@/screens/BidiTest').then((m) => ({ default: m.BidiTest })));
 
 /** Requires a selected, unlocked profile. */
@@ -124,6 +125,7 @@ export function App() {
             <Route path="stats" element={<Stats />} />
             <Route path="stats/:user" element={<Stats />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="read" element={<ReadMode />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

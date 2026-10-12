@@ -489,6 +489,19 @@ export const t = {
     num: 'מספר',
     other: 'ביטוי',
   } as Record<string, string>,
+  read: {
+    title: 'מצב קריאה',
+    intro:
+      'מדביקים טקסט באנגלית (כתבה, מייל, שיר) ורואים אילו מילים חדשות בשבילך. לחיצה על מילה פותחת אותה.',
+    placeholder: 'Paste English text here...',
+    analyze: 'לנתח את הטקסט',
+    legendNew: 'חדשה ברמה שלך',
+    legendStudied: 'כבר בלמידה',
+    addAll: (n: number) => `להוסיף את ${n} המילים החדשות ללמידה`,
+    added: (n: number) => (n === 1 ? 'מילה אחת נוספה ללמידה' : `${n} מילים נוספו ללמידה`),
+    fullCard: 'לכרטיס המלא',
+    entry: 'מצב קריאה: מדביקים טקסט ולומדים ממנו',
+  },
   today: {
     title: 'היום',
     open: 'לפתוח את LexBites',

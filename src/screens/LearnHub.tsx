@@ -22,6 +22,7 @@ const DESCRIPTIONS: Record<string, string> = {
   listening: 'ידיים עסוקות? רק לשמוע ולבחור, כפתורים גדולים',
   boss: '30 פריטים מעורבבים. לנצח את הבוס של השבוע',
   duel: '10 מילים זהות לשניכם, פעם ביום',
+  read: 'מדביקים טקסט באנגלית ולוקחים ממנו מילים',
 };
 
 export function LearnHub() {
@@ -71,6 +72,7 @@ export function LearnHub() {
       min: 30,
     },
     { key: 'duel', label: t.home.duel, icon: <SwordsIcon />, to: '/session/duel' },
+    { key: 'read', label: t.read.title, icon: <span className="text-xl">📖</span>, to: '/read' },
   ];
   return (
     <div className="flex flex-col gap-4 pb-8">

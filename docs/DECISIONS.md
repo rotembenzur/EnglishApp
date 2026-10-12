@@ -58,3 +58,11 @@ One line each: decision, why, alternatives rejected. Newest at the bottom of eac
 - **Pinch zoom allowed.** `maximum-scale=1` was removed from the viewport (accessibility); inputs are 16px and `touch-action: manipulation` still prevents the iOS focus zoom and double-tap zoom.
 - **Secondary screens are lazy-loaded.** Initial JS dropped from 126 KB to 99 KB gzipped; all chunks are precached so offline navigation stays instant.
 - **robots.txt disallows indexing.** A private two-person app; the SEO score is irrelevant by design.
+
+## Section 7.3 ideas
+
+- **Read mode and word list import: shipped together (`/read`).** Paste any English text; words new at the user's level are highlighted, tap for a quick card, add one or up to 25 at once. A pasted word list is just a text. Rule-based lemmatization with an irregular-forms table keeps it offline and instant.
+- **Confusable pairs: shipped as authored "explain the difference" cards** (`content/confusables.json`), focused on confusions typical for Hebrew speakers.
+- **Weekly boss review: shipped** (30 mixed items, badge).
+- **Synonym/antonym mini-exercises: deferred (B-003).** They need authored synonym sets per C1 word to avoid ambiguous answers; revisit after Tier A reaches C1 ranks.
+- **Pronunciation self-check: deferred (B-004).** Safari's SpeechRecognition support is partial and unreliable in standalone mode.
