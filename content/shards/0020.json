@@ -1,0 +1,2064 @@
+[
+  {
+    "id": 4001,
+    "lemma": "soap",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/soʊp/",
+    "hebrew": [
+      "סבון",
+      "אופרת סבון",
+      "לסבן"
+    ],
+    "definition": "a substance used with water for washing and cleaning; also short for a soap opera, a TV drama about the lives of ordinary people",
+    "sentences": [
+      {
+        "en": "Wash your hands with soap and warm water.",
+        "he": "שטפו ידיים עם סבון ומים חמים."
+      },
+      {
+        "en": "My grandmother never misses an episode of her favorite soap.",
+        "he": "סבתא שלי אף פעם לא מפספסת פרק של אופרת הסבון האהובה עליה."
+      },
+      {
+        "en": "We bought handmade olive oil soap at the market in Acre.",
+        "he": "קנינו סבון שמן זית בעבודת יד בשוק בעכו."
+      }
+    ],
+    "collocations": [
+      "bar of soap",
+      "liquid soap",
+      "soap opera",
+      "soap and water"
+    ],
+    "context": {
+      "en": "My daughter started making her own soap as a hobby. She mixes oils, herbs and natural colors in the kitchen. Every friend and relative now gets soap for their birthday. Our bathroom smells like lavender all year round.",
+      "he": "הבת שלי התחילה להכין סבון בעצמה כתחביב. היא מערבבת שמנים, עשבי תיבול וצבעים טבעיים במטבח. עכשיו כל חבר ובן משפחה מקבל סבון ליום ההולדת. האמבטיה שלנו מריחה מלבנדר כל השנה."
+    },
+    "tags": [
+      "everyday",
+      "health"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4002,
+    "lemma": "rap",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/ræp/",
+    "hebrew": [
+      "ראפ",
+      "לשיר ראפ",
+      "לדפוק (בקלות)"
+    ],
+    "definition": "a type of music in which the words are spoken quickly to a beat; also to hit something quickly and lightly",
+    "sentences": [
+      {
+        "en": "My son listens to rap music all day long.",
+        "he": "הבן שלי שומע מוזיקת ראפ כל היום."
+      },
+      {
+        "en": "He can rap faster than anyone I know.",
+        "he": "הוא שר ראפ מהר יותר מכל מי שאני מכיר."
+      },
+      {
+        "en": "Someone rapped on the window and made me jump.",
+        "he": "מישהו דפק על החלון והקפיץ אותי."
+      }
+    ],
+    "collocations": [
+      "rap music",
+      "rap star",
+      "take the rap",
+      "rap on the door"
+    ],
+    "context": {
+      "en": "My teenage son writes rap songs in his room every evening. At first, I didn't understand the words or the beat. Then he played me a song he had written about his grandfather. I was surprised by how emotional and clever it was.",
+      "he": "הבן המתבגר שלי כותב שירי ראפ בחדר שלו כל ערב. בהתחלה לא הבנתי את המילים או את הקצב. ואז הוא השמיע לי שיר שכתב על סבא שלו. הופתעתי כמה הוא מרגש ושנון."
+    },
+    "tags": [
+      "media"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4003,
+    "lemma": "legitimate",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ləˈdʒɪtəmət/",
+    "hebrew": [
+      "לגיטימי, מוצדק",
+      "חוקי"
+    ],
+    "definition": "fair and reasonable; also allowed by law",
+    "sentences": [
+      {
+        "en": "That's a legitimate question, and I'll try to answer it.",
+        "he": "זו שאלה לגיטימית, ואנסה לענות עליה."
+      },
+      {
+        "en": "Is this website a legitimate business or a scam?",
+        "he": "האתר הזה הוא עסק חוקי או עוקץ?"
+      },
+      {
+        "en": "Being sick is a legitimate reason to miss work.",
+        "he": "מחלה היא סיבה מוצדקת להיעדר מהעבודה."
+      }
+    ],
+    "collocations": [
+      "legitimate reason",
+      "legitimate concern",
+      "legitimate business",
+      "perfectly legitimate"
+    ],
+    "context": {
+      "en": "When I got an email saying I'd won a free trip, I wasn't sure it was legitimate. The logo looked real, but the address was strange. I called the company directly to check. Of course, they had never sent it.",
+      "he": "כשקיבלתי מייל שאומר שזכיתי בטיול חינם, לא הייתי בטוח שהוא אמיתי. הלוגו נראה אמין, אבל הכתובת הייתה מוזרה. התקשרתי ישירות לחברה כדי לבדוק. כמובן, הם מעולם לא שלחו אותו."
+    },
+    "tags": [
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4004,
+    "lemma": "cope",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/koʊp/",
+    "hebrew": [
+      "להתמודד"
+    ],
+    "definition": "to deal successfully with a difficult situation",
+    "sentences": [
+      {
+        "en": "How do you cope with so much stress at work?",
+        "he": "איך אתה מתמודד עם כל כך הרבה לחץ בעבודה?"
+      },
+      {
+        "en": "The hospital couldn't cope with the number of patients.",
+        "he": "בית החולים לא עמד בעומס המטופלים."
+      },
+      {
+        "en": "She's coping well since her husband died.",
+        "he": "היא מתמודדת יפה מאז שבעלה נפטר."
+      }
+    ],
+    "collocations": [
+      "cope with",
+      "unable to cope",
+      "cope well",
+      "coping skills"
+    ],
+    "context": {
+      "en": "When I started my first job and my master's degree at the same time, I almost didn't cope. I slept five hours a night and stopped seeing friends. My mother suggested I make a weekly plan and stick to it. It didn't make things easy, but it made them possible.",
+      "he": "כשהתחלתי את העבודה הראשונה שלי ואת התואר השני באותו זמן, כמעט לא עמדתי בזה. ישנתי חמש שעות בלילה והפסקתי לראות חברים. אמא שלי הציעה שאכין תוכנית שבועית ואצמד אליה. זה לא הפך את הדברים לקלים, אבל הפך אותם לאפשריים."
+    },
+    "tags": [
+      "emotions",
+      "health"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4005,
+    "lemma": "spur",
+    "pos": [
+      "verb",
+      "noun"
+    ],
+    "ipa": "/spɝ/",
+    "hebrew": [
+      "לדרבן, לעורר",
+      "דורבן",
+      "דחף רגעי (on the spur of the moment)"
+    ],
+    "definition": "to encourage someone or make something happen faster; also a metal point on a rider's boot",
+    "sentences": [
+      {
+        "en": "The new tax cuts spurred economic growth.",
+        "he": "הפחתות המס החדשות דרבנו את הצמיחה הכלכלית."
+      },
+      {
+        "en": "We decided on the spur of the moment to drive to the beach.",
+        "he": "החלטנו ספונטנית לנסוע לים."
+      },
+      {
+        "en": "The cowboy wore boots with silver spurs.",
+        "he": "הקאובוי נעל מגפיים עם דורבנות כסף."
+      }
+    ],
+    "collocations": [
+      "on the spur of the moment",
+      "spur growth",
+      "spur someone on",
+      "spur action"
+    ],
+    "context": {
+      "en": "My friend's success in her first marathon spurred me to start running. I began with just ten minutes a day around the park. She sent me encouraging messages after every run. A year later, we ran our first race together.",
+      "he": "ההצלחה של חברה שלי במרתון הראשון שלה דרבנה אותי להתחיל לרוץ. התחלתי עם עשר דקות ביום סביב הפארק. היא שלחה לי הודעות עידוד אחרי כל ריצה. שנה אחר כך, רצנו יחד את המרוץ הראשון שלנו."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4006,
+    "lemma": "bobby",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈbɑbi/",
+    "hebrew": [
+      "שוטר (סלנג בריטי)"
+    ],
+    "definition": "an informal British word for a police officer, especially one walking in the street",
+    "sentences": [
+      {
+        "en": "A friendly bobby gave us directions to the museum.",
+        "he": "שוטר בריטי חביב הסביר לנו איך מגיעים למוזיאון."
+      },
+      {
+        "en": "Bobbies in their tall helmets are a symbol of London.",
+        "he": "השוטרים עם הקסדות הגבוהות הם סמל של לונדון."
+      },
+      {
+        "en": "In old films, the bobby on the corner knew everyone's name.",
+        "he": "בסרטים ישנים, השוטר בפינה הכיר את כולם בשמם."
+      }
+    ],
+    "collocations": [
+      "a British bobby",
+      "bobby on the beat",
+      "bobby's helmet"
+    ],
+    "hook": "bobby נקרא על שם רוברט (בובי) פיל, שהקים את משטרת לונדון",
+    "context": {
+      "en": "On my first trip to London, I wanted a photo with a real bobby. I found one near Buckingham Palace in his famous tall helmet. He smiled and agreed, but said he couldn't lend me his helmet. My kids still laugh at that photo.",
+      "he": "בטיול הראשון שלי ללונדון, רציתי תמונה עם שוטר בריטי אמיתי. מצאתי אחד ליד ארמון בקינגהאם עם הקסדה הגבוהה המפורסמת. הוא חייך והסכים, אבל אמר שהוא לא יכול להשאיל לי את הקסדה. הילדים שלי עדיין צוחקים על התמונה הזאת."
+    },
+    "tags": [
+      "slang",
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4007,
+    "lemma": "emission",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ɪˈmɪʃən/",
+    "hebrew": [
+      "פליטה (של גזים)"
+    ],
+    "definition": "the act of sending out gas, heat or light, or the amount sent out",
+    "sentences": [
+      {
+        "en": "The government wants to cut carbon emissions by half.",
+        "he": "הממשלה רוצה לקצץ בחצי את פליטות הפחמן."
+      },
+      {
+        "en": "Electric cars produce no emissions while driving.",
+        "he": "מכוניות חשמליות לא פולטות גזים בזמן הנסיעה."
+      },
+      {
+        "en": "The factory was fined for illegal emissions.",
+        "he": "המפעל נקנס על פליטות לא חוקיות."
+      }
+    ],
+    "collocations": [
+      "carbon emissions",
+      "greenhouse gas emissions",
+      "reduce emissions",
+      "emission levels"
+    ],
+    "context": {
+      "en": "Our city introduced a low-emission zone in the center last year. Old diesel cars now pay a fee to enter. At first, many drivers were angry. But the air is cleaner, and more people take the bus or ride bikes.",
+      "he": "העיר שלנו הנהיגה בשנה שעברה אזור אוויר נקי במרכז. מכוניות דיזל ישנות משלמות עכשיו אגרה כדי להיכנס. בהתחלה הרבה נהגים כעסו. אבל האוויר נקי יותר, ויותר אנשים נוסעים באוטובוס או רוכבים על אופניים."
+    },
+    "tags": [
+      "nature",
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4008,
+    "lemma": "batman",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈbætmən/",
+    "hebrew": [
+      "משרת של קצין (בצבא הבריטי)"
+    ],
+    "definition": "in the British army in the past, a soldier who worked as a personal servant to an officer",
+    "sentences": [
+      {
+        "en": "The general's batman polished his boots every morning.",
+        "he": "המשרת של הגנרל צחצח לו את המגפיים כל בוקר."
+      },
+      {
+        "en": "In the old war film, the batman is a funny and loyal character.",
+        "he": "בסרט המלחמה הישן, המשרת של הקצין הוא דמות מצחיקה ונאמנה."
+      },
+      {
+        "en": "My great-grandfather served as a batman to a British captain.",
+        "he": "סבא רבא שלי שירת כמשרת של סרן בריטי."
+      }
+    ],
+    "collocations": [
+      "an officer's batman",
+      "served as a batman"
+    ],
+    "hook": "batman בצבא הבריטי הוא משרת של קצין, לא גיבור־העל",
+    "context": {
+      "en": "My great-grandfather joined the British army during the Second World War. For two years, he served as a batman to a young officer. He cleaned uniforms, carried messages and made endless cups of tea. The officer wrote him a warm letter after the war, which we still keep.",
+      "he": "סבא רבא שלי התגייס לצבא הבריטי במלחמת העולם השנייה. במשך שנתיים הוא שירת כמשרת של קצין צעיר. הוא ניקה מדים, העביר הודעות והכין אינסוף כוסות תה. אחרי המלחמה הקצין כתב לו מכתב חם, שאנחנו שומרים עד היום."
+    },
+    "tags": [
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4009,
+    "lemma": "clever",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈklɛvər/",
+    "hebrew": [
+      "חכם, פיקח",
+      "מחוכם, מבריק"
+    ],
+    "definition": "quick at learning and understanding things; also showing smart thinking",
+    "sentences": [
+      {
+        "en": "She's a clever girl who learns everything quickly.",
+        "he": "היא ילדה חכמה שלומדת הכול מהר."
+      },
+      {
+        "en": "What a clever idea! Why didn't I think of that?",
+        "he": "איזה רעיון מבריק! למה לא חשבתי על זה?"
+      },
+      {
+        "en": "Don't get too clever with me, young man!",
+        "he": "אל תתחכם איתי, בחור צעיר!"
+      }
+    ],
+    "collocations": [
+      "clever idea",
+      "clever trick",
+      "too clever by half",
+      "clever with your hands"
+    ],
+    "context": {
+      "en": "My grandfather was clever with his hands and could fix almost anything. When our washing machine broke, he opened it and found the problem in minutes. He used a piece of wire and some tape to fix it. That machine worked for another five years.",
+      "he": "סבא שלי היה בעל ידי זהב וידע לתקן כמעט כל דבר. כשמכונת הכביסה שלנו התקלקלה, הוא פתח אותה ומצא את התקלה תוך דקות. הוא תיקן אותה עם חתיכת חוט וקצת סלוטייפ. המכונה הזאת עבדה עוד חמש שנים."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4010,
+    "lemma": "chop",
+    "pos": [
+      "verb",
+      "noun"
+    ],
+    "ipa": "/tʃɑp/",
+    "hebrew": [
+      "לקצוץ, לחתוך",
+      "לבקע (עצים)",
+      "צלע (בשר)"
+    ],
+    "definition": "to cut something into pieces with a knife or an axe; also a small piece of meat with a bone in it",
+    "sentences": [
+      {
+        "en": "Chop the onions and garlic finely.",
+        "he": "קוצצים את הבצל והשום דק."
+      },
+      {
+        "en": "We need to chop some wood for the fire.",
+        "he": "אנחנו צריכים לבקע קצת עצים למדורה."
+      },
+      {
+        "en": "I ordered lamb chops with roasted potatoes.",
+        "he": "הזמנתי צלעות טלה עם תפוחי אדמה צלויים."
+      }
+    ],
+    "collocations": [
+      "chop onions",
+      "chop down a tree",
+      "lamb chops",
+      "chop and change"
+    ],
+    "context": {
+      "en": "My Israeli salad is famous among my friends. The secret is to chop the tomatoes and cucumbers into very small pieces. It takes me twenty minutes, but the taste is worth it. My kids say no restaurant salad can compete.",
+      "he": "הסלט הישראלי שלי מפורסם בין החברים שלי. הסוד הוא לקצוץ את העגבניות והמלפפונים לחתיכות קטנטנות. זה לוקח לי עשרים דקות, אבל הטעם שווה את זה. הילדים שלי אומרים שאף סלט במסעדה לא מתחרה בו."
+    },
+    "tags": [
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4011,
+    "lemma": "pleasant",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈplɛzənt/",
+    "hebrew": [
+      "נעים"
+    ],
+    "definition": "enjoyable or nice; also friendly and polite",
+    "sentences": [
+      {
+        "en": "We had a pleasant evening with old friends.",
+        "he": "היה לנו ערב נעים עם חברים ותיקים."
+      },
+      {
+        "en": "The weather in spring is really pleasant here.",
+        "he": "מזג האוויר באביב ממש נעים כאן."
+      },
+      {
+        "en": "The new receptionist is very pleasant and helpful.",
+        "he": "פקידת הקבלה החדשה מאוד נעימה ועוזרת."
+      }
+    ],
+    "collocations": [
+      "pleasant surprise",
+      "pleasant evening",
+      "pleasant weather",
+      "pleasant to work with"
+    ],
+    "context": {
+      "en": "Our trip to the Galilee was more pleasant than we expected. The weather was cool, and the hotel was quiet and clean. We walked in the hills in the mornings and read books in the afternoons. It was exactly the break we needed.",
+      "he": "הטיול שלנו לגליל היה נעים יותר משציפינו. מזג האוויר היה קריר, והמלון היה שקט ונקי. בבקרים טיילנו בגבעות ואחר הצהריים קראנו ספרים. זו הייתה בדיוק ההפסקה שהיינו צריכים."
+    },
+    "tags": [
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4012,
+    "lemma": "perry",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈpɛri/",
+    "hebrew": [
+      "סיידר אגסים"
+    ],
+    "definition": "an alcoholic drink made from fermented pear juice",
+    "sentences": [
+      {
+        "en": "In the west of England, people drink perry made from pears.",
+        "he": "במערב אנגליה שותים פרי, משקה מותסס מאגסים."
+      },
+      {
+        "en": "Perry tastes like cider, but it's made from pears instead of apples.",
+        "he": "פרי טעמו כמו סיידר, אבל הוא עשוי מאגסים במקום מתפוחים."
+      },
+      {
+        "en": "The pub had three kinds of local perry on tap.",
+        "he": "בפאב היו שלושה סוגים של סיידר אגסים מקומי מהחבית."
+      }
+    ],
+    "collocations": [
+      "a glass of perry",
+      "cider and perry",
+      "sparkling perry"
+    ],
+    "context": {
+      "en": "On a trip to the English countryside, we visited a small farm that makes perry. The owner showed us the old pear trees and the wooden press. We tasted the perry in his barn, and it was light, sweet and bubbly. I bought two bottles to bring home as gifts.",
+      "he": "בטיול באזור הכפרי באנגליה ביקרנו בחווה קטנה שמייצרת סיידר אגסים. הבעלים הראה לנו את עצי האגס הוותיקים ואת המכבש מעץ. טעמנו את המשקה באסם שלו, והוא היה קליל, מתוק ומבעבע. קניתי שני בקבוקים כדי להביא הביתה במתנה."
+    },
+    "tags": [
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4013,
+    "lemma": "rising",
+    "pos": [
+      "adj",
+      "noun"
+    ],
+    "ipa": "/ˈraɪzɪŋ/",
+    "hebrew": [
+      "עולה, גובר",
+      "התקוממות, מרד"
+    ],
+    "definition": "increasing or going up; becoming more successful; as a noun, a rebellion against those in power",
+    "sentences": [
+      {
+        "en": "Rising prices are making life hard for many families.",
+        "he": "המחירים העולים מקשים על משפחות רבות."
+      },
+      {
+        "en": "She's a rising star in Israeli cinema.",
+        "he": "היא כוכבת עולה בקולנוע הישראלי."
+      },
+      {
+        "en": "The army quickly put down the rising in the north.",
+        "he": "הצבא דיכא במהירות את ההתקוממות בצפון."
+      }
+    ],
+    "collocations": [
+      "rising prices",
+      "rising star",
+      "rising sea levels",
+      "the rising sun"
+    ],
+    "context": {
+      "en": "Rising rents in Tel Aviv have pushed many young people out of the city. My friends moved to Ramat Gan, Holon and even Be'er Sheva. They say they get bigger apartments for less money. But they miss walking to the beach after work.",
+      "he": "שכר הדירה העולה בתל אביב דחק הרבה צעירים אל מחוץ לעיר. החברים שלי עברו לרמת גן, לחולון ואפילו לבאר שבע. הם אומרים שהם מקבלים דירות גדולות יותר בפחות כסף. אבל הם מתגעגעים ללכת לים אחרי העבודה."
+    },
+    "tags": [
+      "finance"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4014,
+    "lemma": "charlotte",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈʃɑrlət/",
+    "hebrew": [
+      "שרלוטה (קינוח)"
+    ],
+    "definition": "a dessert made in a mold lined with sponge fingers or bread and filled with fruit or cream",
+    "sentences": [
+      {
+        "en": "For dessert, my aunt made a strawberry charlotte.",
+        "he": "לקינוח, הדודה שלי הכינה שרלוטת תותים."
+      },
+      {
+        "en": "A charlotte is lined with soft biscuits and filled with cream.",
+        "he": "שרלוטה מרופדת בביסקוויטים רכים וממולאת בקרם."
+      },
+      {
+        "en": "We baked an apple charlotte with old bread and cinnamon.",
+        "he": "אפינו שרלוטת תפוחים עם לחם ישן וקינמון."
+      }
+    ],
+    "collocations": [
+      "apple charlotte",
+      "strawberry charlotte",
+      "charlotte russe"
+    ],
+    "context": {
+      "en": "My grandmother's specialty was a chocolate charlotte. She lined a bowl with ladyfingers soaked in coffee and filled it with rich chocolate cream. It spent the whole night in the fridge before she served it. Every holiday, the family still argues about who gets the last piece.",
+      "he": "המנה המיוחדת של סבתא שלי הייתה שרלוטת שוקולד. היא ריפדה קערה בבישקוטים טבולים בקפה ומילאה אותה בקרם שוקולד עשיר. העוגה בילתה לילה שלם במקרר לפני שהוגשה. בכל חג המשפחה עדיין מתווכחת מי יקבל את החתיכה האחרונה."
+    },
+    "tags": [
+      "food"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4015,
+    "lemma": "unity",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈjunəti/",
+    "hebrew": [
+      "אחדות"
+    ],
+    "definition": "the state of being joined together or agreeing with each other",
+    "sentences": [
+      {
+        "en": "The crisis brought a rare sense of unity to the country.",
+        "he": "המשבר הביא תחושת אחדות נדירה למדינה."
+      },
+      {
+        "en": "The coach talked about the importance of team unity.",
+        "he": "המאמן דיבר על החשיבות של אחדות בקבוצה."
+      },
+      {
+        "en": "The two parties formed a national unity government.",
+        "he": "שתי המפלגות הקימו ממשלת אחדות לאומית."
+      }
+    ],
+    "collocations": [
+      "national unity",
+      "unity government",
+      "sense of unity",
+      "family unity"
+    ],
+    "context": {
+      "en": "After floods destroyed several homes in our town, everyone came together to help. Neighbors who usually argued about parking carried furniture side by side. Restaurants sent free meals to families who had lost everything. That week, I felt a unity I'd never seen before.",
+      "he": "אחרי שהצפות הרסו כמה בתים בעיר שלנו, כולם התגייסו לעזור. שכנים שבדרך כלל רבים על חניה סחבו רהיטים כתף אל כתף. מסעדות שלחו ארוחות חינם למשפחות שאיבדו הכול. באותו שבוע הרגשתי אחדות שלא ראיתי אף פעם."
+    },
+    "tags": [
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4016,
+    "lemma": "compute",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/kəmˈpjut/",
+    "hebrew": [
+      "לחשב"
+    ],
+    "definition": "to calculate an amount or number",
+    "sentences": [
+      {
+        "en": "The app computes your monthly expenses automatically.",
+        "he": "האפליקציה מחשבת את ההוצאות החודשיות שלך אוטומטית."
+      },
+      {
+        "en": "It's hard to compute the real cost of the war.",
+        "he": "קשה לחשב את המחיר האמיתי של המלחמה."
+      },
+      {
+        "en": "Your tax refund will be computed by the end of the month.",
+        "he": "ההחזר ממס שלך יחושב עד סוף החודש."
+      }
+    ],
+    "collocations": [
+      "compute the cost",
+      "compute the total",
+      "computing power",
+      "it does not compute"
+    ],
+    "context": {
+      "en": "Before every family vacation, my husband computes every possible cost in a spreadsheet. He includes flights, hotels, food and even ice cream. I find it a bit much, but we never go over budget. Last year we even had money left for an extra day.",
+      "he": "לפני כל חופשה משפחתית, בעלי מחשב כל עלות אפשרית בגיליון אלקטרוני. הוא כולל טיסות, מלונות, אוכל ואפילו גלידה. זה נראה לי קצת מוגזם, אבל אנחנו אף פעם לא חורגים מהתקציב. בשנה שעברה אפילו נשאר לנו כסף ליום נוסף."
+    },
+    "tags": [
+      "academic",
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4017,
+    "lemma": "defendant",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/dɪˈfɛndənt/",
+    "hebrew": [
+      "נאשם",
+      "נתבע"
+    ],
+    "definition": "the person in a court case who is accused of a crime or who is being sued",
+    "sentences": [
+      {
+        "en": "The defendant denied all the charges.",
+        "he": "הנאשם הכחיש את כל האישומים."
+      },
+      {
+        "en": "The judge asked the defendant to stand up.",
+        "he": "השופט ביקש מהנאשם לקום."
+      },
+      {
+        "en": "In a civil case, the defendant may have to pay damages.",
+        "he": "בתיק אזרחי, הנתבע עשוי להידרש לשלם פיצויים."
+      }
+    ],
+    "collocations": [
+      "the defendant pleaded",
+      "co-defendant",
+      "the defendant's lawyer",
+      "the defendant was found guilty"
+    ],
+    "context": {
+      "en": "As a law student, I spent a day watching trials at the district court. In one case, the defendant was a young man accused of stealing a car. He looked nervous and kept glancing at his mother. The judge gave him community service instead of prison.",
+      "he": "כסטודנט למשפטים, ביליתי יום בצפייה במשפטים בבית המשפט המחוזי. באחד התיקים, הנאשם היה בחור צעיר שהואשם בגניבת רכב. הוא נראה לחוץ והמשיך להעיף מבטים באמא שלו. השופט גזר עליו עבודות שירות במקום מאסר."
+    },
+    "tags": [
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4018,
+    "lemma": "biology",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/baɪˈɑlədʒi/",
+    "hebrew": [
+      "ביולוגיה"
+    ],
+    "definition": "the scientific study of living things",
+    "sentences": [
+      {
+        "en": "My daughter wants to study biology at university.",
+        "he": "הבת שלי רוצה ללמוד ביולוגיה באוניברסיטה."
+      },
+      {
+        "en": "We dissected a frog in our high school biology class.",
+        "he": "ניתחנו צפרדע בשיעור ביולוגיה בתיכון."
+      },
+      {
+        "en": "Human biology explains why we need sleep.",
+        "he": "הביולוגיה של האדם מסבירה למה אנחנו צריכים לישון."
+      }
+    ],
+    "collocations": [
+      "marine biology",
+      "biology teacher",
+      "human biology",
+      "biology class"
+    ],
+    "context": {
+      "en": "My biology teacher in high school changed my life. She took us outside to study plants and insects instead of just reading textbooks. Her passion made the subject come alive. Today I work as a marine biologist, and I still send her photos from my research.",
+      "he": "המורה שלי לביולוגיה בתיכון שינתה לי את החיים. היא לקחה אותנו החוצה לחקור צמחים וחרקים, במקום רק לקרוא מספרי לימוד. התשוקה שלה הפיחה חיים במקצוע. היום אני עובדת כביולוגית ימית, ועדיין שולחת לה תמונות מהמחקר שלי."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4019,
+    "lemma": "classification",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˌklæsəfɪˈkeɪʃən/",
+    "hebrew": [
+      "סיווג",
+      "מיון"
+    ],
+    "definition": "the act of putting things into groups according to their type",
+    "sentences": [
+      {
+        "en": "The library uses a classification system for all its books.",
+        "he": "הספרייה משתמשת בשיטת סיווג לכל הספרים שלה."
+      },
+      {
+        "en": "Scientists argued about the classification of the new species.",
+        "he": "מדענים התווכחו על הסיווג של המין החדש."
+      },
+      {
+        "en": "The film received an adults-only classification because of its violence.",
+        "he": "הסרט קיבל סיווג למבוגרים בלבד בגלל האלימות שבו."
+      }
+    ],
+    "collocations": [
+      "classification system",
+      "security classification",
+      "age classification",
+      "classification of"
+    ],
+    "context": {
+      "en": "When I started working at the museum, my first job was the classification of old coins. Each coin had to be sorted by period, country and metal. Some were so worn that I needed a magnifying glass. After a month, I could recognize a Roman coin from across the room.",
+      "he": "כשהתחלתי לעבוד במוזיאון, המשימה הראשונה שלי הייתה מיון של מטבעות עתיקים. כל מטבע היה צריך להיות ממוין לפי תקופה, ארץ ומתכת. חלקם היו כל כך שחוקים שהייתי צריך זכוכית מגדלת. אחרי חודש כבר זיהיתי מטבע רומי מהצד השני של החדר."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4020,
+    "lemma": "accidentally",
+    "pos": [
+      "adv"
+    ],
+    "ipa": "/ˌæksɪˈdɛntəli/",
+    "hebrew": [
+      "בטעות, בלי כוונה"
+    ],
+    "definition": "by mistake; without planning or meaning to",
+    "sentences": [
+      {
+        "en": "I accidentally deleted all the photos from my phone.",
+        "he": "מחקתי בטעות את כל התמונות מהטלפון."
+      },
+      {
+        "en": "She accidentally sent the message to her boss instead of her friend.",
+        "he": "היא שלחה בטעות את ההודעה לבוס במקום לחברה."
+      },
+      {
+        "en": "He accidentally locked himself out of the house.",
+        "he": "הוא נעל את עצמו בטעות מחוץ לבית."
+      }
+    ],
+    "collocations": [
+      "accidentally on purpose",
+      "accidentally delete",
+      "accidentally discover"
+    ],
+    "context": {
+      "en": "Last week I accidentally sent a funny photo to my work group instead of my family. It was a picture of me asleep on the couch with my mouth open. Within seconds, everyone had seen it. Now my colleagues use it as a sticker in every chat.",
+      "he": "בשבוע שעבר שלחתי בטעות תמונה מצחיקה לקבוצה של העבודה במקום למשפחה. זו הייתה תמונה שלי ישן על הספה עם פה פתוח. תוך שניות כולם ראו אותה. עכשיו הקולגות שלי משתמשים בה כסטיקר בכל צ'אט."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4021,
+    "lemma": "affordable",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/əˈfɔrdəbəl/",
+    "hebrew": [
+      "במחיר סביר, בר השגה"
+    ],
+    "definition": "cheap enough for most people to be able to buy or pay for",
+    "sentences": [
+      {
+        "en": "It's getting harder to find affordable housing in the city.",
+        "he": "נעשה קשה יותר למצוא דיור בר השגה בעיר."
+      },
+      {
+        "en": "The restaurant serves good food at affordable prices.",
+        "he": "המסעדה מגישה אוכל טוב במחירים סבירים."
+      },
+      {
+        "en": "We're looking for an affordable family car.",
+        "he": "אנחנו מחפשים רכב משפחתי במחיר סביר."
+      }
+    ],
+    "collocations": [
+      "affordable housing",
+      "affordable prices",
+      "more affordable",
+      "affordable option"
+    ],
+    "context": {
+      "en": "When my daughter started university, we looked everywhere for affordable housing. Rooms near the campus cost almost as much as a whole apartment in our town. In the end, she found a room in a shared flat a short bus ride away. It's small, but the price is right.",
+      "he": "כשהבת שלי התחילה ללמוד באוניברסיטה, חיפשנו בכל מקום דיור במחיר סביר. חדרים ליד הקמפוס עלו כמעט כמו דירה שלמה בעיר שלנו. בסוף היא מצאה חדר בדירת שותפים במרחק נסיעה קצרה באוטובוס. הוא קטן, אבל המחיר בסדר."
+    },
+    "tags": [
+      "finance"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4022,
+    "lemma": "briefly",
+    "pos": [
+      "adv"
+    ],
+    "ipa": "/ˈbrifli/",
+    "hebrew": [
+      "בקצרה",
+      "לזמן קצר"
+    ],
+    "definition": "in a few words; also for a short time",
+    "sentences": [
+      {
+        "en": "Let me briefly explain how the system works.",
+        "he": "תנו לי להסביר בקצרה איך המערכת עובדת."
+      },
+      {
+        "en": "We met briefly at a conference last year.",
+        "he": "נפגשנו לזמן קצר בכנס בשנה שעברה."
+      },
+      {
+        "en": "The power went out briefly during the storm.",
+        "he": "החשמל נפל לזמן קצר בזמן הסערה."
+      }
+    ],
+    "collocations": [
+      "briefly explain",
+      "briefly mention",
+      "speak briefly",
+      "pause briefly"
+    ],
+    "context": {
+      "en": "At the start of every meeting, our manager asks each person to briefly share what they're working on. It takes only ten minutes, but it keeps everyone informed. People who talk too long get a friendly reminder. The meetings are much shorter than they used to be.",
+      "he": "בתחילת כל ישיבה, המנהלת שלנו מבקשת מכל אחד לשתף בקצרה במה הוא עובד. זה לוקח רק עשר דקות, אבל זה שומר על כולם מעודכנים. מי שמדבר יותר מדי מקבל תזכורת ידידותית. הישיבות הרבה יותר קצרות ממה שהיו פעם."
+    },
+    "tags": [
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4023,
+    "lemma": "custody",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈkʌstədi/",
+    "hebrew": [
+      "משמורת (ילדים)",
+      "מעצר",
+      "חזקה, השגחה"
+    ],
+    "definition": "the legal right to look after a child; also the state of being kept in prison by the police",
+    "sentences": [
+      {
+        "en": "After the divorce, they agreed on joint custody of the children.",
+        "he": "אחרי הגירושים הם הסכימו על משמורת משותפת על הילדים."
+      },
+      {
+        "en": "The suspect is being held in police custody.",
+        "he": "החשוד מוחזק במעצר המשטרה."
+      },
+      {
+        "en": "The ancient scrolls are in the custody of the national museum.",
+        "he": "המגילות העתיקות נמצאות בהשגחת המוזיאון הלאומי."
+      }
+    ],
+    "collocations": [
+      "joint custody",
+      "in custody",
+      "custody battle",
+      "take into custody"
+    ],
+    "context": {
+      "en": "My friend went through a long custody battle after her divorce. Both parents wanted the kids to live with them. In the end, the court decided on joint custody. Now the children spend one week with each parent, and they seem happy.",
+      "he": "חברה שלי עברה מאבק ארוך על משמורת אחרי הגירושים. שני ההורים רצו שהילדים יגורו איתם. בסוף בית המשפט החליט על משמורת משותפת. עכשיו הילדים מבלים שבוע אצל כל הורה, והם נראים מאושרים."
+    },
+    "tags": [
+      "law",
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4024,
+    "lemma": "folk",
+    "pos": [
+      "noun",
+      "adj"
+    ],
+    "ipa": "/foʊk/",
+    "hebrew": [
+      "אנשים (folks)",
+      "עממי (מוזיקה, ריקוד)",
+      "ההורים (my folks)"
+    ],
+    "definition": "people in general; as an adjective, traditional and coming from ordinary people; 'my folks' informally means my parents",
+    "sentences": [
+      {
+        "en": "My folks are coming to visit this weekend.",
+        "he": "ההורים שלי באים לבקר בסוף השבוע."
+      },
+      {
+        "en": "We danced to Israeli folk songs at the wedding.",
+        "he": "רקדנו ריקודי עם ישראליים בחתונה."
+      },
+      {
+        "en": "Country folk tend to be friendlier than city people.",
+        "he": "אנשי הכפר נוטים להיות ידידותיים יותר מאנשי העיר."
+      }
+    ],
+    "collocations": [
+      "folk music",
+      "folk dance",
+      "my folks",
+      "folk tale"
+    ],
+    "context": {
+      "en": "My grandparents met at an Israeli folk dancing evening in the 1960s. Every Thursday, they danced in a circle with dozens of other couples. They still go dancing once a month, even in their eighties. Their friends say they move better than people half their age.",
+      "he": "סבא וסבתא שלי הכירו בערב ריקודי עם בשנות השישים. כל יום חמישי הם רקדו במעגל עם עשרות זוגות אחרים. הם עדיין הולכים לרקוד פעם בחודש, גם בשנות השמונים לחייהם. החברים שלהם אומרים שהם זזים יותר טוב מאנשים בחצי מגילם."
+    },
+    "tags": [
+      "media",
+      "family"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4025,
+    "lemma": "integrity",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ɪnˈtɛɡrəti/",
+    "hebrew": [
+      "יושרה",
+      "שלמות, יציבות"
+    ],
+    "definition": "the quality of being honest and having strong moral principles; also the state of being whole and not damaged",
+    "sentences": [
+      {
+        "en": "She's a woman of great integrity.",
+        "he": "היא אישה בעלת יושרה רבה."
+      },
+      {
+        "en": "Everyone respected the judge for his honesty and integrity.",
+        "he": "כולם כיבדו את השופט על כנותו ויושרו."
+      },
+      {
+        "en": "The earthquake damaged the structural integrity of the building.",
+        "he": "רעידת האדמה פגעה ביציבות המבנה של הבניין."
+      }
+    ],
+    "collocations": [
+      "personal integrity",
+      "honesty and integrity",
+      "structural integrity",
+      "lack of integrity"
+    ],
+    "context": {
+      "en": "My first boss taught me what integrity means. Once, a supplier offered him an expensive gift to win a contract. He politely refused and chose the cheaper, better offer. I've tried to follow his example ever since.",
+      "he": "הבוס הראשון שלי לימד אותי מה זו יושרה. פעם ספק הציע לו מתנה יקרה כדי לזכות בחוזה. הוא סירב בנימוס ובחר בהצעה הזולה והטובה יותר. מאז אני משתדל ללכת בדרכו."
+    },
+    "tags": [
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4026,
+    "lemma": "magical",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈmædʒɪkəl/",
+    "hebrew": [
+      "קסום",
+      "של קסם"
+    ],
+    "definition": "wonderful and special in a way that seems unreal; also having magic powers",
+    "sentences": [
+      {
+        "en": "Watching the sunset over the Dead Sea was magical.",
+        "he": "הצפייה בשקיעה מעל ים המלח הייתה קסומה."
+      },
+      {
+        "en": "The story is about a boy with magical powers.",
+        "he": "הסיפור עוסק בילד עם כוחות קסם."
+      },
+      {
+        "en": "Their wedding in the vineyard was a truly magical evening.",
+        "he": "החתונה שלהם בכרם הייתה ערב קסום באמת."
+      }
+    ],
+    "collocations": [
+      "magical powers",
+      "magical moment",
+      "magical evening",
+      "magical place"
+    ],
+    "context": {
+      "en": "Last winter, it snowed in Jerusalem for the first time in years. The whole city stopped, and people came out to play. My kids built their first snowman in the park. It was a magical day that none of us will forget.",
+      "he": "בחורף שעבר ירד שלג בירושלים לראשונה מזה שנים. כל העיר עצרה, ואנשים יצאו לשחק. הילדים שלי בנו את איש השלג הראשון שלהם בפארק. זה היה יום קסום שאף אחד מאיתנו לא ישכח."
+    },
+    "tags": [
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4027,
+    "lemma": "productive",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/prəˈdʌktɪv/",
+    "hebrew": [
+      "פרודוקטיבי, יעיל",
+      "פורה"
+    ],
+    "definition": "achieving a lot; also producing a large amount of crops or goods",
+    "sentences": [
+      {
+        "en": "I'm most productive early in the morning.",
+        "he": "אני הכי פרודוקטיבי מוקדם בבוקר."
+      },
+      {
+        "en": "We had a very productive meeting with the new client.",
+        "he": "הייתה לנו פגישה פורייה מאוד עם הלקוח החדש."
+      },
+      {
+        "en": "The land in this valley is some of the most productive in the region.",
+        "he": "האדמה בעמק הזה היא מהפוריות ביותר באזור."
+      }
+    ],
+    "collocations": [
+      "productive meeting",
+      "highly productive",
+      "productive day",
+      "productive land"
+    ],
+    "context": {
+      "en": "I used to think working long hours made me productive. Then I started taking a short walk every two hours. Surprisingly, I got more done in less time. Now I finish work by six and still have energy for my family.",
+      "he": "פעם חשבתי ששעות עבודה ארוכות הופכות אותי לפרודוקטיבי. ואז התחלתי לצאת להליכה קצרה כל שעתיים. להפתעתי, הספקתי יותר בפחות זמן. היום אני מסיים לעבוד עד שש ועדיין יש לי כוח למשפחה."
+    },
+    "tags": [
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4028,
+    "lemma": "safely",
+    "pos": [
+      "adv"
+    ],
+    "ipa": "/ˈseɪfli/",
+    "hebrew": [
+      "בבטחה, בשלום"
+    ],
+    "definition": "without danger or harm; also without risk of being wrong",
+    "sentences": [
+      {
+        "en": "Text me when you arrive safely.",
+        "he": "תשלח לי הודעה כשתגיע בשלום."
+      },
+      {
+        "en": "The plane landed safely despite the storm.",
+        "he": "המטוס נחת בשלום למרות הסערה."
+      },
+      {
+        "en": "You can safely ignore that warning message.",
+        "he": "אפשר בבטחה להתעלם מהודעת האזהרה הזאת."
+      }
+    ],
+    "collocations": [
+      "arrive safely",
+      "drive safely",
+      "safely say",
+      "safely stored"
+    ],
+    "context": {
+      "en": "Whenever my daughter drives back to her base at night, I can't sleep until she arrives safely. She always sends a short message to say she's there. Only then can I relax. My husband laughs at me, but he checks his phone too.",
+      "he": "בכל פעם שהבת שלי נוסעת בלילה חזרה לבסיס, אני לא מצליחה לישון עד שהיא מגיעה בשלום. היא תמיד שולחת הודעה קצרה שהיא הגיעה. רק אז אני נרגעת. בעלי צוחק עליי, אבל גם הוא בודק את הטלפון."
+    },
+    "tags": [
+      "travel"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4029,
+    "lemma": "transactions",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/trænˈzækʃənz/",
+    "hebrew": [
+      "עסקאות",
+      "פעולות (כספיות)"
+    ],
+    "definition": "plural of transaction: acts of buying, selling or moving money",
+    "sentences": [
+      {
+        "en": "You can see all your recent transactions in the banking app.",
+        "he": "אפשר לראות את כל הפעולות האחרונות באפליקציית הבנק."
+      },
+      {
+        "en": "The bank charges a fee for international transactions.",
+        "he": "הבנק גובה עמלה על עסקאות בינלאומיות."
+      },
+      {
+        "en": "Most transactions today are done by card or phone.",
+        "he": "רוב העסקאות היום מתבצעות בכרטיס או בטלפון."
+      }
+    ],
+    "collocations": [
+      "online transactions",
+      "financial transactions",
+      "cash transactions",
+      "transaction fees"
+    ],
+    "context": {
+      "en": "Every month I check all the transactions on my credit card. Last month I found a strange payment to a website in another country. I called the bank right away, and they blocked the card. Checking takes ten minutes, but it can save a lot of money.",
+      "he": "כל חודש אני בודק את כל העסקאות בכרטיס האשראי שלי. בחודש שעבר מצאתי חיוב מוזר לאתר במדינה אחרת. התקשרתי מיד לבנק, והם חסמו את הכרטיס. הבדיקה לוקחת עשר דקות, אבל היא יכולה לחסוך הרבה כסף."
+    },
+    "tags": [
+      "finance"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4030,
+    "lemma": "ugh",
+    "pos": [
+      "interj"
+    ],
+    "ipa": "/ʌɡ/",
+    "hebrew": [
+      "אוף",
+      "איכס"
+    ],
+    "definition": "a sound people make to show that they find something annoying or disgusting",
+    "sentences": [
+      {
+        "en": "Ugh, I have to get up at five tomorrow.",
+        "he": "אוף, אני צריך לקום מחר בחמש."
+      },
+      {
+        "en": "Ugh, this milk smells absolutely terrible!",
+        "he": "איכס, החלב הזה מסריח נורא!"
+      },
+      {
+        "en": "Ugh, another meeting that could have been an email.",
+        "he": "אוף, עוד ישיבה שיכלה להיות מייל."
+      }
+    ],
+    "collocations": [
+      "ugh, gross",
+      "ugh, not again",
+      "ugh, Mondays"
+    ],
+    "tags": [
+      "slang",
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4031,
+    "lemma": "unemployment",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˌʌnɪmˈplɔɪmənt/",
+    "hebrew": [
+      "אבטלה",
+      "דמי אבטלה"
+    ],
+    "definition": "the state of not having a job, or the number of people without jobs",
+    "sentences": [
+      {
+        "en": "Unemployment rose sharply during the crisis.",
+        "he": "האבטלה עלתה בחדות בזמן המשבר."
+      },
+      {
+        "en": "He's been on unemployment for three months.",
+        "he": "הוא מקבל דמי אבטלה כבר שלושה חודשים."
+      },
+      {
+        "en": "Youth unemployment is a big problem in southern Europe.",
+        "he": "אבטלה בקרב צעירים היא בעיה גדולה בדרום אירופה."
+      }
+    ],
+    "collocations": [
+      "unemployment rate",
+      "unemployment benefits",
+      "high unemployment",
+      "youth unemployment"
+    ],
+    "context": {
+      "en": "When the factory in our town closed, unemployment suddenly doubled. Hundreds of families lost their main income. The city opened a center that offered free training courses. Within a year, many workers had found jobs in new fields.",
+      "he": "כשהמפעל בעיר שלנו נסגר, האבטלה הוכפלה בבת אחת. מאות משפחות איבדו את מקור ההכנסה העיקרי שלהן. העירייה פתחה מרכז שהציע קורסי הכשרה בחינם. תוך שנה, הרבה עובדים מצאו עבודה בתחומים חדשים."
+    },
+    "tags": [
+      "work",
+      "finance"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4032,
+    "lemma": "useless",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈjusləs/",
+    "hebrew": [
+      "חסר תועלת",
+      "גרוע (ב־)"
+    ],
+    "definition": "not useful or not working; informally, very bad at something",
+    "sentences": [
+      {
+        "en": "This old phone charger is completely useless.",
+        "he": "המטען הישן הזה חסר תועלת לגמרי."
+      },
+      {
+        "en": "I'm useless at cooking, so my husband does it.",
+        "he": "אני גרועה בבישול, אז בעלי מבשל."
+      },
+      {
+        "en": "It's useless to argue with him once he's decided.",
+        "he": "אין טעם להתווכח איתו ברגע שהוא החליט."
+      }
+    ],
+    "collocations": [
+      "completely useless",
+      "useless at",
+      "it's useless to",
+      "feel useless"
+    ],
+    "context": {
+      "en": "My kitchen drawer is full of useless gadgets. There's an egg slicer, a garlic press I never use and a strange tool nobody can identify. Every time I try to throw them away, I think I might need them. They've been there for ten years.",
+      "he": "המגירה במטבח שלי מלאה בגאדג'טים חסרי תועלת. יש שם פורס ביצים, מכבש שום שאני אף פעם לא משתמשת בו וכלי מוזר שאף אחד לא יודע מה הוא. בכל פעם שאני מנסה לזרוק אותם, אני חושבת שאולי אצטרך אותם. הם שם כבר עשר שנים."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4033,
+    "lemma": "viewers",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈvjuərz/",
+    "hebrew": [
+      "צופים"
+    ],
+    "definition": "people who watch television, films or videos",
+    "sentences": [
+      {
+        "en": "The final episode was watched by two million viewers.",
+        "he": "בפרק האחרון צפו שני מיליון צופים."
+      },
+      {
+        "en": "Viewers complained about the violent scenes in the show.",
+        "he": "צופים התלוננו על הסצנות האלימות בתוכנית."
+      },
+      {
+        "en": "The news channel is losing young viewers to social media.",
+        "he": "ערוץ החדשות מאבד צופים צעירים לטובת הרשתות החברתיות."
+      }
+    ],
+    "collocations": [
+      "TV viewers",
+      "millions of viewers",
+      "viewers at home",
+      "attract viewers"
+    ],
+    "context": {
+      "en": "My cousin hosts a small cooking show on YouTube. At first, she had only a few hundred viewers, mostly family. Then a famous chef shared one of her videos. Now each episode gets tens of thousands of viewers from all over the world.",
+      "he": "בת הדודה שלי מגישה תוכנית בישול קטנה ביוטיוב. בהתחלה היו לה רק כמה מאות צופים, רובם בני משפחה. ואז שף מפורסם שיתף אחד הסרטונים שלה. עכשיו כל פרק מגיע לעשרות אלפי צופים מכל העולם."
+    },
+    "tags": [
+      "media"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4034,
+    "lemma": "spill",
+    "pos": [
+      "verb",
+      "noun"
+    ],
+    "ipa": "/spɪl/",
+    "hebrew": [
+      "לשפוך",
+      "להישפך",
+      "דליפה"
+    ],
+    "definition": "to let a liquid flow out of its container by accident; an amount of liquid that has been spilled",
+    "sentences": [
+      {
+        "en": "Be careful not to spill your coffee on the laptop.",
+        "he": "תיזהר לא לשפוך את הקפה על המחשב הנייד."
+      },
+      {
+        "en": "The oil spill killed thousands of sea birds.",
+        "he": "דליפת הנפט הרגה אלפי עופות ים."
+      },
+      {
+        "en": "Come on, spill the beans! What did he say?",
+        "he": "נו, תשפוך! מה הוא אמר?"
+      }
+    ],
+    "collocations": [
+      "spill the beans",
+      "oil spill",
+      "spill over",
+      "spill coffee"
+    ],
+    "context": {
+      "en": "My son knocked over a glass of grape juice on our new white sofa. He froze, waiting for me to shout. Instead, I quickly grabbed salt and cold water, like my grandmother taught me. Most of the stain came out, and now we have a strict no-juice-on-the-sofa rule.",
+      "he": "הבן שלי הפיל כוס מיץ ענבים על הספה הלבנה החדשה שלנו. הוא קפא במקום וחיכה שאצעק. במקום זה, מיהרתי להביא מלח ומים קרים, כמו שסבתא שלי לימדה אותי. רוב הכתם יצא, ועכשיו יש לנו כלל ברזל: אין מיץ על הספה."
+    },
+    "tags": [
+      "everyday"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4035,
+    "lemma": "jurisdiction",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˌdʒʊrɪsˈdɪkʃən/",
+    "hebrew": [
+      "סמכות שיפוט",
+      "תחום סמכות"
+    ],
+    "definition": "the official power to make legal decisions, or the area in which this power applies",
+    "sentences": [
+      {
+        "en": "This case is outside the court's jurisdiction.",
+        "he": "התיק הזה מחוץ לסמכות השיפוט של בית המשפט."
+      },
+      {
+        "en": "The local police have no jurisdiction on the military base.",
+        "he": "למשטרה המקומית אין סמכות בתוך הבסיס הצבאי."
+      },
+      {
+        "en": "Each city has jurisdiction over its own parks and schools.",
+        "he": "לכל עירייה יש סמכות על הפארקים ובתי הספר שלה."
+      }
+    ],
+    "collocations": [
+      "under the jurisdiction of",
+      "have jurisdiction over",
+      "outside the jurisdiction",
+      "legal jurisdiction"
+    ],
+    "context": {
+      "en": "When my friend bought something online from a foreign company, the product never arrived. She wanted to sue, but her lawyer explained the problem of jurisdiction. The company was registered in another country, so Israeli courts had limited power. In the end, her credit card company refunded the money.",
+      "he": "כשחברה שלי קנתה משהו באינטרנט מחברה זרה, המוצר אף פעם לא הגיע. היא רצתה לתבוע, אבל עורך הדין שלה הסביר לה את בעיית סמכות השיפוט. החברה הייתה רשומה במדינה אחרת, כך שלבתי המשפט בישראל היה כוח מוגבל. בסוף חברת האשראי החזירה לה את הכסף."
+    },
+    "tags": [
+      "law",
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4036,
+    "lemma": "lamp",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/læmp/",
+    "hebrew": [
+      "מנורה",
+      "פנס (רחוב)"
+    ],
+    "definition": "a device that gives light, especially one that stands on a table or the floor",
+    "sentences": [
+      {
+        "en": "Turn on the lamp, it's too dark to read.",
+        "he": "תדליק את המנורה, חשוך מדי לקרוא."
+      },
+      {
+        "en": "We bought a new lamp for the bedside table.",
+        "he": "קנינו מנורה חדשה לשידה ליד המיטה."
+      },
+      {
+        "en": "Street lamps light up the old city at night.",
+        "he": "פנסי רחוב מאירים את העיר העתיקה בלילה."
+      }
+    ],
+    "collocations": [
+      "desk lamp",
+      "bedside lamp",
+      "street lamp",
+      "turn on the lamp"
+    ],
+    "context": {
+      "en": "My grandfather built a reading lamp from an old copper pipe and a glass bottle. It has stood next to his armchair for forty years. Every evening, he sits under it with a book and a cup of tea. When I think of him, I always see that warm yellow light.",
+      "he": "סבא שלי בנה מנורת קריאה מצינור נחושת ישן ומבקבוק זכוכית. היא עומדת ליד הכורסה שלו כבר ארבעים שנה. כל ערב הוא יושב מתחתיה עם ספר וכוס תה. כשאני חושב עליו, אני תמיד רואה את האור הצהוב והחם הזה."
+    },
+    "tags": [
+      "everyday",
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4037,
+    "lemma": "lawsuit",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈlɔˌsut/",
+    "hebrew": [
+      "תביעה (משפטית)"
+    ],
+    "definition": "a case in a court of law in which one person or group asks for something from another",
+    "sentences": [
+      {
+        "en": "The customers filed a lawsuit against the airline.",
+        "he": "הלקוחות הגישו תביעה נגד חברת התעופה."
+      },
+      {
+        "en": "The company settled the lawsuit for a million dollars.",
+        "he": "החברה סגרה את התביעה בפשרה של מיליון דולר."
+      },
+      {
+        "en": "He lost the lawsuit and had to pay all the costs.",
+        "he": "הוא הפסיד בתביעה ונאלץ לשלם את כל ההוצאות."
+      }
+    ],
+    "collocations": [
+      "file a lawsuit",
+      "class-action lawsuit",
+      "settle a lawsuit",
+      "face a lawsuit"
+    ],
+    "context": {
+      "en": "After a long delay at the airport, dozens of passengers joined a class-action lawsuit. They said the airline had ignored their rights. The case took two years to finish. In the end, each passenger received compensation and a voucher.",
+      "he": "אחרי עיכוב ארוך בשדה התעופה, עשרות נוסעים הצטרפו לתביעה ייצוגית. הם טענו שחברת התעופה התעלמה מהזכויות שלהם. התיק נמשך שנתיים. בסוף כל נוסע קיבל פיצוי ושובר."
+    },
+    "tags": [
+      "law"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4038,
+    "lemma": "shipping",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈʃɪpɪŋ/",
+    "hebrew": [
+      "משלוח, דמי משלוח",
+      "ספנות"
+    ],
+    "definition": "the act or cost of sending goods; also ships in general and the business of carrying goods by sea",
+    "sentences": [
+      {
+        "en": "Shipping is free on orders over two hundred shekels.",
+        "he": "המשלוח חינם בהזמנות מעל מאתיים שקל."
+      },
+      {
+        "en": "Shipping to Israel usually takes two to three weeks.",
+        "he": "משלוח לישראל לוקח בדרך כלל שבועיים עד שלושה."
+      },
+      {
+        "en": "He works for a big shipping company in Haifa.",
+        "he": "הוא עובד בחברת ספנות גדולה בחיפה."
+      }
+    ],
+    "collocations": [
+      "free shipping",
+      "shipping costs",
+      "shipping company",
+      "shipping container"
+    ],
+    "context": {
+      "en": "I love ordering things online, but shipping costs can be painful. Sometimes the shipping is more expensive than the product itself. Now I wait until I have several items and order them together. It takes longer, but I save a lot of money.",
+      "he": "אני אוהב להזמין דברים באינטרנט, אבל דמי המשלוח יכולים לכאוב. לפעמים המשלוח יקר יותר מהמוצר עצמו. עכשיו אני מחכה שיצטברו כמה פריטים ומזמין אותם יחד. זה לוקח יותר זמן, אבל אני חוסך הרבה כסף."
+    },
+    "tags": [
+      "finance",
+      "travel"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4039,
+    "lemma": "diagnose",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/ˌdaɪəɡˈnoʊs/",
+    "hebrew": [
+      "לאבחן"
+    ],
+    "definition": "to find out what illness someone has or what is causing a problem",
+    "sentences": [
+      {
+        "en": "She was diagnosed with diabetes at the age of forty.",
+        "he": "היא אובחנה עם סוכרת בגיל ארבעים."
+      },
+      {
+        "en": "It took doctors months to diagnose his illness.",
+        "he": "לקח לרופאים חודשים לאבחן את המחלה שלו."
+      },
+      {
+        "en": "The mechanic diagnosed the problem in five minutes.",
+        "he": "המכונאי איבחן את התקלה תוך חמש דקות."
+      }
+    ],
+    "collocations": [
+      "diagnose a disease",
+      "be diagnosed with",
+      "difficult to diagnose",
+      "diagnose the problem"
+    ],
+    "context": {
+      "en": "My son struggled at school for years before he was diagnosed with ADHD. Once we understood the problem, everything changed. His teachers gave him short breaks and clear instructions. Today he's one of the best students in his class.",
+      "he": "הבן שלי התקשה בבית הספר שנים עד שאובחן עם הפרעת קשב. ברגע שהבנו את הבעיה, הכול השתנה. המורים נתנו לו הפסקות קצרות והוראות ברורות. היום הוא אחד התלמידים הטובים בכיתה."
+    },
+    "tags": [
+      "health"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4040,
+    "lemma": "flesh",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/flɛʃ/",
+    "hebrew": [
+      "בשר (של גוף או פרי)",
+      "בשר ודם (in the flesh)"
+    ],
+    "definition": "the soft part of the body of a person or animal, or the soft part of a fruit",
+    "sentences": [
+      {
+        "en": "The knife cut deep into the flesh of his hand.",
+        "he": "הסכין חתכה עמוק בבשר של כף היד שלו."
+      },
+      {
+        "en": "Remove the stone and scoop out the flesh of the avocado.",
+        "he": "הוציאו את הגלעין וגרפו את בשר האבוקדו."
+      },
+      {
+        "en": "It was amazing to finally meet my online friend in the flesh.",
+        "he": "היה מדהים סוף סוף לפגוש את החבר שלי מהרשת בשר ודם."
+      }
+    ],
+    "collocations": [
+      "in the flesh",
+      "flesh and blood",
+      "flesh wound",
+      "flesh out"
+    ],
+    "context": {
+      "en": "For years, I followed my favorite writer online and read all her books. Last month, she came to a bookstore in Tel Aviv for a reading. Seeing her in the flesh was strange and exciting. She signed my book and even remembered my comments online.",
+      "he": "במשך שנים עקבתי ברשת אחרי הסופרת האהובה עליי וקראתי את כל הספרים שלה. בחודש שעבר היא הגיעה לחנות ספרים בתל אביב לערב קריאה. לראות אותה בשר ודם היה מוזר ומרגש. היא חתמה לי על הספר ואפילו זכרה את התגובות שלי ברשת."
+    },
+    "tags": [
+      "health"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4041,
+    "lemma": "attached",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/əˈtætʃt/",
+    "hebrew": [
+      "מצורף",
+      "קשור (רגשית)",
+      "מחובר, צמוד"
+    ],
+    "definition": "joined or fastened to something; also feeling love or affection for someone or something",
+    "sentences": [
+      {
+        "en": "Please see the attached file for more details.",
+        "he": "נא לעיין בקובץ המצורף לפרטים נוספים."
+      },
+      {
+        "en": "My son is very attached to his old teddy bear.",
+        "he": "הבן שלי מאוד קשור לדובי הישן שלו."
+      },
+      {
+        "en": "The house has an attached garage and a small garden.",
+        "he": "לבית יש חניה צמודה וגינה קטנה."
+      }
+    ],
+    "collocations": [
+      "attached file",
+      "attached to",
+      "no strings attached",
+      "emotionally attached"
+    ],
+    "context": {
+      "en": "When we moved to a bigger apartment, my daughter cried for days. She was very attached to her small old room and the view of the tree outside. We let her choose the colors for her new room. After a month, she said she wouldn't go back for anything.",
+      "he": "כשעברנו לדירה גדולה יותר, הבת שלי בכתה ימים שלמים. היא הייתה מאוד קשורה לחדר הקטן והישן שלה ולנוף של העץ בחוץ. נתנו לה לבחור את הצבעים לחדר החדש. אחרי חודש היא אמרה שהיא לא הייתה חוזרת בשום מחיר."
+    },
+    "tags": [
+      "emotions",
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4042,
+    "lemma": "engaged",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ɪnˈɡeɪdʒd/",
+    "hebrew": [
+      "מאורס",
+      "תפוס (קו טלפון)",
+      "מעורב, עסוק ב־"
+    ],
+    "definition": "having formally agreed to marry someone; also (of a phone line) busy, or involved in an activity",
+    "sentences": [
+      {
+        "en": "My brother just got engaged to his girlfriend of five years.",
+        "he": "אחי התארס עכשיו עם החברה שלו מזה חמש שנים."
+      },
+      {
+        "en": "I tried to call you, but the line was engaged.",
+        "he": "ניסיתי להתקשר אליך, אבל הקו היה תפוס."
+      },
+      {
+        "en": "Students are more engaged when lessons are interactive.",
+        "he": "תלמידים מעורבים יותר כשהשיעורים אינטראקטיביים."
+      }
+    ],
+    "collocations": [
+      "get engaged",
+      "engaged couple",
+      "engaged in",
+      "fully engaged"
+    ],
+    "context": {
+      "en": "My best friend got engaged on a beach in Eilat at sunset. Her boyfriend hid the ring in a seashell and asked her to look inside. She screamed so loudly that strangers started clapping. They're getting married next spring, and I'm the maid of honor.",
+      "he": "החברה הכי טובה שלי התארסה על חוף באילת בשקיעה. החבר שלה החביא את הטבעת בצדף וביקש ממנה להסתכל פנימה. היא צרחה כל כך חזק שזרים התחילו למחוא כפיים. הם מתחתנים באביב הבא, ואני השושבינה."
+    },
+    "tags": [
+      "family",
+      "emotions"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4043,
+    "lemma": "expressed",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ɪkˈsprɛst/",
+    "hebrew": [
+      "מפורש, מוצהר",
+      "שהובע"
+    ],
+    "definition": "clearly stated; also shown or communicated in words or numbers",
+    "sentences": [
+      {
+        "en": "It was her expressed wish to be buried in her hometown.",
+        "he": "זה היה רצונה המפורש להיקבר בעיר הולדתה."
+      },
+      {
+        "en": "Many parents expressed concern about the new school hours.",
+        "he": "הרבה הורים הביעו דאגה משעות הלימודים החדשות."
+      },
+      {
+        "en": "All prices on the website are expressed in dollars.",
+        "he": "כל המחירים באתר מוצגים בדולרים."
+      }
+    ],
+    "collocations": [
+      "expressed wish",
+      "expressed concern",
+      "expressed in",
+      "clearly expressed"
+    ],
+    "context": {
+      "en": "In his will, my grandfather left an expressed wish about his library. He wanted his books to go to the local school, not to be sold. The family respected his decision completely. Today there's a small shelf at the school with his name on it.",
+      "he": "בצוואה שלו, סבא שלי השאיר משאלה מפורשת לגבי הספרייה שלו. הוא רצה שהספרים יעברו לבית הספר המקומי ולא יימכרו. המשפחה כיבדה את ההחלטה שלו במלואה. היום יש בבית הספר מדף קטן שנושא את שמו."
+    },
+    "tags": [
+      "academic"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4044,
+    "lemma": "recognized",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈrɛkəɡˌnaɪzd/",
+    "hebrew": [
+      "מוכר (רשמית)",
+      "ידוע, מוערך"
+    ],
+    "definition": "officially accepted; also generally known and respected",
+    "sentences": [
+      {
+        "en": "Is this foreign degree recognized in Israel?",
+        "he": "התואר הזר הזה מוכר בישראל?"
+      },
+      {
+        "en": "She's a recognized expert in children's health.",
+        "he": "היא מומחית מוכרת בתחום בריאות הילד."
+      },
+      {
+        "en": "The old city is a recognized World Heritage site.",
+        "he": "העיר העתיקה היא אתר מורשת עולמית מוכר."
+      }
+    ],
+    "collocations": [
+      "internationally recognized",
+      "widely recognized",
+      "recognized expert",
+      "officially recognized"
+    ],
+    "context": {
+      "en": "When my cousin moved here from Ukraine, her nursing degree wasn't recognized at first. She had to take Hebrew classes and pass a national exam. It took her almost two years. Today she works in the emergency room of a big hospital.",
+      "he": "כשבת הדודה שלי עלתה מאוקראינה, התואר שלה בסיעוד לא הוכר בהתחלה. היא הייתה צריכה ללמוד עברית ולעבור בחינה ארצית. זה לקח לה כמעט שנתיים. היום היא עובדת בחדר המיון של בית חולים גדול."
+    },
+    "tags": [
+      "academic",
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4045,
+    "lemma": "registered",
+    "pos": [
+      "adj"
+    ],
+    "ipa": "/ˈrɛdʒɪstərd/",
+    "hebrew": [
+      "רשום",
+      "רשום (דואר)",
+      "מוסמך (אחות)"
+    ],
+    "definition": "officially recorded on a list; (of mail) recorded and signed for on delivery",
+    "sentences": [
+      {
+        "en": "Only registered users can leave comments on the site.",
+        "he": "רק משתמשים רשומים יכולים להגיב באתר."
+      },
+      {
+        "en": "I sent the documents by registered mail.",
+        "he": "שלחתי את המסמכים בדואר רשום."
+      },
+      {
+        "en": "She's a registered nurse with fifteen years of experience.",
+        "he": "היא אחות מוסמכת עם חמש־עשרה שנות ניסיון."
+      }
+    ],
+    "collocations": [
+      "registered mail",
+      "registered user",
+      "registered nurse",
+      "registered trademark"
+    ],
+    "context": {
+      "en": "When I opened my small business, I had to become a registered company. There were forms for the tax office, the bank and national insurance. My accountant helped me through every step. After a month, I finally got my official certificate.",
+      "he": "כשפתחתי את העסק הקטן שלי, הייתי צריך לרשום אותו כחברה. היו טפסים למס הכנסה, לבנק ולביטוח הלאומי. רואה החשבון שלי ליווה אותי בכל שלב. אחרי חודש קיבלתי סוף סוף את התעודה הרשמית."
+    },
+    "tags": [
+      "law",
+      "work"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4046,
+    "lemma": "smoking",
+    "pos": [
+      "noun",
+      "adj"
+    ],
+    "ipa": "/ˈsmoʊkɪŋ/",
+    "hebrew": [
+      "עישון",
+      "מעשן, של עישון"
+    ],
+    "definition": "the habit or act of smoking cigarettes",
+    "sentences": [
+      {
+        "en": "Smoking is not allowed anywhere in the building.",
+        "he": "העישון אסור בכל מקום בבניין."
+      },
+      {
+        "en": "My father quit smoking after thirty years.",
+        "he": "אבא שלי הפסיק לעשן אחרי שלושים שנה."
+      },
+      {
+        "en": "Is there a smoking area at the airport?",
+        "he": "יש אזור עישון בשדה התעופה?"
+      }
+    ],
+    "collocations": [
+      "no smoking",
+      "quit smoking",
+      "smoking area",
+      "passive smoking"
+    ],
+    "context": {
+      "en": "My grandfather started smoking at fourteen, like many boys in his village. When his first grandchild was born, he decided to quit. It took him three tries and a lot of chewing gum. He hasn't touched a cigarette in twenty years.",
+      "he": "סבא שלי התחיל לעשן בגיל ארבע־עשרה, כמו הרבה נערים בכפר שלו. כשהנכד הראשון שלו נולד, הוא החליט להפסיק. זה לקח לו שלושה ניסיונות והרבה מסטיק. הוא לא נגע בסיגריה כבר עשרים שנה."
+    },
+    "tags": [
+      "health"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4047,
+    "lemma": "radar",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/ˈreɪdɑr/",
+    "hebrew": [
+      "מכ״ם, רדאר"
+    ],
+    "definition": "a system that uses radio waves to find the position and speed of planes, ships or cars",
+    "sentences": [
+      {
+        "en": "The plane disappeared from the radar over the sea.",
+        "he": "המטוס נעלם מהמכ״ם מעל הים."
+      },
+      {
+        "en": "Police use radar to catch drivers who are speeding.",
+        "he": "המשטרה משתמשת במכ״ם כדי לתפוס נהגים שנוסעים מהר מדי."
+      },
+      {
+        "en": "The new restaurant is still under the radar, so it's never crowded.",
+        "he": "המסעדה החדשה עדיין מתחת לרדאר, אז היא אף פעם לא עמוסה."
+      }
+    ],
+    "collocations": [
+      "radar screen",
+      "under the radar",
+      "on someone's radar",
+      "speed radar"
+    ],
+    "context": {
+      "en": "My favorite bar in Jaffa has stayed under the radar for years. There's no sign outside, and it doesn't advertise online. Only people who live nearby know about it. I'm almost afraid to tell anyone, in case it becomes too popular.",
+      "he": "הבר האהוב עליי ביפו נשאר מתחת לרדאר כבר שנים. אין שלט בחוץ, והוא לא מפרסם ברשת. רק מי שגר בסביבה מכיר אותו. אני כמעט מפחד לספר למישהו, שלא יהפוך לפופולרי מדי."
+    },
+    "tags": [
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4048,
+    "lemma": "transit",
+    "pos": [
+      "noun",
+      "verb"
+    ],
+    "ipa": "/ˈtrænzɪt/",
+    "hebrew": [
+      "תחבורה ציבורית",
+      "מעבר, טרנזיט",
+      "בדרך (in transit)"
+    ],
+    "definition": "the process of moving people or goods from one place to another; also public transport",
+    "sentences": [
+      {
+        "en": "Public transit in our city has improved a lot.",
+        "he": "התחבורה הציבורית בעיר שלנו השתפרה מאוד."
+      },
+      {
+        "en": "We had a six-hour transit in Istanbul.",
+        "he": "הייתה לנו עצירת ביניים של שש שעות באיסטנבול."
+      },
+      {
+        "en": "The package was damaged in transit.",
+        "he": "החבילה ניזוקה בדרך."
+      }
+    ],
+    "collocations": [
+      "public transit",
+      "in transit",
+      "transit passengers",
+      "transit visa"
+    ],
+    "context": {
+      "en": "On our way to Thailand, we had a long transit in Dubai. Instead of waiting at the airport, we took a quick tour of the city. We saw the tallest building in the world and ate dinner by the water. We made it back to the gate with only twenty minutes to spare.",
+      "he": "בדרך לתאילנד הייתה לנו עצירת ביניים ארוכה בדובאי. במקום לחכות בשדה, יצאנו לסיור מהיר בעיר. ראינו את הבניין הגבוה בעולם ואכלנו ארוחת ערב ליד המים. חזרנו לשער רק עשרים דקות לפני הסגירה."
+    },
+    "tags": [
+      "travel",
+      "tech"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4049,
+    "lemma": "cole",
+    "pos": [
+      "noun"
+    ],
+    "ipa": "/koʊl/",
+    "hebrew": [
+      "כרוב (מילה ישנה)"
+    ],
+    "definition": "an old word for cabbage and similar plants, now found mainly in the word 'coleslaw'",
+    "sentences": [
+      {
+        "en": "The farmer grows cole and other leafy green vegetables.",
+        "he": "החקלאי מגדל כרוב וירקות עלים ירוקים אחרים."
+      },
+      {
+        "en": "I always order coleslaw with my fish and chips.",
+        "he": "אני תמיד מזמין סלט כרוב עם הפיש אנד צ'יפס."
+      },
+      {
+        "en": "Cole is an old English word for cabbage.",
+        "he": "cole היא מילה אנגלית ישנה לכרוב."
+      }
+    ],
+    "collocations": [
+      "coleslaw",
+      "cole crops"
+    ],
+    "hook": "coleslaw = cole (כרוב) + slaw (סלט): סלט כרוב",
+    "context": {
+      "en": "Many English words for vegetables come from Latin or old Germanic languages. Cole once meant cabbage and its relatives, like kale and broccoli. Today almost nobody uses it on its own. But every time you order coleslaw, you're using that old word.",
+      "he": "הרבה מילים באנגלית לירקות באות מלטינית או משפות גרמאניות עתיקות. פעם cole פירושה כרוב וקרוביו, כמו קייל וברוקולי. היום כמעט אף אחד לא משתמש בה לבד. אבל בכל פעם שאתם מזמינים קולסלאו, אתם משתמשים במילה הישנה הזאת."
+    },
+    "tags": [
+      "food",
+      "nature"
+    ],
+    "tier": "A"
+  },
+  {
+    "id": 4050,
+    "lemma": "unlock",
+    "pos": [
+      "verb"
+    ],
+    "ipa": "/ʌnˈlɑk/",
+    "hebrew": [
+      "לפתוח (מנעול, נעילה)",
+      "לשחרר (טלפון)",
+      "לחשוף, לממש (פוטנציאל)"
+    ],
+    "definition": "to open something that is locked; also to release or discover something hidden",
+    "sentences": [
+      {
+        "en": "Use your fingerprint to unlock the phone.",
+        "he": "השתמשו בטביעת האצבע כדי לפתוח את הטלפון."
+      },
+      {
+        "en": "I couldn't unlock the door because the key was broken.",
+        "he": "לא הצלחתי לפתוח את הדלת כי המפתח היה שבור."
+      },
+      {
+        "en": "A good teacher can unlock a child's hidden talents.",
+        "he": "מורה טוב יכול לחשוף כישרונות נסתרים של ילד."
+      }
+    ],
+    "collocations": [
+      "unlock the door",
+      "unlock a phone",
+      "unlock potential",
+      "unlock the secrets"
+    ],
+    "context": {
+      "en": "When I travel abroad, I buy a local SIM card to save money. Before my first trip, I discovered my phone was locked to my Israeli provider. I had to call them and ask them to unlock it. Now I always check before I travel.",
+      "he": "כשאני נוסע לחו״ל, אני קונה כרטיס סים מקומי כדי לחסוך. לפני הטיול הראשון שלי, גיליתי שהטלפון שלי נעול לחברה הישראלית. הייתי צריך להתקשר אליהם ולבקש שישחררו אותו. מאז אני תמיד בודק לפני שאני נוסע."
+    },
+    "tags": [
+      "tech"
+    ],
+    "tier": "A"
+  }
+]
