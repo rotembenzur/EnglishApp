@@ -1,0 +1,4139 @@
+[
+  {
+    "id": "affect-effect",
+    "words": [
+      "affect",
+      "effect"
+    ],
+    "d": 45,
+    "explanation": "affect הוא בדרך כלל פועל: להשפיע על משהו. effect הוא בדרך כלל שם עצם: השפעה או תוצאה, למשל בצירוף have an effect on. בשימוש רשמי ונדיר, to effect change פירושו לחולל שינוי.",
+    "tip": "affect = Action (פועל), effect = End result (תוצאה).",
+    "examples": [
+      {
+        "word": "affect",
+        "en": "The cold weather affected our plans for the weekend.",
+        "he": "מזג האוויר הקר השפיע על התוכניות שלנו לסוף השבוע."
+      },
+      {
+        "word": "affect",
+        "en": "Lack of sleep can affect your ability to concentrate.",
+        "he": "חוסר שינה יכול להשפיע על היכולת להתרכז."
+      },
+      {
+        "word": "effect",
+        "en": "The new medicine had no side effects at all.",
+        "he": "לתרופה החדשה לא היו תופעות לוואי בכלל."
+      },
+      {
+        "word": "effect",
+        "en": "Social media has a huge effect on how teenagers see themselves.",
+        "he": "לרשתות החברתיות יש השפעה עצומה על האופן שבו בני נוער רואים את עצמם."
+      }
+    ]
+  },
+  {
+    "id": "borrow-lend",
+    "words": [
+      "borrow",
+      "lend"
+    ],
+    "d": 30,
+    "explanation": "borrow פירושו לקחת משהו ממישהו לזמן מוגבל (borrow from), ו-lend פירושו לתת למישהו משהו לזמן מוגבל (lend to). זה נכון גם לחפצים (לשאול / להשאיל) וגם לכסף (ללוות / להלוות). טעות נפוצה: Can you borrow me...? במקום Can you lend me...?",
+    "tip": "borrow = לקחת, lend = לתת.",
+    "examples": [
+      {
+        "word": "borrow",
+        "en": "Can I borrow your charger for a few minutes?",
+        "he": "אפשר לשאול את המטען שלך לכמה דקות?"
+      },
+      {
+        "word": "borrow",
+        "en": "We borrowed money from the bank to buy the apartment.",
+        "he": "לווינו כסף מהבנק כדי לקנות את הדירה."
+      },
+      {
+        "word": "lend",
+        "en": "Would you mind lending me twenty shekels until tomorrow?",
+        "he": "אכפת לך להלוות לי עשרים שקל עד מחר?"
+      },
+      {
+        "word": "lend",
+        "en": "Our neighbor lent us his ladder last weekend.",
+        "he": "השכן שלנו השאיל לנו את הסולם שלו בסוף השבוע שעבר."
+      }
+    ]
+  },
+  {
+    "id": "make-do",
+    "words": [
+      "make",
+      "do"
+    ],
+    "d": 25,
+    "explanation": "make מתאר יצירה של משהו חדש או תוצר: make a cake, make a mistake, make a decision. do מתאר ביצוע של פעולה, עבודה או משימה: do homework, do the dishes, do business. בעברית שתיהן לעשות, ואת רוב הצירופים פשוט צריך לזכור.",
+    "tip": "בסוף יש משהו שלא היה קודם? make. מבצעים משימה? do.",
+    "examples": [
+      {
+        "word": "make",
+        "en": "I made a big mistake when I sent that email.",
+        "he": "עשיתי טעות גדולה כששלחתי את המייל הזה."
+      },
+      {
+        "word": "make",
+        "en": "We need to make a decision by Friday.",
+        "he": "אנחנו צריכים לקבל החלטה עד יום שישי."
+      },
+      {
+        "word": "do",
+        "en": "Who is going to do the dishes tonight?",
+        "he": "מי שוטף את הכלים הערב?"
+      },
+      {
+        "word": "do",
+        "en": "She does yoga three times a week to stay fit.",
+        "he": "היא עושה יוגה שלוש פעמים בשבוע כדי לשמור על כושר."
+      }
+    ]
+  },
+  {
+    "id": "say-tell",
+    "words": [
+      "say",
+      "tell"
+    ],
+    "d": 25,
+    "explanation": "אחרי tell בא כמעט תמיד האדם שאליו מדברים: tell someone something. say מתמקד במילים עצמן ולא צריך אדם; אם רוצים לציין למי, אומרים say to someone. יש גם צירופים קבועים עם tell: tell a story, tell the truth, tell a joke.",
+    "tip": "tell + מישהו; say + משהו.",
+    "examples": [
+      {
+        "word": "say",
+        "en": "She said that the meeting was canceled.",
+        "he": "היא אמרה שהפגישה בוטלה."
+      },
+      {
+        "word": "say",
+        "en": "What did he say to you after the game?",
+        "he": "מה הוא אמר לך אחרי המשחק?"
+      },
+      {
+        "word": "tell",
+        "en": "He told me the meeting was moved to Thursday.",
+        "he": "הוא אמר לי שהפגישה הועברה ליום חמישי."
+      },
+      {
+        "word": "tell",
+        "en": "My grandmother loves to tell stories about her childhood.",
+        "he": "סבתא שלי אוהבת לספר סיפורים על הילדות שלה."
+      }
+    ]
+  },
+  {
+    "id": "rob-steal",
+    "words": [
+      "rob",
+      "steal"
+    ],
+    "d": 40,
+    "explanation": "steal מתייחס לדבר שנגנב: steal a phone, steal money. rob מתייחס לאדם או למקום שממנו לוקחים, בדרך כלל באיום או בכוח: rob a bank, rob someone. לכן אומרים My bike was stolen, אבל I was robbed.",
+    "tip": "גונבים (steal) חפץ; שודדים (rob) אדם או מקום.",
+    "examples": [
+      {
+        "word": "rob",
+        "en": "Two men robbed the bank and escaped in a stolen car.",
+        "he": "שני גברים שדדו את הבנק ונמלטו במכונית גנובה."
+      },
+      {
+        "word": "rob",
+        "en": "He was robbed on his way home from work.",
+        "he": "שדדו אותו בדרך הביתה מהעבודה."
+      },
+      {
+        "word": "steal",
+        "en": "Someone stole my bike from outside the building.",
+        "he": "מישהו גנב לי את האופניים מחוץ לבניין."
+      },
+      {
+        "word": "steal",
+        "en": "Pickpockets often steal phones on crowded buses.",
+        "he": "כייסים גונבים לעיתים קרובות טלפונים באוטובוסים צפופים."
+      }
+    ]
+  },
+  {
+    "id": "lose-loose",
+    "words": [
+      "lose",
+      "loose"
+    ],
+    "d": 35,
+    "explanation": "lose (עם o אחת) הוא פועל: לאבד או להפסיד. loose (עם שתי o) הוא שם תואר: רפוי, רחב או משוחרר. גם ההגייה שונה: ב-lose ה-s נשמעת כמו z, וב-loose היא נשמעת כמו s.",
+    "tip": "ל-loose יש o מיותרת, בדיוק כמו בגד רחב מדי.",
+    "examples": [
+      {
+        "word": "lose",
+        "en": "We lost the game in the last minute.",
+        "he": "הפסדנו במשחק בדקה האחרונה."
+      },
+      {
+        "word": "lose",
+        "en": "Many people lose their keys at least once a month.",
+        "he": "הרבה אנשים מאבדים את המפתחות שלהם לפחות פעם בחודש."
+      },
+      {
+        "word": "loose",
+        "en": "These jeans are too loose, so I need a smaller size.",
+        "he": "הג'ינס האלה רחבים מדי, צריך מידה קטנה יותר."
+      },
+      {
+        "word": "loose",
+        "en": "One of the screws is loose, so the chair keeps moving.",
+        "he": "אחד הברגים רופף, ולכן הכיסא כל הזמן זז."
+      }
+    ]
+  },
+  {
+    "id": "fun-funny",
+    "words": [
+      "fun",
+      "funny"
+    ],
+    "d": 25,
+    "explanation": "fun פירושו כיף או מהנה: משהו שנהנים ממנו. funny פירושו מצחיק: משהו שגורם לצחוק. מסיבה יכולה להיות fun בלי שום דבר funny בה. funny יכול גם לתאר משהו מוזר: a funny smell.",
+    "tip": "נהנים? fun. צוחקים? funny.",
+    "examples": [
+      {
+        "word": "fun",
+        "en": "The trip to Eilat was really fun.",
+        "he": "הטיול לאילת היה ממש כיף."
+      },
+      {
+        "word": "fun",
+        "en": "We had a lot of fun at the party last night.",
+        "he": "נהנינו מאוד במסיבה אתמול בלילה."
+      },
+      {
+        "word": "funny",
+        "en": "His jokes are so funny that everyone was laughing.",
+        "he": "הבדיחות שלו כל כך מצחיקות שכולם צחקו."
+      },
+      {
+        "word": "funny",
+        "en": "There's a funny smell coming from the fridge.",
+        "he": "יש ריח מוזר שמגיע מהמקרר."
+      }
+    ]
+  },
+  {
+    "id": "bored-boring",
+    "words": [
+      "bored",
+      "boring"
+    ],
+    "d": 25,
+    "explanation": "שמות תואר שמסתיימים ב-ed מתארים איך מישהו מרגיש: I'm bored = משעמם לי. שמות תואר שמסתיימים ב-ing מתארים את מה שגורם להרגשה: The movie is boring = הסרט משעמם. מי שאומר I'm boring בעצם אומר שהוא אדם משעמם. אותו כלל חל על interested / interesting, tired / tiring ועוד.",
+    "tip": "ed = מה שמרגישים; ing = מה שגורם להרגיש.",
+    "examples": [
+      {
+        "word": "bored",
+        "en": "I'm so bored, there's nothing to do at home.",
+        "he": "משעמם לי נורא, אין מה לעשות בבית."
+      },
+      {
+        "word": "bored",
+        "en": "The kids got bored after twenty minutes in the car.",
+        "he": "לילדים נהיה משעמם אחרי עשרים דקות באוטו."
+      },
+      {
+        "word": "boring",
+        "en": "The lecture was so boring that half the class fell asleep.",
+        "he": "ההרצאה הייתה כל כך משעממת שחצי מהכיתה נרדמה."
+      },
+      {
+        "word": "boring",
+        "en": "Filling out forms is boring, but someone has to do it.",
+        "he": "למלא טפסים זה משעמם, אבל מישהו צריך לעשות את זה."
+      }
+    ]
+  },
+  {
+    "id": "economic-economical",
+    "words": [
+      "economic",
+      "economical"
+    ],
+    "d": 55,
+    "explanation": "economic קשור לכלכלה כתחום: economic growth, an economic crisis. economical פירושו חסכוני, כזה שלא מבזבז כסף או משאבים: an economical car. בעברית שתיהן נשמעות כמו כלכלי, ולכן קל להתבלבל.",
+    "tip": "economical = חסכוני; economic = של הכלכלה.",
+    "examples": [
+      {
+        "word": "economic",
+        "en": "The country is going through a serious economic crisis.",
+        "he": "המדינה עוברת משבר כלכלי חמור."
+      },
+      {
+        "word": "economic",
+        "en": "The government announced a new economic plan this week.",
+        "he": "הממשלה הודיעה השבוע על תוכנית כלכלית חדשה."
+      },
+      {
+        "word": "economical",
+        "en": "A small hybrid car is more economical than a big SUV.",
+        "he": "רכב היברידי קטן חסכוני יותר מרכב שטח גדול."
+      },
+      {
+        "word": "economical",
+        "en": "Buying in bulk is often the most economical option.",
+        "he": "קנייה בכמויות גדולות היא לרוב האפשרות החסכונית ביותר."
+      }
+    ]
+  },
+  {
+    "id": "sensible-sensitive",
+    "words": [
+      "sensible",
+      "sensitive"
+    ],
+    "d": 50,
+    "explanation": "sensible פירושו הגיוני, נבון ושקול: a sensible decision. sensitive פירושו רגיש: לרגשות, לביקורת או לגירוי פיזי, כמו sensitive skin. בגלל הדמיון למילה סנסיטיבי, דוברי עברית אומרים לפעמים sensible כשהם מתכוונים לרגיש.",
+    "tip": "sensitive = רגיש; sensible = שכל ישר.",
+    "examples": [
+      {
+        "word": "sensible",
+        "en": "Saving some money every month is a sensible idea.",
+        "he": "לחסוך קצת כסף כל חודש זה רעיון נבון."
+      },
+      {
+        "word": "sensible",
+        "en": "Wear sensible shoes, because we'll be walking all day.",
+        "he": "כדאי לנעול נעליים נוחות ומעשיות, כי נלך כל היום."
+      },
+      {
+        "word": "sensitive",
+        "en": "My teeth are very sensitive to cold drinks.",
+        "he": "השיניים שלי רגישות מאוד למשקאות קרים."
+      },
+      {
+        "word": "sensitive",
+        "en": "He's very sensitive about his weight, so don't joke about it.",
+        "he": "הוא רגיש מאוד בנושא המשקל שלו, אז עדיף לא להתבדח על זה."
+      }
+    ]
+  },
+  {
+    "id": "actually-currently",
+    "words": [
+      "actually",
+      "currently"
+    ],
+    "d": 45,
+    "explanation": "actually פירושו בעצם, למעשה או בפועל, והוא מדגיש מה נכון באמת, לעיתים בניגוד לציפייה. currently פירושו כרגע או נכון לעכשיו. בגלל המילה אקטואלי דוברי עברית מתבלבלים, אבל actually לא קשור לזמן בכלל.",
+    "tip": "כרגע = currently; בעצם = actually.",
+    "examples": [
+      {
+        "word": "actually",
+        "en": "I thought the test would be hard, but it was actually easy.",
+        "he": "חשבתי שהמבחן יהיה קשה, אבל בעצם הוא היה קל."
+      },
+      {
+        "word": "actually",
+        "en": "Actually, I don't eat meat, but thanks for the offer.",
+        "he": "בעצם, אני לא אוכל בשר, אבל תודה על ההצעה."
+      },
+      {
+        "word": "currently",
+        "en": "She is currently working as a nurse in Haifa.",
+        "he": "כרגע היא עובדת כאחות בחיפה."
+      },
+      {
+        "word": "currently",
+        "en": "The website is currently down for maintenance.",
+        "he": "האתר מושבת כרגע לצורך תחזוקה."
+      }
+    ]
+  },
+  {
+    "id": "assist-attend",
+    "words": [
+      "assist",
+      "attend"
+    ],
+    "d": 55,
+    "explanation": "attend פירושו להשתתף או לנכוח באירוע: attend a meeting, attend a class. assist פירושו לעזור או לסייע: assist a doctor, ומכאן assistant = עוזר. שימו לב ש-attend בא בלי מילת יחס: attend a meeting ולא attend to a meeting, כי attend to פירושו לטפל במשהו.",
+    "tip": "attend = נוכחות; assist = עזרה.",
+    "examples": [
+      {
+        "word": "attend",
+        "en": "More than two hundred people attended the conference.",
+        "he": "יותר ממאתיים איש השתתפו בכנס."
+      },
+      {
+        "word": "attend",
+        "en": "All students must attend at least eighty percent of the classes.",
+        "he": "כל הסטודנטים חייבים להשתתף לפחות בשמונים אחוז מהשיעורים."
+      },
+      {
+        "word": "assist",
+        "en": "The nurse assisted the doctor during the operation.",
+        "he": "האחות סייעה לרופא במהלך הניתוח."
+      },
+      {
+        "word": "assist",
+        "en": "Our staff will be happy to assist you with your booking.",
+        "he": "הצוות שלנו ישמח לסייע לך בהזמנה."
+      }
+    ]
+  },
+  {
+    "id": "remember-remind",
+    "words": [
+      "remember",
+      "remind"
+    ],
+    "d": 35,
+    "explanation": "remember פירושו לזכור: הזיכרון נמצא אצל מי שמדבר. remind פירושו להזכיר למישהו אחר, כלומר לגרום לו לזכור: remind someone to do something. יש גם remind someone of: You remind me of my brother = אתה מזכיר לי את אחי.",
+    "tip": "remember = לזכור בעצמך; remind = לגרום למישהו אחר לזכור.",
+    "examples": [
+      {
+        "word": "remember",
+        "en": "Do you remember the name of that restaurant?",
+        "he": "זוכרים את השם של המסעדה ההיא?"
+      },
+      {
+        "word": "remember",
+        "en": "Remember to lock the door when you leave.",
+        "he": "לא לשכוח לנעול את הדלת כשיוצאים."
+      },
+      {
+        "word": "remind",
+        "en": "Can you remind me to call the dentist tomorrow?",
+        "he": "אפשר להזכיר לי מחר להתקשר לרופא השיניים?"
+      },
+      {
+        "word": "remind",
+        "en": "This song always reminds me of my summer in London.",
+        "he": "השיר הזה תמיד מזכיר לי את הקיץ שלי בלונדון."
+      }
+    ]
+  },
+  {
+    "id": "come-go",
+    "words": [
+      "come",
+      "go"
+    ],
+    "d": 20,
+    "explanation": "come מתאר תנועה לכיוון המקום שבו נמצא הדובר או השומע: Come here. go מתאר תנועה הרחק מהדובר, למקום אחר: Go home. כשמישהו קורא לך, עונים I'm coming ולא I'm going, כי מתקרבים אליו.",
+    "tip": "לכיוון שלי או שלך? come. למקום אחר? go.",
+    "examples": [
+      {
+        "word": "come",
+        "en": "Can you come to my place on Saturday?",
+        "he": "אפשר לבוא אליי בשבת?"
+      },
+      {
+        "word": "come",
+        "en": "My parents are coming to visit us next week.",
+        "he": "ההורים שלי באים לבקר אותנו בשבוע הבא."
+      },
+      {
+        "word": "go",
+        "en": "We usually go to the beach on Friday mornings.",
+        "he": "אנחנו בדרך כלל הולכים לים בימי שישי בבוקר."
+      },
+      {
+        "word": "go",
+        "en": "I have to go now, or I'll miss the train.",
+        "he": "צריך ללכת עכשיו, אחרת אפספס את הרכבת."
+      }
+    ]
+  },
+  {
+    "id": "bring-take",
+    "words": [
+      "bring",
+      "take"
+    ],
+    "d": 30,
+    "explanation": "bring פירושו להביא משהו אל המקום שבו נמצא הדובר או היעד שמדברים עליו: Bring it here. take פירושו לקחת משהו מכאן למקום אחר: Take it with you. ההיגיון זהה לזה של come ו-go.",
+    "tip": "bring = come עם חפץ; take = go עם חפץ.",
+    "examples": [
+      {
+        "word": "bring",
+        "en": "Please bring your laptop to the meeting tomorrow.",
+        "he": "בבקשה להביא מחר את הלפטופ לפגישה."
+      },
+      {
+        "word": "bring",
+        "en": "Can you bring me a glass of water?",
+        "he": "אפשר להביא לי כוס מים?"
+      },
+      {
+        "word": "take",
+        "en": "Don't forget to take an umbrella, because it's going to rain.",
+        "he": "לא לשכוח לקחת מטרייה, כי עומד לרדת גשם."
+      },
+      {
+        "word": "take",
+        "en": "I'll take the kids to school on my way to work.",
+        "he": "אני אקח את הילדים לבית הספר בדרך לעבודה."
+      }
+    ]
+  },
+  {
+    "id": "especially-specially",
+    "words": [
+      "especially",
+      "specially"
+    ],
+    "d": 50,
+    "explanation": "especially פירושו במיוחד או בעיקר, כשמבליטים דבר אחד מתוך כמה: I love fruit, especially mangoes. specially פירושו במיוחד במובן של בכוונה, למטרה מסוימת: specially designed for children. בדיבור מבלבלים ביניהן לפעמים, אבל בכתיבה כדאי להקפיד.",
+    "tip": "מעל כולם? especially. למטרה מיוחדת? specially.",
+    "examples": [
+      {
+        "word": "especially",
+        "en": "Tel Aviv is crowded, especially on summer weekends.",
+        "he": "תל אביב צפופה, במיוחד בסופי שבוע בקיץ."
+      },
+      {
+        "word": "especially",
+        "en": "Drink plenty of water, especially when it's this hot.",
+        "he": "חשוב לשתות הרבה מים, במיוחד כשחם כל כך."
+      },
+      {
+        "word": "specially",
+        "en": "This cake was specially made for your birthday.",
+        "he": "העוגה הזאת הוכנה במיוחד ליום ההולדת שלך."
+      },
+      {
+        "word": "specially",
+        "en": "The app was specially designed for people with poor eyesight.",
+        "he": "האפליקציה עוצבה במיוחד לאנשים עם ראייה חלשה."
+      }
+    ]
+  },
+  {
+    "id": "beside-besides",
+    "words": [
+      "beside",
+      "besides"
+    ],
+    "d": 50,
+    "explanation": "beside היא מילת יחס של מקום: ליד או לצד. besides פירושו חוץ מ- או בנוסף ל-, והיא משמשת גם כמילת קישור במובן וחוץ מזה. ה-s הקטנה משנה את המשמעות לגמרי.",
+    "tip": "beside = ליד; besides = חוץ מזה (ה-s מוסיפה עוד משהו).",
+    "examples": [
+      {
+        "word": "beside",
+        "en": "She sat beside her father during the ceremony.",
+        "he": "היא ישבה ליד אביה במהלך הטקס."
+      },
+      {
+        "word": "beside",
+        "en": "There's a small café beside the train station.",
+        "he": "יש בית קפה קטן ליד תחנת הרכבת."
+      },
+      {
+        "word": "besides",
+        "en": "Besides English, she speaks French and Arabic.",
+        "he": "חוץ מאנגלית, היא מדברת צרפתית וערבית."
+      },
+      {
+        "word": "besides",
+        "en": "I don't want to go out tonight, and besides, it's raining.",
+        "he": "אין לי חשק לצאת הערב, וחוץ מזה, יורד גשם."
+      }
+    ]
+  },
+  {
+    "id": "historic-historical",
+    "words": [
+      "historic",
+      "historical"
+    ],
+    "d": 60,
+    "explanation": "historic פירושו בעל חשיבות היסטורית, משהו שייזכר: a historic moment, a historic victory. historical פירושו קשור להיסטוריה או לעבר: historical documents, a historical novel. כדאי לשאול: האם זה ייזכר בעתיד? אם כן, historic.",
+    "tip": "historic = נכנס להיסטוריה; historical = שייך להיסטוריה.",
+    "examples": [
+      {
+        "word": "historic",
+        "en": "The peace agreement was a historic moment for the region.",
+        "he": "הסכם השלום היה רגע היסטורי לאזור."
+      },
+      {
+        "word": "historic",
+        "en": "The team won a historic victory in the final.",
+        "he": "הקבוצה ניצחה ניצחון היסטורי בגמר."
+      },
+      {
+        "word": "historical",
+        "en": "The museum has a large collection of historical documents.",
+        "he": "במוזיאון יש אוסף גדול של מסמכים היסטוריים."
+      },
+      {
+        "word": "historical",
+        "en": "She enjoys reading historical novels set in ancient Rome.",
+        "he": "היא נהנית לקרוא רומנים היסטוריים שמתרחשים ברומא העתיקה."
+      }
+    ]
+  },
+  {
+    "id": "advice-advise",
+    "words": [
+      "advice",
+      "advise"
+    ],
+    "d": 40,
+    "explanation": "advice (עם c) הוא שם עצם: עצה. advise (עם s) הוא פועל: לייעץ או להמליץ. advice הוא שם עצם לא ספיר, לכן לא אומרים an advice או advices, אלא some advice או a piece of advice. גם ההגייה שונה: advice נגמרת בצליל s, ו-advise בצליל z.",
+    "tip": "advice = עצה (בלי a ובלי רבים); advise = לייעץ.",
+    "examples": [
+      {
+        "word": "advice",
+        "en": "Can I give you a piece of advice?",
+        "he": "אפשר לתת לך עצה?"
+      },
+      {
+        "word": "advice",
+        "en": "My doctor's advice was to rest for a week.",
+        "he": "העצה של הרופא שלי הייתה לנוח שבוע."
+      },
+      {
+        "word": "advise",
+        "en": "Experts advise drinking at least two liters of water a day.",
+        "he": "מומחים ממליצים לשתות לפחות שני ליטר מים ביום."
+      },
+      {
+        "word": "advise",
+        "en": "The lawyer advised her not to sign the contract.",
+        "he": "עורך הדין יעץ לה לא לחתום על החוזה."
+      }
+    ]
+  },
+  {
+    "id": "complement-compliment",
+    "words": [
+      "complement",
+      "compliment"
+    ],
+    "d": 65,
+    "explanation": "compliment (עם i) פירושו מחמאה, או להחמיא. complement (עם e) פירושו משהו שמשלים, או להשלים: The wine complements the meal. ההגייה כמעט זהה, ולכן הטעות נפוצה בעיקר בכתיבה.",
+    "tip": "compliment עם I, כמו I like you; complement עם E, כמו complete.",
+    "examples": [
+      {
+        "word": "complement",
+        "en": "The sauce perfectly complements the grilled fish.",
+        "he": "הרוטב משלים בצורה מושלמת את הדג הצלוי."
+      },
+      {
+        "word": "complement",
+        "en": "Her skills complement mine, so we work well together.",
+        "he": "הכישורים שלה משלימים את שלי, ולכן אנחנו עובדים טוב ביחד."
+      },
+      {
+        "word": "compliment",
+        "en": "He paid me a nice compliment on my presentation.",
+        "he": "הוא החמיא לי יפה על המצגת שלי."
+      },
+      {
+        "word": "compliment",
+        "en": "Everyone complimented the chef on the amazing dessert.",
+        "he": "כולם החמיאו לשף על הקינוח המדהים."
+      }
+    ]
+  },
+  {
+    "id": "principal-principle",
+    "words": [
+      "principal",
+      "principle"
+    ],
+    "d": 65,
+    "explanation": "principle הוא תמיד שם עצם: עיקרון. principal יכול להיות שם תואר שפירושו עיקרי או ראשי (the principal reason), או שם עצם שפירושו מנהל בית ספר באנגלית אמריקאית. ההגייה של שתיהן זהה.",
+    "tip": "principLE = ruLE = עיקרון; principAL = מנהל או עיקרי.",
+    "examples": [
+      {
+        "word": "principal",
+        "en": "The principal called my parents to the school.",
+        "he": "המנהל זימן את ההורים שלי לבית הספר."
+      },
+      {
+        "word": "principal",
+        "en": "Cost was the principal reason we chose this apartment.",
+        "he": "המחיר היה הסיבה העיקרית שבחרנו בדירה הזאת."
+      },
+      {
+        "word": "principle",
+        "en": "It's against my principles to lie to my friends.",
+        "he": "זה נוגד את העקרונות שלי לשקר לחברים."
+      },
+      {
+        "word": "principle",
+        "en": "The basic principle of the diet is simple: eat less sugar.",
+        "he": "העיקרון הבסיסי של הדיאטה פשוט: לאכול פחות סוכר."
+      }
+    ]
+  },
+  {
+    "id": "stationary-stationery",
+    "words": [
+      "stationary",
+      "stationery"
+    ],
+    "d": 70,
+    "explanation": "stationary (עם a) הוא שם תואר: נייח, עומד במקום. stationery (עם e) הוא שם עצם: ציוד משרדי וכלי כתיבה כמו נייר, עטים ומעטפות. ההגייה זהה לגמרי, ולכן ההבדל הוא רק בכתיב.",
+    "tip": "stationEry = Envelopes (מעטפות); stationAry = stAnd still.",
+    "examples": [
+      {
+        "word": "stationary",
+        "en": "The car was stationary when the truck hit it.",
+        "he": "המכונית עמדה במקום כשהמשאית פגעה בה."
+      },
+      {
+        "word": "stationary",
+        "en": "Riding a stationary bike is good exercise for your knees.",
+        "he": "רכיבה על אופניים נייחים היא אימון טוב לברכיים."
+      },
+      {
+        "word": "stationery",
+        "en": "We need to order more stationery for the office.",
+        "he": "אנחנו צריכים להזמין עוד ציוד משרדי למשרד."
+      },
+      {
+        "word": "stationery",
+        "en": "She bought colorful stationery for the new school year.",
+        "he": "היא קנתה ציוד כתיבה צבעוני לשנת הלימודים החדשה."
+      }
+    ]
+  },
+  {
+    "id": "lie-lay",
+    "words": [
+      "lie",
+      "lay"
+    ],
+    "d": 60,
+    "explanation": "lie (lay, lain) פירושו לשכב, והוא לא מקבל מושא: lie on the bed. lay (laid, laid) פירושו להניח או להשכיב משהו, ותמיד יש אחריו מושא: lay the baby down. המבלבל הוא שצורת העבר של lie היא lay. ויש גם lie במובן לשקר, שבעבר הוא lied.",
+    "tip": "lay תמיד מניח משהו; ב-lie פשוט שוכבים.",
+    "examples": [
+      {
+        "word": "lie",
+        "en": "I just want to lie on the beach all day.",
+        "he": "בא לי פשוט לשכב על החוף כל היום."
+      },
+      {
+        "word": "lie",
+        "en": "The cat lay in the sun all afternoon.",
+        "he": "החתול שכב בשמש כל אחר הצהריים."
+      },
+      {
+        "word": "lay",
+        "en": "Please lay the documents on my desk.",
+        "he": "בבקשה להניח את המסמכים על השולחן שלי."
+      },
+      {
+        "word": "lay",
+        "en": "She laid the baby gently in the crib.",
+        "he": "היא השכיבה את התינוק בעדינות בעריסה."
+      }
+    ]
+  },
+  {
+    "id": "rise-raise",
+    "words": [
+      "rise",
+      "raise"
+    ],
+    "d": 50,
+    "explanation": "rise (rose, risen) פירושו לעלות או לקום: משהו עולה מעצמו, בלי מושא: Prices rose. raise (raised, raised) פירושו להעלות או להרים משהו, ותמיד יש מושא: raise your hand, raise prices. ל-raise יש גם משמעות של לגדל ילדים.",
+    "tip": "raise מרים משהו; rise עולה לבד.",
+    "examples": [
+      {
+        "word": "rise",
+        "en": "The sun rises in the east every morning.",
+        "he": "השמש זורחת במזרח כל בוקר."
+      },
+      {
+        "word": "rise",
+        "en": "Rent prices rose by ten percent last year.",
+        "he": "מחירי השכירות עלו בעשרה אחוזים בשנה שעברה."
+      },
+      {
+        "word": "raise",
+        "en": "If you have a question, please raise your hand.",
+        "he": "אם יש שאלה, נא להרים יד."
+      },
+      {
+        "word": "raise",
+        "en": "The company decided to raise salaries next year.",
+        "he": "החברה החליטה להעלות משכורות בשנה הבאה."
+      }
+    ]
+  },
+  {
+    "id": "fewer-less",
+    "words": [
+      "fewer",
+      "less"
+    ],
+    "d": 45,
+    "explanation": "fewer בא עם שמות עצם ספירים ברבים: fewer cars, fewer people. less בא עם שמות עצם שאינם ספירים: less time, less money. בדיבור שומעים less גם עם ספירים, אבל בכתיבה רשמית כדאי להקפיד. יוצא מן הכלל: כמויות של זמן, כסף ומרחק, כמו less than ten dollars.",
+    "tip": "אפשר לספור? fewer. אי אפשר לספור? less.",
+    "examples": [
+      {
+        "word": "fewer",
+        "en": "There are fewer tourists in the city this winter.",
+        "he": "יש פחות תיירים בעיר בחורף הזה."
+      },
+      {
+        "word": "fewer",
+        "en": "Fewer people smoke today than twenty years ago.",
+        "he": "היום פחות אנשים מעשנים מאשר לפני עשרים שנה."
+      },
+      {
+        "word": "less",
+        "en": "I'm trying to spend less money on takeout.",
+        "he": "אני מנסה להוציא פחות כסף על משלוחי אוכל."
+      },
+      {
+        "word": "less",
+        "en": "You should add less salt to the soup next time.",
+        "he": "בפעם הבאה כדאי לשים פחות מלח במרק."
+      }
+    ]
+  },
+  {
+    "id": "already-yet-still",
+    "words": [
+      "already",
+      "yet",
+      "still"
+    ],
+    "d": 35,
+    "explanation": "already פירושו כבר: משהו קרה, לפעמים מוקדם מהצפוי, בעיקר במשפטים חיוביים. yet מופיע בשאלות ובשלילה, בדרך כלל בסוף המשפט: Have you eaten yet? = כבר אכלת? ו-I haven't eaten yet = עוד לא אכלתי. still פירושו עדיין: משהו עדיין נמשך. בעברית כבר, עוד ועדיין מתחלקות אחרת, ולכן מתבלבלים.",
+    "tip": "already = כבר קרה; yet = בשאלה או בשלילה, בסוף; still = עדיין נמשך.",
+    "examples": [
+      {
+        "word": "already",
+        "en": "I've already finished my homework, so can I go out?",
+        "he": "כבר סיימתי את שיעורי הבית, אז אפשר לצאת?"
+      },
+      {
+        "word": "already",
+        "en": "It's only nine, and she's already tired.",
+        "he": "השעה רק תשע, והיא כבר עייפה."
+      },
+      {
+        "word": "yet",
+        "en": "Have you seen the new episode yet?",
+        "he": "כבר ראית את הפרק החדש?"
+      },
+      {
+        "word": "yet",
+        "en": "The exam results haven't been published yet.",
+        "he": "תוצאות המבחן עוד לא פורסמו."
+      },
+      {
+        "word": "still",
+        "en": "It's ten o'clock and he's still asleep.",
+        "he": "השעה עשר והוא עדיין ישן."
+      },
+      {
+        "word": "still",
+        "en": "They still live in the same apartment after twenty years.",
+        "he": "הם עדיין גרים באותה דירה אחרי עשרים שנה."
+      }
+    ]
+  },
+  {
+    "id": "during-for-while",
+    "words": [
+      "during",
+      "for",
+      "while"
+    ],
+    "d": 40,
+    "explanation": "during היא מילת יחס שבאה לפני שם עצם ומציינת מתי משהו קרה: during the movie. for מציין כמה זמן משהו נמשך: for two hours. while היא מילת קישור שבאה לפני משפט שלם עם נושא ופועל: while I was sleeping. בעברית במשך, במהלך ובזמן מתחלקות אחרת, ולכן קל להתבלבל.",
+    "tip": "מתי? during + שם עצם. כמה זמן? for + משך. while + משפט שלם.",
+    "examples": [
+      {
+        "word": "during",
+        "en": "My phone rang during the meeting with the manager.",
+        "he": "הטלפון שלי צלצל באמצע הפגישה עם המנהל."
+      },
+      {
+        "word": "during",
+        "en": "We visited my grandparents during the summer vacation.",
+        "he": "ביקרנו את סבא וסבתא שלי במהלך החופש הגדול."
+      },
+      {
+        "word": "for",
+        "en": "I lived in Berlin for three years.",
+        "he": "גרתי בברלין שלוש שנים."
+      },
+      {
+        "word": "for",
+        "en": "We waited for the bus for almost an hour.",
+        "he": "חיכינו לאוטובוס כמעט שעה."
+      },
+      {
+        "word": "while",
+        "en": "Someone called while you were in the shower.",
+        "he": "מישהו התקשר בזמן שהיית במקלחת."
+      },
+      {
+        "word": "while",
+        "en": "She listens to podcasts while she drives to work.",
+        "he": "היא מקשיבה לפודקאסטים בזמן שהיא נוהגת לעבודה."
+      }
+    ]
+  },
+  {
+    "id": "hear-listen",
+    "words": [
+      "hear",
+      "listen"
+    ],
+    "d": 20,
+    "explanation": "hear פירושו לשמוע: הצלילים מגיעים לאוזניים, גם בלי כוונה. listen פירושו להקשיב: לשים לב בכוונה, ולפני מושא בא to, כמו listen to music. לכן אפשר לומר I listened, but I didn't hear anything.",
+    "tip": "hear קורה מעצמו; listen עושים בכוונה, ותמיד listen to.",
+    "examples": [
+      {
+        "word": "hear",
+        "en": "Did you hear that strange noise outside?",
+        "he": "שמעת את הרעש המוזר הזה בחוץ?"
+      },
+      {
+        "word": "hear",
+        "en": "Speak up, please, we can't hear you at the back.",
+        "he": "אפשר לדבר בקול? לא שומעים אותך מאחור."
+      },
+      {
+        "word": "listen",
+        "en": "She listens to the news every morning on the way to work.",
+        "he": "היא מקשיבה לחדשות כל בוקר בדרך לעבודה."
+      },
+      {
+        "word": "listen",
+        "en": "Listen carefully, because I'll only explain this once.",
+        "he": "תקשיבו טוב, כי אני אסביר את זה רק פעם אחת."
+      }
+    ]
+  },
+  {
+    "id": "see-look-watch",
+    "words": [
+      "see",
+      "look",
+      "watch"
+    ],
+    "d": 25,
+    "explanation": "see פירושו לראות: העיניים קולטות, גם בלי כוונה. look פירושו להסתכל: להפנות את המבט בכוונה, ולפני מושא בא at, כמו look at the picture. watch פירושו לצפות: להסתכל לאורך זמן במשהו שזז או משתנה, כמו watch TV או watch a game.",
+    "tip": "see קורה מעצמו; look at = מבט בכוונה; watch = צופים לאורך זמן.",
+    "examples": [
+      {
+        "word": "see",
+        "en": "I can't see anything without my glasses.",
+        "he": "אני לא רואה כלום בלי המשקפיים."
+      },
+      {
+        "word": "see",
+        "en": "Did you see the beautiful sunset yesterday?",
+        "he": "ראית את השקיעה היפה אתמול?"
+      },
+      {
+        "word": "look",
+        "en": "Look at this photo of us from ten years ago!",
+        "he": "תראו את התמונה הזאת שלנו מלפני עשר שנים!"
+      },
+      {
+        "word": "look",
+        "en": "She looked out of the window and smiled.",
+        "he": "היא הסתכלה מהחלון וחייכה."
+      },
+      {
+        "word": "watch",
+        "en": "We watched the game at a bar with friends.",
+        "he": "צפינו במשחק בבר עם חברים."
+      },
+      {
+        "word": "watch",
+        "en": "My kids watch too much TV on weekends.",
+        "he": "הילדים שלי צופים יותר מדי בטלוויזיה בסופי שבוע."
+      }
+    ]
+  },
+  {
+    "id": "win-earn-gain",
+    "words": [
+      "win",
+      "earn",
+      "gain"
+    ],
+    "d": 45,
+    "explanation": "win פירושו לנצח או לזכות: במשחק, בתחרות או בפרס, כמו win the lottery. earn פירושו להרוויח בזכות עבודה או מאמץ: earn money, earn respect. gain פירושו לצבור או להשיג בהדרגה: gain experience, gain weight. בעברית להרוויח מכסה חלק מזה, ולכן אומרים בטעות win money במקום earn money.",
+    "tip": "win = בתחרות; earn = בזכות עבודה; gain = צוברים עם הזמן.",
+    "examples": [
+      {
+        "word": "win",
+        "en": "Our team won the match three to one.",
+        "he": "הקבוצה שלנו ניצחה במשחק שלוש-אחת."
+      },
+      {
+        "word": "win",
+        "en": "She won a free trip to Greece in a competition.",
+        "he": "היא זכתה בטיול חינם ליוון בתחרות."
+      },
+      {
+        "word": "earn",
+        "en": "He earns about fifteen thousand shekels a month.",
+        "he": "הוא מרוויח בערך חמישה עשר אלף שקל בחודש."
+      },
+      {
+        "word": "earn",
+        "en": "You have to earn people's trust, and that takes time.",
+        "he": "צריך להרוויח את האמון של אנשים, וזה לוקח זמן."
+      },
+      {
+        "word": "gain",
+        "en": "I gained a lot of experience at my first job.",
+        "he": "צברתי הרבה ניסיון בעבודה הראשונה שלי."
+      },
+      {
+        "word": "gain",
+        "en": "He gained five kilos during the holidays.",
+        "he": "הוא עלה חמישה קילו בחגים."
+      }
+    ]
+  },
+  {
+    "id": "learn-study-teach",
+    "words": [
+      "learn",
+      "study",
+      "teach"
+    ],
+    "d": 25,
+    "explanation": "learn פירושו ללמוד במובן של לרכוש ידע או מיומנות: learn to swim. study פירושו ללמוד במובן של לעסוק בלימוד באופן מסודר: study for an exam, study law. teach פירושו ללמד אחרים. בגלל הקרבה בין ללמוד ללימד נשמעת לפעמים הטעות He learned me, והנכון הוא He taught me.",
+    "tip": "learn = התוצאה (יודעים); study = התהליך (יושבים ולומדים); teach = מעבירים לאחרים.",
+    "examples": [
+      {
+        "word": "learn",
+        "en": "Children learn new languages faster than adults.",
+        "he": "ילדים לומדים שפות חדשות מהר יותר ממבוגרים."
+      },
+      {
+        "word": "learn",
+        "en": "We learned a lot from our mistakes on this project.",
+        "he": "למדנו הרבה מהטעויות שלנו בפרויקט הזה."
+      },
+      {
+        "word": "study",
+        "en": "She is studying medicine at Tel Aviv University.",
+        "he": "היא לומדת רפואה באוניברסיטת תל אביב."
+      },
+      {
+        "word": "study",
+        "en": "The students are studying hard for their final exams.",
+        "he": "הסטודנטים לומדים קשה למבחנים הסופיים."
+      },
+      {
+        "word": "teach",
+        "en": "My father taught me how to ride a bike.",
+        "he": "אבא שלי לימד אותי לרכוב על אופניים."
+      },
+      {
+        "word": "teach",
+        "en": "She teaches English at a high school in Haifa.",
+        "he": "היא מלמדת אנגלית בתיכון בחיפה."
+      }
+    ]
+  },
+  {
+    "id": "wait-expect",
+    "words": [
+      "wait",
+      "expect"
+    ],
+    "d": 35,
+    "explanation": "wait פירושו לחכות: להעביר זמן עד שמשהו יקרה, ובדרך כלל wait for. expect פירושו לצפות: להעריך שמשהו כנראה יקרה, כמו I expect him to call. בעברית לצפות ולחכות מתערבבים לפעמים, אבל באנגלית אי אפשר לומר I'm waiting that he calls. ולמשהו טוב שמחכים לו בהתרגשות אומרים look forward to.",
+    "tip": "wait = לחכות בפועל; expect = להעריך שמשהו יקרה.",
+    "examples": [
+      {
+        "word": "wait",
+        "en": "We waited for an hour at the doctor's office.",
+        "he": "חיכינו שעה אצל הרופא."
+      },
+      {
+        "word": "wait",
+        "en": "Please wait here, I'll be back in five minutes.",
+        "he": "חכו כאן בבקשה, אחזור בעוד חמש דקות."
+      },
+      {
+        "word": "expect",
+        "en": "We expect about fifty guests at the wedding.",
+        "he": "אנחנו מעריכים שיגיעו כחמישים אורחים לחתונה."
+      },
+      {
+        "word": "expect",
+        "en": "I didn't expect the exam to be so easy.",
+        "he": "לא ציפיתי שהמבחן יהיה כל כך קל."
+      }
+    ]
+  },
+  {
+    "id": "possibility-opportunity-option",
+    "words": [
+      "possibility",
+      "opportunity",
+      "option"
+    ],
+    "d": 45,
+    "explanation": "possibility היא אפשרות במובן של סיכוי שמשהו יקרה או יהיה נכון: There's a possibility of rain. opportunity היא הזדמנות: מצב שמאפשר לעשות משהו טוב, כמו a job opportunity. option היא אפשרות במובן של בחירה מתוך כמה חלופות: We have two options. בעברית המילה אפשרות מכסה את שלושתן.",
+    "tip": "אולי יקרה? possibility. הזדמנות לנצל? opportunity. בחירה מתוך כמה? option.",
+    "examples": [
+      {
+        "word": "possibility",
+        "en": "There's a possibility that the flight will be delayed.",
+        "he": "יש אפשרות שהטיסה תתעכב."
+      },
+      {
+        "word": "possibility",
+        "en": "The doctors haven't ruled out the possibility of surgery.",
+        "he": "הרופאים לא שללו את האפשרות של ניתוח."
+      },
+      {
+        "word": "opportunity",
+        "en": "This job is a great opportunity to gain experience abroad.",
+        "he": "העבודה הזאת היא הזדמנות מצוינת לצבור ניסיון בחוץ לארץ."
+      },
+      {
+        "word": "opportunity",
+        "en": "I'd like to take this opportunity to thank everyone.",
+        "he": "אני רוצה לנצל את ההזדמנות כדי להודות לכולם."
+      },
+      {
+        "word": "option",
+        "en": "If you don't like the hotel, there are other options nearby.",
+        "he": "אם המלון לא מוצא חן, יש אפשרויות אחרות בסביבה."
+      },
+      {
+        "word": "option",
+        "en": "We had no option but to cancel the trip.",
+        "he": "לא הייתה לנו ברירה אלא לבטל את הטיול."
+      }
+    ]
+  },
+  {
+    "id": "know-meet-recognize",
+    "words": [
+      "know",
+      "meet",
+      "recognize"
+    ],
+    "d": 35,
+    "explanation": "בעברית להכיר מכסה שלוש מילים באנגלית. know someone פירושו להכיר מישהו, היכרות שכבר קיימת. meet someone פירושו לפגוש או להכיר לראשונה: I met my wife in college, ולא I knew my wife. recognize פירושו לזהות מישהו או משהו שכבר ראיתם בעבר. ויש גם get to know: להכיר מישהו טוב יותר בהדרגה.",
+    "tip": "פגישה ראשונה? meet. היכרות קיימת? know. זיהוי? recognize.",
+    "examples": [
+      {
+        "word": "know",
+        "en": "They have known each other since kindergarten.",
+        "he": "הם מכירים זה את זה מהגן."
+      },
+      {
+        "word": "know",
+        "en": "Do you know anyone who speaks Japanese?",
+        "he": "מכירים מישהו שמדבר יפנית?"
+      },
+      {
+        "word": "meet",
+        "en": "We met at a friend's wedding five years ago.",
+        "he": "הכרנו בחתונה של חבר לפני חמש שנים."
+      },
+      {
+        "word": "meet",
+        "en": "Nice to meet you, I've heard a lot about you.",
+        "he": "נעים להכיר, שמעתי עליך הרבה."
+      },
+      {
+        "word": "recognize",
+        "en": "I didn't recognize you with your new haircut!",
+        "he": "לא זיהיתי אותך עם התספורת החדשה!"
+      },
+      {
+        "word": "recognize",
+        "en": "Would you recognize the man if you saw him again?",
+        "he": "היית מזהה את האיש אם היית רואה אותו שוב?"
+      }
+    ]
+  },
+  {
+    "id": "arrive-reach",
+    "words": [
+      "arrive",
+      "reach"
+    ],
+    "d": 40,
+    "explanation": "arrive פירושו להגיע, והוא לא מקבל מושא ישיר: arrive at the airport (מקום מסוים), arrive in London (עיר או מדינה). reach פירושו להגיע למקום, ובא עם מושא ישיר בלי מילת יחס: reach the airport. הטעויות הנפוצות הן arrive to Tel Aviv ו-reach to the hotel. בדיבור יומיומי הכי טבעי לומר get to.",
+    "tip": "arrive at או in, אף פעם לא to; reach בלי מילת יחס בכלל.",
+    "examples": [
+      {
+        "word": "arrive",
+        "en": "Our flight arrives in New York at six in the morning.",
+        "he": "הטיסה שלנו מגיעה לניו יורק בשש בבוקר."
+      },
+      {
+        "word": "arrive",
+        "en": "When we arrived at the hotel, our room wasn't ready.",
+        "he": "כשהגענו למלון, החדר שלנו עוד לא היה מוכן."
+      },
+      {
+        "word": "reach",
+        "en": "We reached the top of the mountain before sunrise.",
+        "he": "הגענו לפסגת ההר לפני הזריחה."
+      },
+      {
+        "word": "reach",
+        "en": "I tried to call you all day, but I couldn't reach you.",
+        "he": "ניסיתי להתקשר כל היום, אבל לא הצלחתי להשיג אותך."
+      }
+    ]
+  },
+  {
+    "id": "spend-pass",
+    "words": [
+      "spend",
+      "pass"
+    ],
+    "d": 40,
+    "explanation": "spend time פירושו לבלות או להעביר זמן במקום מסוים או בפעילות מסוימת: spend the weekend with family. pass the time פירושו להעביר את הזמן כדי שלא ישעמם, ו-time passes פירושו שהזמן עובר מעצמו. ברוב המקרים לבלות ולהעביר זמן בעברית מתורגמים ל-spend, לא ל-pass.",
+    "tip": "spend = מה עשיתם עם הזמן (או הכסף); pass = הזמן עובר.",
+    "examples": [
+      {
+        "word": "spend",
+        "en": "We spent the whole weekend at my parents' house.",
+        "he": "בילינו את כל סוף השבוע אצל ההורים שלי."
+      },
+      {
+        "word": "spend",
+        "en": "Teenagers spend hours on their phones every day.",
+        "he": "בני נוער מבלים שעות בטלפון כל יום."
+      },
+      {
+        "word": "pass",
+        "en": "We played cards to pass the time on the train.",
+        "he": "שיחקנו קלפים כדי להעביר את הזמן ברכבת."
+      },
+      {
+        "word": "pass",
+        "en": "The weeks passed quickly, and soon it was summer.",
+        "he": "השבועות עברו מהר, ועד מהרה הגיע הקיץ."
+      }
+    ]
+  },
+  {
+    "id": "open-turn-on",
+    "words": [
+      "open",
+      "turn on"
+    ],
+    "d": 30,
+    "explanation": "בעברית אומרים לפתוח את הטלוויזיה או את המזגן, אבל באנגלית מכשירים חשמליים לא פותחים אלא מדליקים: turn on או switch on. open משמש לדברים שנפתחים פיזית, כמו דלת, חלון או בקבוק, וגם לקובץ או לאפליקציה. באותו אופן מכבים עם turn off ולא close.",
+    "tip": "יש מתג או כפתור הפעלה? turn on/off. נפתח פיזית או קובץ? open/close.",
+    "examples": [
+      {
+        "word": "open",
+        "en": "Could you open the window? It's really hot in here.",
+        "he": "אפשר לפתוח את החלון? ממש חם פה."
+      },
+      {
+        "word": "open",
+        "en": "Open the attached file and check the second page.",
+        "he": "צריך לפתוח את הקובץ המצורף ולבדוק את העמוד השני."
+      },
+      {
+        "word": "turn on",
+        "en": "Can you turn on the air conditioner, please?",
+        "he": "אפשר להדליק את המזגן, בבקשה?"
+      },
+      {
+        "word": "turn on",
+        "en": "I turned on the TV to watch the news.",
+        "he": "הדלקתי את הטלוויזיה כדי לראות את החדשות."
+      }
+    ]
+  },
+  {
+    "id": "job-work",
+    "words": [
+      "job",
+      "work"
+    ],
+    "d": 25,
+    "explanation": "work הוא בדרך כלל שם עצם שאינו ספיר: העבודה באופן כללי, או מקום העבודה: I have a lot of work, I'm at work. job הוא שם עצם ספיר: משרה או תפקיד מסוים, או משימה אחת: a new job, a part-time job. לכן אומרים I found a job ולא I found a work.",
+    "tip": "אפשר לספור? a job. עבודה כללית או המקום? work, בלי a.",
+    "examples": [
+      {
+        "word": "job",
+        "en": "She just got a new job at a tech company.",
+        "he": "היא בדיוק התקבלה לעבודה חדשה בחברת הייטק."
+      },
+      {
+        "word": "job",
+        "en": "Many students have part-time jobs in restaurants.",
+        "he": "הרבה סטודנטים עובדים במשרה חלקית במסעדות."
+      },
+      {
+        "word": "work",
+        "en": "I have too much work this week to take a vacation.",
+        "he": "יש לי יותר מדי עבודה השבוע כדי לצאת לחופשה."
+      },
+      {
+        "word": "work",
+        "en": "He usually gets home from work around seven.",
+        "he": "הוא בדרך כלל חוזר הביתה מהעבודה בסביבות שבע."
+      }
+    ]
+  },
+  {
+    "id": "also-too-either",
+    "words": [
+      "also",
+      "too",
+      "either"
+    ],
+    "d": 30,
+    "explanation": "also ו-too פירושן גם במשפטים חיוביים. also בא בדרך כלל לפני הפועל הראשי או אחרי be, ו-too בא בסוף המשפט. במשפט שלילי משתמשים ב-either בסוף המשפט: I don't like it either = גם אני לא אוהב את זה. לכן עונים Me too לחיוב ו-Me neither לשלילה.",
+    "tip": "גם בחיוב: also (באמצע) או too (בסוף). גם בשלילה: either (בסוף).",
+    "examples": [
+      {
+        "word": "also",
+        "en": "She speaks Russian, and she also speaks a little Spanish.",
+        "he": "היא מדברת רוסית, והיא גם מדברת קצת ספרדית."
+      },
+      {
+        "word": "also",
+        "en": "The hotel is also very close to the beach.",
+        "he": "המלון גם קרוב מאוד לים."
+      },
+      {
+        "word": "too",
+        "en": "My brother is a doctor, and my sister is too.",
+        "he": "אחי רופא, וגם אחותי."
+      },
+      {
+        "word": "too",
+        "en": "We're going to the concert tonight. Are your friends coming too?",
+        "he": "אנחנו הולכים להופעה הערב. גם החברים שלך באים?"
+      },
+      {
+        "word": "either",
+        "en": "I don't eat meat, and my husband doesn't either.",
+        "he": "אני לא אוכלת בשר, וגם בעלי לא."
+      },
+      {
+        "word": "either",
+        "en": "If the kids aren't going, we're not going either.",
+        "he": "אם הילדים לא הולכים, גם אנחנו לא הולכים."
+      }
+    ]
+  },
+  {
+    "id": "alone-lonely",
+    "words": [
+      "alone",
+      "lonely"
+    ],
+    "d": 35,
+    "explanation": "alone פירושו לבד: בלי אנשים אחרים, וזו עובדה ניטרלית: I live alone. lonely פירושו בודד: הרגשה עצובה של חוסר בחברה: I feel lonely. אפשר להיות alone בלי להיות lonely, ואפשר להרגיש lonely גם בתוך קהל.",
+    "tip": "alone = מצב (לבד); lonely = רגש (בודד).",
+    "examples": [
+      {
+        "word": "alone",
+        "en": "She has lived alone since her children moved out.",
+        "he": "היא גרה לבד מאז שהילדים שלה עזבו את הבית."
+      },
+      {
+        "word": "alone",
+        "en": "Some people prefer to travel alone.",
+        "he": "יש אנשים שמעדיפים לטייל לבד."
+      },
+      {
+        "word": "lonely",
+        "en": "After moving to a new city, he felt very lonely.",
+        "he": "אחרי שעבר לעיר חדשה, הוא הרגיש בודד מאוד."
+      },
+      {
+        "word": "lonely",
+        "en": "Many elderly people are lonely and need someone to talk to.",
+        "he": "הרבה קשישים בודדים וזקוקים למישהו לדבר איתו."
+      }
+    ]
+  },
+  {
+    "id": "house-home",
+    "words": [
+      "house",
+      "home"
+    ],
+    "d": 20,
+    "explanation": "house הוא הבניין עצמו, בדרך כלל בית פרטי. home הוא המקום שבו גרים ומרגישים שייכים, וזה יכול להיות גם דירה. אחרי go, come ו-get לא אומרים to: go home. ו-at home פירושו בבית.",
+    "tip": "house = מבנה; home = המקום שלך. ו-go home בלי to.",
+    "examples": [
+      {
+        "word": "house",
+        "en": "They bought a house with a big garden in the suburbs.",
+        "he": "הם קנו בית עם גינה גדולה בפרברים."
+      },
+      {
+        "word": "house",
+        "en": "Most people in Tel Aviv live in apartments, not houses.",
+        "he": "רוב האנשים בתל אביב גרים בדירות ולא בבתים פרטיים."
+      },
+      {
+        "word": "home",
+        "en": "It's getting late, so let's go home.",
+        "he": "נהיה מאוחר, בואו נלך הביתה."
+      },
+      {
+        "word": "home",
+        "en": "Many people work from home two days a week.",
+        "he": "הרבה אנשים עובדים מהבית יומיים בשבוע."
+      }
+    ]
+  },
+  {
+    "id": "travel-trip-journey",
+    "words": [
+      "travel",
+      "trip",
+      "journey"
+    ],
+    "d": 45,
+    "explanation": "travel הוא בעיקר פועל: לנסוע או לטייל. כשם עצם הוא כללי ולא ספיר, ולכן לא אומרים a travel. trip הוא שם עצם ספיר: נסיעה או טיול עם יציאה וחזרה, כמו a business trip או a trip to Paris. journey מדגיש את הדרך עצמה, בדרך כלל נסיעה ארוכה, וגם מסע במובן המטפורי.",
+    "tip": "פועל? travel. טיול עם יעד וחזרה? a trip. הדרך עצמה? a journey.",
+    "examples": [
+      {
+        "word": "travel",
+        "en": "We love to travel around Europe by train.",
+        "he": "אנחנו אוהבים לטייל באירופה ברכבת."
+      },
+      {
+        "word": "travel",
+        "en": "He travels a lot for work, mostly to Asia.",
+        "he": "הוא נוסע הרבה בשביל העבודה, בעיקר לאסיה."
+      },
+      {
+        "word": "trip",
+        "en": "How was your trip to Greece last month?",
+        "he": "איך היה הטיול ליוון בחודש שעבר?"
+      },
+      {
+        "word": "trip",
+        "en": "She's on a business trip and will be back on Monday.",
+        "he": "היא בנסיעת עבודה ותחזור ביום שני."
+      },
+      {
+        "word": "journey",
+        "en": "The journey from Tel Aviv to Eilat takes about five hours.",
+        "he": "הנסיעה מתל אביב לאילת לוקחת בערך חמש שעות."
+      },
+      {
+        "word": "journey",
+        "en": "Learning a new language is a long journey.",
+        "he": "ללמוד שפה חדשה זה מסע ארוך."
+      }
+    ]
+  },
+  {
+    "id": "shade-shadow",
+    "words": [
+      "shade",
+      "shadow"
+    ],
+    "d": 50,
+    "explanation": "shade הוא צל במובן של אזור מוגן מהשמש, מקום קריר לשבת בו: sit in the shade. shadow הוא הצורה הכהה שנוצרת כשמשהו חוסם את האור: my shadow on the wall. בעברית המילה צל מכסה את שניהם.",
+    "tip": "מחפשים מקום קריר? shade. רואים צורה כהה? shadow.",
+    "examples": [
+      {
+        "word": "shade",
+        "en": "Let's sit in the shade, it's too hot in the sun.",
+        "he": "בואו נשב בצל, חם מדי בשמש."
+      },
+      {
+        "word": "shade",
+        "en": "The big tree gives the yard plenty of shade.",
+        "he": "העץ הגדול נותן לחצר הרבה צל."
+      },
+      {
+        "word": "shadow",
+        "en": "In the evening, the trees cast long shadows on the grass.",
+        "he": "בערב העצים מטילים צללים ארוכים על הדשא."
+      },
+      {
+        "word": "shadow",
+        "en": "The little boy was trying to catch his own shadow.",
+        "he": "הילד הקטן ניסה לתפוס את הצל של עצמו."
+      }
+    ]
+  },
+  {
+    "id": "must-have-to",
+    "words": [
+      "must",
+      "have to"
+    ],
+    "d": 40,
+    "explanation": "במשפט חיובי must ו-have to קרובים מאוד, ושתיהן מבטאות חובה. must מבטא לרוב חובה שהדובר מרגיש או כלל רשמי, ו-have to חובה שמגיעה מבחוץ, והוא נפוץ יותר בדיבור. בשלילה ההבדל גדול: mustn't פירושו אסור, ו-don't have to פירושו לא חייבים.",
+    "tip": "mustn't = אסור; don't have to = לא חובה.",
+    "examples": [
+      {
+        "word": "must",
+        "en": "All passengers must wear a seatbelt at all times.",
+        "he": "כל הנוסעים חייבים לחגור חגורת בטיחות כל הזמן."
+      },
+      {
+        "word": "must",
+        "en": "You mustn't touch those wires, they're dangerous.",
+        "he": "אסור לגעת בחוטים האלה, הם מסוכנים."
+      },
+      {
+        "word": "have to",
+        "en": "We have to get up at six tomorrow for the flight.",
+        "he": "אנחנו צריכים לקום מחר בשש בשביל הטיסה."
+      },
+      {
+        "word": "have to",
+        "en": "You don't have to bring anything, we have plenty of food.",
+        "he": "לא צריך להביא כלום, יש לנו המון אוכל."
+      }
+    ]
+  },
+  {
+    "id": "clock-watch",
+    "words": [
+      "clock",
+      "watch"
+    ],
+    "d": 25,
+    "explanation": "watch הוא שעון שעונדים על היד. clock הוא שעון שתלוי על הקיר, עומד על שולחן או מופיע על מגדל. בעברית שעון מכסה את שניהם, ושעון מעורר הוא alarm clock.",
+    "tip": "על היד? watch. כל שעון אחר? clock.",
+    "examples": [
+      {
+        "word": "clock",
+        "en": "The clock in the kitchen is five minutes fast.",
+        "he": "השעון במטבח מקדים בחמש דקות."
+      },
+      {
+        "word": "clock",
+        "en": "I set my alarm clock for six thirty.",
+        "he": "כיוונתי את השעון המעורר לשש וחצי."
+      },
+      {
+        "word": "watch",
+        "en": "He got a beautiful watch for his birthday.",
+        "he": "הוא קיבל שעון יד יפה ליום ההולדת."
+      },
+      {
+        "word": "watch",
+        "en": "She looked at her watch and realized she was late.",
+        "he": "היא הסתכלה בשעון וקלטה שהיא מאחרת."
+      }
+    ]
+  },
+  {
+    "id": "time-hour",
+    "words": [
+      "time",
+      "hour"
+    ],
+    "d": 20,
+    "explanation": "hour הוא יחידת זמן של שישים דקות: The flight is three hours long. time הוא זמן באופן כללי, וגם השעה שהשעון מראה. לכן שואלים What time is it? ולא What hour is it?, ואומרים at what time. בעברית המילה שעה מכסה את שתי המשמעויות.",
+    "tip": "כמה זמן נמשך? hours. מה השעון מראה? time.",
+    "examples": [
+      {
+        "word": "time",
+        "en": "Excuse me, do you know what time it is?",
+        "he": "סליחה, יודעים מה השעה?"
+      },
+      {
+        "word": "time",
+        "en": "What time does the store open on Friday?",
+        "he": "באיזו שעה החנות נפתחת ביום שישי?"
+      },
+      {
+        "word": "hour",
+        "en": "The drive to Jerusalem took almost two hours.",
+        "he": "הנסיעה לירושלים לקחה כמעט שעתיים."
+      },
+      {
+        "word": "hour",
+        "en": "Most nurses at the hospital work twelve-hour shifts.",
+        "he": "רוב האחיות בבית החולים עובדות במשמרות של שתים עשרה שעות."
+      }
+    ]
+  },
+  {
+    "id": "sometimes-sometime",
+    "words": [
+      "sometimes",
+      "sometime",
+      "some time"
+    ],
+    "d": 50,
+    "explanation": "sometimes פירושו לפעמים, מדי פעם. sometime פירושו מתישהו, בזמן לא מוגדר בעתיד או בעבר: Let's meet sometime next week. some time, בשתי מילים, פירושו זמן מה, פרק זמן לא קצר: It took some time.",
+    "tip": "לפעמים = sometimes; מתישהו = sometime; זמן מה = some time.",
+    "examples": [
+      {
+        "word": "sometimes",
+        "en": "She sometimes works from home on Fridays.",
+        "he": "לפעמים היא עובדת מהבית בימי שישי."
+      },
+      {
+        "word": "sometimes",
+        "en": "Sometimes the bus is late, so leave early.",
+        "he": "לפעמים האוטובוס מאחר, אז כדאי לצאת מוקדם."
+      },
+      {
+        "word": "sometime",
+        "en": "Let's get together sometime next week.",
+        "he": "בואו ניפגש מתישהו בשבוע הבא."
+      },
+      {
+        "word": "sometime",
+        "en": "The package should arrive sometime on Thursday.",
+        "he": "החבילה אמורה להגיע מתישהו ביום חמישי."
+      },
+      {
+        "word": "some time",
+        "en": "It took some time to get used to the new job.",
+        "he": "לקח זמן מה להתרגל לעבודה החדשה."
+      },
+      {
+        "word": "some time",
+        "en": "I need some time to think about your offer.",
+        "he": "צריך קצת זמן לחשוב על ההצעה שלך."
+      }
+    ]
+  },
+  {
+    "id": "nervous-annoyed",
+    "words": [
+      "nervous",
+      "annoyed"
+    ],
+    "d": 40,
+    "explanation": "בעברית עצבני פירושו כועס או מתעצבן, אבל nervous באנגלית פירושו לחוץ, מתוח או חושש, למשל לפני מבחן. כדי לומר עצבני במובן העברי משתמשים ב-annoyed, irritated או angry. He's nervous פירושו שהוא לחוץ, לא שהוא כועס.",
+    "tip": "לחוץ לפני מבחן? nervous. מתעצבן על מישהו? annoyed.",
+    "examples": [
+      {
+        "word": "nervous",
+        "en": "She always gets nervous before job interviews.",
+        "he": "היא תמיד נלחצת לפני ראיונות עבודה."
+      },
+      {
+        "word": "nervous",
+        "en": "He was so nervous that his hands were shaking.",
+        "he": "הוא היה כל כך לחוץ שהידיים שלו רעדו."
+      },
+      {
+        "word": "annoyed",
+        "en": "My boss was annoyed because I came late again.",
+        "he": "הבוס שלי התעצבן כי שוב איחרתי."
+      },
+      {
+        "word": "annoyed",
+        "en": "She gets annoyed when people are late for meetings.",
+        "he": "היא מתעצבנת כשאנשים מאחרים לפגישות."
+      }
+    ]
+  },
+  {
+    "id": "sympathetic-nice",
+    "words": [
+      "sympathetic",
+      "nice"
+    ],
+    "d": 55,
+    "explanation": "בעברית סימפטי פירושו נחמד או חביב, אבל sympathetic באנגלית פירושו מבין ומשתתף בצער של מישהו, או תומך ברעיון: sympathetic to their cause. כדי לומר שמישהו סימפטי אומרים nice, pleasant או likable.",
+    "tip": "סימפטי = nice; משתתף ברגשות = sympathetic.",
+    "examples": [
+      {
+        "word": "sympathetic",
+        "en": "My manager was very sympathetic when my father was sick.",
+        "he": "המנהל שלי גילה הרבה הבנה כשאבא שלי היה חולה."
+      },
+      {
+        "word": "sympathetic",
+        "en": "Most voters are sympathetic to the teachers' demands.",
+        "he": "רוב הבוחרים אוהדים את הדרישות של המורים."
+      },
+      {
+        "word": "nice",
+        "en": "Your new neighbor seems really nice.",
+        "he": "השכן החדש שלכם נראה ממש נחמד."
+      },
+      {
+        "word": "nice",
+        "en": "The waiter was very nice and gave us free dessert.",
+        "he": "המלצר היה מאוד נחמד ונתן לנו קינוח חינם."
+      }
+    ]
+  },
+  {
+    "id": "finally-eventually",
+    "words": [
+      "finally",
+      "eventually"
+    ],
+    "d": 50,
+    "explanation": "finally פירושו סוף סוף, אחרי המתנה ארוכה, וגם לבסוף, כשמגיעים לנקודה האחרונה ברשימה. eventually פירושו בסופו של דבר, אחרי תהליך ארוך או קשיים, ולפעמים בלי לדעת מתי בדיוק. finally מדגיש את ההקלה, ו-eventually מדגיש את התהליך.",
+    "tip": "סוף סוף! = finally; בסופו של דבר = eventually.",
+    "examples": [
+      {
+        "word": "finally",
+        "en": "After three hours, the plane finally took off.",
+        "he": "אחרי שלוש שעות המטוס סוף סוף המריא."
+      },
+      {
+        "word": "finally",
+        "en": "Finally, I'd like to thank my family for their support.",
+        "he": "לבסוף, אני רוצה להודות למשפחה שלי על התמיכה."
+      },
+      {
+        "word": "eventually",
+        "en": "He failed the driving test twice but eventually passed.",
+        "he": "הוא נכשל פעמיים בטסט, אבל בסופו של דבר עבר."
+      },
+      {
+        "word": "eventually",
+        "en": "Don't worry, you'll eventually get used to the noise.",
+        "he": "אל דאגה, בסופו של דבר מתרגלים לרעש."
+      }
+    ]
+  },
+  {
+    "id": "embarrassed-ashamed",
+    "words": [
+      "embarrassed",
+      "ashamed"
+    ],
+    "d": 50,
+    "explanation": "embarrassed פירושו נבוך או מובך: הרגשה לא נעימה אחרי מצב מביך, גם כשלא עשיתם שום דבר רע. ashamed פירושו מתבייש: הרגשה של אשמה אחרי שעשיתם משהו לא בסדר. בעברית להתבייש מכסה לפעמים את שניהם.",
+    "tip": "מצב מביך? embarrassed. מעשה רע? ashamed.",
+    "examples": [
+      {
+        "word": "embarrassed",
+        "en": "She felt embarrassed when she tripped on the stage.",
+        "he": "היא הרגישה מובכת כשמעדה על הבמה."
+      },
+      {
+        "word": "embarrassed",
+        "en": "Don't be embarrassed, everyone makes mistakes in a new language.",
+        "he": "אין סיבה להיות נבוכים, כולם טועים בשפה חדשה."
+      },
+      {
+        "word": "ashamed",
+        "en": "He was ashamed of lying to his parents.",
+        "he": "הוא התבייש ששיקר להורים שלו."
+      },
+      {
+        "word": "ashamed",
+        "en": "They were ashamed of how they had treated the new employee.",
+        "he": "הם התביישו באופן שבו התייחסו לעובד החדש."
+      }
+    ]
+  },
+  {
+    "id": "miss-lose",
+    "words": [
+      "miss",
+      "lose"
+    ],
+    "d": 35,
+    "explanation": "בעברית להפסיד מכסה כמה מצבים שונים. lose פירושו להפסיד במשחק או לאבד משהו: lose a game, lose your keys. miss פירושו לפספס, כלומר לא להספיק או לא להגיע: miss the bus, miss a class, וגם להתגעגע: I miss you. לכן אומרים I missed the train ולא I lost the train.",
+    "tip": "משחק או חפץ? lose. אוטובוס, הזדמנות או שיעור? miss.",
+    "examples": [
+      {
+        "word": "miss",
+        "en": "Hurry up, or we'll miss the train!",
+        "he": "מהר, אחרת נפספס את הרכבת!"
+      },
+      {
+        "word": "miss",
+        "en": "I missed the first lesson because I was sick.",
+        "he": "פספסתי את השיעור הראשון כי הייתי חולה."
+      },
+      {
+        "word": "lose",
+        "en": "Our team lost the final by two points.",
+        "he": "הקבוצה שלנו הפסידה בגמר בשתי נקודות."
+      },
+      {
+        "word": "lose",
+        "en": "She lost her wallet somewhere in the mall.",
+        "he": "היא איבדה את הארנק איפשהו בקניון."
+      }
+    ]
+  },
+  {
+    "id": "then-than",
+    "words": [
+      "then",
+      "than"
+    ],
+    "d": 30,
+    "explanation": "than משמש בהשוואות: bigger than, more than. then מציין זמן או רצף: אז, אחר כך, או במקרה כזה. ההגייה דומה מאוד, ולכן הטעות נפוצה בעיקר בכתיבה.",
+    "tip": "than = מ- בהשוואה; then = אז.",
+    "examples": [
+      {
+        "word": "then",
+        "en": "We had dinner, and then we went to a movie.",
+        "he": "אכלנו ארוחת ערב, ואז הלכנו לסרט."
+      },
+      {
+        "word": "then",
+        "en": "If it rains tomorrow, then we'll stay home.",
+        "he": "אם ירד גשם מחר, אז נישאר בבית."
+      },
+      {
+        "word": "than",
+        "en": "My sister is two years older than me.",
+        "he": "אחותי מבוגרת ממני בשנתיים."
+      },
+      {
+        "word": "than",
+        "en": "Flying is much faster than taking the train.",
+        "he": "לטוס זה הרבה יותר מהיר מאשר לנסוע ברכבת."
+      }
+    ]
+  },
+  {
+    "id": "like-as",
+    "words": [
+      "like",
+      "as"
+    ],
+    "d": 45,
+    "explanation": "like פירושו כמו במובן של דומה ל-: She sings like a professional, כלומר היא שרה כמו מקצוענית אבל היא לא. as פירושו בתור או בתפקיד של: She works as a teacher, כלומר היא באמת מורה. בעברית כמו מכסה את שניהם, ולכן נשמעת הטעות I work like a teacher.",
+    "tip": "דומה ל-? like. בתפקיד של? as.",
+    "examples": [
+      {
+        "word": "like",
+        "en": "He eats like a horse, but he never gains weight.",
+        "he": "הוא אוכל כמו סוס, אבל אף פעם לא משמין."
+      },
+      {
+        "word": "like",
+        "en": "Your apartment looks like a hotel room.",
+        "he": "הדירה שלך נראית כמו חדר במלון."
+      },
+      {
+        "word": "as",
+        "en": "She works as a nurse at a hospital in Jerusalem.",
+        "he": "היא עובדת כאחות בבית חולים בירושלים."
+      },
+      {
+        "word": "as",
+        "en": "I used my jacket as a pillow on the flight.",
+        "he": "השתמשתי במעיל שלי בתור כרית בטיסה."
+      }
+    ]
+  },
+  {
+    "id": "quiet-quite",
+    "words": [
+      "quiet",
+      "quite"
+    ],
+    "d": 35,
+    "explanation": "quiet, שיש בה שתי הברות (qui-et), פירושה שקט. quite, שיש בה הברה אחת ונשמעת כמו kwait, פירושה די, או לגמרי, תלוי בהקשר: quite good = די טוב, not quite = לא לגמרי. ההבדל בכתיב קטן, אבל ההגייה והמשמעות שונות לגמרי.",
+    "tip": "quiet נגמרת ב-et; ב-quite ה-e בסוף שקטה.",
+    "examples": [
+      {
+        "word": "quiet",
+        "en": "The library is very quiet in the morning.",
+        "he": "הספרייה שקטה מאוד בבוקר."
+      },
+      {
+        "word": "quiet",
+        "en": "Please be quiet, the baby is sleeping.",
+        "he": "בבקשה לשמור על שקט, התינוק ישן."
+      },
+      {
+        "word": "quite",
+        "en": "The movie was quite good, but a bit too long.",
+        "he": "הסרט היה די טוב, אבל קצת ארוך מדי."
+      },
+      {
+        "word": "quite",
+        "en": "We're not quite sure what time the meeting starts.",
+        "he": "אנחנו לא לגמרי בטוחים באיזו שעה הפגישה מתחילה."
+      }
+    ]
+  },
+  {
+    "id": "accept-except",
+    "words": [
+      "accept",
+      "except"
+    ],
+    "d": 45,
+    "explanation": "accept הוא פועל: לקבל או להסכים ל-, כמו accept an offer. except היא מילת יחס: חוץ מ- או מלבד, כמו everyone except me. ההגייה קרובה מאוד, ולכן הטעות היא בעיקר בכתיבה.",
+    "tip": "accept = לקבל; except = חוץ מ- (Ex = מוציאים החוצה).",
+    "examples": [
+      {
+        "word": "accept",
+        "en": "She accepted the job offer right away.",
+        "he": "היא קיבלה את הצעת העבודה מיד."
+      },
+      {
+        "word": "accept",
+        "en": "We don't accept credit cards, only cash.",
+        "he": "אנחנו לא מקבלים כרטיסי אשראי, רק מזומן."
+      },
+      {
+        "word": "except",
+        "en": "The store is open every day except Saturday.",
+        "he": "החנות פתוחה כל יום חוץ משבת."
+      },
+      {
+        "word": "except",
+        "en": "Everyone came to the party except my brother.",
+        "he": "כולם באו למסיבה חוץ מאחי."
+      }
+    ]
+  },
+  {
+    "id": "adapt-adopt",
+    "words": [
+      "adapt",
+      "adopt"
+    ],
+    "d": 55,
+    "explanation": "adapt פירושו להתאים או להסתגל: adapt to a new country, וגם לעבד יצירה: adapt a book into a film. adopt פירושו לאמץ: ילד, כלב, רעיון או שיטה. ההבדל הוא באות אחת, a או o.",
+    "tip": "adApt = Adjust (להתאים); adOpt = Own (לאמץ כשלך).",
+    "examples": [
+      {
+        "word": "adapt",
+        "en": "It took us a year to adapt to life in Canada.",
+        "he": "לקח לנו שנה להסתגל לחיים בקנדה."
+      },
+      {
+        "word": "adapt",
+        "en": "The novel was adapted into a successful TV series.",
+        "he": "הרומן עובד לסדרת טלוויזיה מצליחה."
+      },
+      {
+        "word": "adopt",
+        "en": "They adopted a dog from the animal shelter.",
+        "he": "הם אימצו כלב ממקלט לבעלי חיים."
+      },
+      {
+        "word": "adopt",
+        "en": "The company adopted a new policy on working from home.",
+        "he": "החברה אימצה מדיניות חדשה לגבי עבודה מהבית."
+      }
+    ]
+  },
+  {
+    "id": "emigrate-immigrate",
+    "words": [
+      "emigrate",
+      "immigrate"
+    ],
+    "d": 55,
+    "explanation": "emigrate פירושו להגר מהמדינה שלך החוצה: emigrate from Israel. immigrate פירושו להגר אל מדינה חדשה: immigrate to Canada. זה אותו מעשה מנקודות מבט שונות: מי שעוזב הוא emigrant, ומי שמגיע הוא immigrant. עולים חדשים לישראל מתוארים בדרך כלל כ-new immigrants.",
+    "tip": "Emigrate = Exit (יוצאים); Immigrate = In (נכנסים).",
+    "examples": [
+      {
+        "word": "emigrate",
+        "en": "His grandparents emigrated from Poland in the 1930s.",
+        "he": "סבא וסבתא שלו היגרו מפולין בשנות השלושים."
+      },
+      {
+        "word": "emigrate",
+        "en": "Many young doctors are thinking of emigrating abroad.",
+        "he": "הרבה רופאים צעירים שוקלים להגר לחוץ לארץ."
+      },
+      {
+        "word": "immigrate",
+        "en": "Her family immigrated to Israel from Ethiopia in 1991.",
+        "he": "המשפחה שלה עלתה לישראל מאתיופיה ב-1991."
+      },
+      {
+        "word": "immigrate",
+        "en": "Thousands of people immigrate to Canada every year.",
+        "he": "אלפי אנשים מהגרים לקנדה מדי שנה."
+      }
+    ]
+  },
+  {
+    "id": "ensure-insure-assure",
+    "words": [
+      "ensure",
+      "insure",
+      "assure"
+    ],
+    "d": 65,
+    "explanation": "ensure פירושו לוודא או להבטיח שמשהו יקרה: ensure safety. insure פירושו לבטח, כלומר לעשות ביטוח: insure your car. assure פירושו להבטיח לאדם או להרגיע אותו, ולכן אחריו בא תמיד אדם: I assure you it's fine. באנגלית אמריקאית insure מופיע לפעמים גם במובן של ensure, אבל עדיף להפריד.",
+    "tip": "ensure = לוודא; insure = ביטוח; assure + אדם = להרגיע ולהבטיח לו.",
+    "examples": [
+      {
+        "word": "ensure",
+        "en": "Please ensure that all windows are closed before you leave.",
+        "he": "נא לוודא שכל החלונות סגורים לפני היציאה."
+      },
+      {
+        "word": "ensure",
+        "en": "The new law ensures equal pay for men and women.",
+        "he": "החוק החדש מבטיח שכר שווה לגברים ולנשים."
+      },
+      {
+        "word": "insure",
+        "en": "We insured the apartment against fire and theft.",
+        "he": "ביטחנו את הדירה מפני שריפה וגניבה."
+      },
+      {
+        "word": "insure",
+        "en": "It costs a lot to insure a car for a young driver.",
+        "he": "לבטח רכב לנהג צעיר עולה הרבה כסף."
+      },
+      {
+        "word": "assure",
+        "en": "The pilot assured the passengers that there was no danger.",
+        "he": "הטייס הרגיע את הנוסעים שאין שום סכנה."
+      },
+      {
+        "word": "assure",
+        "en": "The doctor assured us that the surgery was routine.",
+        "he": "הרופאה הבטיחה לנו שמדובר בניתוח שגרתי."
+      }
+    ]
+  },
+  {
+    "id": "continuous-continual",
+    "words": [
+      "continuous",
+      "continual"
+    ],
+    "d": 70,
+    "explanation": "continuous פירושו רציף, בלי שום הפסקה: continuous noise, a continuous line. continual פירושו חוזר ונשנה, שוב ושוב עם הפסקות, ולרוב במשמעות מעצבנת: continual interruptions. ההבדל עדין, אבל בכתיבה רשמית הוא חשוב.",
+    "tip": "continuous = בלי הפסקה; continual = שוב ושוב.",
+    "examples": [
+      {
+        "word": "continuous",
+        "en": "The old machine makes a continuous humming noise.",
+        "he": "המכונה הישנה משמיעה זמזום רציף."
+      },
+      {
+        "word": "continuous",
+        "en": "Patients in this unit need continuous monitoring.",
+        "he": "מטופלים ביחידה הזאת זקוקים לניטור רציף."
+      },
+      {
+        "word": "continual",
+        "en": "I'm tired of my neighbor's continual complaints.",
+        "he": "נמאס לי מהתלונות החוזרות ונשנות של השכן."
+      },
+      {
+        "word": "continual",
+        "en": "The project suffered from continual delays and budget problems.",
+        "he": "הפרויקט סבל מעיכובים חוזרים ונשנים ומבעיות תקציב."
+      }
+    ]
+  },
+  {
+    "id": "discreet-discrete",
+    "words": [
+      "discreet",
+      "discrete"
+    ],
+    "d": 70,
+    "explanation": "discreet פירושו דיסקרטי: זהיר ושומר על פרטיות, כמו a discreet person. discrete פירושו נפרד או מובחן, בדרך כלל בהקשר מדעי או טכני: discrete categories. ההגייה זהה, והמילה העברית דיסקרטי מתאימה ל-discreet.",
+    "tip": "ב-discrEEt שתי ה-e צמודות ושומרות סוד; ב-discrEtE הן מופרדות, כמו נפרד.",
+    "examples": [
+      {
+        "word": "discreet",
+        "en": "Please be discreet, I don't want anyone else to know.",
+        "he": "בבקשה לשמור על דיסקרטיות, אני לא רוצה שאף אחד אחר יידע."
+      },
+      {
+        "word": "discreet",
+        "en": "The hotel staff were polite and very discreet.",
+        "he": "צוות המלון היה אדיב ודיסקרטי מאוד."
+      },
+      {
+        "word": "discrete",
+        "en": "The course is divided into three discrete modules.",
+        "he": "הקורס מחולק לשלוש יחידות נפרדות."
+      },
+      {
+        "word": "discrete",
+        "en": "In digital systems, data is stored in discrete units.",
+        "he": "במערכות דיגיטליות, מידע נשמר ביחידות נפרדות."
+      }
+    ]
+  },
+  {
+    "id": "farther-further",
+    "words": [
+      "farther",
+      "further"
+    ],
+    "d": 55,
+    "explanation": "farther משמש למרחק פיזי: farther away, ten kilometers farther. further משמש גם למרחק פיזי וגם למובן מופשט של עוד, נוסף או הלאה: further information, further questions. באנגלית בריטית further משמש כמעט בכל המקרים.",
+    "tip": "מרחק? farther (יש בה far). עוד ונוסף? further.",
+    "examples": [
+      {
+        "word": "farther",
+        "en": "The hotel was farther from the beach than we expected.",
+        "he": "המלון היה רחוק יותר מהים ממה שציפינו."
+      },
+      {
+        "word": "farther",
+        "en": "We walked a little farther along the river.",
+        "he": "הלכנו עוד קצת לאורך הנהר."
+      },
+      {
+        "word": "further",
+        "en": "For further information, please contact our office.",
+        "he": "למידע נוסף, נא לפנות למשרד שלנו."
+      },
+      {
+        "word": "further",
+        "en": "The police decided not to investigate the case further.",
+        "he": "המשטרה החליטה לא להמשיך לחקור את התיק."
+      }
+    ]
+  },
+  {
+    "id": "imply-infer",
+    "words": [
+      "imply",
+      "infer"
+    ],
+    "d": 70,
+    "explanation": "imply פירושו לרמוז: הדובר או הכותב משדר משהו בלי לומר אותו במפורש. infer פירושו להסיק: השומע או הקורא מבין משהו מתוך מה שנאמר. מי שמדבר רומז (implies), ומי שמקשיב מסיק (infers).",
+    "tip": "imply = שולחים רמז; infer = מסיקים מסקנה.",
+    "examples": [
+      {
+        "word": "imply",
+        "en": "His tone implied that he wasn't happy with the result.",
+        "he": "הטון שלו רמז שהוא לא מרוצה מהתוצאה."
+      },
+      {
+        "word": "imply",
+        "en": "The report implies that the company knew about the problem.",
+        "he": "הדוח רומז שהחברה ידעה על הבעיה."
+      },
+      {
+        "word": "infer",
+        "en": "From her smile, I inferred that the interview went well.",
+        "he": "מהחיוך שלה הסקתי שהראיון הלך טוב."
+      },
+      {
+        "word": "infer",
+        "en": "What can we infer from these results?",
+        "he": "מה אפשר להסיק מהתוצאות האלה?"
+      }
+    ]
+  },
+  {
+    "id": "for-since-ago",
+    "words": [
+      "for",
+      "since",
+      "ago"
+    ],
+    "d": 40,
+    "explanation": "for מציין משך זמן: for three years. since מציין נקודת התחלה בעבר: since 2020, since Monday. ago מציין כמה זמן לפני עכשיו משהו קרה, ובא אחרי הזמן: two years ago. עם for ו-since משתמשים בדרך כלל ב-present perfect: I've lived here for five years, ולא I live here five years.",
+    "tip": "משך = for; נקודת התחלה = since; לפני X זמן = X ago.",
+    "examples": [
+      {
+        "word": "for",
+        "en": "She has worked at this company for six years.",
+        "he": "היא עובדת בחברה הזאת כבר שש שנים."
+      },
+      {
+        "word": "for",
+        "en": "We've been waiting for over forty minutes.",
+        "he": "אנחנו מחכים כבר יותר מארבעים דקות."
+      },
+      {
+        "word": "since",
+        "en": "They have been married since 2015.",
+        "he": "הם נשואים מאז 2015."
+      },
+      {
+        "word": "since",
+        "en": "I haven't seen him since the wedding.",
+        "he": "לא ראיתי אותו מאז החתונה."
+      },
+      {
+        "word": "ago",
+        "en": "We moved to Haifa three years ago.",
+        "he": "עברנו לחיפה לפני שלוש שנים."
+      },
+      {
+        "word": "ago",
+        "en": "The package was sent two weeks ago and still hasn't arrived.",
+        "he": "החבילה נשלחה לפני שבועיים ועדיין לא הגיעה."
+      }
+    ]
+  },
+  {
+    "id": "between-among",
+    "words": [
+      "between",
+      "among"
+    ],
+    "d": 45,
+    "explanation": "between משמש כשמדברים על דברים או אנשים נפרדים ומוגדרים, בדרך כלל שניים: between you and me. among משמש לקבוצה של שלושה ומעלה, כשהפריטים לא מופרדים זה מזה: among friends. אפשר להשתמש ב-between גם עם יותר משניים, כשכל אחד מוגדר בנפרד: an agreement between three countries.",
+    "tip": "צדדים מוגדרים? between. בתוך קבוצה? among.",
+    "examples": [
+      {
+        "word": "between",
+        "en": "The café is between the bank and the post office.",
+        "he": "בית הקפה נמצא בין הבנק לדואר."
+      },
+      {
+        "word": "between",
+        "en": "What's the difference between these two phones?",
+        "he": "מה ההבדל בין שני הטלפונים האלה?"
+      },
+      {
+        "word": "among",
+        "en": "The singer is very popular among teenagers.",
+        "he": "הזמר פופולרי מאוד בקרב בני נוער."
+      },
+      {
+        "word": "among",
+        "en": "We found the missing letter among some old papers.",
+        "he": "מצאנו את המכתב החסר בין כמה ניירות ישנים."
+      }
+    ]
+  },
+  {
+    "id": "opposite-in-front-of",
+    "words": [
+      "opposite",
+      "in front of"
+    ],
+    "d": 40,
+    "explanation": "in front of פירושו לפני או מול, באותו צד: The car is parked in front of the house. opposite פירושו מול, בצד השני, כשמשהו מפריד ביניהם, כמו רחוב או שולחן: The bank is opposite the school. בעברית מול מכסה את שניהם.",
+    "tip": "בצד השני של הרחוב או השולחן? opposite. ממש לפני? in front of.",
+    "examples": [
+      {
+        "word": "opposite",
+        "en": "There's a pharmacy opposite our building, across the street.",
+        "he": "יש בית מרקחת מול הבניין שלנו, בצד השני של הרחוב."
+      },
+      {
+        "word": "opposite",
+        "en": "At dinner, I sat opposite my new boss.",
+        "he": "בארוחת הערב ישבתי מול הבוס החדש שלי."
+      },
+      {
+        "word": "in front of",
+        "en": "Someone parked right in front of my garage again.",
+        "he": "שוב מישהו חנה בדיוק מול החניה שלי."
+      },
+      {
+        "word": "in front of",
+        "en": "She practiced her speech in front of the mirror.",
+        "he": "היא תרגלה את הנאום שלה מול המראה."
+      }
+    ]
+  },
+  {
+    "id": "good-well",
+    "words": [
+      "good",
+      "well"
+    ],
+    "d": 30,
+    "explanation": "good הוא שם תואר שמתאר שם עצם: a good job, The food is good. well הוא תואר פועל שמתאר איך עושים משהו: She sings well. אחרי פעלים כמו be, look ו-sound בא שם תואר: It looks good. well יכול לשמש גם כשם תואר במובן של בריא: I don't feel well.",
+    "tip": "מה? good. איך? well.",
+    "examples": [
+      {
+        "word": "good",
+        "en": "This is a really good restaurant for families.",
+        "he": "זאת מסעדה ממש טובה למשפחות."
+      },
+      {
+        "word": "good",
+        "en": "Your English sounds very good after the course.",
+        "he": "האנגלית שלך נשמעת טוב מאוד אחרי הקורס."
+      },
+      {
+        "word": "well",
+        "en": "He plays the guitar really well.",
+        "he": "הוא מנגן בגיטרה ממש טוב."
+      },
+      {
+        "word": "well",
+        "en": "I didn't sleep well last night because of the heat.",
+        "he": "לא ישנתי טוב בלילה בגלל החום."
+      }
+    ]
+  },
+  {
+    "id": "effective-efficient",
+    "words": [
+      "effective",
+      "efficient"
+    ],
+    "d": 55,
+    "explanation": "effective פירושו אפקטיבי: משיג את התוצאה הרצויה, כמו an effective treatment. efficient פירושו יעיל: משיג תוצאה בלי לבזבז זמן, כסף או אנרגיה, כמו an efficient worker. בעברית יעיל משמש לפעמים לשתיהן, אבל באנגלית ההבחנה ברורה: שיטה יכולה להיות effective ובכל זאת לא efficient.",
+    "tip": "effective = עובד; efficient = עובד בלי בזבוז.",
+    "examples": [
+      {
+        "word": "effective",
+        "en": "This medicine is very effective against headaches.",
+        "he": "התרופה הזאת אפקטיבית מאוד נגד כאבי ראש."
+      },
+      {
+        "word": "effective",
+        "en": "Short daily practice is the most effective way to learn vocabulary.",
+        "he": "תרגול קצר כל יום הוא הדרך האפקטיבית ביותר ללמוד אוצר מילים."
+      },
+      {
+        "word": "efficient",
+        "en": "The new heating system is much more energy efficient.",
+        "he": "מערכת החימום החדשה יעילה הרבה יותר מבחינה אנרגטית."
+      },
+      {
+        "word": "efficient",
+        "en": "She's very efficient and always finishes her work early.",
+        "he": "היא מאוד יעילה ותמיד מסיימת את העבודה מוקדם."
+      }
+    ]
+  },
+  {
+    "id": "hope-wish",
+    "words": [
+      "hope",
+      "wish"
+    ],
+    "d": 45,
+    "explanation": "hope פירושו לקוות למשהו אפשרי, שעשוי לקרות: I hope you feel better. wish משמש לרצון במשהו לא מציאותי או שונה מהמצב הקיים, ואחריו בא זמן עבר: I wish I had more time = הלוואי שהיה לי יותר זמן. wish משמש גם לאיחולים: I wish you luck, Best wishes.",
+    "tip": "אפשרי? hope. הלוואי (לא מציאותי)? wish + עבר.",
+    "examples": [
+      {
+        "word": "hope",
+        "en": "I hope you have a great time in Rome.",
+        "he": "מקווה שיהיה לך מדהים ברומא."
+      },
+      {
+        "word": "hope",
+        "en": "We're hoping to buy an apartment next year.",
+        "he": "אנחנו מקווים לקנות דירה בשנה הבאה."
+      },
+      {
+        "word": "wish",
+        "en": "I wish I could speak French fluently.",
+        "he": "הלוואי שיכולתי לדבר צרפתית שוטפת."
+      },
+      {
+        "word": "wish",
+        "en": "We wish you a happy new year.",
+        "he": "אנחנו מאחלים לך שנה טובה."
+      }
+    ]
+  },
+  {
+    "id": "cloth-clothes-clothing",
+    "words": [
+      "cloth",
+      "clothes",
+      "clothing"
+    ],
+    "d": 45,
+    "explanation": "cloth הוא בד, וגם מטלית: a piece of cloth. clothes הם בגדים, והמילה תמיד ברבים: I need new clothes. clothing היא מילה כללית ורשמית יותר לביגוד, והיא לא ספירה: a clothing store. לבגד אחד אומרים a piece of clothing או את שם הבגד, ולא a clothe.",
+    "tip": "בד = cloth; בגדים = clothes; ביגוד (רשמי) = clothing.",
+    "examples": [
+      {
+        "word": "cloth",
+        "en": "Wipe the table with a damp cloth.",
+        "he": "צריך לנגב את השולחן עם מטלית לחה."
+      },
+      {
+        "word": "cloth",
+        "en": "The dress is made of expensive cotton cloth.",
+        "he": "השמלה עשויה מבד כותנה יקר."
+      },
+      {
+        "word": "clothes",
+        "en": "She packed enough clothes for two weeks.",
+        "he": "היא ארזה מספיק בגדים לשבועיים."
+      },
+      {
+        "word": "clothes",
+        "en": "Take off your wet clothes before you catch a cold.",
+        "he": "כדאי להוריד את הבגדים הרטובים לפני שמצטננים."
+      },
+      {
+        "word": "clothing",
+        "en": "The store sells children's clothing and shoes.",
+        "he": "החנות מוכרת ביגוד ונעליים לילדים."
+      },
+      {
+        "word": "clothing",
+        "en": "Please bring warm clothing for the trip to the north.",
+        "he": "נא להביא ביגוד חם לטיול לצפון."
+      }
+    ]
+  },
+  {
+    "id": "price-prize-praise",
+    "words": [
+      "price",
+      "prize",
+      "praise"
+    ],
+    "d": 40,
+    "explanation": "price הוא מחיר: כמה משהו עולה. prize הוא פרס שזוכים בו בתחרות או בהגרלה: first prize, the Nobel Prize. praise הוא שבח, או הפועל לשבח: מילים טובות על מישהו. שימו לב להגייה: price נגמרת בצליל s, ו-prize ו-praise נגמרות בצליל z.",
+    "tip": "price = כמה עולה; prize = במה זוכים; praise = מה אומרים עליך.",
+    "examples": [
+      {
+        "word": "price",
+        "en": "The price of apartments in Tel Aviv keeps going up.",
+        "he": "מחירי הדירות בתל אביב ממשיכים לעלות."
+      },
+      {
+        "word": "price",
+        "en": "What's the price of this leather jacket?",
+        "he": "כמה עולה מעיל העור הזה?"
+      },
+      {
+        "word": "prize",
+        "en": "She won first prize in the photography competition.",
+        "he": "היא זכתה בפרס הראשון בתחרות הצילום."
+      },
+      {
+        "word": "prize",
+        "en": "The prize for the winner is a weekend in Eilat.",
+        "he": "הפרס לזוכה הוא סוף שבוע באילת."
+      },
+      {
+        "word": "praise",
+        "en": "The teacher praised the students for their hard work.",
+        "he": "המורה שיבחה את התלמידים על העבודה הקשה."
+      },
+      {
+        "word": "praise",
+        "en": "The new film received a lot of praise from critics.",
+        "he": "הסרט החדש זכה לשבחים רבים מהמבקרים."
+      }
+    ]
+  },
+  {
+    "id": "approve-confirm",
+    "words": [
+      "approve",
+      "confirm"
+    ],
+    "d": 50,
+    "explanation": "בעברית לאשר מכסה שתי מילים באנגלית. approve פירושו לאשר במובן של לתת הסכמה או היתר: The manager approved my vacation. confirm פירושו לאשר במובן של לוודא שמשהו נכון או סופי: confirm a reservation, confirm a meeting. אם היה אפשר לסרב, זה approve; אם רק מוודאים פרטים, זה confirm.",
+    "tip": "נותנים היתר (או מסרבים)? approve. מוודאים שזה נכון וסופי? confirm.",
+    "examples": [
+      {
+        "word": "approve",
+        "en": "My boss approved my request to work from home on Fridays.",
+        "he": "הבוס שלי אישר את הבקשה שלי לעבוד מהבית בימי שישי."
+      },
+      {
+        "word": "approve",
+        "en": "The city council approved the plans for a new park.",
+        "he": "מועצת העיר אישרה את התוכניות לפארק חדש."
+      },
+      {
+        "word": "confirm",
+        "en": "Please confirm your appointment by replying to this message.",
+        "he": "נא לאשר את התור בתשובה להודעה הזאת."
+      },
+      {
+        "word": "confirm",
+        "en": "The tests confirmed that it was just a virus.",
+        "he": "הבדיקות אישרו שזה רק וירוס."
+      }
+    ]
+  },
+  {
+    "id": "dead-died-death",
+    "words": [
+      "dead",
+      "died",
+      "death"
+    ],
+    "d": 35,
+    "explanation": "dead הוא שם תואר: מת, לא חי: The plant is dead. died הוא העבר של הפועל die: He died in 2010. death הוא שם עצם: מוות. טעות נפוצה אצל דוברי עברית היא He is died, והנכון הוא He died או He is dead.",
+    "tip": "מצב = dead; מה קרה = died; שם עצם = death.",
+    "examples": [
+      {
+        "word": "dead",
+        "en": "My phone is dead, can I use yours?",
+        "he": "הסוללה בטלפון שלי נגמרה, אפשר להשתמש בשלך?"
+      },
+      {
+        "word": "dead",
+        "en": "We found a dead bird in the garden this morning.",
+        "he": "מצאנו ציפור מתה בגינה הבוקר."
+      },
+      {
+        "word": "died",
+        "en": "Her grandfather died peacefully at the age of ninety.",
+        "he": "סבא שלה נפטר בשקט בגיל תשעים."
+      },
+      {
+        "word": "died",
+        "en": "Many plants died during the heat wave.",
+        "he": "הרבה צמחים מתו בגל החום."
+      },
+      {
+        "word": "death",
+        "en": "The death of the famous singer shocked his fans.",
+        "he": "מותו של הזמר המפורסם הכה את מעריציו בהלם."
+      },
+      {
+        "word": "death",
+        "en": "Smoking is a leading cause of death worldwide.",
+        "he": "עישון הוא אחד מגורמי המוות המובילים בעולם."
+      }
+    ]
+  },
+  {
+    "id": "breath-breathe",
+    "words": [
+      "breath",
+      "breathe"
+    ],
+    "d": 40,
+    "explanation": "breath, בלי e בסוף, היא שם עצם: נשימה, כמו take a deep breath. היא נהגית עם תנועה קצרה ועם th כמו ב-think. breathe, עם e בסוף, היא פועל: לנשום, ונהגית עם תנועה ארוכה ועם th כמו ב-this. אותו דבר קורה בזוג bath ו-bathe.",
+    "tip": "ה-e בסוף breathe הופכת את המילה לפועל.",
+    "examples": [
+      {
+        "word": "breath",
+        "en": "Take a deep breath and try to relax.",
+        "he": "קחו נשימה עמוקה ונסו להירגע."
+      },
+      {
+        "word": "breath",
+        "en": "She was out of breath after running up the stairs.",
+        "he": "היא התנשפה אחרי שעלתה בריצה במדרגות."
+      },
+      {
+        "word": "breathe",
+        "en": "It's hard to breathe in this smoky room.",
+        "he": "קשה לנשום בחדר המעושן הזה."
+      },
+      {
+        "word": "breathe",
+        "en": "Breathe in slowly through your nose, then breathe out.",
+        "he": "לשאוף אוויר לאט דרך האף, ואז לנשוף."
+      }
+    ]
+  },
+  {
+    "id": "cancel-postpone",
+    "words": [
+      "cancel",
+      "postpone"
+    ],
+    "d": 45,
+    "explanation": "cancel פירושו לבטל: האירוע לא יתקיים בכלל. postpone פירושו לדחות: האירוע יתקיים, אבל במועד מאוחר יותר, ובדיבור אומרים גם put off. יש גם delay: עיכוב שלא תוכנן, כמו a delayed flight.",
+    "tip": "לא יקרה בכלל? cancel. יקרה אחר כך? postpone.",
+    "examples": [
+      {
+        "word": "cancel",
+        "en": "The concert was canceled because of the storm.",
+        "he": "ההופעה בוטלה בגלל הסערה."
+      },
+      {
+        "word": "cancel",
+        "en": "Customers can cancel their order within fourteen days.",
+        "he": "לקוחות יכולים לבטל את ההזמנה בתוך ארבעה עשר יום."
+      },
+      {
+        "word": "postpone",
+        "en": "The meeting has been postponed until next Tuesday.",
+        "he": "הפגישה נדחתה ליום שלישי הבא."
+      },
+      {
+        "word": "postpone",
+        "en": "They decided to postpone the wedding by a year.",
+        "he": "הם החליטו לדחות את החתונה בשנה."
+      }
+    ]
+  },
+  {
+    "id": "offer-suggest",
+    "words": [
+      "offer",
+      "suggest"
+    ],
+    "d": 40,
+    "explanation": "בעברית להציע מכסה שתי מילים. offer פירושו להציע לתת משהו, או להתנדב לעשות משהו בעצמך: offer someone coffee, offer to help. suggest פירושו להציע רעיון או המלצה: I suggest we leave early. אחרי suggest לא בא מבנה של אדם ו-to: לא suggest you to go, אלא suggest that you go או suggest going.",
+    "tip": "נותנים משהו או מתנדבים? offer. מעלים רעיון? suggest.",
+    "examples": [
+      {
+        "word": "offer",
+        "en": "They offered me a job in their Berlin office.",
+        "he": "הם הציעו לי עבודה במשרד שלהם בברלין."
+      },
+      {
+        "word": "offer",
+        "en": "Our neighbor offered to water the plants while we're away.",
+        "he": "השכנה שלנו הציעה להשקות את הצמחים כשלא נהיה בבית."
+      },
+      {
+        "word": "suggest",
+        "en": "She suggested meeting at the café near the station.",
+        "he": "היא הציעה להיפגש בבית הקפה שליד התחנה."
+      },
+      {
+        "word": "suggest",
+        "en": "Can you suggest a good restaurant in the area?",
+        "he": "יש לך הצעה למסעדה טובה באזור?"
+      }
+    ]
+  },
+  {
+    "id": "rent-hire",
+    "words": [
+      "rent",
+      "hire"
+    ],
+    "d": 45,
+    "explanation": "rent משמש בשני הכיוונים: לשכור (rent an apartment) וגם להשכיר, ואז כדאי לומר rent out. hire פירושו בעיקר להעסיק עובד או לשכור שירותים של אדם: hire a new employee, hire a lawyer. באנגלית בריטית hire משמש גם לשכירה קצרה של חפץ, כמו hire a car, ובאנגלית אמריקאית אומרים rent a car.",
+    "tip": "מקום או רכב? rent (ולהשכיר: rent out). אדם לעבודה? hire.",
+    "examples": [
+      {
+        "word": "rent",
+        "en": "We rent a small apartment near the university.",
+        "he": "אנחנו שוכרים דירה קטנה ליד האוניברסיטה."
+      },
+      {
+        "word": "rent",
+        "en": "They rent out their beach house in the summer.",
+        "he": "הם משכירים את בית החוף שלהם בקיץ."
+      },
+      {
+        "word": "hire",
+        "en": "The company plans to hire twenty new engineers this year.",
+        "he": "החברה מתכננת לגייס עשרים מהנדסים חדשים השנה."
+      },
+      {
+        "word": "hire",
+        "en": "We hired a photographer for the wedding.",
+        "he": "שכרנו צלם לחתונה."
+      }
+    ]
+  },
+  {
+    "id": "let-allow",
+    "words": [
+      "let",
+      "allow"
+    ],
+    "d": 35,
+    "explanation": "שתיהן פירושן לאפשר או להרשות, אבל המבנה שונה. let + אדם + פועל בלי to: My parents let me stay out late. allow + אדם + to + פועל: My parents allowed me to stay out late. allow רשמי יותר, ורק הוא מופיע בסביל: Smoking is not allowed.",
+    "tip": "let בלי to; allow עם to.",
+    "examples": [
+      {
+        "word": "let",
+        "en": "Let me help you with those heavy bags.",
+        "he": "אני אעזור לך עם השקיות הכבדות האלה."
+      },
+      {
+        "word": "let",
+        "en": "Her parents don't let her use the phone after ten.",
+        "he": "ההורים שלה לא נותנים לה להשתמש בטלפון אחרי עשר."
+      },
+      {
+        "word": "allow",
+        "en": "Dogs are not allowed in the restaurant.",
+        "he": "אסור להכניס כלבים למסעדה."
+      },
+      {
+        "word": "allow",
+        "en": "The new app allows users to pay with their phone.",
+        "he": "האפליקציה החדשה מאפשרת למשתמשים לשלם בטלפון."
+      }
+    ]
+  },
+  {
+    "id": "although-despite",
+    "words": [
+      "although",
+      "despite"
+    ],
+    "d": 45,
+    "explanation": "although (או though) היא מילת קישור, ואחריה בא משפט שלם עם נושא ופועל: Although it was raining, we went out. despite (או in spite of) היא מילת יחס, ואחריה בא שם עצם או פועל עם ing: Despite the rain, we went out. לא אומרים despite of, וגם לא despite it was raining.",
+    "tip": "although + משפט; despite + שם עצם או ing.",
+    "examples": [
+      {
+        "word": "although",
+        "en": "Although she was tired, she finished the report.",
+        "he": "למרות שהייתה עייפה, היא סיימה את הדוח."
+      },
+      {
+        "word": "although",
+        "en": "We enjoyed the trip, although the hotel was terrible.",
+        "he": "נהנינו מהטיול, למרות שהמלון היה נוראי."
+      },
+      {
+        "word": "despite",
+        "en": "Despite the rain, thousands of people came to the concert.",
+        "he": "למרות הגשם, אלפי אנשים הגיעו להופעה."
+      },
+      {
+        "word": "despite",
+        "en": "He failed the test despite studying for weeks.",
+        "he": "הוא נכשל במבחן למרות שלמד במשך שבועות."
+      }
+    ]
+  },
+  {
+    "id": "forget-leave",
+    "words": [
+      "forget",
+      "leave"
+    ],
+    "d": 40,
+    "explanation": "בעברית אומרים שכחתי את הטלפון בבית, אבל באנגלית, כשמציינים את המקום שבו החפץ נשאר, משתמשים ב-leave: I left my phone at home. forget מתאים כשלא מציינים מקום: I forgot my phone. המשפט I forgot my phone at home נשמע לא טבעי לדוברי אנגלית רבים.",
+    "tip": "יש מקום במשפט? left. אין מקום? forgot.",
+    "examples": [
+      {
+        "word": "forget",
+        "en": "Oh no, I forgot my wallet again!",
+        "he": "אוי לא, שוב שכחתי את הארנק!"
+      },
+      {
+        "word": "forget",
+        "en": "Don't forget your passport, we can't fly without it.",
+        "he": "לא לשכוח את הדרכון, בלעדיו אי אפשר לטוס."
+      },
+      {
+        "word": "leave",
+        "en": "I left my keys in the car.",
+        "he": "השארתי את המפתחות באוטו."
+      },
+      {
+        "word": "leave",
+        "en": "She left her umbrella on the bus this morning.",
+        "he": "היא שכחה את המטרייה שלה באוטובוס הבוקר."
+      }
+    ]
+  },
+  {
+    "id": "in-time-on-time",
+    "words": [
+      "in time",
+      "on time"
+    ],
+    "d": 40,
+    "explanation": "on time פירושו בזמן, בדיוק לפי לוח הזמנים ולא באיחור: The train left on time. in time פירושו בזמן במובן של מספיק מוקדם כדי להספיק משהו, לפני שיהיה מאוחר מדי: We got there just in time to see the start. בעברית בזמן מכסה את שניהם.",
+    "tip": "לפי לוח הזמנים? on time. מספיק מוקדם כדי להספיק? in time.",
+    "examples": [
+      {
+        "word": "on time",
+        "en": "The train left exactly on time this morning.",
+        "he": "הרכבת יצאה הבוקר בדיוק בזמן."
+      },
+      {
+        "word": "on time",
+        "en": "Please try to be on time for the meeting tomorrow.",
+        "he": "בבקשה להשתדל להגיע בזמן לפגישה מחר."
+      },
+      {
+        "word": "in time",
+        "en": "We got to the cinema just in time for the movie.",
+        "he": "הגענו לקולנוע בדיוק בזמן לסרט."
+      },
+      {
+        "word": "in time",
+        "en": "The ambulance arrived in time to save his life.",
+        "he": "האמבולנס הגיע בזמן כדי להציל את חייו."
+      }
+    ]
+  },
+  {
+    "id": "at-the-end-in-the-end",
+    "words": [
+      "at the end",
+      "in the end"
+    ],
+    "d": 45,
+    "explanation": "at the end (of) מציין את הנקודה האחרונה של משהו מסוים, במקום או בזמן: at the end of the street, at the end of the movie. in the end פירושו בסוף במובן של בסופו של דבר, אחרי הכול, ולא בא אחריו of: In the end, we stayed home.",
+    "tip": "הסוף של משהו מסוים? at the end of. בסופו של דבר? in the end.",
+    "examples": [
+      {
+        "word": "at the end",
+        "en": "The bathroom is at the end of the hall.",
+        "he": "השירותים נמצאים בסוף המסדרון."
+      },
+      {
+        "word": "at the end",
+        "en": "We'll get paid at the end of the month.",
+        "he": "נקבל משכורת בסוף החודש."
+      },
+      {
+        "word": "in the end",
+        "en": "We argued for hours, but in the end we agreed.",
+        "he": "התווכחנו שעות, אבל בסוף הסכמנו."
+      },
+      {
+        "word": "in the end",
+        "en": "In the end, it was cheaper to buy a new phone.",
+        "he": "בסופו של דבר, היה זול יותר לקנות טלפון חדש."
+      }
+    ]
+  },
+  {
+    "id": "last-latest",
+    "words": [
+      "last",
+      "latest"
+    ],
+    "d": 40,
+    "explanation": "בעברית אחרון מכסה שתי מילים. last פירושו האחרון שאין אחריו עוד, או הקודם: the last page, last week. latest פירושו העדכני ביותר, החדש ביותר נכון לעכשיו, ויבואו עוד אחריו: the latest news, the latest version. her last book עשוי לרמוז שהיא לא תכתוב עוד ספרים, ו-her latest book הוא פשוט הספר החדש שלה.",
+    "tip": "אין עוד אחריו? last. הכי חדש עד עכשיו? latest.",
+    "examples": [
+      {
+        "word": "last",
+        "en": "This is the last train tonight, so don't miss it.",
+        "he": "זאת הרכבת האחרונה הלילה, אז אסור לפספס אותה."
+      },
+      {
+        "word": "last",
+        "en": "We saw that movie last week.",
+        "he": "ראינו את הסרט הזה בשבוע שעבר."
+      },
+      {
+        "word": "latest",
+        "en": "Have you heard the latest news about the elections?",
+        "he": "שמעת את החדשות האחרונות על הבחירות?"
+      },
+      {
+        "word": "latest",
+        "en": "The latest version of the app has a dark mode.",
+        "he": "בגרסה האחרונה של האפליקציה יש מצב כהה."
+      }
+    ]
+  },
+  {
+    "id": "late-lately",
+    "words": [
+      "late",
+      "lately"
+    ],
+    "d": 45,
+    "explanation": "late פירושו מאוחר או באיחור, והוא משמש גם כשם תואר וגם כתואר פועל: I woke up late. lately פירושו לאחרונה, בתקופה האחרונה, ובדרך כלל בא עם present perfect: I've been busy lately. lately לא פירושו באיחור.",
+    "tip": "באיחור = late; לאחרונה = lately.",
+    "examples": [
+      {
+        "word": "late",
+        "en": "Sorry I'm late, the traffic was terrible.",
+        "he": "סליחה על האיחור, היו פקקים נוראיים."
+      },
+      {
+        "word": "late",
+        "en": "We stayed up late watching movies.",
+        "he": "נשארנו ערים עד מאוחר וצפינו בסרטים."
+      },
+      {
+        "word": "lately",
+        "en": "Have you talked to Dana lately?",
+        "he": "דיברת עם דנה לאחרונה?"
+      },
+      {
+        "word": "lately",
+        "en": "She's been feeling really tired lately.",
+        "he": "היא מרגישה עייפה מאוד לאחרונה."
+      }
+    ]
+  },
+  {
+    "id": "most-almost",
+    "words": [
+      "most",
+      "almost"
+    ],
+    "d": 35,
+    "explanation": "most פירושו רוב או הכי: most people, the most expensive. almost פירושו כמעט: almost ready, almost everyone. טעות נפוצה היא almost people במקום most people. לפני the או מילת שייכות אומרים most of: most of the students, most of my friends.",
+    "tip": "רוב = most; כמעט = almost.",
+    "examples": [
+      {
+        "word": "most",
+        "en": "Most people in my office work from home on Fridays.",
+        "he": "רוב האנשים במשרד שלי עובדים מהבית בימי שישי."
+      },
+      {
+        "word": "most",
+        "en": "Most of the students passed the exam.",
+        "he": "רוב הסטודנטים עברו את המבחן."
+      },
+      {
+        "word": "almost",
+        "en": "Dinner is almost ready, so please set the table.",
+        "he": "ארוחת הערב כמעט מוכנה, אז בבקשה לערוך את השולחן."
+      },
+      {
+        "word": "almost",
+        "en": "Almost everyone in the class has a smartphone.",
+        "he": "כמעט לכל מי שבכיתה יש סמארטפון."
+      }
+    ]
+  },
+  {
+    "id": "so-such",
+    "words": [
+      "so",
+      "such"
+    ],
+    "d": 35,
+    "explanation": "so בא לפני שם תואר או תואר פועל שעומדים לבד: so beautiful, so quickly. such בא לפני שם עצם, בדרך כלל עם שם תואר: such a beautiful day, such nice people. ביחיד ספיר אומרים such a, ולא so a. בעברית כל כך מכסה את שניהם.",
+    "tip": "יש שם עצם? such (a). רק שם תואר? so.",
+    "examples": [
+      {
+        "word": "so",
+        "en": "The food was so good that we ordered more.",
+        "he": "האוכל היה כל כך טעים שהזמנו עוד."
+      },
+      {
+        "word": "so",
+        "en": "Why is he driving so fast?",
+        "he": "למה הוא נוסע כל כך מהר?"
+      },
+      {
+        "word": "such",
+        "en": "It was such a beautiful day that we went to the beach.",
+        "he": "זה היה יום כל כך יפה שהלכנו לים."
+      },
+      {
+        "word": "such",
+        "en": "They're such nice people, everyone loves them.",
+        "he": "הם אנשים כל כך נחמדים, כולם אוהבים אותם."
+      }
+    ]
+  },
+  {
+    "id": "used-to-be-used-to",
+    "words": [
+      "used to",
+      "be used to"
+    ],
+    "d": 50,
+    "explanation": "used to + פועל בסיסי מתאר הרגל או מצב בעבר שכבר לא קיים: I used to smoke = פעם עישנתי. be used to + שם עצם או פועל עם ing פירושו להיות רגיל למשהו: I'm used to working at night = אני רגיל לעבוד בלילה. ויש גם get used to: להתרגל.",
+    "tip": "פעם, וכבר לא? used to + פועל. רגילים ל-? be used to + ing.",
+    "examples": [
+      {
+        "word": "used to",
+        "en": "We used to live in Jerusalem when the kids were small.",
+        "he": "פעם גרנו בירושלים, כשהילדים היו קטנים."
+      },
+      {
+        "word": "used to",
+        "en": "He used to smoke, but he quit five years ago.",
+        "he": "פעם הוא עישן, אבל הוא הפסיק לפני חמש שנים."
+      },
+      {
+        "word": "be used to",
+        "en": "She's used to working long hours at the hospital.",
+        "he": "היא רגילה לעבוד שעות ארוכות בבית החולים."
+      },
+      {
+        "word": "be used to",
+        "en": "We aren't used to such cold weather.",
+        "he": "אנחנו לא רגילים למזג אוויר קר כזה."
+      }
+    ]
+  },
+  {
+    "id": "tall-high",
+    "words": [
+      "tall",
+      "high"
+    ],
+    "d": 25,
+    "explanation": "בעברית גבוה מכסה שתי מילים. tall משמש לאנשים ולדברים צרים וגבוהים שעומדים על הקרקע: a tall man, a tall building, a tall tree. high משמש לדברים שנמצאים רחוק מהקרקע, להרים, וגם למספרים ולרמות: a high shelf, a high mountain, high prices. על אנשים לא אומרים high.",
+    "tip": "אדם או משהו צר וגבוה? tall. גובה מהקרקע, הרים ומספרים? high.",
+    "examples": [
+      {
+        "word": "tall",
+        "en": "My brother is very tall, almost two meters.",
+        "he": "אחי גבוה מאוד, כמעט שני מטרים."
+      },
+      {
+        "word": "tall",
+        "en": "There are many tall buildings in the city center.",
+        "he": "יש הרבה בניינים גבוהים במרכז העיר."
+      },
+      {
+        "word": "high",
+        "en": "The cups are on the high shelf above the sink.",
+        "he": "הכוסות נמצאות על המדף הגבוה מעל הכיור."
+      },
+      {
+        "word": "high",
+        "en": "Prices in this neighborhood are very high.",
+        "he": "המחירים בשכונה הזאת גבוהים מאוד."
+      }
+    ]
+  },
+  {
+    "id": "expensive-valuable-precious",
+    "words": [
+      "expensive",
+      "valuable",
+      "precious"
+    ],
+    "d": 45,
+    "explanation": "בעברית יקר מכסה כמה מילים באנגלית. expensive פירושו יקר במחיר: עולה הרבה כסף. valuable פירושו בעל ערך רב, כספי או מעשי: valuable jewelry, valuable advice. precious פירושו יקר ללב או נדיר מאוד: precious memories, precious stones. ויש גם priceless: שאין לו מחיר, שלא יסולא בפז.",
+    "tip": "עולה הרבה? expensive. שווה הרבה? valuable. יקר ללב או נדיר? precious.",
+    "examples": [
+      {
+        "word": "expensive",
+        "en": "Eating out in Tel Aviv is very expensive.",
+        "he": "לאכול בחוץ בתל אביב זה יקר מאוד."
+      },
+      {
+        "word": "expensive",
+        "en": "We chose a cheaper hotel because the other one was too expensive.",
+        "he": "בחרנו מלון זול יותר כי השני היה יקר מדי."
+      },
+      {
+        "word": "valuable",
+        "en": "Keep your valuable items in the hotel safe.",
+        "he": "כדאי לשמור את חפצי הערך בכספת של המלון."
+      },
+      {
+        "word": "valuable",
+        "en": "Thanks for the feedback, it was really valuable.",
+        "he": "תודה על המשוב, הוא היה בעל ערך רב."
+      },
+      {
+        "word": "precious",
+        "en": "These old photos are very precious to my mother.",
+        "he": "התמונות הישנות האלה יקרות מאוד לאמא שלי."
+      },
+      {
+        "word": "precious",
+        "en": "Time with family is precious, so try not to waste it.",
+        "he": "הזמן עם המשפחה יקר, אז כדאי לא לבזבז אותו."
+      }
+    ]
+  },
+  {
+    "id": "loud-strong",
+    "words": [
+      "loud",
+      "strong"
+    ],
+    "d": 30,
+    "explanation": "בעברית אומרים מוזיקה חזקה, אבל באנגלית צליל לא מתואר כ-strong אלא כ-loud: loud music, a loud voice. strong מתאר כוח פיזי, עוצמה או ריכוז: a strong man, strong coffee, a strong wind, a strong smell. גם ההפכים שונים: quiet לצליל, ו-weak לכוח.",
+    "tip": "אפשר לשמוע? loud. כוח, טעם, ריח או רוח? strong.",
+    "examples": [
+      {
+        "word": "loud",
+        "en": "The music at the party was too loud to talk.",
+        "he": "המוזיקה במסיבה הייתה חזקה מדי בשביל לדבר."
+      },
+      {
+        "word": "loud",
+        "en": "Can you turn down the TV? It's really loud.",
+        "he": "אפשר להנמיך את הטלוויזיה? היא ממש חזקה."
+      },
+      {
+        "word": "strong",
+        "en": "Before the meeting, I always drink a strong coffee.",
+        "he": "לפני הפגישה אני תמיד שותה קפה חזק."
+      },
+      {
+        "word": "strong",
+        "en": "Strong winds are expected along the coast tonight.",
+        "he": "הלילה צפויות רוחות חזקות לאורך החוף."
+      }
+    ]
+  },
+  {
+    "id": "voice-sound-noise",
+    "words": [
+      "voice",
+      "sound",
+      "noise"
+    ],
+    "d": 30,
+    "explanation": "בעברית קול מכסה כמה מילים. voice הוא הקול של אדם כשהוא מדבר או שר: a beautiful voice. sound הוא כל צליל שאפשר לשמוע, וגם הסאונד של מכשיר: the sound of the waves. noise הוא רעש: צליל חזק, לא נעים או לא רצוי. לכן במחשב או בטלוויזיה מגבירים את ה-sound או את ה-volume, לא את ה-voice.",
+    "tip": "אדם מדבר או שר? voice. כל צליל? sound. מפריע? noise.",
+    "examples": [
+      {
+        "word": "voice",
+        "en": "She has a beautiful voice and sings in a choir.",
+        "he": "יש לה קול יפה, והיא שרה במקהלה."
+      },
+      {
+        "word": "voice",
+        "en": "Please lower your voice, people are working here.",
+        "he": "בבקשה לדבר בשקט, אנשים עובדים כאן."
+      },
+      {
+        "word": "sound",
+        "en": "Many people fall asleep easily to the sound of rain.",
+        "he": "הרבה אנשים נרדמים בקלות לצליל הגשם."
+      },
+      {
+        "word": "sound",
+        "en": "There's no sound on my laptop, can you check it?",
+        "he": "אין קול בלפטופ שלי, אפשר לבדוק?"
+      },
+      {
+        "word": "noise",
+        "en": "The construction noise starts every morning at seven.",
+        "he": "הרעש של הבנייה מתחיל כל בוקר בשבע."
+      },
+      {
+        "word": "noise",
+        "en": "Please don't make any noise, the baby is sleeping.",
+        "he": "בבקשה לא לעשות רעש, התינוק ישן."
+      }
+    ]
+  },
+  {
+    "id": "drive-ride",
+    "words": [
+      "drive",
+      "ride"
+    ],
+    "d": 30,
+    "explanation": "בעברית לנסוע מכסה כמה פעלים באנגלית. drive פירושו לנהוג ברכב, או לנסוע ברכב כשאתם הנהגים, וגם להסיע מישהו: I drive to work. ride פירושו לרכוב על אופניים, אופנוע או סוס, וגם לנסוע כנוסעים: ride a bus. כשלא חשוב מי נוהג אומרים go by car או take the bus.",
+    "tip": "מחזיקים הגה? drive. רוכבים או יושבים כנוסעים? ride.",
+    "examples": [
+      {
+        "word": "drive",
+        "en": "She drives to work every day, about forty minutes each way.",
+        "he": "היא נוסעת ברכב לעבודה כל יום, כארבעים דקות לכל כיוון."
+      },
+      {
+        "word": "drive",
+        "en": "Can you drive me to the airport tomorrow morning?",
+        "he": "אפשר להסיע אותי לשדה התעופה מחר בבוקר?"
+      },
+      {
+        "word": "ride",
+        "en": "My son rides his bike to school.",
+        "he": "הבן שלי רוכב על אופניים לבית הספר."
+      },
+      {
+        "word": "ride",
+        "en": "It's a short ride from the hotel to the beach.",
+        "he": "זאת נסיעה קצרה מהמלון לחוף."
+      }
+    ]
+  },
+  {
+    "id": "wear-put-on-dress",
+    "words": [
+      "wear",
+      "put on",
+      "dress"
+    ],
+    "d": 35,
+    "explanation": "בעברית ללבוש מכסה כמה מילים. put on פירושו לשים על עצמך בגד, פעולה של רגע: Put on your coat. wear פירושו להיות לבוש במשהו לאורך זמן: She's wearing a red dress, וגם להרכיב משקפיים או לענוד תכשיטים. dress או get dressed פירושו להתלבש, בלי לציין בגד מסוים: I got dressed quickly.",
+    "tip": "רגע הלבישה? put on. מצב שנמשך? wear. להתלבש באופן כללי? get dressed.",
+    "examples": [
+      {
+        "word": "wear",
+        "en": "She always wears glasses when she reads.",
+        "he": "היא תמיד מרכיבה משקפיים כשהיא קוראת."
+      },
+      {
+        "word": "wear",
+        "en": "Everyone was wearing white at the party.",
+        "he": "כולם לבשו לבן במסיבה."
+      },
+      {
+        "word": "put on",
+        "en": "Put on a jacket, it's cold outside.",
+        "he": "כדאי לשים מעיל, קר בחוץ."
+      },
+      {
+        "word": "put on",
+        "en": "He put on his shoes and ran out the door.",
+        "he": "הוא נעל את הנעליים ורץ החוצה."
+      },
+      {
+        "word": "dress",
+        "en": "The kids got dressed quickly and left for school.",
+        "he": "הילדים התלבשו מהר ויצאו לבית הספר."
+      },
+      {
+        "word": "dress",
+        "en": "She always dresses very elegantly for work.",
+        "he": "היא תמיד מתלבשת באלגנטיות לעבודה."
+      }
+    ]
+  },
+  {
+    "id": "fit-suit-match",
+    "words": [
+      "fit",
+      "suit",
+      "match"
+    ],
+    "d": 45,
+    "explanation": "בעברית מתאים מכסה שלוש מילים. fit פירושו מתאים במידה ובגודל: The shoes don't fit. suit פירושו מתאים בסגנון, מחמיא למישהו, או נוח לו: That color suits you, Does Monday suit you? match פירושו תואם, הולך טוב יחד עם משהו אחר: The bag matches her shoes.",
+    "tip": "מידה? fit. מחמיא או נוח? suit. הולך עם משהו אחר? match.",
+    "examples": [
+      {
+        "word": "fit",
+        "en": "These jeans don't fit me anymore, they're too tight.",
+        "he": "הג'ינס האלה כבר לא עולים עליי, הם צמודים מדי."
+      },
+      {
+        "word": "fit",
+        "en": "Will all this luggage fit in the car?",
+        "he": "כל המזוודות האלה ייכנסו לאוטו?"
+      },
+      {
+        "word": "suit",
+        "en": "Short hair really suits you, you look great.",
+        "he": "שיער קצר ממש מחמיא לך, נראה מעולה."
+      },
+      {
+        "word": "suit",
+        "en": "Does ten in the morning suit you for the meeting?",
+        "he": "עשר בבוקר מתאים לך לפגישה?"
+      },
+      {
+        "word": "match",
+        "en": "Your shoes don't match your belt.",
+        "he": "הנעליים שלך לא תואמות לחגורה."
+      },
+      {
+        "word": "match",
+        "en": "We painted the walls to match the new sofa.",
+        "he": "צבענו את הקירות כך שיתאימו לספה החדשה."
+      }
+    ]
+  },
+  {
+    "id": "treat-cure",
+    "words": [
+      "treat",
+      "cure"
+    ],
+    "d": 50,
+    "explanation": "treat פירושו לטפל במחלה או בחולה, לתת טיפול, בלי הבטחה לתוצאה: The doctor treated my infection. cure פירושו לרפא: להעלים את המחלה לגמרי. מחלה יכולה להיות treatable אבל לא curable. ל-treat יש גם משמעות של להתייחס למישהו או לפנק: treat someone with respect.",
+    "tip": "נותנים טיפול? treat. המחלה נעלמה? cure.",
+    "examples": [
+      {
+        "word": "treat",
+        "en": "The doctor treated him with antibiotics.",
+        "he": "הרופא טיפל בו באנטיביוטיקה."
+      },
+      {
+        "word": "treat",
+        "en": "They treat their employees with a lot of respect.",
+        "he": "הם מתייחסים לעובדים שלהם בהרבה כבוד."
+      },
+      {
+        "word": "cure",
+        "en": "Scientists are still looking for a way to cure cancer.",
+        "he": "מדענים עדיין מחפשים דרך לרפא סרטן."
+      },
+      {
+        "word": "cure",
+        "en": "A few days of rest cured my cold completely.",
+        "he": "כמה ימי מנוחה ריפאו לגמרי את ההצטננות שלי."
+      }
+    ]
+  },
+  {
+    "id": "deal-with-take-care-of",
+    "words": [
+      "deal with",
+      "take care of"
+    ],
+    "d": 45,
+    "explanation": "בעברית לטפל מכסה כמה ביטויים. take care of פירושו לדאוג למישהו, או לטפל במשהו עד שהוא מסודר: take care of the kids, I'll take care of the bill. deal with פירושו להתמודד עם בעיה, מצב או אדם קשה: deal with complaints, deal with stress. לטיפול רפואי משתמשים ב-treat.",
+    "tip": "דואגים או מסדרים? take care of. מתמודדים עם קושי? deal with.",
+    "examples": [
+      {
+        "word": "deal with",
+        "en": "She knows how to deal with difficult customers.",
+        "he": "היא יודעת איך להתמודד עם לקוחות קשים."
+      },
+      {
+        "word": "deal with",
+        "en": "We need to deal with this problem before it gets worse.",
+        "he": "אנחנו צריכים לטפל בבעיה הזאת לפני שהיא מחמירה."
+      },
+      {
+        "word": "take care of",
+        "en": "My mother takes care of the kids on Tuesdays.",
+        "he": "אמא שלי שומרת על הילדים בימי שלישי."
+      },
+      {
+        "word": "take care of",
+        "en": "Don't worry about the tickets, I'll take care of it.",
+        "he": "אל תדאגו לגבי הכרטיסים, אני אדאג לזה."
+      }
+    ]
+  },
+  {
+    "id": "hurt-injure",
+    "words": [
+      "hurt",
+      "injure"
+    ],
+    "d": 45,
+    "explanation": "injure פירושו לפצוע, בדרך כלל בתאונה או בספורט, והוא רשמי יותר: He was injured in a car accident. hurt פירושו לכאוב או להכאיב, וגם לפגוע ברגשות: My back hurts, You hurt my feelings. בדיבור hurt משמש גם לפציעות קלות: I hurt my knee.",
+    "tip": "פציעה רצינית או בחדשות? injure. כאב או פגיעה ברגשות? hurt.",
+    "examples": [
+      {
+        "word": "hurt",
+        "en": "My head hurts, do you have any painkillers?",
+        "he": "כואב לי הראש, יש לך משכך כאבים?"
+      },
+      {
+        "word": "hurt",
+        "en": "What he said really hurt her feelings.",
+        "he": "מה שהוא אמר פגע בה מאוד."
+      },
+      {
+        "word": "injure",
+        "en": "Three people were injured in the accident on the highway.",
+        "he": "שלושה אנשים נפצעו בתאונה בכביש המהיר."
+      },
+      {
+        "word": "injure",
+        "en": "He injured his knee during a basketball game.",
+        "he": "הוא נפצע בברך במשחק כדורסל."
+      }
+    ]
+  },
+  {
+    "id": "damage-harm",
+    "words": [
+      "damage",
+      "harm"
+    ],
+    "d": 50,
+    "explanation": "damage מתאר נזק פיזי לחפצים, למבנים או למערכות: storm damage, The car was damaged. harm רחב יותר ומתאר נזק לאנשים, לבעלי חיים, לבריאות או לדברים מופשטים כמו שם טוב: Smoking harms your health. כשם עצם, damage אינו ספיר ולכן לא אומרים a damage, ו-damages פירושו פיצויים.",
+    "tip": "נזק לחפץ? damage. נזק לאדם, לבריאות או לשם טוב? harm.",
+    "examples": [
+      {
+        "word": "damage",
+        "en": "The storm caused serious damage to the roof.",
+        "he": "הסערה גרמה נזק חמור לגג."
+      },
+      {
+        "word": "damage",
+        "en": "My phone was damaged when it fell into the pool.",
+        "he": "הטלפון שלי ניזוק כשהוא נפל לבריכה."
+      },
+      {
+        "word": "harm",
+        "en": "Too much sun can harm your skin.",
+        "he": "יותר מדי שמש עלול להזיק לעור."
+      },
+      {
+        "word": "harm",
+        "en": "Don't worry, the dog won't do you any harm.",
+        "he": "אל דאגה, הכלב לא יעשה לך שום דבר רע."
+      }
+    ]
+  },
+  {
+    "id": "fix-repair-correct",
+    "words": [
+      "fix",
+      "repair",
+      "correct"
+    ],
+    "d": 35,
+    "explanation": "בעברית לתקן מכסה שלוש מילים. repair פירושו לתקן משהו שבור או מקולקל, והוא נשמע רשמי יותר: repair a car. fix משמש לאותו דבר בדיבור, וגם לפתרון בעיות: fix a bug, fix the problem. correct פירושו לתקן טעות: correct a test, correct someone's English. לא אומרים repair a mistake.",
+    "tip": "משהו שבור? repair או fix. טעות? correct.",
+    "examples": [
+      {
+        "word": "fix",
+        "en": "Can you fix my bike before the weekend?",
+        "he": "אפשר לתקן לי את האופניים לפני סוף השבוע?"
+      },
+      {
+        "word": "fix",
+        "en": "The developers fixed the bug in the latest update.",
+        "he": "המפתחים תיקנו את הבאג בעדכון האחרון."
+      },
+      {
+        "word": "repair",
+        "en": "It will cost two thousand shekels to repair the washing machine.",
+        "he": "תיקון מכונת הכביסה יעלה אלפיים שקל."
+      },
+      {
+        "word": "repair",
+        "en": "The road is closed while workers repair the bridge.",
+        "he": "הכביש סגור בזמן שפועלים מתקנים את הגשר."
+      },
+      {
+        "word": "correct",
+        "en": "The teacher corrected our essays over the weekend.",
+        "he": "המורה תיקנה את החיבורים שלנו בסוף השבוע."
+      },
+      {
+        "word": "correct",
+        "en": "Please correct me if I make a mistake.",
+        "he": "בבקשה לתקן אותי אם אני טועה."
+      }
+    ]
+  },
+  {
+    "id": "change-replace-exchange",
+    "words": [
+      "change",
+      "replace",
+      "exchange"
+    ],
+    "d": 40,
+    "explanation": "בעברית להחליף מכסה כמה פעלים. replace פירושו לשים דבר אחר במקום משהו, בדרך כלל חדש במקום ישן: replace the battery. exchange פירושו לתת ולקבל משהו בתמורה: exchange gifts, exchange money, וגם להחליף מוצר בחנות. change רחב יותר: לשנות, וגם להחליף בגדים או רכבת: change clothes, change trains.",
+    "tip": "חדש במקום ישן? replace. נותנים ומקבלים? exchange. בגדים, רכבות או שינוי? change.",
+    "examples": [
+      {
+        "word": "change",
+        "en": "You need to change trains in Tel Aviv.",
+        "he": "צריך להחליף רכבת בתל אביב."
+      },
+      {
+        "word": "change",
+        "en": "She changed her clothes before the party.",
+        "he": "היא החליפה בגדים לפני המסיבה."
+      },
+      {
+        "word": "replace",
+        "en": "We need to replace the old windows before winter.",
+        "he": "אנחנו צריכים להחליף את החלונות הישנים לפני החורף."
+      },
+      {
+        "word": "replace",
+        "en": "Who will replace her when she goes on maternity leave?",
+        "he": "מי יחליף אותה כשהיא תצא לחופשת לידה?"
+      },
+      {
+        "word": "exchange",
+        "en": "Can I exchange this shirt for a bigger size?",
+        "he": "אפשר להחליף את החולצה הזאת במידה גדולה יותר?"
+      },
+      {
+        "word": "exchange",
+        "en": "We exchanged phone numbers and promised to stay in touch.",
+        "he": "החלפנו מספרי טלפון והבטחנו לשמור על קשר."
+      }
+    ]
+  },
+  {
+    "id": "back-again",
+    "words": [
+      "back",
+      "again"
+    ],
+    "d": 30,
+    "explanation": "again פירושו שוב, פעם נוספת: Say it again. back פירושו בחזרה: חזרה למקום או למצב קודם, או תגובה לפעולה של מישהו: come back, give back, call back. בעברית אומרים תחזור אליי, ובאנגלית זה call me back ולא call me again, כי מחזירים שיחה.",
+    "tip": "פעם נוספת? again. בחזרה או בתגובה? back.",
+    "examples": [
+      {
+        "word": "back",
+        "en": "I'm in a meeting, can I call you back later?",
+        "he": "אני בפגישה, אפשר לחזור אליך אחר כך?"
+      },
+      {
+        "word": "back",
+        "en": "Please give me back my charger when you're done.",
+        "he": "בבקשה להחזיר לי את המטען כשמסיימים."
+      },
+      {
+        "word": "again",
+        "en": "Could you say that again, please? I didn't hear.",
+        "he": "אפשר לחזור על זה בבקשה? לא שמעתי."
+      },
+      {
+        "word": "again",
+        "en": "We'd love to visit Portugal again next year.",
+        "he": "נשמח לבקר שוב בפורטוגל בשנה הבאה."
+      }
+    ]
+  },
+  {
+    "id": "pass-cross",
+    "words": [
+      "pass",
+      "cross"
+    ],
+    "d": 35,
+    "explanation": "cross פירושו לחצות: לעבור מצד אחד לצד השני: cross the street, cross the border. pass פירושו לעבור ליד משהו או על פניו בלי לעצור, או לעקוף רכב: pass the bank on the way, pass a truck. בעברית לעבור מכסה את שניהם.",
+    "tip": "מצד לצד? cross. ליד, על פני, או עקיפה? pass.",
+    "examples": [
+      {
+        "word": "pass",
+        "en": "We pass the old market on our way to work.",
+        "he": "אנחנו עוברים ליד השוק הישן בדרך לעבודה."
+      },
+      {
+        "word": "pass",
+        "en": "Never pass another car on a narrow road.",
+        "he": "אסור לעקוף רכב אחר בכביש צר."
+      },
+      {
+        "word": "cross",
+        "en": "Look both ways before you cross the street.",
+        "he": "צריך להסתכל לשני הכיוונים לפני שחוצים את הכביש."
+      },
+      {
+        "word": "cross",
+        "en": "It took us an hour to cross the border.",
+        "he": "לקח לנו שעה לעבור את הגבול."
+      }
+    ]
+  },
+  {
+    "id": "take-pass-exam",
+    "words": [
+      "take",
+      "pass"
+    ],
+    "d": 35,
+    "explanation": "באנגלית take an exam פירושו לגשת למבחן ולהיבחן, בלי קשר לתוצאה. pass an exam פירושו לעבור את המבחן בהצלחה, וההפך הוא fail. לכן I passed the exam אומר תמיד שהצלחתם, ואם רק נבחנתם אומרים I took the exam. בעברית עשיתי מבחן הוא took, ולא made.",
+    "tip": "נבחנתם? took. הצלחתם? passed.",
+    "examples": [
+      {
+        "word": "take",
+        "en": "I'm taking my driving test next Thursday.",
+        "he": "אני עושה טסט ביום חמישי הבא."
+      },
+      {
+        "word": "take",
+        "en": "All students must take the final exam in June.",
+        "he": "כל הסטודנטים חייבים לגשת למבחן הסופי ביוני."
+      },
+      {
+        "word": "pass",
+        "en": "Congratulations, you passed the exam with a high grade!",
+        "he": "מזל טוב, עברת את המבחן בציון גבוה!"
+      },
+      {
+        "word": "pass",
+        "en": "She didn't pass her driving test the first time.",
+        "he": "היא לא עברה את הטסט בפעם הראשונה."
+      }
+    ]
+  },
+  {
+    "id": "bill-check-account",
+    "words": [
+      "bill",
+      "check",
+      "account"
+    ],
+    "d": 40,
+    "explanation": "בעברית חשבון מכסה כמה מילים. bill הוא חשבון לתשלום, כמו electricity bill, ובאנגלית בריטית גם החשבון במסעדה. check הוא החשבון במסעדה באנגלית אמריקאית: Can we get the check?, וגם המחאה. account הוא חשבון בבנק או באתר: a bank account, an email account. חשבון במובן של מתמטיקה הוא math.",
+    "tip": "משלמים? bill (ובמסעדה בארצות הברית check). בבנק או באתר? account.",
+    "examples": [
+      {
+        "word": "bill",
+        "en": "We got a huge electricity bill this month.",
+        "he": "קיבלנו חשבון חשמל ענק החודש."
+      },
+      {
+        "word": "bill",
+        "en": "Did you remember to pay the water bill?",
+        "he": "זכרת לשלם את חשבון המים?"
+      },
+      {
+        "word": "check",
+        "en": "Excuse me, could we have the check, please?",
+        "he": "סליחה, אפשר לקבל את החשבון בבקשה?"
+      },
+      {
+        "word": "check",
+        "en": "The waiter brought the check with two mints.",
+        "he": "המלצר הביא את החשבון עם שתי סוכריות מנטה."
+      },
+      {
+        "word": "account",
+        "en": "I opened a savings account at the bank.",
+        "he": "פתחתי חשבון חיסכון בבנק."
+      },
+      {
+        "word": "account",
+        "en": "You need to create an account to use the app.",
+        "he": "צריך לפתוח חשבון כדי להשתמש באפליקציה."
+      }
+    ]
+  },
+  {
+    "id": "receipt-recipe",
+    "words": [
+      "receipt",
+      "recipe"
+    ],
+    "d": 45,
+    "explanation": "receipt היא קבלה: אישור על תשלום. ה-p בה שקטה, והיא נהגית בערך ri-SEET. recipe הוא מתכון: הוראות להכנת מאכל, והוא נהגה RE-si-pee. בגלל המילה הישנה רצפט קל להתבלבל, אבל באנגלית אלו שתי מילים שונות לגמרי.",
+    "tip": "שילמתם? receipt. מבשלים? recipe.",
+    "examples": [
+      {
+        "word": "receipt",
+        "en": "Keep the receipt in case you want to return it.",
+        "he": "כדאי לשמור את הקבלה למקרה שתרצו להחזיר את זה."
+      },
+      {
+        "word": "receipt",
+        "en": "Can I get a receipt for the taxi ride?",
+        "he": "אפשר לקבל קבלה על הנסיעה במונית?"
+      },
+      {
+        "word": "recipe",
+        "en": "This is my grandmother's recipe for chicken soup.",
+        "he": "זה המתכון של סבתא שלי למרק עוף."
+      },
+      {
+        "word": "recipe",
+        "en": "I found a great recipe for vegan cookies online.",
+        "he": "מצאתי באינטרנט מתכון מעולה לעוגיות טבעוניות."
+      }
+    ]
+  },
+  {
+    "id": "ticket-card",
+    "words": [
+      "ticket",
+      "card"
+    ],
+    "d": 25,
+    "explanation": "בעברית כרטיס מכסה שתי מילים. ticket הוא כרטיס שמאפשר כניסה או נסיעה: a movie ticket, a plane ticket, וגם דוח: a parking ticket. card הוא כרטיס מפלסטיק או מקרטון: credit card, ID card, birthday card. כרטיס ברכה הוא card ולא ticket.",
+    "tip": "נכנסים או נוסעים איתו? ticket. אשראי, ברכה או זיהוי? card.",
+    "examples": [
+      {
+        "word": "ticket",
+        "en": "We bought tickets for the concert three months ago.",
+        "he": "קנינו כרטיסים להופעה לפני שלושה חודשים."
+      },
+      {
+        "word": "ticket",
+        "en": "I got a parking ticket outside the hospital.",
+        "he": "קיבלתי דוח חניה מחוץ לבית החולים."
+      },
+      {
+        "word": "card",
+        "en": "Can I pay by card, or is it cash only?",
+        "he": "אפשר לשלם בכרטיס, או רק במזומן?"
+      },
+      {
+        "word": "card",
+        "en": "We sent her a card for her birthday.",
+        "he": "שלחנו לה כרטיס ברכה ליום ההולדת."
+      }
+    ]
+  },
+  {
+    "id": "grade-mark-score",
+    "words": [
+      "grade",
+      "mark",
+      "score"
+    ],
+    "d": 40,
+    "explanation": "בעברית ציון מכסה כמה מילים. grade הוא ציון בבית ספר או באוניברסיטה באנגלית אמריקאית: I got a good grade, ובארצות הברית הוא גם כיתה במובן של שכבה: tenth grade. mark הוא הציון באנגלית בריטית. score הוא תוצאה מספרית במבחן סטנדרטי או במשחק: a test score, the final score.",
+    "tip": "ציון בלימודים? grade (בבריטניה mark). תוצאה במשחק או במבחן מספרי? score.",
+    "examples": [
+      {
+        "word": "grade",
+        "en": "She got the highest grade in the class.",
+        "he": "היא קיבלה את הציון הכי גבוה בכיתה."
+      },
+      {
+        "word": "grade",
+        "en": "My son is in sixth grade this year.",
+        "he": "הבן שלי בכיתה ו' השנה."
+      },
+      {
+        "word": "mark",
+        "en": "In British universities, a mark of seventy is considered excellent.",
+        "he": "באוניברסיטאות בבריטניה, ציון שבעים נחשב מצוין."
+      },
+      {
+        "word": "mark",
+        "en": "The teacher gave me full marks for my essay.",
+        "he": "המורה נתנה לי ציון מלא על החיבור."
+      },
+      {
+        "word": "score",
+        "en": "What was the final score of the game?",
+        "he": "מה הייתה התוצאה הסופית של המשחק?"
+      },
+      {
+        "word": "score",
+        "en": "You need a high score on the exam to get into medicine.",
+        "he": "צריך ציון גבוה במבחן כדי להתקבל לרפואה."
+      }
+    ]
+  },
+  {
+    "id": "meeting-appointment-date",
+    "words": [
+      "meeting",
+      "appointment",
+      "date"
+    ],
+    "d": 40,
+    "explanation": "בעברית פגישה מכסה כמה מילים. meeting היא פגישה של כמה אנשים, בעיקר בעבודה: a team meeting. appointment היא פגישה או תור שקובעים מראש אצל איש מקצוע: a doctor's appointment. date היא פגישה רומנטית, וגם תאריך: go on a date. אצל רופא קובעים appointment ולא meeting.",
+    "tip": "עבודה? meeting. תור אצל איש מקצוע? appointment. רומנטי? date.",
+    "examples": [
+      {
+        "word": "meeting",
+        "en": "We have a team meeting every Monday morning.",
+        "he": "יש לנו ישיבת צוות כל יום שני בבוקר."
+      },
+      {
+        "word": "meeting",
+        "en": "The manager is in a meeting until three.",
+        "he": "המנהלת בפגישה עד שלוש."
+      },
+      {
+        "word": "appointment",
+        "en": "I have a dentist appointment at four o'clock.",
+        "he": "יש לי תור לרופא שיניים בארבע."
+      },
+      {
+        "word": "appointment",
+        "en": "You need to make an appointment to renew your passport.",
+        "he": "צריך לקבוע תור כדי לחדש את הדרכון."
+      },
+      {
+        "word": "date",
+        "en": "They went on their first date to a sushi restaurant.",
+        "he": "הם יצאו לדייט הראשון שלהם במסעדת סושי."
+      },
+      {
+        "word": "date",
+        "en": "He asked her out on a date, and she said yes.",
+        "he": "הוא הזמין אותה לצאת לדייט, והיא הסכימה."
+      }
+    ]
+  },
+  {
+    "id": "room-space-place",
+    "words": [
+      "room",
+      "space",
+      "place"
+    ],
+    "d": 35,
+    "explanation": "בעברית מקום מכסה שלוש מילים. place הוא מקום מסוים, נקודה או אתר: a nice place for lunch. space הוא שטח פנוי או מרחב: There's no space for a sofa, a parking space. גם room משמש במובן של מקום פנוי, ואז הוא לא ספיר ובא בלי a: Is there room for one more?",
+    "tip": "איפה? place. כמה מקום פנוי? space או room (בלי a).",
+    "examples": [
+      {
+        "word": "room",
+        "en": "Is there room in your car for one more person?",
+        "he": "יש מקום באוטו שלך לעוד מישהו?"
+      },
+      {
+        "word": "room",
+        "en": "This old sofa takes up too much room.",
+        "he": "הספה הישנה הזאת תופסת יותר מדי מקום."
+      },
+      {
+        "word": "space",
+        "en": "There isn't enough space in the closet for all my clothes.",
+        "he": "אין מספיק מקום בארון לכל הבגדים שלי."
+      },
+      {
+        "word": "space",
+        "en": "It took us twenty minutes to find a parking space.",
+        "he": "לקח לנו עשרים דקות למצוא מקום חניה."
+      },
+      {
+        "word": "place",
+        "en": "This is the best place in town for hummus.",
+        "he": "זה המקום הכי טוב בעיר לחומוס."
+      },
+      {
+        "word": "place",
+        "en": "Let's find a quiet place to talk.",
+        "he": "בואו נמצא מקום שקט לדבר."
+      }
+    ]
+  },
+  {
+    "id": "way-road-path",
+    "words": [
+      "way",
+      "road",
+      "path"
+    ],
+    "d": 30,
+    "explanation": "בעברית דרך מכסה כמה מילים. road הוא כביש או דרך פיזית שנוסעים בה: a busy road. path הוא שביל צר להליכה או לרכיבה: a path through the forest. way הוא הכיוון או המסלול למקום, וגם אופן או שיטה: the way to the station, a better way to learn. לכן שואלים Which way is the beach? ולא Which road.",
+    "tip": "כביש? road. שביל? path. כיוון או שיטה? way.",
+    "examples": [
+      {
+        "word": "way",
+        "en": "Excuse me, is this the way to the train station?",
+        "he": "סליחה, זאת הדרך לתחנת הרכבת?"
+      },
+      {
+        "word": "way",
+        "en": "The best way to learn a language is to use it every day.",
+        "he": "הדרך הכי טובה ללמוד שפה היא להשתמש בה כל יום."
+      },
+      {
+        "word": "road",
+        "en": "The road to the Dead Sea is closed because of flooding.",
+        "he": "הכביש לים המלח סגור בגלל שיטפונות."
+      },
+      {
+        "word": "road",
+        "en": "Be careful when you cross a busy road.",
+        "he": "צריך להיזהר כשחוצים כביש סואן."
+      },
+      {
+        "word": "path",
+        "en": "We followed a narrow path down to the beach.",
+        "he": "הלכנו בשביל צר עד החוף."
+      },
+      {
+        "word": "path",
+        "en": "There's a bike path along the river.",
+        "he": "יש שביל אופניים לאורך הנהר."
+      }
+    ]
+  },
+  {
+    "id": "country-state-land",
+    "words": [
+      "country",
+      "state",
+      "land"
+    ],
+    "d": 40,
+    "explanation": "בעברית מדינה וארץ מתחלקות אחרת מאשר באנגלית. country היא מדינה במובן של ארץ, גאוגרפיה ואנשים: Israel is a small country. state היא המדינה כמוסד פוליטי, השלטון: state schools, וגם מדינה בתוך ארצות הברית: the state of Texas. land הוא אדמה או קרקע, ובשפה ספרותית גם ארץ: a piece of land. בדיבור על מדינות בעולם אומרים בדרך כלל country.",
+    "tip": "מדינה כמקום ואנשים? country. השלטון או מדינה בארצות הברית? state. קרקע? land.",
+    "examples": [
+      {
+        "word": "country",
+        "en": "How many countries have you visited so far?",
+        "he": "בכמה מדינות ביקרת עד עכשיו?"
+      },
+      {
+        "word": "country",
+        "en": "Israel is a small country with a lot of history.",
+        "he": "ישראל היא מדינה קטנה עם הרבה היסטוריה."
+      },
+      {
+        "word": "state",
+        "en": "Texas is the second largest state in the US.",
+        "he": "טקסס היא המדינה השנייה בגודלה בארצות הברית."
+      },
+      {
+        "word": "state",
+        "en": "Education in Israel is mostly funded by the state.",
+        "he": "החינוך בישראל ממומן ברובו על ידי המדינה."
+      },
+      {
+        "word": "land",
+        "en": "They bought a piece of land to build a house.",
+        "he": "הם קנו חלקת אדמה כדי לבנות בית."
+      },
+      {
+        "word": "land",
+        "en": "Most of the land in the south is desert.",
+        "he": "רוב השטח בדרום הוא מדבר."
+      }
+    ]
+  },
+  {
+    "id": "politics-policy",
+    "words": [
+      "politics",
+      "policy"
+    ],
+    "d": 55,
+    "explanation": "politics היא פוליטיקה: המאבק על כוח, מפלגות ובחירות: I'm not interested in politics. policy היא מדיניות: תוכנית או כלל רשמי של ממשלה, חברה או ארגון: the company's return policy. דוברי עברית נוטים להשתמש ב-politics גם כשהכוונה למדיניות. שם התואר של politics הוא political.",
+    "tip": "מפלגות ובחירות? politics. כללים ותוכנית פעולה? policy.",
+    "examples": [
+      {
+        "word": "politics",
+        "en": "We try not to talk about politics at family dinners.",
+        "he": "אנחנו משתדלים לא לדבר על פוליטיקה בארוחות משפחתיות."
+      },
+      {
+        "word": "politics",
+        "en": "She went into politics after twenty years as a lawyer.",
+        "he": "היא נכנסה לפוליטיקה אחרי עשרים שנה כעורכת דין."
+      },
+      {
+        "word": "policy",
+        "en": "What is the store's return policy?",
+        "he": "מה מדיניות ההחזרות של החנות?"
+      },
+      {
+        "word": "policy",
+        "en": "The government announced a new housing policy.",
+        "he": "הממשלה הודיעה על מדיניות דיור חדשה."
+      }
+    ]
+  },
+  {
+    "id": "company-society",
+    "words": [
+      "company",
+      "society"
+    ],
+    "d": 40,
+    "explanation": "בעברית חברה מכסה שתי מילים. company היא חברה עסקית: a tech company, וגם חברה במובן של נוכחות של אנשים אחרים: I enjoy your company. society היא החברה במובן של הציבור והאנשים שחיים יחד: Israeli society, וגם אגודה. כשמדברים על החברה באופן כללי אומרים society בלי the.",
+    "tip": "עסק? company. הציבור והאנשים? society.",
+    "examples": [
+      {
+        "word": "company",
+        "en": "He works for a small software company in Herzliya.",
+        "he": "הוא עובד בחברת תוכנה קטנה בהרצליה."
+      },
+      {
+        "word": "company",
+        "en": "Thanks for coming, I really enjoyed your company.",
+        "he": "תודה שבאת, היה לי כיף בחברתך."
+      },
+      {
+        "word": "society",
+        "en": "Technology has changed modern society in many ways.",
+        "he": "הטכנולוגיה שינתה את החברה המודרנית בדרכים רבות."
+      },
+      {
+        "word": "society",
+        "en": "Israeli society is very diverse and often divided.",
+        "he": "החברה הישראלית מגוונת מאוד ולעיתים קרובות מפולגת."
+      }
+    ]
+  },
+  {
+    "id": "economy-economics",
+    "words": [
+      "economy",
+      "economics"
+    ],
+    "d": 50,
+    "explanation": "economy היא הכלכלה של מדינה או של אזור, כלומר המערכת עצמה: The economy is growing. economics היא כלכלה כתחום מחקר ולימוד: She studies economics. בעברית כלכלה מכסה את שתיהן. economics הוא שם עצם ביחיד למרות ה-s בסופו: Economics is...",
+    "tip": "המערכת עצמה? economy. המקצוע באוניברסיטה? economics.",
+    "examples": [
+      {
+        "word": "economy",
+        "en": "The economy grew by three percent last year.",
+        "he": "המשק צמח בשלושה אחוזים בשנה שעברה."
+      },
+      {
+        "word": "economy",
+        "en": "Tourism is very important for the local economy.",
+        "he": "התיירות חשובה מאוד לכלכלה המקומית."
+      },
+      {
+        "word": "economics",
+        "en": "He has a degree in economics from the Hebrew University.",
+        "he": "יש לו תואר בכלכלה מהאוניברסיטה העברית."
+      },
+      {
+        "word": "economics",
+        "en": "Economics is one of the most popular majors.",
+        "he": "כלכלה היא אחד המקצועות הפופולריים ביותר לתואר."
+      }
+    ]
+  },
+  {
+    "id": "contact-connection",
+    "words": [
+      "contact",
+      "connection"
+    ],
+    "d": 50,
+    "explanation": "בעברית קשר מכסה כמה מילים. contact הוא קשר במובן של תקשורת עם מישהו: stay in contact, וגם איש קשר, ובתור פועל: contact us. connection הוא חיבור או קשר בין דברים: an internet connection, a connection between smoking and cancer, וגם טיסת המשך. ליחסים בין אנשים משתמשים ב-relationship.",
+    "tip": "מדברים או שומרים על קשר? contact. חיבור בין דברים או לאינטרנט? connection.",
+    "examples": [
+      {
+        "word": "contact",
+        "en": "We've stayed in contact since high school.",
+        "he": "שמרנו על קשר מאז התיכון."
+      },
+      {
+        "word": "contact",
+        "en": "Please contact customer service if you have any questions.",
+        "he": "בכל שאלה, נא לפנות לשירות הלקוחות."
+      },
+      {
+        "word": "connection",
+        "en": "The internet connection here is really slow.",
+        "he": "החיבור לאינטרנט כאן ממש איטי."
+      },
+      {
+        "word": "connection",
+        "en": "Scientists found a connection between sleep and weight.",
+        "he": "מדענים מצאו קשר בין שינה למשקל."
+      }
+    ]
+  },
+  {
+    "id": "notice-pay-attention",
+    "words": [
+      "notice",
+      "pay attention"
+    ],
+    "d": 40,
+    "explanation": "בעברית לשים לב מכסה שתי משמעויות. notice פירושו להבחין במשהו או לקלוט אותו, לפעמים בלי שחיפשתם: I noticed a mistake. pay attention (to) פירושו להתרכז ולהקשיב בכוונה: Pay attention to the teacher. לא אומרים give attention במובן הזה.",
+    "tip": "קלטתם משהו? notice. מתרכזים בכוונה? pay attention.",
+    "examples": [
+      {
+        "word": "notice",
+        "en": "Did you notice that she cut her hair?",
+        "he": "שמת לב שהיא הסתפרה?"
+      },
+      {
+        "word": "notice",
+        "en": "I didn't notice the mistake until after I sent the email.",
+        "he": "לא שמתי לב לטעות עד אחרי ששלחתי את המייל."
+      },
+      {
+        "word": "pay attention",
+        "en": "Please pay attention, this will be on the test.",
+        "he": "בבקשה להקשיב טוב, זה יהיה במבחן."
+      },
+      {
+        "word": "pay attention",
+        "en": "Drivers must pay attention to the road at all times.",
+        "he": "נהגים חייבים להיות מרוכזים בכביש כל הזמן."
+      }
+    ]
+  },
+  {
+    "id": "feel-fill",
+    "words": [
+      "feel",
+      "fill"
+    ],
+    "d": 30,
+    "explanation": "בעברית אין הבדל בין תנועה ארוכה לקצרה, ולכן feel ו-fill נשמעות אצל דוברי עברית רבים כמו אותה מילה. feel, עם תנועה ארוכה ומתוחה כמו ee, פירושו להרגיש. fill, עם תנועה קצרה ורפויה, פירושו למלא. אותו עיקרון חל על sheep ו-ship ועל leave ו-live.",
+    "tip": "ee ארוכה ומחייכת: feel. i קצרה ורפויה: fill.",
+    "examples": [
+      {
+        "word": "feel",
+        "en": "She doesn't feel well, so she stayed home.",
+        "he": "היא לא מרגישה טוב, אז היא נשארה בבית."
+      },
+      {
+        "word": "feel",
+        "en": "The room feels cold, can we close the window?",
+        "he": "קר בחדר, אפשר לסגור את החלון?"
+      },
+      {
+        "word": "fill",
+        "en": "Please fill out this form and sign at the bottom.",
+        "he": "נא למלא את הטופס הזה ולחתום למטה."
+      },
+      {
+        "word": "fill",
+        "en": "She filled the bottle with cold water.",
+        "he": "היא מילאה את הבקבוק במים קרים."
+      }
+    ]
+  },
+  {
+    "id": "live-leave",
+    "words": [
+      "live",
+      "leave"
+    ],
+    "d": 25,
+    "explanation": "live, עם תנועה קצרה כמו ב-it, פירושו לגור או לחיות. leave, עם תנועה ארוכה כמו ב-see, פירושו לעזוב, לצאת או להשאיר. מכיוון שבעברית אין הבחנה באורך התנועה, I want to live here עלול להישמע כמו I want to leave here, כלומר כמעט ההפך.",
+    "tip": "live קצרה: גרים. leave ארוכה: עוזבים.",
+    "examples": [
+      {
+        "word": "live",
+        "en": "They live in a small apartment in Jaffa.",
+        "he": "הם גרים בדירה קטנה ביפו."
+      },
+      {
+        "word": "live",
+        "en": "My grandparents lived in Morocco until 1956.",
+        "he": "סבא וסבתא שלי חיו במרוקו עד 1956."
+      },
+      {
+        "word": "leave",
+        "en": "The bus leaves at eight, so don't be late.",
+        "he": "האוטובוס יוצא בשמונה, אז לא לאחר."
+      },
+      {
+        "word": "leave",
+        "en": "She left the company after ten years.",
+        "he": "היא עזבה את החברה אחרי עשר שנים."
+      }
+    ]
+  },
+  {
+    "id": "walk-work",
+    "words": [
+      "walk",
+      "work"
+    ],
+    "d": 20,
+    "explanation": "דוברי עברית מתקשים לעיתים להבדיל בהגייה בין walk ל-work. ב-walk (ללכת ברגל) ה-l שקטה והתנועה פתוחה וארוכה, כמו ב-saw. ב-work (לעבוד) יש צליל r, והתנועה דומה לזו שב-bird. הגייה לא מדויקת עלולה להפוך את I walk to work למשפט מבלבל.",
+    "tip": "walk מתחרזת עם talk; work מתחרזת עם jerk.",
+    "examples": [
+      {
+        "word": "walk",
+        "en": "Many people in the neighborhood walk their dogs at night.",
+        "he": "הרבה אנשים בשכונה מוציאים את הכלבים לטיול בלילה."
+      },
+      {
+        "word": "walk",
+        "en": "Let's walk along the beach after dinner.",
+        "he": "בואו נלך לאורך החוף אחרי ארוחת הערב."
+      },
+      {
+        "word": "work",
+        "en": "My sister works as an engineer in Haifa.",
+        "he": "אחותי עובדת כמהנדסת בחיפה."
+      },
+      {
+        "word": "work",
+        "en": "The elevator doesn't work, so we took the stairs.",
+        "he": "המעלית לא עובדת, אז עלינו במדרגות."
+      }
+    ]
+  },
+  {
+    "id": "until-by",
+    "words": [
+      "until",
+      "by"
+    ],
+    "d": 40,
+    "explanation": "בעברית עד מכסה שתי מילים. until פירושו עד במובן של לאורך כל הזמן עד נקודה מסוימת, כשהפעולה נמשכת: I'll wait until six. by פירושו עד במובן של לא יאוחר מ-, מועד אחרון לפעולה שקורה פעם אחת: Send it by Friday. לכן Finish the report until Monday היא טעות, והנכון הוא by Monday.",
+    "tip": "נמשך עד? until. מוכן לא יאוחר מ-? by.",
+    "examples": [
+      {
+        "word": "until",
+        "en": "The store is open until ten tonight.",
+        "he": "החנות פתוחה הערב עד עשר."
+      },
+      {
+        "word": "until",
+        "en": "We waited until the rain stopped.",
+        "he": "חיכינו עד שהגשם פסק."
+      },
+      {
+        "word": "by",
+        "en": "Please send me the report by Thursday.",
+        "he": "בבקשה לשלוח לי את הדוח עד יום חמישי."
+      },
+      {
+        "word": "by",
+        "en": "The new bridge should be finished by the end of the year.",
+        "he": "הגשר החדש אמור להסתיים עד סוף השנה."
+      }
+    ]
+  }
+]
