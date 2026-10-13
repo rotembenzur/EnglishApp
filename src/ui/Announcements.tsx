@@ -30,7 +30,7 @@ export function Announcements() {
             String(n.payload.emoji ?? '👋'),
             isFemale(n.userId),
           ),
-          { icon: String(n.payload.emoji ?? '👋'), ms: 5000 },
+          { icon: String(n.payload.emoji ?? '👋'), ms: 5000, announce: true },
         );
       }
       if (nudges.length) await db.events.bulkPut(nudges.map((n) => ({ ...n, seen: 1 as const })));
@@ -59,7 +59,7 @@ export function Announcements() {
       const winner = last.winner === 'a' ? me : last.winner === 'b' ? rival : null;
       toast(
         `${t.rivalry.recap}: ${winner ? t.rivalry.winnerOfWeek(USER_NAMES[winner], isFemale(winner)) : t.rivalry.draws} (${last.a}:${last.b})`,
-        { icon: '🏆', ms: 6000 },
+        { icon: '🏆', ms: 6000, announce: true },
       );
     })();
   }, [me]);

@@ -111,13 +111,16 @@ If the run is red, its first failing step says why. The usual one is a mistyped
 Notifications work only in the app opened from the home screen icon, not in a Safari tab.
 
 1. Open LexBites from the home screen. If **יש גרסה חדשה. לרענן?** shows, tap **לרענן**. The
-   version at the bottom of **הגדרות** must be 0.4.0 or later.
+   version at the bottom of **הגדרות** must be 0.4.1 or later.
 2. Sync must be connected on this phone (step 3).
 3. **הגדרות**, scroll to **התראות**, turn on **התראות בטלפון הזה**.
 4. iOS asks whether LexBites may send notifications: tap **Allow** (אפשר).
 5. Pick the **שעת תזכורת**. Leave **הרצף בסכנה (20:00)** and the nudges switch on, or turn off what
    you do not want.
 6. Tap **לשלוח התראת בדיקה** and lock the phone: the test notification arrives within seconds.
+
+If the test fails, the toast ends with the push service's answer in brackets (for example
+`403 BadJwtToken`); that text tells a session exactly what to fix.
 
 If the settings show a message instead of the switch, it says what is missing:
 

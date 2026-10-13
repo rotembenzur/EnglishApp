@@ -390,7 +390,8 @@ export const t = {
     pushNudges: (name: string) => `נקירות מ${name}`,
     pushTest: 'לשלוח התראת בדיקה',
     pushTestSent: 'נשלחה. היא אמורה להגיע תוך כמה שניות',
-    pushTestFailed: 'השליחה לא הצליחה. כדאי לכבות ולהדליק את ההתראות',
+    pushTestFailed: (detail: string) =>
+      detail ? `השליחה לא הצליחה (${detail})` : 'השליחה לא הצליחה',
     pushEnabled: 'ההתראות פועלות',
     pushDenied: 'ההתראות חסומות. אפשר לפתוח אותן בהגדרות של האייפון: התראות, LexBites',
     pushFailed: 'לא הצלחנו להפעיל התראות. כדאי לנסות שוב בעוד רגע',

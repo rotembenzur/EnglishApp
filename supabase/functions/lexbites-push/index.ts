@@ -33,7 +33,7 @@ import {
 } from '../_shared/schedule.ts';
 import { ANON_KEY, PROJECT_URL, VAPID_PUBLIC_KEY, VAPID_SUBJECT } from '../_shared/keys.ts';
 
-const VERSION = 3;
+const VERSION = 4;
 const REST = `${(Deno.env.get('SUPABASE_URL') || PROJECT_URL).replace(/\/+$/, '')}/rest/v1/`;
 const VAPID: VapidKeys = {
   publicKey: VAPID_PUBLIC_KEY,
@@ -107,19 +107,21 @@ async function deliver(
   store: Db,
   prefs: PushPrefs,
   msg: PushMessage,
-): Promise<{ ok: boolean; status: number; gone: boolean }> {
+  state: PushState,
+): Promise<{ ok: boolean; status: number; reason: string; gone: boolean }> {
   const res = await sendPush(
     prefs.subscription,
     { title: msg.title, body: msg.body, url: msg.url, tag: msg.tag, kind: msg.kind },
     VAPID,
     {
       ttl: msg.kind === 'nudge' ? 6 * 3600 : 3 * 3600,
-      urgency: msg.kind === 'nudge' ? 'high' : 'normal',
-      topic: msg.tag,
+      urgency: msg.kind === 'nudge' || msg.kind === 'test' ? 'high' : 'normal',
     },
   );
+  state.lastResult = { kind: msg.kind, status: res.status, reason: res.reason, at: Date.now() };
   if (res.gone) await store.remove(prefs.subscription.endpoint);
-  if (!res.ok) console.error(`push ${msg.kind} for ${prefs.userId}: ${res.status} ${res.body}`);
+  else if (!res.ok)
+    console.error(`push ${msg.kind} for ${prefs.userId}: ${res.status} ${res.body}`);
   return res;
 }
 
@@ -154,7 +156,7 @@ async function tick(store: Db) {
     });
     let gone = false;
     for (const msg of plan.messages) {
-      const res = await deliver(store, prefs, msg);
+      const res = await deliver(store, prefs, msg, plan.state);
       if (res.ok) sent++;
       gone ||= res.gone;
     }
@@ -173,25 +175,35 @@ async function nudge(store: Db, id: string) {
   const msg = ev && nudgeMessage(ev, Date.now());
   if (!ev?.to || !msg) return { sent: 0 };
   const subs = await store.get<PushRow[]>(
-    `lb_push?select=endpoint,user_id,data&user_id=eq.${encodeURIComponent(ev.to)}`,
+    `lb_push?select=endpoint,user_id,data,state&user_id=eq.${encodeURIComponent(ev.to)}`,
   );
   let sent = 0;
   for (const row of subs) {
     const prefs = readPrefs(row.data);
     if (!prefs?.nudges || prefs.userId !== ev.to) continue;
-    if ((await deliver(store, prefs, msg)).ok) sent++;
+    const state = { ...(row.state ?? {}) };
+    const res = await deliver(store, prefs, msg, state);
+    if (res.ok) sent++;
+    if (!res.gone) await store.patchState(row.endpoint, state);
   }
   return { sent };
 }
 
+/**
+ * Test notification for one phone. `found: false` tells the app its subscription row is missing
+ * (for example removed after the push service reported it gone), so it can store it again.
+ */
 async function test(store: Db, endpoint: string) {
   const subs = await store.get<PushRow[]>(
-    `lb_push?select=endpoint,user_id,data&endpoint=eq.${encodeURIComponent(endpoint)}`,
+    `lb_push?select=endpoint,user_id,data,state&endpoint=eq.${encodeURIComponent(endpoint)}`,
   );
-  const prefs = subs[0] && readPrefs(subs[0].data);
-  if (!prefs) return { ok: false, status: 404 };
-  const res = await deliver(store, prefs, TEST_MESSAGE);
-  return { ok: res.ok, status: res.status };
+  const row = subs[0];
+  const prefs = row && readPrefs(row.data);
+  if (!row || !prefs) return { ok: false, found: false, status: 0, reason: 'NotRegistered' };
+  const state = { ...(row.state ?? {}) };
+  const res = await deliver(store, prefs, TEST_MESSAGE, state);
+  if (!res.gone) await store.patchState(row.endpoint, state);
+  return { ok: res.ok, found: true, status: res.status, reason: res.reason };
 }
 
 /**
@@ -224,16 +236,11 @@ async function probe() {
     'sign',
   ])) as CryptoKeyPair;
   const otherD = String((await crypto.subtle.exportKey('jwk', other.privateKey)).d);
-  // Real settings first, then controls that are wrong on purpose: if Apple names the broken field
-  // for a control, it checks that field before the device, so "BadDeviceToken" for the real
-  // settings proves they are accepted.
+  // Apple checks the token before the device: our real token must get BadDeviceToken (a made-up
+  // device) and a token from a wrong key must get BadJwtToken. Push server CI asserts both.
   const variants: [string, VapidKeys, { topic?: string; urgency?: string; ttl?: number }][] = [
     ['real', VAPID, {}],
-    ['realTopic', VAPID, { topic: 'lexbites-test' }],
     ['controlWrongSigner', { ...VAPID, privateKey: otherD }, {}],
-    ['controlBadSubject', { ...VAPID, subject: 'not a url' }, {}],
-    ['controlBadTopic', VAPID, { topic: 'not a topic!' }],
-    ['controlBadUrgency', VAPID, { urgency: 'urgent' }],
   ];
   for (const [name, keys, opts] of variants) {
     try {

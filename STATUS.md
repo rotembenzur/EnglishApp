@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.4.0
+Last updated: 2026-10-13 · version 0.4.1
 
 ## Deployment
 
@@ -20,15 +20,45 @@ Last updated: 2026-10-13 · version 0.4.0
 
 ## Waiting on owner
 
-1. **Push notifications: add two GitHub secrets** (`SETUP.md` steps 4a to 4c, about five minutes):
-   `VAPID_PRIVATE_KEY` (given in the chat of the 2026-10-13 session) and `SUPABASE_ACCESS_TOKEN`
-   (created in the Supabase dashboard), then run the **Push server** workflow once. Then on each
-   iPhone: **הגדרות**, **התראות**, turn on, allow, send a test (`SETUP.md` step 4d).
+1. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
+   nudges, as listed under "Push: what to test on the phones" below.
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
-installed and syncing (reported 2026-10-13).
+installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
 
-## Push notifications (built 2026-10-13, live once the secrets exist)
+## Push: the failing test notification (fixed in 0.4.1)
+
+Reported: on an iPhone with notifications allowed, **לשלוח התראת בדיקה** failed every time.
+
+- What was checked from here (the container still cannot reach `web.push.apple.com`, and the
+  function logs need `api.supabase.com`): the deployed function answers CORS and POST correctly
+  and finds nothing with a wrong passphrase hash. A self-test endpoint added to the function
+  (`?probe=1`) ran inside Supabase's runtime: the encryption round-trips, and Apple answered our
+  real token with `400 BadDeviceToken` (a made-up device) while control tokens signed by a wrong
+  key, or with an invalid subject, got `403 BadJwtToken`. So Apple checks the token before the
+  device, and our signing, subject, audience, expiry and encryption are accepted.
+- That leaves the device-specific checks. The one thing every test push carried that the others
+  did not was the optional `Topic` header `lexbites-test`: 13 characters, a length no base64url
+  string can have (Apple requires base64url topics; reminders and nudges used 14, 18 and 20).
+  Apple checks topics only for real devices, so this could not be confirmed from here.
+- Fix: no `Topic` header at all (the notification `tag` already replaces duplicates on the
+  phone), VAPID tokens reused as Apple asks, and a self-repairing test that shows Apple's exact
+  status and reason if anything still fails. Every delivery's answer is also stored in
+  `lb_push.state.lastResult`.
+
+## Push: what to test on the phones
+
+1. Update to 0.4.1: open LexBites from the home screen, tap **לרענן** on the update prompt (it
+   now reloads by itself). The bottom of **הגדרות** says 0.4.1.
+2. **הגדרות**, **התראות**: tap **לשלוח התראת בדיקה**, lock the phone. Expect "LexBites: ככה נראית
+   תזכורת. ההתראות עובדות ✓" within seconds and the toast **נשלחה**.
+3. If it still fails, the toast now ends with Apple's answer in brackets (for example
+   `403 BadJwtToken`). Report that text.
+4. Tap the test button three times quickly: one toast at a time, never a stack.
+5. Nudge from the other phone (**יריבות**, 👋) while LexBites is closed on this one: a
+   notification arrives within seconds; tapping it opens **יריבות**.
+
+## Push notifications (built 2026-10-13, live since the owner added the secrets)
 
 - Daily reminder at the time each user picks (copy mentions the rival's XP), 20:00 streak alert
   when a streak is alive and the goal is open, rival nudges within seconds even with the app

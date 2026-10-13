@@ -330,6 +330,21 @@ test('[sync] push notifications: availability, enable, choices, test push, disab
   await expect(a.page.getByText('נשלחה. היא אמורה להגיע תוך כמה שניות')).toBeVisible();
   expect(received.at(-1)).toMatchObject({ kind: 'test', title: 'LexBites' });
 
+  // The server lost this phone's row (for example after a failed delivery): the test repairs it.
+  await fetch(`${REST}/lb_push?endpoint=eq.${encodeURIComponent(sub.endpoint)}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${anonJwt(SECRET!)}`,
+      'x-lexbites-key': createHash('sha256').update(`lexbites:${PASS}`).digest('hex'),
+    },
+  });
+  expect(await pushRow()).toHaveLength(0);
+  const before = received.length;
+  await a.page.getByRole('button', { name: /לשלוח התראת בדיקה/ }).click();
+  await expect.poll(() => received.length, { timeout: 15_000 }).toBe(before + 1);
+  await expect(a.page.getByText('נשלחה. היא אמורה להגיע תוך כמה שניות')).toBeVisible();
+  expect((await pushRow())[0]?.data.nudges).toBe(false);
+
   // The choice survives a reload.
   await a.page.reload();
   await expect(a.page.getByRole('switch', { name: 'התראות בטלפון הזה' })).toHaveAttribute(

@@ -612,10 +612,10 @@ function PushSection() {
               <Button
                 variant="outline"
                 onClick={() =>
-                  void sendTestPush().then((ok) =>
-                    ok
+                  void sendTestPush(profile.id).then((r) =>
+                    r.ok
                       ? toast(t.settings.pushTestSent, { icon: '🔔' })
-                      : toast(t.settings.pushTestFailed, { tone: 'warn' }),
+                      : toast(t.settings.pushTestFailed(r.detail), { tone: 'warn', ms: 8000 }),
                   )
                 }
               >

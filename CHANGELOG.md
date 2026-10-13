@@ -2,6 +2,22 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.4.1 (2026-10-13)
+
+- Push: the test notification failed every time on iPhone. The sender no longer sends the
+  optional `Topic` header (the test push used `lexbites-test`, 13 characters, which is not a valid
+  base64url length; Apple validates it only for real devices). The VAPID token is reused for up to
+  11 hours, as Apple asks. Apple's answer (status and reason) is stored with each subscription
+  and shown in the toast when a test fails, and the test repairs what a phone can repair: a
+  missing subscription row is stored again, a subscription Apple rejects is replaced, once each.
+  A 404 `BadPath` no longer deletes the subscription.
+- Push server self-test (`?probe=1`): the encryption round trip inside Supabase's runtime and
+  Apple's verdict on our token, checked after every deploy.
+- Toasts never stack: a repeated message or a new error replaces the one on screen, feedback to a
+  tap shows at once, and a rival's nudge it interrupts is shown again right after.
+- The update prompt's **לרענן** now reloads into the new version on iPhone (it used to activate
+  the new version silently and leave the page on the old one until the app was closed).
+
 ## 0.4.0 (2026-10-13)
 
 - Push notifications, end to end: a daily reminder at the time each user picks (mentioning the

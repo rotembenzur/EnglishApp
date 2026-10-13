@@ -39,6 +39,8 @@ export interface PushState {
   streakSent?: string;
   /** When the last scheduled message was sent (ms). */
   lastAt?: number;
+  /** What the push service answered last time (for diagnosis; never contains the endpoint). */
+  lastResult?: { kind: string; status: number; reason: string; at: number };
 }
 
 export interface DayRow {

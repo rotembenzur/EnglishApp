@@ -84,19 +84,31 @@ async function vapidSigningKey(keys: VapidKeys): Promise<CryptoKey> {
   );
 }
 
-/** The `Authorization` header value for a push to `endpoint`. */
+const tokenCache = new Map<string, { value: string; exp: number }>();
+
+/**
+ * The `Authorization` header value for a push to `endpoint`. Tokens live 12 hours and are reused
+ * until less than an hour is left: Apple asks senders not to refresh more than once an hour.
+ */
 export async function vapidAuthorization(
   endpoint: string,
   keys: VapidKeys,
   now = Date.now(),
 ): Promise<string> {
+  const aud = new URL(endpoint).origin;
+  const cacheKey = `${aud} ${keys.publicKey} ${keys.privateKey} ${keys.subject}`;
+  const cached = tokenCache.get(cacheKey);
+  if (cached && cached.exp * 1000 - now > 3600_000 && cached.exp * 1000 - now <= 24 * 3600_000) {
+    return cached.value;
+  }
+  const exp = Math.floor(now / 1000) + 12 * 3600;
   const header = b64urlEncode(encoder.encode(JSON.stringify({ typ: 'JWT', alg: 'ES256' })));
   const claims = b64urlEncode(
     encoder.encode(
       JSON.stringify({
-        aud: new URL(endpoint).origin,
+        aud,
         // Push services accept at most 24 hours ahead; 12 is safe everywhere.
-        exp: Math.floor(now / 1000) + 12 * 3600,
+        exp,
         sub: keys.subject,
       }),
     ),
@@ -107,7 +119,9 @@ export async function vapidAuthorization(
     await vapidSigningKey(keys),
     encoder.encode(unsigned),
   );
-  return `vapid t=${unsigned}.${b64urlEncode(new Uint8Array(signature))}, k=${keys.publicKey}`;
+  const value = `vapid t=${unsigned}.${b64urlEncode(new Uint8Array(signature))}, k=${keys.publicKey}`;
+  tokenCache.set(cacheKey, { value, exp });
+  return value;
 }
 
 /** True when the private key belongs to the public key (sign, then verify). */

@@ -107,11 +107,11 @@ function keyMatches(sub: PushSubscription, key: Uint8Array): boolean {
   return x.length === key.length && x.every((v, i) => v === key[i]);
 }
 
-async function subscription(): Promise<PushSubscription> {
+async function subscription(fresh = false): Promise<PushSubscription> {
   const reg = await navigator.serviceWorker.ready;
   const key = b64urlToBytes(VAPID_PUBLIC_KEY);
   const existing = await reg.pushManager.getSubscription();
-  if (existing && keyMatches(existing, key)) return existing;
+  if (existing && !fresh && keyMatches(existing, key)) return existing;
   // A subscription made with another key (an older build) cannot receive our pushes.
   if (existing) await existing.unsubscribe().catch(() => false);
   return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
@@ -236,21 +236,69 @@ export async function refreshPush(userId: UserId, force = false): Promise<boolea
   }
 }
 
-/** Ask the server to send a test notification to this phone. */
-export async function sendTestPush(): Promise<boolean> {
+export interface TestResult {
+  ok: boolean;
+  /** Push service status and reason when it failed, for example "403 BadJwtToken". */
+  detail: string;
+}
+
+/** Push service answers that mean this phone needs a brand-new subscription. */
+function needsNewSubscription(status: number, reason: string): boolean {
+  return (
+    status === 410 ||
+    /VapidPkHashMismatch|Unregistered|ExpiredSubscription|BadDeviceToken/.test(reason)
+  );
+}
+
+async function requestTest(cfg: SyncConfig, endpoint: string) {
+  const res = await fetch(functionUrl(cfg), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-lexbites-key': cfg.keyHash },
+    body: JSON.stringify({ kind: 'test', endpoint }),
+  });
+  const body = (await res.json().catch(() => ({}))) as {
+    ok?: boolean;
+    found?: boolean;
+    status?: number;
+    reason?: string;
+    error?: string;
+  };
+  const status = body.status || res.status;
+  const reason = body.reason || body.error || '';
+  return {
+    ok: res.ok && body.ok === true,
+    found: body.found !== false,
+    status,
+    reason,
+    detail: [status, reason].filter(Boolean).join(' '),
+  };
+}
+
+/**
+ * Ask the server to send a test notification to this phone, repairing what the phone can repair:
+ * a subscription row the server no longer has is stored again, and a subscription the push
+ * service rejects as unknown or made with another key is replaced by a fresh one. Each repair is
+ * tried once.
+ */
+export async function sendTestPush(userId: UserId): Promise<TestResult> {
   try {
     const cfg = await loadConfig();
-    const reg = await navigator.serviceWorker.getRegistration();
-    const sub = await reg?.pushManager.getSubscription();
-    if (!cfg || !sub) return false;
-    const res = await fetch(functionUrl(cfg), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-lexbites-key': cfg.keyHash },
-      body: JSON.stringify({ kind: 'test', endpoint: sub.endpoint }),
-    });
-    return res.ok && ((await res.json()) as { ok?: boolean }).ok === true;
-  } catch {
-    return false;
+    if (!cfg) return { ok: false, detail: 'no sync' };
+    const prefs = await loadPushPrefs();
+    let sub = await subscription();
+    let result = await requestTest(cfg, sub.endpoint);
+    if (!result.ok && !result.found) {
+      await saveRow(cfg, sub, userId, prefs);
+      result = await requestTest(cfg, sub.endpoint);
+    }
+    if (!result.ok && needsNewSubscription(result.status, result.reason)) {
+      sub = await subscription(true);
+      await saveRow(cfg, sub, userId, prefs);
+      result = await requestTest(cfg, sub.endpoint);
+    }
+    return result.ok ? { ok: true, detail: '' } : { ok: false, detail: result.detail };
+  } catch (e) {
+    return { ok: false, detail: (e as Error).message.slice(0, 60) };
   }
 }
 

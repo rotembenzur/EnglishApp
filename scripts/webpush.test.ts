@@ -122,6 +122,17 @@ describe('web push crypto', () => {
     expect(ok).toBe(true);
   });
 
+  it('reuses a VAPID token for at least an hour, then signs a fresh one', async () => {
+    const keys = await vapidPair();
+    const t0 = Date.UTC(2026, 9, 13, 12);
+    const a = await vapidAuthorization('https://web.push.apple.com/a', keys, t0);
+    expect(await vapidAuthorization('https://web.push.apple.com/b', keys, t0 + 3600_000)).toBe(a);
+    expect(await vapidAuthorization('https://fcm.googleapis.com/x', keys, t0)).not.toBe(a);
+    expect(
+      await vapidAuthorization('https://web.push.apple.com/a', keys, t0 + 11.5 * 3600_000),
+    ).not.toBe(a);
+  });
+
   it('tells a matching private key from a wrong one', async () => {
     const a = await vapidPair();
     const b = await vapidPair();

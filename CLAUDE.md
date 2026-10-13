@@ -68,5 +68,11 @@ Read these first, every session:
 - Opening a deep link cold on GitHub Pages (for example `/EnglishApp/settings`) answers HTTP 404
   through the `404.html` bounce by design; judge console errors on the real site with that in mind.
 - Every schema change ships with a migration; export/import must keep working (spec 0.10).
+- Apple's push service is unreachable from this container, but the deployed function can reach it:
+  `curl -s https://ngosxhpmudbgiiktqgoa.supabase.co/functions/v1/lexbites-push?probe=1` shows the
+  encryption self-test and Apple's verdict on our token (`real` must be `400 BadDeviceToken`).
+  Each subscription's last delivery answer is in `lb_push.state.lastResult`.
+- The function deploys only through `.github/workflows/push-server.yml` (pushes to the default
+  branch that touch `supabase/functions/**`); bump `VERSION` in the function to see the new one live.
 - GitHub disables scheduled workflows in public repos after 60 days without commits; the keepalive
   workflow re-enables the scheduled workflows on every run.

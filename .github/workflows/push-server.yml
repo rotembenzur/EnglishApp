@@ -124,4 +124,10 @@ jobs:
             -H "x-lexbites-key: $(printf '0%.0s' $(seq 64))" -d '{"kind":"tick"}')
           echo "tick: $out"
           echo "$out" | grep -q '"subscriptions":0' || { echo "::error::tick failed"; exit 1; }
+          # Apple's push service must accept our token (it then rejects only the made-up device).
+          probe=$(curl -sS --max-time 60 "$FN?probe=1")
+          echo "probe: $probe"
+          echo "$probe" | grep -q '"roundTrip":true' || { echo "::error::encryption self-test failed"; exit 1; }
+          echo "$probe" | grep -q '"real":{"status":400,"reason":"BadDeviceToken"}' \
+            || echo "::warning::Apple did not answer the probe as expected; check the probe output above."
           echo "::notice::Push server is live. Enable notifications on each iPhone (SETUP.md step 4)."
