@@ -65,6 +65,8 @@ Read these first, every session:
   the writing transaction and a late commit can land behind the other phone's cursor.
 - Never delete or renumber inventory entries: lemma ids and shard membership are by rank. Mark
   non-teachable entries instead (see `docs/DECISIONS.md`, content).
+- Opening a deep link cold on GitHub Pages (for example `/EnglishApp/settings`) answers HTTP 404
+  through the `404.html` bounce by design; judge console errors on the real site with that in mind.
 - Every schema change ships with a migration; export/import must keep working (spec 0.10).
 - GitHub disables scheduled workflows in public repos after 60 days without commits; the keepalive
   workflow re-enables the scheduled workflows on every run.

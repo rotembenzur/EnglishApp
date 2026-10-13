@@ -7,21 +7,16 @@ Last updated: 2026-10-13 · version 0.4.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
-- Latest deploy: CI and deploy run #25 on commit `4ad8c02` (2026-10-13), all three jobs green
-  (lint/typecheck/test/build, Playwright smoke, Deploy to GitHub Pages); GitHub reports the
-  `github-pages` deployment as successful at https://rotembenzur.github.io/EnglishApp/.
-- Runs #23 and #24 failed in the Playwright job: with the dictionary APIs reachable on GitHub's
-  runners, building a learning session took about 18 s (probe and plan-content lookups each waited
-  online), and the test raced the loading skeleton. Fixed in `4ad8c02`: sessions now start in about
-  3 s online, e2e blocks third-party APIs by default, and a new `[online]` test with slow mocked
-  APIs guards the start time.
-- How the deploy was verified: this build container's network policy blocks `*.github.io` and the
-  artifact storage host, so the live URL could not be opened from here. Instead, the same commit
-  was rebuilt with the CI command and served under `/EnglishApp/` by a GitHub Pages stand-in (real
-  404s from `404.html`), with Chromium mapped to `rotembenzur.github.io`. Result: page loads in
-  Hebrew RTL, manifest scope and start URL `/EnglishApp/`, icons and service worker served, all
-  content loads (30 shards, 3 curated lists), deep links work warm and cold, zero errors.
-  Opening the real URL on a phone is the remaining check (QA list below).
+- Latest deploy: 0.4.0, CI and deploy run #31 on commit `3134127` (2026-10-13), all three jobs
+  green (lint/typecheck/test/build, Playwright smoke, Deploy to GitHub Pages). The Push server
+  workflow run on the same commit is green and skipped deploying, as designed, until the secrets
+  exist.
+- Verified on the real URL from this container (now allowed): the page serves the new build, the
+  settings chunk carries 0.4.0, and Chromium (iPhone 14 profile) loads it in Hebrew RTL with the
+  service worker registered, the version 0.4.0 in settings and no JavaScript errors. The only
+  failed requests are expected: cold deep links answer 404 through the `404.html` bounce by
+  design, and the push function answers 404 until `SETUP.md` step 4 is done (the settings screen
+  then says the push server is not on yet).
 
 ## Waiting on owner
 
