@@ -174,7 +174,7 @@ export function Stats() {
         <Section title={t.stats.minutes}>
           <MiniBars
             values={lastDays(14).map((d) => derived.minutes.get(d) ?? 0)}
-            labels={lastDays(14).map((d) => d.slice(8))}
+            labels={lastDays(14).map((d) => String(Number(d.slice(8))))}
           />
         </Section>
 
