@@ -33,7 +33,7 @@ import {
 } from '../_shared/schedule.ts';
 import { ANON_KEY, PROJECT_URL, VAPID_PUBLIC_KEY, VAPID_SUBJECT } from '../_shared/keys.ts';
 
-const VERSION = 2;
+const VERSION = 3;
 const REST = `${(Deno.env.get('SUPABASE_URL') || PROJECT_URL).replace(/\/+$/, '')}/rest/v1/`;
 const VAPID: VapidKeys = {
   publicKey: VAPID_PUBLIC_KEY,
@@ -220,13 +220,28 @@ async function probe() {
     console.error(`probe crypto: ${(e as Error).message}`);
   }
   const apple: Record<string, { status: number; reason: string }> = {};
-  for (const [name, topic] of [
-    ['noTopic', undefined],
-    ['topicTest', 'lexbites-test'],
-    ['topicDaily', 'lexbites-daily'],
-  ] as const) {
+  const other = (await crypto.subtle.generateKey({ name: 'ECDSA', namedCurve: 'P-256' }, true, [
+    'sign',
+  ])) as CryptoKeyPair;
+  const otherD = String((await crypto.subtle.exportKey('jwk', other.privateKey)).d);
+  // Real settings first, then controls that are wrong on purpose: if Apple names the broken field
+  // for a control, it checks that field before the device, so "BadDeviceToken" for the real
+  // settings proves they are accepted.
+  const variants: [string, VapidKeys, { topic?: string; urgency?: string; ttl?: number }][] = [
+    ['real', VAPID, {}],
+    ['realTopic', VAPID, { topic: 'lexbites-test' }],
+    ['controlWrongSigner', { ...VAPID, privateKey: otherD }, {}],
+    ['controlBadSubject', { ...VAPID, subject: 'not a url' }, {}],
+    ['controlBadTopic', VAPID, { topic: 'not a topic!' }],
+    ['controlBadUrgency', VAPID, { urgency: 'urgent' }],
+  ];
+  for (const [name, keys, opts] of variants) {
     try {
-      const r = await sendPush(sub, { title: 'probe' }, VAPID, { ttl: 60, topic });
+      const r = await sendPush(sub, { title: 'probe' }, keys, {
+        ttl: 60,
+        ...(opts as { topic?: string }),
+        ...(opts.urgency ? { urgency: opts.urgency as 'high' } : {}),
+      });
       apple[name] = { status: r.status, reason: r.reason };
     } catch (e) {
       apple[name] = { status: 0, reason: (e as Error).message };
