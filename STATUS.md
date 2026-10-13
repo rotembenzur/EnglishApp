@@ -7,8 +7,17 @@ Last updated: 2026-10-13 · version 0.8.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
-- Latest deploy: 0.8.0 (see below for the run and the live check). The site now includes the
-  recordings from the `audio-store` release.
+- Latest deploy: 0.8.0, CI and deploy run #67 on commit `dd0007a` (2026-10-13), all three jobs
+  (verify, e2e, deploy) green. The recordings came from Audio run #8 (full render, 20 parallel
+  jobs, about 2.5 hours); Audio run #9 on the same push found nothing new and skipped publishing.
+- Verified on the real URL: `audio/index.json`, both word indexes (33 packs, 6,799 entries each)
+  and the sentence index (20,292) answer 200; packs answer range requests with 206; a sentence
+  clip and slices of both voices' packs are valid AAC (24 kHz mono). Chromium (iPhone 14 profile)
+  on a fresh profile: 0.8.0 at the bottom of **הגדרות**, the recordings card reads "6,799 מילים
+  וביטויים, 20,292 משפטים", all 33 American packs stored, then **כל המילים שמורות במכשיר**, zero console
+  errors. That Chromium build has no AAC decoder, so it fell back to the system voice online and
+  offline, which also shows the fallback works; playback of the recordings themselves needs the
+  iPhone check below.
 - Verified on the real URL: the built JS carries 0.7.0; Chromium (iPhone 14 profile) on a fresh
   profile shows "/ 1000 XP" on home, **יעד יומי** 1000 XP with the 1000 preset selected and 0.7.0
   at the bottom of **הגדרות**, zero console errors. Server rows re-read at 15:40 UTC: both 1000.
