@@ -46,7 +46,9 @@ Pure functions in `src/engine/` (no IO, no DOM, the caller passes `now`), each w
   family ordering, daily cap and cap suggestions, assumed-known probes.
 - `srs`: ts-fsrs wrapper, behavior-derived ratings from per-user speed percentiles, crowns, leeches.
 - `optimizer`: on-device FSRS personalization (coordinate descent on log loss).
-- `session`: composer for learn, review, hard, listening, speed, boss and duel sessions.
+- `session`: composer for learn, review, hard, listening, speed, boss and duel sessions. Short
+  queues are filled (due, early reviews by retrievability, hard pool, today's words, repeats) so a
+  session keeps its normal length; optional modes have a minimum pool (`MODE_MIN`).
 - `exercises`: distractors, typing tolerance (Levenshtein, US/UK spellings), spelling diff, cloze
   blanking with inflections, match boards.
 - `learn`: the single answer transition (word, behavior) to (word, review row, ability, XP), plus

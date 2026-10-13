@@ -11,7 +11,8 @@ One paragraph of purpose and the key elements per screen. Routes are relative to
    inside the band.
 3. **Home** (`/`). The daily launch pad. Daily goal ring with XP, streak flame with record, rival
    card (words today, XP today, streak, trained today or not), start buttons (למידה, חזרות, מילים
-   קשות, סיבוב מהיר, מצב האזנה), word of the day, one-tap cap suggestions, sync dot.
+   קשות, סיבוב מהיר, מצב האזנה), word of the day, one-tap cap suggestions, sync dot. Once the
+   day's new words are in, a card says so and offers **עוד 5 מילים חדשות** (today only).
 4. **Session** (`/session/:kind`). The item view. Thin progress bar on top, exit button with
    confirmation only when mid-item, one exercise at a time with instant feedback and the full word
    card on mistakes, combo indicator, typing input that never zooms on iOS.

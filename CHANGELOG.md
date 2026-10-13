@@ -2,6 +2,29 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.6.0 (2026-10-13)
+
+Keep playing after the daily new-word cap. Sessions no longer shrink to a single word.
+
+- Fixed: once the day's new words were in and few reviews were due, every learning session held
+  only the sanity probe. Learning, review and boss sessions now fill to their normal size: due
+  reviews, then early reviews of the words you are most likely to forget (FSRS retrievability),
+  then the hard-words pool, then practice of words learned today, then the same words again in
+  other exercises.
+- Early reviews are scheduled by FSRS from the real elapsed time: a word you clearly know barely
+  changes, and its next review only moves later. A fast answer on a word that was not due counts
+  as Good, not Easy. Early answers stay out of the 7-day retention behind the cap suggestions.
+- New: once the cap is reached, home and the end of a session say so and offer **עוד 5 מילים
+  חדשות**, which adds 5 new words for today only (the setting stays as it is).
+- Hard words, listening and the speed round repeat a small pool in other exercises instead of
+  stopping after a few items; with too few learned words their buttons are disabled, and opening
+  them explains why with a way forward. Speed rounds never repeat a word back to back.
+- A brand-new user with a low cap gets extra practice of the new words, so the first session is
+  not cut short.
+- Tests: composer cases for the cap with no and few due reviews, a brand-new user, a handful of
+  learned words, every other mode, a property check over many pool shapes, FSRS checks for early
+  and same-day reviews, and an e2e test that plays five sessions in a row past the cap.
+
 ## 0.5.0 (2026-10-13)
 
 RTL and bidi, everywhere. Hebrew mixed with English, numbers, XP, signs, emoji or URLs now renders

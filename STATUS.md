@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.5.0
+Last updated: 2026-10-13 · version 0.6.0
 
 ## Deployment
 
@@ -17,13 +17,57 @@ Last updated: 2026-10-13 · version 0.5.0
 
 ## Waiting on owner
 
-1. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
+1. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
+   cap: what to check on the iPhone" below.
+2. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
    the iPhone" below.
-2. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
+3. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
    nudges, as listed under "Push: what to test on the phones" below.
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## Sessions after the daily cap (0.6.0)
+
+Reported: from some point in the day, every session held a single word.
+
+- Root cause (`src/engine/session.ts`): the learn composer took only due reviews, and its top-up
+  with words that are not due yet ran for review and boss sessions only (`mode !== 'learn'`).
+  Once the day's 8 new words were in and nothing was due, the plan was the sanity probe alone.
+  Reproduced in a unit test first (the plan had exactly 1 item).
+- Fix: learning, review and boss sessions fill to their normal size: due reviews, early reviews
+  by lowest FSRS retrievability, the hard-words pool, words learned today, then the same words
+  in other exercises (at most 5 times each, never back to back). A probe alone is never a
+  session. Early reviews are scheduled by FSRS from the real elapsed time (no Easy bonus on a word
+  that was not due) and stay out of the 7-day retention behind cap suggestions. Theta keeps its
+  2-point daily budget.
+- New: once the cap is reached, home, the session summary and an empty learn screen show a card
+  with **עוד 5 מילים חדשות** (today only; the setting is untouched).
+- Other modes: hard words, listening and speed repeat a small pool in other exercises; below 3
+  learned words (4 for speed, 30 for the boss) the button is disabled and the screen explains
+  why, with a button to a learning session. A brand-new user with a cap of 3 gets extra practice
+  of the new words, so the first session is not cut short.
+- Guards: composer unit tests (cap reached with no due and few due reviews, brand-new user,
+  handful of learned words, every mode, a property sweep over 768 pool shapes and seeds), FSRS tests for
+  early and same-day reviews, and `e2e/cap.spec.ts`, which plays five sessions in a row (two
+  before the cap, three after) and gets 20 items every time, then taps the +5 card.
+
+## After the cap: what to check on the iPhone
+
+Update to 0.6.0 first (bottom of **הגדרות**). Then:
+
+1. Play learning sessions until the day's new words are in (8 by default). Home shows the card
+   **המילים החדשות של היום כבר אצלך** with **עוד 5 מילים חדשות**.
+2. Tap **ללמוד** (or **עוד סשן** at the end of a session) three or four times in a row: every
+   session runs about 20 items, the progress bar on top has about 20 steps, and no word comes
+   twice in a row.
+3. At the end of each of those sessions the same card shows under the results.
+4. Tap **עוד 5 מילים חדשות**: a toast **נפתחו עוד 5 מילים חדשות להיום**, a session starts and new
+   words (the **מילה חדשה** card) show up in it. **הגדרות**, new words per day, still shows your
+   own number.
+5. **מילים קשות**, **מצב האזנה** and **סיבוב מהיר** run a normal length too. On the other
+   profile, or a fresh one with almost no words, their buttons are greyed out until a few words
+   are learned.
 
 ## RTL and bidi audit (0.5.0)
 
@@ -191,8 +235,8 @@ owner reported sync working on both phones on 2026-10-13.
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
 - Read mode with word import, confusable pairs.
 - Push notifications and the Supabase keepalive (see above).
-- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 164 unit tests (engine, sync, export/import, content, bidi), Playwright e2e (first run, all tabs, offline,
-  resume, two-phone sync), zero console errors, app shell about 190 KB gzipped.
+- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 184 unit tests (engine, sync, export/import, content, bidi), Playwright e2e (first run, all tabs, offline,
+  resume, five sessions past the daily cap, two-phone sync), zero console errors, app shell about 190 KB gzipped.
 
 ## Content progress
 
