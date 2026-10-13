@@ -19,7 +19,7 @@ src/
 content/        Authoring source: lemmas.json, schema.json, shards/, curated/, families.json
 public/content/ Generated runtime content (ignored in git, built by scripts/build-content.ts)
 scripts/        Build and maintenance scripts (content pipeline, icons, enrich, reports, screenshots)
-supabase/       schema.sql for the optional sync backend
+supabase/       schema.sql (sync backend), push.sql and functions/ (push server), config.toml
 docs/           Decisions, screens, voice, QA checklist, backlog
 ```
 
@@ -87,15 +87,44 @@ server by a trigger; `reviews` and `events` are append-only unions. Pulls run on
 every 60 seconds and after each session. Each pull starts two minutes behind the stored cursor,
 because a row is stamped before its transaction commits and could otherwise be skipped when both
 phones push at once. Access is gated by RLS on an `x-lexbites-key` header (sha256 of the shared
-passphrase). The project URL and anon key are built in (`src/sync/config.ts`); a phone stores only
+passphrase). The project URL and anon key are built in (`src/sync/config.ts`, values in
+`supabase/functions/_shared/keys.ts`); a phone stores only
 the passphrase hash. Schema: `supabase/schema.sql`. Steps: `SETUP.md`. The two-phone e2e test
 (`e2e/sync.spec.ts`) runs against a local PostgREST with the same schema.
 
 ## Push
 
-Behind a flag (`VITE_VAPID_PUBLIC_KEY`). Subscriptions go to `lb_push`; the scheduled workflow
-`.github/workflows/push-reminders.yml` runs `scripts/send-push.ts` every 30 minutes. The service
-worker imports `public/sw-push.js` for push and notification clicks.
+Web push (spec 9.6), live once the owner adds two GitHub secrets (`SETUP.md` step 4).
+
+- Phone: `src/sync/push.ts` subscribes with the VAPID public key (`supabase/functions/_shared/keys.ts`)
+  and upserts its subscription and choices (daily reminder time or off, streak alert, nudges, IANA
+  time zone) into `lb_push.data`. It refreshes the row on every app open (endpoints can rotate, the
+  time zone can change). The settings section shows a reason instead of the switch until sync is
+  connected, the app runs from the home screen, and the server reports ready.
+- Server: the Edge Function `supabase/functions/lexbites-push` (Deno, no dependencies). Web Push
+  encryption (RFC 8291) and VAPID (RFC 8292) are implemented with WebCrypto in
+  `_shared/webpush.ts`; the rules for what to send are pure functions in `_shared/schedule.ts`.
+  It reads and writes through PostgREST with the anon key and the passphrase hash from the caller,
+  so RLS limits it exactly like a phone. Its send state lives in `lb_push.state`, a column the
+  phones never write.
+- Triggers (`supabase/push.sql`): pg_cron calls the function every 5 minutes (`{"kind":"tick"}`:
+  daily reminders, the 20:00 streak alert); an `AFTER INSERT` trigger on `lb_events` calls it for
+  every new nudge through pg_net, so nudges arrive within seconds. Both read the hash from
+  `lb_config`, which the API can never read.
+- Deploy: `.github/workflows/push-server.yml` (secrets `VAPID_PRIVATE_KEY`,
+  `SUPABASE_ACCESS_TOKEN`) checks the key pair, deploys the function, sets its secret, runs
+  `push.sql` through the Management API and smoke-tests the function.
+- Service worker: imports `public/sw-push.js` (shows every push, opens the right screen on tap).
+- Tests: `scripts/webpush.test.ts` (crypto against http_ece and node:crypto),
+  `src/sync/push-server.test.ts` (scheduling rules), `e2e/sync.spec.ts` push test (real function
+  under Deno, local PostgREST, a push service stand-in that decrypts every message).
+
+## Keepalive
+
+`.github/workflows/keepalive.yml` runs every 2 days: `rpc/lb_keepalive` (a write that only stamps
+`lb_config.keepalive_at`, callable without the passphrase), a table read and `rpc/lb_authorized`.
+It needs no secret. It also re-enables the scheduled workflows, which GitHub turns off in public
+repositories after 60 days without commits.
 
 ## Deployment
 

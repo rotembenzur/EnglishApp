@@ -3,11 +3,23 @@
  * by design: every table is closed by row-level security unless the request carries the hash of
  * the shared passphrase, which is typed once in Settings on each phone and never stored here.
  * A build can point elsewhere with VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.
+ * The values live in supabase/functions/_shared/keys.ts so the push Edge Function uses the same.
  */
+import {
+  ANON_KEY,
+  PROJECT_URL,
+  PUSH_FUNCTION,
+  VAPID_PUBLIC_KEY as DEFAULT_VAPID_PUBLIC_KEY,
+} from '../../supabase/functions/_shared/keys.ts';
+
 export const SUPABASE_URL =
-  (import.meta.env.VITE_SUPABASE_URL as string | undefined) ||
-  'https://ngosxhpmudbgiiktqgoa.supabase.co';
+  (import.meta.env.VITE_SUPABASE_URL as string | undefined) || PROJECT_URL;
 
 export const SUPABASE_ANON_KEY =
-  (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) ||
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5nb3N4aHBtdWRiZ2lpa3RxZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4NDg0ODgsImV4cCI6MjEwNzQyNDQ4OH0.nVoBZBZgZVuOJ7fRxe7moz35T6h1leyxLUOSpiDfx1Y';
+  (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) || ANON_KEY;
+
+/** Web push (SETUP.md step 4). The private half is a GitHub secret, never in the repository. */
+export const VAPID_PUBLIC_KEY =
+  (import.meta.env.VITE_VAPID_PUBLIC_KEY as string | undefined) || DEFAULT_VAPID_PUBLIC_KEY;
+
+export { PUSH_FUNCTION };

@@ -1,4 +1,6 @@
-import { createHmac } from 'node:crypto';
+import { createECDH, createHash, createHmac, randomBytes } from 'node:crypto';
+import { createServer } from 'node:http';
+import { createRequire } from 'node:module';
 import { devices, expect, test, type Browser, type Page } from '@playwright/test';
 
 /**
@@ -7,11 +9,16 @@ import { devices, expect, test, type Browser, type Page } from '@playwright/test
  * URL with the built-in anon key; each request is forwarded to the local PostgREST with a locally
  * signed anon token. Skipped unless the backend is provided:
  *   LEXBITES_SYNC_REST=http://127.0.0.1:54330 LEXBITES_SYNC_JWT_SECRET=... LEXBITES_SYNC_PASS=...
+ * The push test also needs the lexbites-push Edge Function served locally with Deno, pointed at
+ * the same database (SUPABASE_URL to a gateway in front of PostgREST, VAPID_PRIVATE_KEY set):
+ *   LEXBITES_PUSH_FN=http://127.0.0.1:8000/
  */
 const REST = process.env.LEXBITES_SYNC_REST;
 const SECRET = process.env.LEXBITES_SYNC_JWT_SECRET;
 const PASS = process.env.LEXBITES_SYNC_PASS;
+const PUSH_FN = process.env.LEXBITES_PUSH_FN;
 const PROJECT = /^https:\/\/ngosxhpmudbgiiktqgoa\.supabase\.co\/rest\/v1\//;
+const FUNCTION = /^https:\/\/ngosxhpmudbgiiktqgoa\.supabase\.co\/functions\/v1\/lexbites-push/;
 const EXTERNAL = /dictionaryapi\.dev|mymemory\.translated\.net|translate\.googleapis\.com/;
 
 test.skip(!REST || !SECRET || !PASS, 'needs a PostgREST backend (see the comment at the top)');
@@ -45,6 +52,12 @@ async function phone(browser: Browser, seen: Set<string>) {
       response: res,
       headers: { ...res.headers(), 'access-control-allow-origin': '*' },
     });
+  });
+  // The push server: the local Deno function when given, otherwise "not deployed".
+  await ctx.route(FUNCTION, async (route) => {
+    if (!PUSH_FN) return route.fulfill({ status: 404, body: '{"code":"NOT_FOUND"}' });
+    const res = await route.fetch({ url: PUSH_FN });
+    await route.fulfill({ response: res });
   });
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(e.message));
@@ -220,4 +233,115 @@ test('[sync] two phones: connect, rival card, weekly league, daily duel and nudg
   expect([...seenKeys][0]).toMatch(/^eyJ/);
   expect(errors).toEqual([]);
   await Promise.all([a.ctx.close(), b.ctx.close()]);
+});
+
+test('[sync] push notifications: availability, enable, choices, test push, disable', async ({
+  browser,
+}) => {
+  test.skip(!PUSH_FN, 'needs the lexbites-push function served locally (see the top comment)');
+  // A push service stand-in that decrypts what the server sends to this "phone".
+  const ece = createRequire(import.meta.url)('http_ece') as {
+    decrypt(b: Buffer, p: object): Buffer;
+  };
+  const ua = createECDH('prime256v1');
+  ua.generateKeys();
+  const auth = randomBytes(16);
+  const received: { title: string; body: string; kind: string }[] = [];
+  const service = createServer((req, res) => {
+    const chunks: Buffer[] = [];
+    req.on('data', (c: Buffer) => chunks.push(c));
+    req.on('end', () => {
+      const plain = ece.decrypt(Buffer.concat(chunks), {
+        version: 'aes128gcm',
+        privateKey: ua,
+        authSecret: auth.toString('base64url'),
+      });
+      received.push(JSON.parse(plain.toString()));
+      res.writeHead(201);
+      res.end();
+    });
+  });
+  await new Promise<void>((r) => service.listen(54334, '127.0.0.1', r));
+  const sub = {
+    endpoint: `http://127.0.0.1:54334/push/${randomBytes(6).toString('hex')}`,
+    keys: { p256dh: ua.getPublicKey().toString('base64url'), auth: auth.toString('base64url') },
+  };
+
+  const a = await phone(browser, new Set());
+  // Headless Chromium has no push service: stand in for PushManager with the subscription above.
+  await a.ctx.grantPermissions(['notifications']);
+  await a.ctx.addInitScript((s) => {
+    // Like a real phone, the subscription outlives a reload.
+    const make = () => ({
+      endpoint: s.endpoint,
+      options: { applicationServerKey: null },
+      toJSON: () => ({ endpoint: s.endpoint, expirationTime: null, keys: s.keys }),
+      unsubscribe: async () => {
+        localStorage.removeItem('e2e-push-sub');
+        return true;
+      },
+    });
+    PushManager.prototype.subscribe = async function () {
+      localStorage.setItem('e2e-push-sub', '1');
+      return make() as unknown as PushSubscription;
+    };
+    PushManager.prototype.getSubscription = async function () {
+      return localStorage.getItem('e2e-push-sub') ? (make() as unknown as PushSubscription) : null;
+    };
+  }, sub);
+  const pushRow = () =>
+    fetch(`${REST}/lb_push?endpoint=eq.${encodeURIComponent(sub.endpoint)}&select=user_id,data`, {
+      headers: {
+        authorization: `Bearer ${anonJwt(SECRET!)}`,
+        'x-lexbites-key': createHash('sha256').update(`lexbites:${PASS}`).digest('hex'),
+      },
+    }).then((r) => r.json() as Promise<{ user_id: string; data: Record<string, unknown> }[]>);
+
+  await a.page.goto('/welcome');
+  await a.page.getByRole('button', { name: /רתם/ }).click();
+  await finishPlacement(a.page, 'high');
+
+  // Before sync is connected the section explains what is missing.
+  await a.page.goto('/settings');
+  await expect(a.page.getByTestId('push-status')).toHaveText(/אחרי שמחברים את הסנכרון/);
+
+  await connect(a.page, PASS!);
+  await expect(a.page.getByTestId('sync-status')).toHaveText('מסונכרן', { timeout: 30_000 });
+  const toggle = a.page.getByRole('switch', { name: 'התראות בטלפון הזה' });
+  await expect(toggle).toHaveAttribute('aria-checked', 'false');
+  await toggle.click();
+  await expect(a.page.getByText('ההתראות פועלות')).toBeVisible();
+  await expect.poll(async () => (await pushRow())[0]?.data.reminderTime).toBe('20:00');
+  const row = (await pushRow())[0]!;
+  expect(row.user_id).toBe('rotem');
+  expect(row.data).toMatchObject({ userId: 'rotem', streakAlert: true, nudges: true });
+  expect(typeof row.data.tz).toBe('string');
+
+  // Choices are saved to the server.
+  await a.page.locator('input[type="time"]').fill('07:45');
+  await expect
+    .poll(async () => (await pushRow())[0]?.data.reminderTime, { timeout: 10_000 })
+    .toBe('07:45');
+  await a.page.getByRole('switch', { name: 'נקירות מנועה' }).click();
+  await expect.poll(async () => (await pushRow())[0]?.data.nudges).toBe(false);
+
+  // A test notification goes through the server, encrypted for this phone.
+  await a.page.getByRole('button', { name: /לשלוח התראת בדיקה/ }).click();
+  await expect(a.page.getByText('נשלחה. היא אמורה להגיע תוך כמה שניות')).toBeVisible();
+  expect(received.at(-1)).toMatchObject({ kind: 'test', title: 'LexBites' });
+
+  // The choice survives a reload.
+  await a.page.reload();
+  await expect(a.page.getByRole('switch', { name: 'התראות בטלפון הזה' })).toHaveAttribute(
+    'aria-checked',
+    'true',
+  );
+
+  // Turning off removes the subscription from the server.
+  await a.page.getByRole('switch', { name: 'התראות בטלפון הזה' }).click();
+  await expect.poll(async () => (await pushRow()).length).toBe(0);
+
+  expect(errors).toEqual([]);
+  await a.ctx.close();
+  service.close();
 });

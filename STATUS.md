@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.3.1
+Last updated: 2026-10-13 · version 0.4.0
 
 ## Deployment
 
@@ -25,17 +25,59 @@ Last updated: 2026-10-13 · version 0.3.1
 
 ## Waiting on owner
 
-1. **Type the shared passphrase on both phones** (`SETUP.md` step 3, one minute per phone), then
-   run the phone checks in "Sync: what to test on the phones" below.
-2. **Push reminders** (optional, `SETUP.md` step 4).
+1. **Push notifications: add two GitHub secrets** (`SETUP.md` steps 4a to 4c, about five minutes):
+   `VAPID_PRIVATE_KEY` (given in the chat of the 2026-10-13 session) and `SUPABASE_ACCESS_TOKEN`
+   (created in the Supabase dashboard), then run the **Push server** workflow once. Then on each
+   iPhone: **הגדרות**, **התראות**, turn on, allow, send a test (`SETUP.md` step 4d).
+
+Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
+installed and syncing (reported 2026-10-13).
+
+## Push notifications (built 2026-10-13, live once the secrets exist)
+
+- Daily reminder at the time each user picks (copy mentions the rival's XP), 20:00 streak alert
+  when a streak is alive and the goal is open, rival nudges within seconds even with the app
+  closed. Per-phone switches and a test button in **הגדרות**, **התראות**.
+- Server: Supabase Edge Function `lexbites-push` + `supabase/push.sql` (pg_cron every 5 minutes,
+  nudge trigger), deployed by `.github/workflows/push-server.yml`. Until the secrets exist the
+  workflow ends green with a notice and the settings section says the server is not on yet.
+- Verified here (2026-10-13): the real function under Deno 2.9 against Postgres 16 + PostgREST 12
+  with `schema.sql` and `push.sql` applied (pg_net and pg_cron replaced by recording stand-ins),
+  and a push service stand-in that verifies every VAPID token and decrypts every message: 29 of 29
+  checks (reminder with rival copy, no duplicates, dead subscriptions removed, server state kept
+  when a phone refreshes, nudge trigger fires once per nudge and never for other events, nudges
+  off, old nudges skipped, test push, wrong passphrase sees nothing, delete needs the passphrase,
+  keepalive). Browser test: the production build enables push, saves choices, sends a test
+  notification through the function and turns off again, zero console errors.
+- Not verifiable from here: delivery through Apple's push service (`web.push.apple.com` is blocked
+  in this container) and the deploy itself (needs the owner's secrets). The QA list below has the
+  phone checks.
+
+## Supabase keepalive
+
+`.github/workflows/keepalive.yml` every 2 days, no secret: a write through `rpc/lb_keepalive`
+(after `push.sql` or a re-run of `schema.sql` installs it), a table read and `rpc/lb_authorized`.
+It also re-enables the scheduled workflows so GitHub's 60-day rule cannot switch them off. Until
+`lb_keepalive` exists the reads alone keep the project active.
+
+## Network check from this container (2026-10-13)
+
+- https://rotembenzur.github.io/EnglishApp/ answers 200 (page, manifest, `sw.js`, `sw-push.js`).
+- Supabase project: REST answers; every table returns `[]` without the passphrase, writes are
+  refused (401), `lb_config` is unreadable, `lb_set_passphrase` is not callable, CORS allows the
+  `x-lexbites-key` header, the push function is not deployed yet (404, expected).
+- `api.dictionaryapi.dev` answers 200. `translate.googleapis.com` is reachable (it answers 429 to
+  this container's address; phones are not affected).
+- Still blocked here: `api.mymemory.translated.net` (the first translation source),
+  `api.supabase.com` (Management API, used only by the deploy workflow on GitHub's runners) and
+  push services such as `web.push.apple.com`.
 
 ## Sync backend (connected 2026-10-13)
 
 - Supabase project `ngosxhpmudbgiiktqgoa`; `supabase/schema.sql` was run by the owner with the
   shared passphrase. The project URL and anon key are built into the app (`src/sync/config.ts`);
   the passphrase is not in the repository. Each phone types it once in **הגדרות**, **סנכרון**.
-- Not reachable from here: this build container's network policy refuses `*.supabase.co`
-  (proxy answers 403 to CONNECT), so no request reached the real project from this session.
+- Reachable from the build container since 2026-10-13 (see the network check above).
 - Verified instead against a real backend with the same stack: Postgres 16 with Supabase's roles
   and default grants, `supabase/schema.sql` applied (and re-applied), PostgREST 12. Results:
   - RLS: a wrong passphrase hash reads nothing and every write is refused (401); `lb_config` is
@@ -55,7 +97,8 @@ Last updated: 2026-10-13 · version 0.3.1
 
 ## Sync: what to test on the phones
 
-Both phones on 0.3.1 or later (bottom of **הגדרות**), both connected per `SETUP.md` step 3.
+Both phones on 0.3.1 or later (bottom of **הגדרות**), both connected per `SETUP.md` step 3. The
+owner reported sync working on both phones on 2026-10-13.
 
 1. Phone A (רתם): connect. Expect the **מחובר** toast, **מסונכרן** next to **סנכרון**, a green dot
    on home. A wrong passphrase must show **הסיסמה לא מתאימה**.
@@ -85,7 +128,8 @@ Both phones on 0.3.1 or later (bottom of **הגדרות**), both connected per `
 - Content: 62,000-lemma inventory, Tier A authored words (see below), 300 phrasal verbs, 300
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
 - Read mode with word import, confusable pairs.
-- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 118 unit tests (engine, sync, export/import, content), Playwright e2e (first run, all tabs, offline,
+- Push notifications and the Supabase keepalive (see above).
+- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 132 unit tests (engine, sync, export/import, content), Playwright e2e (first run, all tabs, offline,
   resume, two-phone sync), zero console errors, app shell about 190 KB gzipped.
 
 ## Content progress
@@ -99,7 +143,7 @@ Both phones on 0.3.1 or later (bottom of **הגדרות**), both connected per `
 
 - Tier A content pass to 10,000 words (`pnpm enrich --from 6001 --to 10000`).
 - Inventory cleanup pass (backlog B-005).
-- Real-device QA (install, audio in standalone mode, two phones with sync).
+- Real-device QA (audio in standalone mode, push notifications).
 
 ## QA checklist
 
@@ -111,7 +155,9 @@ iPhone 14 profile; items that need a real iPhone stay open until checked on the 
 - [ ] Audio plays in standalone mode (needs a real iPhone)
 - [x] RTL layout and bidi strings look right (2026-10-12, screenshots in `docs/screenshots/`)
 - [x] Dark and light mode (2026-10-12, screenshots)
-- [ ] Two profiles on two phones (URL is live; needs both phones)
+- [x] Two profiles on two phones (owner report, 2026-10-13)
 - [x] Sync, rival card, league, duel, nudges: two-phone e2e against PostgREST with the real schema (2026-10-13)
-- [ ] Sync against the hosted Supabase project on both phones (steps above)
+- [x] Sync against the hosted Supabase project on both phones (owner report, 2026-10-13)
+- [x] Push server end to end against PostgREST with the real schema, real function under Deno (2026-10-13)
+- [ ] Push notifications on both iPhones (after `SETUP.md` step 4; QA list, push section)
 - [x] Export and import round trip (2026-10-12, unit test)

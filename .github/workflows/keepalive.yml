@@ -1,0 +1,59 @@
+name: Supabase keepalive
+
+# Free Supabase projects pause after about a week without activity, which would silently stop
+# sync. Every 2 days this makes real API requests that run queries in the database: a write
+# through rpc/lb_keepalive (stamps lb_config.keepalive_at; created by supabase/schema.sql or
+# supabase/push.sql) plus a table read and rpc/lb_authorized. No secret is needed: the URL and
+# anon key are public (supabase/functions/_shared/keys.ts) and nothing here reads user data.
+#
+# GitHub also disables scheduled workflows in public repositories after 60 days without commits,
+# so each run re-enables this workflow and the push server workflow.
+
+on:
+  schedule:
+    - cron: '23 5 */2 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: supabase/functions/_shared/keys.ts
+          sparse-checkout-cone-mode: false
+      - name: Touch the database
+        run: |
+          set -u
+          KEYS=supabase/functions/_shared/keys.ts
+          URL=$(grep -o "https://[a-z0-9]*\.supabase\.co" "$KEYS" | head -1)
+          KEY=$(grep -o "eyJ[A-Za-z0-9._-]*" "$KEYS" | head -1)
+          call() {
+            curl -sS -o /tmp/out -w '%{http_code}' --max-time 30 --retry 3 --retry-all-errors \
+              -H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H 'Content-Type: application/json' "$@"
+          }
+          write=$(call -X POST "$URL/rest/v1/rpc/lb_keepalive" -d '{}')
+          echo "rpc/lb_keepalive: HTTP $write"
+          read=$(call "$URL/rest/v1/lb_presence?select=updated_at&limit=1")
+          echo "lb_presence read: HTTP $read"
+          auth=$(call -X POST "$URL/rest/v1/rpc/lb_authorized" -d '{}')
+          echo "rpc/lb_authorized: HTTP $auth"
+          if [ "$read" != 200 ] || [ "$auth" != 200 ]; then
+            echo "::error::Supabase did not answer normally. If the project is paused, open https://supabase.com/dashboard and restore it."
+            exit 1
+          fi
+          if [ "$write" != 200 ]; then
+            echo "::notice::lb_keepalive is not installed yet (run supabase/schema.sql again, or the push server workflow); the read requests still count as activity."
+          fi
+      - name: Keep scheduled workflows enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for wf in keepalive.yml push-server.yml; do
+            gh api -X PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" \
+              && echo "$wf enabled" || echo "::warning::could not re-enable $wf"
+          done

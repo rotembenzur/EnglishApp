@@ -7,6 +7,7 @@ import { useApp } from '@/state/app';
 import { loadVoices, unlockAudio } from '@/audio/speech';
 import { loadInventory } from '@/content/inventory';
 import { startSyncLoop, syncNow } from '@/sync/engine';
+import { refreshPush } from '@/sync/push';
 import { setPresence } from '@/data/repo';
 import { schedulePrefetch } from '@/session/prefetch';
 import { scheduleWeeklyOptimize } from '@/session/optimize';
@@ -82,6 +83,7 @@ export function App() {
   useEffect(() => {
     if (!userId) return;
     void setPresence(userId, false).then(() => syncNow());
+    void refreshPush(userId);
     schedulePrefetch();
     scheduleWeeklyOptimize();
   }, [userId]);

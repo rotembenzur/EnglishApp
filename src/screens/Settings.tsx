@@ -29,7 +29,18 @@ import { optimizeFor } from '@/engine/optimizer';
 import { Button, Header, Section, Sheet } from '@/ui/kit';
 import { toast } from '@/ui/toast';
 import { PinPad } from './PinGate';
-import { pushSupported, enablePush } from '@/sync/push';
+import {
+  disablePush,
+  enablePush,
+  loadPushPrefs,
+  pushActive,
+  pushAvailability,
+  sendTestPush,
+  updatePushPrefs,
+  type PushAvailability,
+  type PushPrefs,
+} from '@/sync/push';
+import { USER_NAMES } from '@/data/repo';
 
 const TOPICS = [
   'family',
@@ -280,33 +291,7 @@ export function Settings() {
 
         <SyncSection />
 
-        <Section title={t.settings.notifications}>
-          {pushSupported() ? (
-            <>
-              <Row label={t.settings.reminderTime}>
-                <input
-                  type="time"
-                  value={s.reminderTime ?? '20:00'}
-                  onChange={(e) => set({ reminderTime: e.target.value })}
-                  className="rounded-xl bg-card-2 px-3 py-2"
-                  dir="ltr"
-                />
-              </Row>
-              <Button
-                variant="soft"
-                onClick={() =>
-                  void enablePush(profile.id, s.reminderTime ?? '20:00').then((ok) =>
-                    toast(ok ? '✓' : t.settings.syncFailed),
-                  )
-                }
-              >
-                🔔 {t.settings.pushEnable}
-              </Button>
-            </>
-          ) : (
-            <p className="text-sm text-ink-3">{t.settings.pushUnsupported}</p>
-          )}
-        </Section>
+        <PushSection />
 
         <Section title={t.settings.data}>
           <Button variant="outline" onClick={() => void downloadBackup()}>
@@ -424,12 +409,10 @@ function SyncSection() {
   const [key, setKey] = useState(DEFAULT_PROJECT.anonKey);
   const [pass, setPass] = useState('');
   const [busy, setBusy] = useState(false);
-  const [keyHash, setKeyHash] = useState('');
   useEffect(() => {
     void loadConfig().then((c) => {
       setUrl(c?.url ?? DEFAULT_PROJECT.url);
       setKey(c?.anonKey ?? DEFAULT_PROJECT.anonKey);
-      setKeyHash(c?.keyHash ?? '');
     });
   }, [configured]);
   const custom = url.trim() !== DEFAULT_PROJECT.url || key.trim() !== DEFAULT_PROJECT.anonKey;
@@ -509,14 +492,6 @@ function SyncSection() {
           />
         </div>
       </details>
-      {configured && keyHash && (
-        <details className="text-xs text-ink-3">
-          <summary className="cursor-pointer">{t.settings.syncKeyHash}</summary>
-          <code dir="ltr" className="mt-1 block break-all rounded-lg bg-card-2 p-2 select-all">
-            {keyHash}
-          </code>
-        </details>
-      )}
       <a
         href={SETUP_URL}
         target="_blank"
@@ -526,6 +501,131 @@ function SyncSection() {
         {t.settings.syncHelp} ↗
       </a>
     </section>
+  );
+}
+
+function PushSection() {
+  const profile = useApp((x) => x.profile)!;
+  const configured = useSync((x) => x.configured);
+  const [availability, setAvailability] = useState<PushAvailability | null>(null);
+  const [prefs, setPrefs] = useState<PushPrefs | null>(null);
+  const [active, setActive] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const saveTimer = useRef<number | undefined>(undefined);
+  const rival = profile.id === 'rotem' ? 'noa' : 'rotem';
+
+  useEffect(() => {
+    let live = true;
+    void Promise.all([pushAvailability(), loadPushPrefs(), pushActive()]).then(([a, p, on]) => {
+      if (!live) return;
+      setAvailability(a);
+      setPrefs(p);
+      setActive(on);
+    });
+    return () => {
+      live = false;
+    };
+  }, [configured]);
+
+  const change = (next: PushPrefs, delay = 0) => {
+    setPrefs(next);
+    window.clearTimeout(saveTimer.current);
+    saveTimer.current = window.setTimeout(() => {
+      void updatePushPrefs(profile.id, next).then((ok) => {
+        if (!ok) toast(t.settings.pushFailed, { tone: 'warn' });
+      });
+    }, delay);
+  };
+
+  const turnOn = () => {
+    if (!prefs) return;
+    setBusy(true);
+    // Straight from the tap: iOS asks for permission only inside a user gesture.
+    void enablePush(profile.id, prefs).then((result) => {
+      setBusy(false);
+      if (result === 'ok') {
+        setActive(true);
+        setPrefs({ ...prefs, enabled: true });
+        toast(t.settings.pushEnabled, { icon: '🔔' });
+      } else if (result === 'denied') {
+        setAvailability(Notification.permission === 'denied' ? 'denied' : 'ready');
+        toast(t.settings.pushDenied, { tone: 'warn' });
+      } else toast(t.settings.pushFailed, { tone: 'warn' });
+    });
+  };
+
+  const turnOff = () => {
+    if (!prefs) return;
+    setActive(false);
+    setPrefs({ ...prefs, enabled: false });
+    void disablePush();
+  };
+
+  return (
+    <Section title={t.settings.notifications}>
+      {availability === null || !prefs ? (
+        <p className="text-sm text-ink-3">{t.settings.pushChecking}</p>
+      ) : availability !== 'ready' ? (
+        <p className="text-sm text-ink-3" data-testid="push-status">
+          {t.settings.pushStatus[availability]}
+        </p>
+      ) : (
+        <>
+          <p className="text-sm text-ink-2">{t.settings.pushHint}</p>
+          <div aria-busy={busy}>
+            <Toggle
+              label={t.settings.pushOn}
+              value={active}
+              onChange={(v) => (v ? turnOn() : turnOff())}
+            />
+          </div>
+          {active && (
+            <>
+              <Toggle
+                label={t.settings.pushDaily}
+                value={prefs.reminderTime !== null}
+                onChange={(v) => change({ ...prefs, reminderTime: v ? '20:00' : null })}
+              />
+              {prefs.reminderTime !== null && (
+                <Row label={t.settings.reminderTime}>
+                  <input
+                    type="time"
+                    value={prefs.reminderTime}
+                    onChange={(e) =>
+                      e.target.value && change({ ...prefs, reminderTime: e.target.value }, 1200)
+                    }
+                    className="rounded-xl bg-card-2 px-3 py-2"
+                    dir="ltr"
+                  />
+                </Row>
+              )}
+              <Toggle
+                label={t.settings.pushStreak}
+                value={prefs.streakAlert}
+                onChange={(v) => change({ ...prefs, streakAlert: v })}
+              />
+              <Toggle
+                label={t.settings.pushNudges(USER_NAMES[rival])}
+                value={prefs.nudges}
+                onChange={(v) => change({ ...prefs, nudges: v })}
+              />
+              <Button
+                variant="outline"
+                onClick={() =>
+                  void sendTestPush().then((ok) =>
+                    ok
+                      ? toast(t.settings.pushTestSent, { icon: '🔔' })
+                      : toast(t.settings.pushTestFailed, { tone: 'warn' }),
+                  )
+                }
+              >
+                🔔 {t.settings.pushTest}
+              </Button>
+            </>
+          )}
+        </>
+      )}
+    </Section>
   );
 }
 

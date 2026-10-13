@@ -44,6 +44,16 @@ date.
 - [ ] Nudges arrive as a toast on the next open.
 - [ ] Sync dot shows green, grey offline, orange pending.
 
+## Push notifications (after SETUP.md step 4)
+
+- [ ] From the home screen app, **הגדרות**, **התראות**: the switch shows, iOS asks for permission once.
+- [ ] **לשלוח התראת בדיקה** with the phone locked: the notification arrives within seconds.
+- [ ] A nudge from the other phone arrives as a notification while LexBites is closed; tapping it
+      opens the rivalry tab.
+- [ ] The daily reminder arrives within 5 minutes of the chosen time when the goal is not reached,
+      and not at all when it is.
+- [ ] At 20:00 with a live streak and the goal not reached, **הרצף בסכנה** arrives once.
+
 ## Data safety
 
 - [ ] Export JSON downloads; import of that file restores everything.

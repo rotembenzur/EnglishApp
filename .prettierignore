@@ -12,3 +12,4 @@ test-results
 scripts/.cache
 content/placement.json
 content/confusables.json
+LEXBITES_SPEC.md

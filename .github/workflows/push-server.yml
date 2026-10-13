@@ -1,0 +1,127 @@
+name: Push server
+
+# Deploys push notifications (SETUP.md step 4) to the Supabase project:
+#  1. the lexbites-push Edge Function and its VAPID_PRIVATE_KEY secret,
+#  2. supabase/push.sql: a 5-minute pg_cron job for reminders and an lb_events trigger for nudges.
+# Needs two GitHub repository secrets: VAPID_PRIVATE_KEY and SUPABASE_ACCESS_TOKEN. Without them
+# every run ends green with a notice and changes nothing.
+#
+# Runs on pushes to the default branch that touch the push server, on demand, and once a day;
+# the daily run deploys only when the function is missing, outdated or not ready (so adding the
+# secrets is enough, and "Run workflow" makes it immediate).
+
+on:
+  push:
+    paths:
+      - 'supabase/functions/**'
+      - 'supabase/push.sql'
+      - 'supabase/config.toml'
+      - 'scripts/check-vapid.ts'
+      - '.github/workflows/push-server.yml'
+  schedule:
+    - cron: '41 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: push-server
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy push server
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Project and secrets
+        id: setup
+        run: |
+          KEYS=supabase/functions/_shared/keys.ts
+          URL=$(grep -o "https://[a-z0-9]*\.supabase\.co" "$KEYS" | head -1)
+          REF=${URL#https://}; REF=${REF%%.*}
+          FN=$URL/functions/v1/lexbites-push
+          VERSION=$(grep -o "^const VERSION = [0-9]*" supabase/functions/lexbites-push/index.ts | grep -o "[0-9]*$")
+          { echo "url=$URL"; echo "ref=$REF"; echo "fn=$FN"; echo "version=$VERSION"; } >> "$GITHUB_OUTPUT"
+          missing=""
+          [ -n "$VAPID_PRIVATE_KEY" ] || missing="$missing VAPID_PRIVATE_KEY"
+          [ -n "$SUPABASE_ACCESS_TOKEN" ] || missing="$missing SUPABASE_ACCESS_TOKEN"
+          if [ -n "$missing" ]; then
+            echo "::notice::Push server not deployed yet. Add the GitHub secret(s):$missing (SETUP.md step 4), then run this workflow."
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          deploy=true
+          if [ "${{ github.event_name }}" = schedule ]; then
+            live=$(curl -sS --max-time 30 "$FN" || true)
+            echo "live: $live"
+            if echo "$live" | grep -q "\"ready\":true" && echo "$live" | grep -q "\"version\":$VERSION[,}]"; then
+              echo "Function is live, ready and current; nothing to do."
+              deploy=false
+            fi
+          fi
+          echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+
+      - uses: denoland/setup-deno@v2
+        if: steps.setup.outputs.deploy == 'true'
+        with:
+          deno-version: v2.x
+
+      - name: Check the code and the VAPID key
+        if: steps.setup.outputs.deploy == 'true'
+        run: |
+          deno check supabase/functions/lexbites-push/index.ts
+          deno run --allow-env=VAPID_PRIVATE_KEY scripts/check-vapid.ts
+
+      - uses: supabase/setup-cli@v1
+        if: steps.setup.outputs.deploy == 'true'
+        with:
+          version: latest
+
+      - name: Deploy the Edge Function
+        if: steps.setup.outputs.deploy == 'true'
+        run: |
+          KEY=$(printf '%s' "$VAPID_PRIVATE_KEY" | tr -d "[:space:]\"'")
+          supabase secrets set --project-ref "${{ steps.setup.outputs.ref }}" "VAPID_PRIVATE_KEY=$KEY"
+          supabase functions deploy lexbites-push --project-ref "${{ steps.setup.outputs.ref }}" --no-verify-jwt
+
+      - name: Install the schedule and the nudge trigger
+        if: steps.setup.outputs.deploy == 'true'
+        run: |
+          sed "s|:function_url|${{ steps.setup.outputs.fn }}|" supabase/push.sql > "$RUNNER_TEMP/push.sql"
+          jq -n --rawfile q "$RUNNER_TEMP/push.sql" '{query: $q}' > "$RUNNER_TEMP/body.json"
+          status=$(curl -sS -o "$RUNNER_TEMP/out.json" -w '%{http_code}' --max-time 60 \
+            -X POST "https://api.supabase.com/v1/projects/${{ steps.setup.outputs.ref }}/database/query" \
+            -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H 'Content-Type: application/json' \
+            --data @"$RUNNER_TEMP/body.json")
+          echo "HTTP $status"; cat "$RUNNER_TEMP/out.json"; echo
+          [ "$status" -lt 300 ] || exit 1
+          grep -q '"cron_jobs":1' "$RUNNER_TEMP/out.json" && grep -q '"nudge_trigger":1' "$RUNNER_TEMP/out.json" \
+            || { echo "::error::push.sql ran but the cron job or trigger is missing"; exit 1; }
+          grep -q '"push_url_set":true' "$RUNNER_TEMP/out.json" \
+            || echo "::warning::lb_config has no row yet: run supabase/schema.sql with your passphrase first, then re-run this workflow."
+
+      - name: Smoke test
+        if: steps.setup.outputs.deploy == 'true'
+        run: |
+          FN=${{ steps.setup.outputs.fn }}
+          for i in 1 2 3 4 5 6; do
+            live=$(curl -sS --max-time 30 "$FN" || true)
+            echo "GET: $live"
+            echo "$live" | grep -q '"ready":true' && break
+            sleep 10
+          done
+          echo "$live" | grep -q '"ready":true' \
+            || { echo "::error::The function does not report ready. Check that VAPID_PRIVATE_KEY is the key from SETUP.md step 4."; exit 1; }
+          # A key that matches no passphrase: the function must answer, see no subscriptions, send nothing.
+          out=$(curl -sS --max-time 60 -X POST "$FN" -H 'Content-Type: application/json' \
+            -H "x-lexbites-key: $(printf '0%.0s' $(seq 64))" -d '{"kind":"tick"}')
+          echo "tick: $out"
+          echo "$out" | grep -q '"subscriptions":0' || { echo "::error::tick failed"; exit 1; }
+          echo "::notice::Push server is live. Enable notifications on each iPhone (SETUP.md step 4)."

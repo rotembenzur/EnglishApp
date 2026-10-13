@@ -136,5 +136,15 @@ end $$;
 grant select, insert, update on lb_users, lb_user_words, lb_daily, lb_presence, lb_reviews, lb_events, lb_push to anon;
 grant execute on function lb_authorized() to anon;
 
+-- Keepalive (.github/workflows/keepalive.yml): a real write, callable without the passphrase,
+-- that only stamps a time. Free projects pause after a week without activity.
+alter table lb_config add column if not exists keepalive_at timestamptz;
+create or replace function lb_keepalive() returns timestamptz
+language sql security definer set search_path = public as $$
+  update lb_config set keepalive_at = now() where id = 1 returning keepalive_at;
+$$;
+revoke all on function lb_keepalive() from public;
+grant execute on function lb_keepalive() to anon;
+
 -- Your shared passphrase (the same one you type in the app on both phones):
 select lb_set_passphrase('CHANGE-ME');

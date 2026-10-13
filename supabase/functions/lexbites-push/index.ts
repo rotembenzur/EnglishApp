@@ -1,0 +1,213 @@
+/**
+ * LexBites push sender (spec 9.6), a Supabase Edge Function deployed by
+ * .github/workflows/push-server.yml. Callers:
+ *  - pg_cron every 5 minutes: {"kind":"tick"} sends due daily reminders and streak alerts,
+ *  - a trigger on lb_events inserts: {"kind":"nudge","id":...} pushes a rival nudge right away,
+ *  - the app: GET for status, {"kind":"test","endpoint":...} for a test notification.
+ *
+ * Authorization: every POST carries x-lexbites-key (the passphrase hash). The function reads and
+ * writes through the REST API with the anon key and that header, so row-level security decides
+ * what it can see; a wrong key sees no subscriptions and sends nothing. It holds no database-wide
+ * credential. The only secret is VAPID_PRIVATE_KEY.
+ */
+import { sendPush, vapidKeysMatch, type VapidKeys } from '../_shared/webpush.ts';
+import {
+  localClock,
+  nudgeMessage,
+  otherUser,
+  planScheduled,
+  readPrefs,
+  TEST_MESSAGE,
+  type DayRow,
+  type NudgeEvent,
+  type PushMessage,
+  type PushPrefs,
+  type PushState,
+} from '../_shared/schedule.ts';
+import { ANON_KEY, PROJECT_URL, VAPID_PUBLIC_KEY, VAPID_SUBJECT } from '../_shared/keys.ts';
+
+const VERSION = 1;
+const REST = `${(Deno.env.get('SUPABASE_URL') || PROJECT_URL).replace(/\/+$/, '')}/rest/v1/`;
+const VAPID: VapidKeys = {
+  publicKey: VAPID_PUBLIC_KEY,
+  privateKey: (Deno.env.get('VAPID_PRIVATE_KEY') ?? '').trim(),
+  subject: VAPID_SUBJECT,
+};
+
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers':
+    'content-type, x-lexbites-key, apikey, authorization, x-client-info',
+  'Access-Control-Max-Age': '86400',
+};
+
+function json(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...CORS, 'Content-Type': 'application/json' },
+  });
+}
+
+let keysReady: Promise<boolean> | null = null;
+function ready(): Promise<boolean> {
+  keysReady ??= VAPID.privateKey
+    ? vapidKeysMatch(VAPID.publicKey, VAPID.privateKey)
+    : Promise.resolve(false);
+  return keysReady;
+}
+
+interface PushRow {
+  endpoint: string;
+  user_id: string;
+  data: unknown;
+  state: PushState | null;
+}
+
+function db(key: string) {
+  const headers = {
+    apikey: ANON_KEY,
+    Authorization: `Bearer ${ANON_KEY}`,
+    'x-lexbites-key': key,
+    'Content-Type': 'application/json',
+  };
+  return {
+    async get<T>(path: string): Promise<T> {
+      const res = await fetch(REST + path, { headers });
+      if (!res.ok) throw new Error(`GET ${path.split('?')[0]}: ${res.status}`);
+      return (await res.json()) as T;
+    },
+    async patchState(endpoint: string, state: PushState): Promise<void> {
+      const res = await fetch(`${REST}lb_push?endpoint=eq.${encodeURIComponent(endpoint)}`, {
+        method: 'PATCH',
+        headers: { ...headers, Prefer: 'return=minimal' },
+        body: JSON.stringify({ state }),
+      });
+      if (!res.ok) console.error(`state update failed: ${res.status}`);
+    },
+    async remove(endpoint: string): Promise<void> {
+      await fetch(`${REST}lb_push?endpoint=eq.${encodeURIComponent(endpoint)}`, {
+        method: 'DELETE',
+        headers: { ...headers, Prefer: 'return=minimal' },
+      });
+    },
+  };
+}
+
+type Db = ReturnType<typeof db>;
+
+async function deliver(
+  store: Db,
+  prefs: PushPrefs,
+  msg: PushMessage,
+): Promise<{ ok: boolean; status: number; gone: boolean }> {
+  const res = await sendPush(
+    prefs.subscription,
+    { title: msg.title, body: msg.body, url: msg.url, tag: msg.tag, kind: msg.kind },
+    VAPID,
+    {
+      ttl: msg.kind === 'nudge' ? 6 * 3600 : 3 * 3600,
+      urgency: msg.kind === 'nudge' ? 'high' : 'normal',
+      topic: msg.tag,
+    },
+  );
+  if (res.gone) await store.remove(prefs.subscription.endpoint);
+  if (!res.ok) console.error(`push ${msg.kind} for ${prefs.userId}: ${res.status} ${res.body}`);
+  return res;
+}
+
+async function tick(store: Db) {
+  const now = Date.now();
+  const subs = await store.get<PushRow[]>('lb_push?select=endpoint,user_id,data,state');
+  if (!subs.length) return { subscriptions: 0, sent: 0 };
+  const since = new Date(now - 400 * 86400_000).toISOString().slice(0, 10);
+  const rows = await store.get<
+    { user_id: string; date: string; xp: number | null; goalReached: boolean | null }[]
+  >(
+    `lb_daily?select=user_id,date,xp:data->xp,goalReached:data->goalReached&date=gte.${since}&order=date`,
+  );
+  let sent = 0;
+  for (const row of subs) {
+    const prefs = readPrefs(row.data);
+    if (!prefs) continue;
+    const days: DayRow[] = rows
+      .filter((r) => r.user_id === prefs.userId)
+      .map((r) => ({ date: r.date, xp: Number(r.xp ?? 0), goalReached: r.goalReached === true }));
+    const { date } = localClock(now, prefs.tz, prefs.tzOffset);
+    const rival = rows.find((r) => r.user_id === otherUser(prefs.userId) && r.date === date);
+    const before = row.state ?? {};
+    const plan = planScheduled({
+      now,
+      prefs,
+      state: before,
+      days,
+      rivalToday: rival
+        ? { xp: Number(rival.xp ?? 0), goalReached: rival.goalReached === true }
+        : null,
+    });
+    let gone = false;
+    for (const msg of plan.messages) {
+      const res = await deliver(store, prefs, msg);
+      if (res.ok) sent++;
+      gone ||= res.gone;
+    }
+    if (!gone && JSON.stringify(plan.state) !== JSON.stringify(before)) {
+      await store.patchState(row.endpoint, plan.state);
+    }
+  }
+  return { subscriptions: subs.length, sent };
+}
+
+async function nudge(store: Db, id: string) {
+  const events = await store.get<{ data: NudgeEvent }[]>(
+    `lb_events?select=data&id=eq.${encodeURIComponent(id)}`,
+  );
+  const ev = events[0]?.data;
+  const msg = ev && nudgeMessage(ev, Date.now());
+  if (!ev?.to || !msg) return { sent: 0 };
+  const subs = await store.get<PushRow[]>(
+    `lb_push?select=endpoint,user_id,data&user_id=eq.${encodeURIComponent(ev.to)}`,
+  );
+  let sent = 0;
+  for (const row of subs) {
+    const prefs = readPrefs(row.data);
+    if (!prefs?.nudges || prefs.userId !== ev.to) continue;
+    if ((await deliver(store, prefs, msg)).ok) sent++;
+  }
+  return { sent };
+}
+
+async function test(store: Db, endpoint: string) {
+  const subs = await store.get<PushRow[]>(
+    `lb_push?select=endpoint,user_id,data&endpoint=eq.${encodeURIComponent(endpoint)}`,
+  );
+  const prefs = subs[0] && readPrefs(subs[0].data);
+  if (!prefs) return { ok: false, status: 404 };
+  const res = await deliver(store, prefs, TEST_MESSAGE);
+  return { ok: res.ok, status: res.status };
+}
+
+Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
+  if (req.method === 'GET') return json({ ok: true, ready: await ready(), version: VERSION });
+  if (req.method !== 'POST') return json({ error: 'method' }, 405);
+  const key = req.headers.get('x-lexbites-key') ?? '';
+  if (!/^[0-9a-f]{64}$/.test(key)) return json({ error: 'unauthorized' }, 401);
+  if (!(await ready())) return json({ error: 'VAPID_PRIVATE_KEY missing or wrong' }, 503);
+  let body: { kind?: string; id?: string; endpoint?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return json({ error: 'bad request' }, 400);
+  }
+  const store = db(key);
+  try {
+    if (body.kind === 'tick') return json(await tick(store));
+    if (body.kind === 'nudge' && body.id) return json(await nudge(store, body.id));
+    if (body.kind === 'test' && body.endpoint) return json(await test(store, body.endpoint));
+    return json({ error: 'unknown kind' }, 400);
+  } catch (e) {
+    console.error(`${body.kind}: ${(e as Error).message}`);
+    return json({ error: (e as Error).message }, 500);
+  }
+});

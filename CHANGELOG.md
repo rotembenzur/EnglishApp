@@ -2,6 +2,25 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.4.0 (2026-10-13)
+
+- Push notifications, end to end: a daily reminder at the time each user picks (mentioning the
+  rival's progress), the 20:00 "streak at risk" alert, and rival nudges delivered within seconds
+  even when the app is closed. New **התראות** section in settings with per-phone switches, a time
+  picker and a test notification; it explains what is missing (sync, home screen install, server,
+  blocked permission) instead of failing.
+- Push server: a Supabase Edge Function (`lexbites-push`) with Web Push implemented on WebCrypto,
+  called by pg_cron every 5 minutes and by a trigger on new nudges. Deployed by the new
+  `push-server.yml` workflow once two GitHub secrets exist. Replaces the GitHub Actions sender
+  (`push-reminders.yml`, `scripts/send-push.ts`), which ran every 30 minutes at best.
+- Supabase keepalive workflow every 2 days, no secret needed, so the free project never pauses
+  between uses. `supabase/schema.sql` gains `lb_keepalive()`.
+- The passphrase hash no longer shows in settings (push does not need it any more).
+- `LEXBITES_SPEC.md` (the product specification) and `CLAUDE.md` (rules for every session) are in
+  the repository root.
+- Tests: Web Push crypto checked against independent implementations, every reminder rule, and a
+  browser test that enables push against the real function and decrypts the test notification.
+
 ## 0.3.1 (2026-10-13)
 
 - Sync backend connected: the Supabase project URL and anon key are built into the app, so each

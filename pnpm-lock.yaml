@@ -78,6 +78,9 @@ importers:
       globals:
         specifier: ^17.13.0
         version: 17.13.0
+      http_ece:
+        specifier: 1.2.0
+        version: 1.2.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7

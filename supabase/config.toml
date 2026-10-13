@@ -1,0 +1,7 @@
+# Supabase CLI settings used by .github/workflows/push-server.yml.
+project_id = "ngosxhpmudbgiiktqgoa"
+
+[functions.lexbites-push]
+# Called by pg_cron, the nudge trigger and the app without a JWT; it authorizes every POST with
+# the passphrase hash through row-level security instead.
+verify_jwt = false
