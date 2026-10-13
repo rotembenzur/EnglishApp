@@ -2,6 +2,19 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.3.1 (2026-10-13)
+
+- Sync backend connected: the Supabase project URL and anon key are built into the app, so each
+  phone only types the shared passphrase once (Settings, סנכרון). Server details stay editable under
+  an advanced toggle.
+- Connecting tells a wrong passphrase apart from no network.
+- Fix: a push that committed while the other phone was pulling could be skipped for good (lost duel
+  results or nudges). Pulls now re-read a short overlap.
+- The first connect uploads all offline history in one run instead of 8,000 rows per minute.
+- `supabase/schema.sql`: re-running it with `CHANGE-ME` still in place keeps the passphrase.
+- New two-phone e2e test (connect, rival card, weekly league, daily duel, nudges) against a local
+  PostgREST running the same schema.
+
 ## 0.3.0 (2026-10-12)
 
 - Tier A content reaches 6,000 fully authored words (Hebrew, IPA, 3 sentences, context paragraph,

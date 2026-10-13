@@ -1,6 +1,6 @@
 -- LexBites sync backend (Supabase free tier). Run once in the SQL Editor.
 -- 1. Replace CHANGE-ME at the bottom with a passphrase you choose (same one on both phones).
--- 2. Run the whole script. Running it again is safe.
+-- 2. Run the whole script. Running it again is safe, also with CHANGE-ME left in place.
 --
 -- Every table stores the app's row as JSON plus the fields needed for merging.
 -- server_at is set by the database on every write and drives incremental pulls.
@@ -17,10 +17,16 @@ alter table lb_config enable row level security;
 -- No policies on lb_config: it is never readable through the API.
 
 create or replace function lb_set_passphrase(p text) returns void
-language sql security definer as $$
+language plpgsql security definer as $$
+begin
+  -- Re-running the script with the placeholder keeps the passphrase that is already set.
+  if p = 'CHANGE-ME' and exists (select 1 from lb_config) then
+    raise notice 'Passphrase kept: the last line still says CHANGE-ME';
+    return;
+  end if;
   insert into lb_config (id, key_hash) values (1, encode(digest('lexbites:' || p, 'sha256'), 'hex'))
   on conflict (id) do update set key_hash = excluded.key_hash;
-$$;
+end $$;
 revoke all on function lb_set_passphrase(text) from public, anon, authenticated;
 
 create or replace function lb_authorized() returns boolean
@@ -128,6 +134,7 @@ begin
 end $$;
 
 grant select, insert, update on lb_users, lb_user_words, lb_daily, lb_presence, lb_reviews, lb_events, lb_push to anon;
+grant execute on function lb_authorized() to anon;
 
 -- Your shared passphrase (the same one you type in the app on both phones):
 select lb_set_passphrase('CHANGE-ME');

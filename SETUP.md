@@ -25,21 +25,42 @@ From then on every push to the default branch is tested and deployed automatical
 2. Tap Share, then **Add to Home Screen**.
 3. Open LexBites from the home screen and pick your profile.
 
-## 3. Sync for the two-player rivalry (optional, about five minutes, free)
+## 3. Sync for the two-player rivalry (server done 2026-10-13, one step left on each phone)
 
-Until this is done, each phone keeps its own data and the rival card shows "סנכרון לא מוגדר".
+Done on the server: the Supabase project exists, `supabase/schema.sql` ran with your shared
+passphrase, and the project URL and anon key are built into the app (`src/sync/config.ts`), so
+neither phone needs them typed in. The anon key is public by design: without the passphrase every
+table stays closed. The passphrase itself is not in the repository and must never be committed.
 
-1. Go to https://supabase.com and sign in with GitHub (free tier, no credit card).
-2. Create a new project. Any name and region. Wait for it to finish provisioning.
-3. Open **SQL Editor**, paste the whole of `supabase/schema.sql` from this repository.
-4. On the last line, replace `CHANGE-ME` with a passphrase you choose. Run the script.
-5. Open **Project Settings**, then **API**. Copy the **Project URL** and the **anon public** key.
-6. In LexBites on the first phone: **הגדרות**, then **סנכרון**. Paste the URL and the key, type the
-   passphrase, and tap **לחבר**. A green dot means it worked.
-7. Repeat step 6 on the second phone with the same three values.
+On each phone, once:
+
+1. Open LexBites from the home screen. If **יש גרסה חדשה. לרענן?** shows, tap **לרענן**. At the
+   bottom of **הגדרות** the version must be 0.3.1 or later.
+2. Pick your profile, then open **הגדרות** and scroll to **סנכרון**.
+3. Type the shared passphrase in **סיסמה משותפת** and tap **לחבר**.
+4. A **מחובר** toast appears, the status next to **סנכרון** reads **מסונכרן**, and the dot at the top
+   of the home screen turns green. Everything this phone practiced before is uploaded now.
+
+If connecting fails, the message says why:
+
+- **הסיסמה לא מתאימה**: the passphrase differs from the one in the SQL script (it is case
+  sensitive). Type it again.
+- **אין חיבור לשרת**: no internet, or the Supabase project is paused (free projects pause after
+  a week without any use). Open https://supabase.com/dashboard, open the project, and tap
+  **Restore project** if it shows.
+- **החיבור נכשל**: the server answered with an error. Run `supabase/schema.sql` again in the SQL
+  Editor. That is safe, and if the last line still says `CHANGE-ME` your passphrase is kept.
+
+To change the passphrase later, run this in the SQL Editor with the new one, then connect both
+phones again with it:
+
+```sql
+select lb_set_passphrase('new passphrase here');
+```
 
 The passphrase never leaves the phone in clear text: the app sends only a hash, and the database
-accepts reads and writes only with the matching hash.
+accepts reads and writes only with the matching hash. **הגדרות**, **פרטי שרת (מתקדם)** shows the
+built-in URL and key; change them only to move to a different Supabase project.
 
 ## 4. Push reminders (optional, later)
 
@@ -48,7 +69,8 @@ Push reminders are built behind a feature flag. They need a VAPID key pair and t
 1. Generate keys once: `npx web-push generate-vapid-keys` (on any computer with Node.js).
 2. In the repository, open **Settings**, **Secrets and variables**, **Actions**:
    - add a **variable** `VITE_VAPID_PUBLIC_KEY` with the public key,
-   - add **secrets** `VAPID_PRIVATE_KEY` (the private key), `SUPABASE_URL`, `SUPABASE_ANON_KEY`
-     and `LEXBITES_KEY_HASH` (shown in the app under **הגדרות** after connecting sync).
+   - add **secrets** `VAPID_PRIVATE_KEY` (the private key), `SUPABASE_URL` and
+     `SUPABASE_ANON_KEY` (the two values in `src/sync/config.ts`), and `LEXBITES_KEY_HASH` (shown
+     in the app under **הגדרות**, **מזהה לתזכורות**, after connecting sync).
 3. Push any commit (or re-run the workflow). The settings screen then shows **להפעיל התראות** on
    iPhones that run LexBites from the home screen (iOS 16.4 or later).

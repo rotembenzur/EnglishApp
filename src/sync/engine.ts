@@ -17,6 +17,7 @@ import {
   type UserProfile,
 } from '@/data/db';
 import { useApp } from '@/state/app';
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from './config';
 
 export interface SyncConfig {
   url: string;
@@ -55,15 +56,28 @@ export async function hashPassphrase(p: string): Promise<string> {
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
+/** The project both phones use, from the app config (src/sync/config.ts). */
+export const DEFAULT_PROJECT = { url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY };
+
+/**
+ * The device stores only the passphrase hash. URL and anon key come from the app config unless
+ * this device was pointed at a different project in Settings.
+ */
 export async function loadConfig(): Promise<SyncConfig | null> {
-  const stored = await getKv<SyncConfig | null>('syncConfig', null);
-  if (stored?.url && stored.anonKey && stored.keyHash) return stored;
-  // Optional deploy-time config (public/config.json): url and anon key only, never the passphrase.
-  return null;
+  const stored = await getKv<Partial<SyncConfig> | null>('syncConfig', null);
+  if (!stored?.keyHash) return null;
+  const url = stored.url || DEFAULT_PROJECT.url;
+  const anonKey = stored.anonKey || DEFAULT_PROJECT.anonKey;
+  return url && anonKey ? { url, anonKey, keyHash: stored.keyHash } : null;
 }
 
 export async function saveConfig(cfg: SyncConfig | null): Promise<void> {
-  await setKv('syncConfig', cfg);
+  const stored: Partial<SyncConfig> | null = cfg && {
+    keyHash: cfg.keyHash,
+    ...(cfg.url !== DEFAULT_PROJECT.url ? { url: cfg.url } : {}),
+    ...(cfg.anonKey !== DEFAULT_PROJECT.anonKey ? { anonKey: cfg.anonKey } : {}),
+  };
+  await setKv('syncConfig', stored);
   useSync.setState({ configured: !!cfg, status: cfg ? 'pending' : 'off', error: null });
 }
 
@@ -146,7 +160,9 @@ async function localRow(table: SyncTable, key: string): Promise<unknown> {
 
 export async function push(cfg: SyncConfig, f: typeof fetch = fetch): Promise<number> {
   let pushed = 0;
-  for (let round = 0; round < 20; round++) {
+  // The first connect can carry weeks of offline history; drain it in one run, bounded in time.
+  const until = Date.now() + 60_000;
+  while (Date.now() < until) {
     const batch = await db.outbox.orderBy('seq').limit(400).toArray();
     if (!batch.length) break;
     const byTable = new Map<SyncTable, Map<string, number[]>>();
@@ -246,11 +262,30 @@ async function mergeRow(table: SyncTable, data: unknown): Promise<string | null>
   }
 }
 
+/**
+ * server_at is stamped when a row is written but becomes visible only when its transaction
+ * commits, so a push still in flight can land behind a cursor that already moved past it (the
+ * other phone pushing at the same moment). Each pull therefore starts this far behind the stored
+ * cursor; merging is idempotent, so rows read twice are harmless.
+ */
+export const PULL_OVERLAP_MS = 2 * 60_000;
+
+/** Postgres sends microseconds; trim to milliseconds so every engine (Safari too) parses it. */
+function cursorMs(cursor: string): number {
+  return Date.parse(cursor.replace(/(\.\d{3})\d+/, '$1'));
+}
+
+export function pullStart(cursor: string): string {
+  const ms = cursorMs(cursor);
+  return Number.isFinite(ms) ? new Date(Math.max(0, ms - PULL_OVERLAP_MS)).toISOString() : cursor;
+}
+
 export async function pull(cfg: SyncConfig, f: typeof fetch = fetch): Promise<Set<string>> {
   const touched = new Set<string>();
   for (const table of Object.keys(REMOTE) as SyncTable[]) {
     const cursorKey = `syncCursor:${table}`;
-    let cursor = await getKv<string>(cursorKey, '1970-01-01T00:00:00Z');
+    const stored = await getKv<string>(cursorKey, '1970-01-01T00:00:00Z');
+    let cursor = pullStart(stored);
     for (let page = 0; page < 50; page++) {
       const url = `${base(cfg)}${REMOTE[table].table}?select=data,server_at&server_at=gt.${encodeURIComponent(cursor)}&order=server_at.asc&limit=1000`;
       const res = await f(url, { headers: headers(cfg) });
@@ -268,7 +303,8 @@ export async function pull(cfg: SyncConfig, f: typeof fetch = fetch): Promise<Se
         },
       );
       cursor = rows[rows.length - 1]!.server_at;
-      await setKv(cursorKey, cursor);
+      // Rows re-read from the overlap must not move the stored cursor backwards.
+      if (!(cursorMs(cursor) < cursorMs(stored))) await setKv(cursorKey, cursor);
       if (rows.length < 1000) break;
     }
   }
@@ -308,24 +344,28 @@ export function syncNow(): Promise<void> {
   return running;
 }
 
-/** Verify a config before saving it: one authorized read. */
-export async function testConfig(cfg: SyncConfig): Promise<boolean> {
+export type TestResult = 'ok' | 'passphrase' | 'network' | 'server';
+
+/** Verify a config before saving it: one read, then one probe write that only the right hash passes. */
+export async function testConfig(cfg: SyncConfig, f: typeof fetch = fetch): Promise<TestResult> {
   try {
-    const res = await fetch(`${base(cfg)}lb_presence?select=user_id&limit=1`, {
+    const res = await f(`${base(cfg)}lb_presence?select=user_id&limit=1`, {
       headers: headers(cfg),
     });
-    if (!res.ok) return false;
+    if (!res.ok) return 'server';
     // RLS hides rows instead of failing; a wrong passphrase also returns []. Probe with a write.
-    const probe = await fetch(`${base(cfg)}lb_presence?on_conflict=user_id`, {
+    const probe = await f(`${base(cfg)}lb_presence?on_conflict=user_id`, {
       method: 'POST',
       headers: headers(cfg, { Prefer: 'resolution=merge-duplicates,return=minimal' }),
       body: JSON.stringify([
         { user_id: '_probe', data: {}, updated_at: Date.now(), device_id: 'probe' },
       ]),
     });
-    return probe.ok;
+    if (probe.ok) return 'ok';
+    // Row-level security rejects the write: 401 for the anon role, 403 on some gateways.
+    return probe.status === 401 || probe.status === 403 ? 'passphrase' : 'server';
   } catch {
-    return false;
+    return 'network';
   }
 }
 

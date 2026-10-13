@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.3.0
+Last updated: 2026-10-13 · version 0.3.1
 
 ## Deployment
 
@@ -25,9 +25,50 @@ Last updated: 2026-10-13 · version 0.3.0
 
 ## Waiting on owner
 
-1. **Sync backend** (optional, five minutes, `SETUP.md` step 3): needed for the live rivalry
-   between two phones. The app is fully usable without it.
+1. **Type the shared passphrase on both phones** (`SETUP.md` step 3, one minute per phone), then
+   run the phone checks in "Sync: what to test on the phones" below.
 2. **Push reminders** (optional, `SETUP.md` step 4).
+
+## Sync backend (connected 2026-10-13)
+
+- Supabase project `ngosxhpmudbgiiktqgoa`; `supabase/schema.sql` was run by the owner with the
+  shared passphrase. The project URL and anon key are built into the app (`src/sync/config.ts`);
+  the passphrase is not in the repository. Each phone types it once in **הגדרות**, **סנכרון**.
+- Not reachable from here: this build container's network policy refuses `*.supabase.co`
+  (proxy answers 403 to CONNECT), so no request reached the real project from this session.
+- Verified instead against a real backend with the same stack: Postgres 16 with Supabase's roles
+  and default grants, `supabase/schema.sql` applied (and re-applied), PostgREST 12. Results:
+  - RLS: a wrong passphrase hash reads nothing and every write is refused (401); `lb_config` is
+    never readable and `lb_set_passphrase` cannot be called through the API; CORS preflight
+    allows the `x-lexbites-key` header.
+  - Last-write-wins trigger keeps the newer row when an older write arrives.
+  - Two-phone e2e (`e2e/sync.spec.ts`, two iPhone 14 browser contexts, the production build with
+    the built-in URL and key, requests forwarded to the local PostgREST): rotem practices offline,
+    a wrong passphrase is refused with its own message, the right one connects and uploads the
+    history; rotem plays the daily duel and nudges; noa installs fresh, connects, gets the nudge
+    toast, the home rival card shows "רתם כבר התאמן היום", the weekly league shows rotem's XP, and
+    noa holds exactly rotem's XP, duel and nudge rows; noa plays the same duel and sees the result;
+    rotem reopens and gets noa's nudge, duel result and XP. Zero console errors.
+- Fixed while connecting: a push committing while the other phone pulled could be skipped for
+  good (lost duel results or nudges); pulls now re-read a two-minute overlap. The first connect
+  uploads all offline history in one run. Connecting tells a wrong passphrase from no network.
+
+## Sync: what to test on the phones
+
+Both phones on 0.3.1 or later (bottom of **הגדרות**), both connected per `SETUP.md` step 3.
+
+1. Phone A (רתם): connect. Expect the **מחובר** toast, **מסונכרן** next to **סנכרון**, a green dot
+   on home. A wrong passphrase must show **הסיסמה לא מתאימה**.
+2. Phone B (נועה): connect the same way. Within a few seconds the rival card on home shows רתם's
+   words, XP and streak for today, and "נראה לאחרונה".
+3. Phone A: play the daily duel (**יריבות**, **דו־קרב יומי**, **לשחק**). It then says
+   **מחכים לתוצאה של הצד השני**. Tap 👋 under **נקירות**.
+4. Phone B: close and reopen LexBites. Expect the toast **רתם שלח לך 👋**. On **יריבות**, the weekly
+   league shows the same XP for רתם as phone A shows for itself.
+5. Phone B: play the duel. Both phones then show the result (win, loss or draw) after reopening.
+6. Phone B: tap 🔥. Phone A gets **נועה שלחה לך 🔥** on next open.
+7. Phone A: turn on airplane mode, do a few answers, turn it off. The dot is grey while offline
+   and green again a few seconds after reconnecting; phone B sees the new XP after reopening.
 
 ## Live now
 
@@ -44,8 +85,8 @@ Last updated: 2026-10-13 · version 0.3.0
 - Content: 62,000-lemma inventory, Tier A authored words (see below), 300 phrasal verbs, 300
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
 - Read mode with word import, confusable pairs.
-- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 113 unit tests (engine, sync, export/import, content), Playwright e2e (first run, all tabs, offline,
-  resume), zero console errors, app shell about 190 KB gzipped.
+- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 118 unit tests (engine, sync, export/import, content), Playwright e2e (first run, all tabs, offline,
+  resume, two-phone sync), zero console errors, app shell about 190 KB gzipped.
 
 ## Content progress
 
@@ -58,7 +99,7 @@ Last updated: 2026-10-13 · version 0.3.0
 
 - Tier A content pass to 10,000 words (`pnpm enrich --from 6001 --to 10000`).
 - Inventory cleanup pass (backlog B-005).
-- Real-device QA once the app is live (install, audio in standalone mode, two phones with sync).
+- Real-device QA (install, audio in standalone mode, two phones with sync).
 
 ## QA checklist
 
@@ -71,5 +112,6 @@ iPhone 14 profile; items that need a real iPhone stay open until checked on the 
 - [x] RTL layout and bidi strings look right (2026-10-12, screenshots in `docs/screenshots/`)
 - [x] Dark and light mode (2026-10-12, screenshots)
 - [ ] Two profiles on two phones (URL is live; needs both phones)
-- [x] Sync and rival card: merge rules covered by unit tests (2026-10-12); live check needs the backend
+- [x] Sync, rival card, league, duel, nudges: two-phone e2e against PostgREST with the real schema (2026-10-13)
+- [ ] Sync against the hosted Supabase project on both phones (steps above)
 - [x] Export and import round trip (2026-10-12, unit test)

@@ -1,8 +1,17 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { db, type DailyStats } from '@/data/db';
+import { db, setKv, type DailyStats } from '@/data/db';
 import { addEvent, bumpDaily, exportAll, importAll, putWord } from '@/data/repo';
 import { introduceWord } from '@/engine/learn';
-import { pull, push, type SyncConfig } from './engine';
+import {
+  DEFAULT_PROJECT,
+  loadConfig,
+  pull,
+  pullStart,
+  push,
+  saveConfig,
+  testConfig,
+  type SyncConfig,
+} from './engine';
 
 /** In-memory PostgREST stand-in implementing upsert with last-write-wins and server_at pulls. */
 function fakeServer() {
@@ -113,6 +122,66 @@ describe('sync', () => {
     );
     await pull(cfg, server.f);
     expect(await db.presence.count()).toBe(0);
+  });
+
+  it('still pulls a row whose push committed after a later one', async () => {
+    const server = fakeServer();
+    const store = new Map<string, { row: Record<string, unknown>; server_at: string }>();
+    server.tables.set('lb_events', store);
+    const ev = (id: string, at: string) => ({
+      row: { data: { id, userId: 'noa', type: 'duel', at: 1, deviceId: 'b', payload: {} } },
+      server_at: at,
+    });
+    // This device has seen a row stamped 12:00:30 ...
+    store.set('later', ev('later', '2026-10-13T12:00:30.000001+00:00'));
+    await pull(cfg, server.f);
+    expect(await db.events.count()).toBe(1);
+    // ... and only then does the rival's transaction, stamped 12:00:10, become visible.
+    store.set('early', ev('early', '2026-10-13T12:00:10.123456+00:00'));
+    await pull(cfg, server.f);
+    expect(await db.events.get('early')).toBeTruthy();
+  });
+
+  it('starts each pull a little behind the cursor, also for microsecond timestamps', () => {
+    expect(pullStart('2026-10-13T12:02:00.123456+00:00')).toBe('2026-10-13T12:00:00.123Z');
+    expect(pullStart('1970-01-01T00:00:00Z')).toBe('1970-01-01T00:00:00.000Z');
+  });
+});
+
+describe('sync config', () => {
+  beforeEach(wipe);
+
+  it('uses the built-in project and stores only the passphrase hash', async () => {
+    expect(await loadConfig()).toBeNull();
+    await saveConfig({ ...DEFAULT_PROJECT, keyHash: 'abc' });
+    expect(await db.kv.get('syncConfig')).toMatchObject({ value: { keyHash: 'abc' } });
+    expect(await loadConfig()).toEqual({ ...DEFAULT_PROJECT, keyHash: 'abc' });
+    expect(DEFAULT_PROJECT.url).toMatch(/^https:\/\/[a-z0-9]+\.supabase\.co$/);
+  });
+
+  it('keeps a config saved by an older version (url, key and hash)', async () => {
+    await setKv('syncConfig', { url: 'https://other.supabase.co', anonKey: 'k', keyHash: 'h' });
+    expect(await loadConfig()).toEqual({
+      url: 'https://other.supabase.co',
+      anonKey: 'k',
+      keyHash: 'h',
+    });
+  });
+
+  it('tells a wrong passphrase apart from a network failure', async () => {
+    const reply = (status: number) => async () => new Response('[]', { status });
+    let calls = 0;
+    const rlsDenied = (async () =>
+      new Response(calls++ ? '{"code":"42501"}' : '[]', {
+        status: calls > 1 ? 401 : 200,
+      })) as typeof fetch;
+    expect(await testConfig(cfg, reply(201) as typeof fetch)).toBe('ok');
+    expect(await testConfig(cfg, rlsDenied)).toBe('passphrase');
+    expect(await testConfig(cfg, reply(500) as typeof fetch)).toBe('server');
+    const offline = (async () => {
+      throw new TypeError('Load failed');
+    }) as typeof fetch;
+    expect(await testConfig(cfg, offline)).toBe('network');
   });
 });
 

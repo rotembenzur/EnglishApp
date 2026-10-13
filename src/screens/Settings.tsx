@@ -17,6 +17,7 @@ import { t } from '@/i18n/he';
 import { useApp } from '@/state/app';
 import { useTheme, type ThemeMode } from '@/state/theme';
 import {
+  DEFAULT_PROJECT,
   hashPassphrase,
   loadConfig,
   saveConfig,
@@ -419,40 +420,57 @@ function SyncSection() {
   const status = useSync((s) => s.status);
   const error = useSync((s) => s.error);
   const configured = useSync((s) => s.configured);
-  const [url, setUrl] = useState('');
-  const [key, setKey] = useState('');
+  const [url, setUrl] = useState(DEFAULT_PROJECT.url);
+  const [key, setKey] = useState(DEFAULT_PROJECT.anonKey);
   const [pass, setPass] = useState('');
   const [busy, setBusy] = useState(false);
   const [keyHash, setKeyHash] = useState('');
   useEffect(() => {
     void loadConfig().then((c) => {
-      if (c) {
-        setUrl(c.url);
-        setKey(c.anonKey);
-        setKeyHash(c.keyHash);
-      }
+      setUrl(c?.url ?? DEFAULT_PROJECT.url);
+      setKey(c?.anonKey ?? DEFAULT_PROJECT.anonKey);
+      setKeyHash(c?.keyHash ?? '');
     });
   }, [configured]);
+  const custom = url.trim() !== DEFAULT_PROJECT.url || key.trim() !== DEFAULT_PROJECT.anonKey;
   const statusLabel =
     status === 'syncing' ? t.settings.syncStatus.pending : t.settings.syncStatus[status];
+  const connect = async () => {
+    setBusy(true);
+    const existing = await loadConfig();
+    const keyHash = pass ? await hashPassphrase(pass) : (existing?.keyHash ?? '');
+    const cfg = { url: url.trim(), anonKey: key.trim(), keyHash };
+    const result = await testConfig(cfg);
+    if (result === 'ok') {
+      await saveConfig(cfg);
+      setPass('');
+      await syncNow();
+      toast(t.settings.syncConnected, { icon: '🟢' });
+    } else
+      toast(
+        result === 'passphrase'
+          ? t.settings.syncWrongPass
+          : result === 'network'
+            ? t.settings.syncNoNetwork
+            : t.settings.syncFailed,
+        { tone: 'warn' },
+      );
+    setBusy(false);
+  };
   return (
     <section id="sync" className="flex scroll-mt-16 flex-col gap-3">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-bold uppercase tracking-wide text-ink-3">{t.settings.sync}</h2>
-        <span className="text-xs text-ink-2">{statusLabel}</span>
+        <span className="text-xs text-ink-2" data-testid="sync-status">
+          {statusLabel}
+        </span>
       </div>
       {error && (
         <p className="text-xs text-bad" dir="ltr">
           {error}
         </p>
       )}
-      <Field
-        label={t.settings.syncUrl}
-        value={url}
-        onChange={setUrl}
-        placeholder="https://xxxx.supabase.co"
-      />
-      <Field label={t.settings.syncKey} value={key} onChange={setKey} placeholder="eyJhbGciOi..." />
+      {!configured && <p className="text-sm text-ink-2">{t.settings.syncPassHint}</p>}
       <Field
         label={t.settings.syncPass}
         value={pass}
@@ -463,20 +481,8 @@ function SyncSection() {
       <div className="flex gap-2">
         <Button
           className="flex-1"
-          disabled={busy || !url || !key || (!pass && !configured)}
-          onClick={async () => {
-            setBusy(true);
-            const existing = await loadConfig();
-            const keyHash = pass ? await hashPassphrase(pass) : (existing?.keyHash ?? '');
-            const cfg = { url: url.trim(), anonKey: key.trim(), keyHash };
-            const ok = await testConfig(cfg);
-            if (ok) {
-              await saveConfig(cfg);
-              await syncNow();
-              toast(t.settings.syncConnected, { icon: '🟢' });
-            } else toast(t.settings.syncFailed, { tone: 'warn' });
-            setBusy(false);
-          }}
+          disabled={busy || !url.trim() || !key.trim() || (!pass && !configured)}
+          onClick={() => void connect()}
         >
           {t.settings.syncSave}
         </Button>
@@ -486,6 +492,23 @@ function SyncSection() {
           </Button>
         )}
       </div>
+      <details className="text-sm" open={custom}>
+        <summary className="cursor-pointer text-ink-3">{t.settings.syncAdvanced}</summary>
+        <div className="mt-2 flex flex-col gap-3">
+          <Field
+            label={t.settings.syncUrl}
+            value={url}
+            onChange={setUrl}
+            placeholder="https://xxxx.supabase.co"
+          />
+          <Field
+            label={t.settings.syncKey}
+            value={key}
+            onChange={setKey}
+            placeholder="eyJhbGciOi..."
+          />
+        </div>
+      </details>
       {configured && keyHash && (
         <details className="text-xs text-ink-3">
           <summary className="cursor-pointer">{t.settings.syncKeyHash}</summary>
