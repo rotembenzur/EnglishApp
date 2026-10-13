@@ -194,7 +194,7 @@ owner reported sync working on both phones on 2026-10-13.
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
 - Read mode with word import, confusable pairs.
 - Push notifications and the Supabase keepalive (see above).
-- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 132 unit tests (engine, sync, export/import, content), Playwright e2e (first run, all tabs, offline,
+- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 164 unit tests (engine, sync, export/import, content, bidi), Playwright e2e (first run, all tabs, offline,
   resume, two-phone sync), zero console errors, app shell about 190 KB gzipped.
 
 ## Content progress
