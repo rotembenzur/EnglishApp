@@ -146,8 +146,16 @@ class Ears:
 
     @staticmethod
     def _run(model, path: Path) -> str:
+        # Decode the encoded clip ourselves (16 kHz mono float): checks the AAC file as shipped and
+        # keeps faster-whisper away from PyAV, whose API changes between releases.
+        pcm = subprocess.run(
+            ["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(path),
+             "-f", "f32le", "-ac", "1", "-ar", "16000", "pipe:1"],
+            capture_output=True, check=True,
+        ).stdout
+        audio = np.frombuffer(pcm, dtype="<f4").copy()
         segs, _ = model.transcribe(
-            str(path), language="en", beam_size=5, temperature=0.0,
+            audio, language="en", beam_size=5, temperature=0.0,
             without_timestamps=True, condition_on_previous_text=False, vad_filter=False,
         )
         return " ".join(s.text for s in segs).strip()
