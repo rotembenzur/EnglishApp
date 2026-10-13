@@ -7,16 +7,13 @@ Last updated: 2026-10-13 · version 0.5.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
-- Latest deploy: 0.4.0, CI and deploy run #31 on commit `3134127` (2026-10-13), all three jobs
-  green (lint/typecheck/test/build, Playwright smoke, Deploy to GitHub Pages). The Push server
-  workflow run on the same commit is green and skipped deploying, as designed, until the secrets
-  exist.
-- Verified on the real URL from this container (now allowed): the page serves the new build, the
-  settings chunk carries 0.4.0, and Chromium (iPhone 14 profile) loads it in Hebrew RTL with the
-  service worker registered, the version 0.4.0 in settings and no JavaScript errors. The only
-  failed requests are expected: cold deep links answer 404 through the `404.html` bounce by
-  design, and the push function answers 404 until `SETUP.md` step 4 is done (the settings screen
-  then says the push server is not on yet).
+- Latest deploy: 0.5.0, CI and deploy run #45 on commit `9e291ca` (2026-10-13), all jobs green;
+  the Push server workflow deployed function version 5 (`GET` on the function answers
+  `"version":5`).
+- Verified on the real URL: the built JS carries 0.5.0; Chromium (iPhone 14 profile) loads home
+  and `/dev/bidi` (154 strings, 10 notifications, both share cards) with no JavaScript errors. The
+  only failed request is the cold deep link `/dev/bidi`, which answers 404 through the `404.html`
+  bounce by design.
 
 ## Waiting on owner
 
