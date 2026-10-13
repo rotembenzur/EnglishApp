@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.7.0
+Last updated: 2026-10-13 · version 0.8.0
 
 ## Deployment
 
@@ -15,17 +15,59 @@ Last updated: 2026-10-13 · version 0.7.0
 
 ## Waiting on owner
 
-1. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
+1. **Recorded audio on the iPhone** (0.8.0): the checks listed under "Audio: what to check on the
+   iPhone" below.
+2. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
    check on the iPhone" below.
-2. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
+3. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
    cap: what to check on the iPhone" below.
-3. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
+4. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
    the iPhone" below.
-4. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
+5. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
    nudges, as listed under "Push: what to test on the phones" below.
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## Recorded audio (0.8.0)
+
+Reported: the default voice was acceptable, the other voices terrible.
+
+- Every authored word, curated item and example sentence now plays a neural recording made at
+  build time (Kokoro): American `af_heart` for everything, British `bf_emma` for words and items.
+  Long press on a word plays a real slow recording. Without a recording (Read mode, notes, context
+  paragraphs) the best installed system voice speaks.
+- Coverage, quality and size: AUDIO_NUMBERS
+- Hosting: the `audio-store` release of this repository holds the files (not the git history);
+  every deploy copies them into the site under `audio/`. Pages limit 1 GB: the site is about
+  SITE_SIZE.
+- Offline: the words of your accent are stored on the phone in the background; sentences are
+  stored when played and prefetched for the next session.
+- System voices: ranked by real quality (premium, enhanced, compact from the voice URI), novelty
+  and Eloquence voices blocked, duplicates merged, best five shown. **הגדרות** explains how to
+  download a Premium voice when none is installed.
+- Future content: a push of new shards renders only the new clips (Audio workflow), publishes them
+  and redeploys.
+
+## Audio: what to check on the iPhone
+
+Update to 0.8.0 first (bottom of **הגדרות**). Then:
+
+1. **הגדרות**, **שמע**: the **הקלטות** card shows the number of words and sentences, then "שומר מילים
+   לשימוש בלי רשת" with a counter, and after a minute or two on Wi-Fi **כל המילים שמורות במכשיר ועובדות
+   גם בלי רשת**. **לשמוע הקלטה** plays a recorded word.
+2. Start a session: new words and the speaker buttons play the recorded voice (a natural female
+   American voice), not the iPhone voice. Example sentences too.
+3. Long press a word's speaker: a slower recording of the same voice. Long press a sentence: the
+   same recording, slower.
+4. Switch the accent to **בריטי**: words in a British voice, sentences stay American. Switch back.
+5. Airplane mode: open a word you studied and play it, and play a sentence you played before; both
+   work. A sentence never played falls back to the iPhone voice.
+6. **קול המערכת**: at most five voices, each labeled (פרימיום, משופר, רגיל, בסיסי), no Bells, Zarvox or
+   Grandpa. If no good voice is installed you see the short download guide; after downloading a
+   Premium voice and reopening LexBites it is first in the list and the guide is gone.
+7. If a clip sounds wrong: word page, **לדווח על בעיה**, **הגייה שגויה**. The report now records the
+   exact clip.
 
 ## Daily goal of 1000 XP (0.7.0)
 
