@@ -23,8 +23,10 @@ export interface VapidKeys {
 export interface PushResult {
   status: number;
   ok: boolean;
-  /** The subscription no longer exists (404 or 410): delete it. */
+  /** The subscription no longer exists (410, or 404 from services that use it that way). */
   gone: boolean;
+  /** The push service's error reason, for example Apple's `BadJwtToken`. */
+  reason: string;
   body: string;
 }
 
@@ -189,6 +191,45 @@ export async function encryptPayload(
   return concat(header, asPublic, cipher);
 }
 
+/** RFC 8291 receiver side: decrypt an aes128gcm body with the subscription's private key. */
+export async function decryptPayload(
+  body: Uint8Array,
+  uaPrivate: CryptoKey,
+  uaPublic: Uint8Array,
+  authSecret: Uint8Array,
+): Promise<Bytes> {
+  const salt = body.slice(0, 16);
+  const idLength = body[20] ?? 0;
+  const asPublic = body.slice(21, 21 + idLength);
+  const cipher = body.slice(21 + idLength);
+  const asKey = await crypto.subtle.importKey(
+    'raw',
+    asPublic,
+    { name: 'ECDH', namedCurve: 'P-256' },
+    false,
+    [],
+  );
+  const shared = new Uint8Array(
+    await crypto.subtle.deriveBits({ name: 'ECDH', public: asKey }, uaPrivate, 256),
+  );
+  const ikm = await hkdf(
+    concat(authSecret),
+    shared,
+    concat(encoder.encode('WebPush: info\0'), uaPublic, asPublic),
+    32,
+  );
+  const cek = await hkdf(salt, ikm, encoder.encode('Content-Encoding: aes128gcm\0'), 16);
+  const nonce = await hkdf(salt, ikm, encoder.encode('Content-Encoding: nonce\0'), 12);
+  const aes = await crypto.subtle.importKey('raw', cek, 'AES-GCM', false, ['decrypt']);
+  const plain = new Uint8Array(
+    await crypto.subtle.decrypt({ name: 'AES-GCM', iv: nonce }, aes, cipher),
+  );
+  let end = plain.length - 1;
+  while (end >= 0 && plain[end] === 0) end--;
+  if (plain[end] !== 2) throw new Error('bad padding delimiter');
+  return plain.slice(0, end);
+}
+
 export interface SendOptions {
   /** Seconds the push service keeps the message for an offline device. */
   ttl?: number;
@@ -216,10 +257,17 @@ export async function sendPush(
   if (opts.topic) headers.Topic = opts.topic;
   const res = await (opts.fetch ?? fetch)(sub.endpoint, { method: 'POST', headers, body });
   const text = await res.text().catch(() => '');
+  let reason = '';
+  try {
+    reason = String((JSON.parse(text) as { reason?: unknown }).reason ?? '');
+  } catch {
+    reason = text.slice(0, 80);
+  }
   return {
     status: res.status,
     ok: res.status >= 200 && res.status < 300,
-    gone: res.status === 404 || res.status === 410,
+    gone: res.status === 410 || (res.status === 404 && !/BadPath/i.test(reason)),
+    reason,
     body: text.slice(0, 300),
   };
 }

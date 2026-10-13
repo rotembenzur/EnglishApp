@@ -10,6 +10,7 @@ import { describe, expect, it } from 'vitest';
 import {
   b64urlDecode,
   b64urlEncode,
+  decryptPayload,
   encryptPayload,
   sendPush,
   vapidAuthorization,
@@ -52,6 +53,37 @@ describe('web push crypto', () => {
       authSecret: b64urlEncode(auth),
     });
     expect(plain.toString('utf8')).toBe(text);
+  });
+
+  it('decrypts its own messages with the receiver key (used by the runtime self-test)', async () => {
+    const ua = (await webcrypto.subtle.generateKey({ name: 'ECDH', namedCurve: 'P-256' }, true, [
+      'deriveBits',
+    ])) as CryptoKeyPair;
+    const uaPublic = new Uint8Array(await webcrypto.subtle.exportKey('raw', ua.publicKey));
+    const auth = webcrypto.getRandomValues(new Uint8Array(16));
+    const sub = {
+      endpoint: 'https://web.push.apple.com/x',
+      keys: { p256dh: b64urlEncode(uaPublic), auth: b64urlEncode(auth) },
+    };
+    const sealed = await encryptPayload(sub, new TextEncoder().encode('שלום'));
+    const opened = await decryptPayload(sealed, ua.privateKey, uaPublic, auth);
+    expect(new TextDecoder().decode(opened)).toBe('שלום');
+  });
+
+  it('reads the push service reason and tells a dead subscription from a bad request', async () => {
+    const keys = await vapidPair();
+    const { sub } = browserSubscription();
+    const reply = (status: number, body: string) =>
+      (async () => new Response(body, { status })) as unknown as typeof fetch;
+    expect(
+      await sendPush(sub, {}, keys, { fetch: reply(403, '{"reason":"BadJwtToken"}') }),
+    ).toMatchObject({ ok: false, gone: false, reason: 'BadJwtToken' });
+    expect(
+      await sendPush(sub, {}, keys, { fetch: reply(404, '{"reason":"BadPath"}') }),
+    ).toMatchObject({ gone: false, reason: 'BadPath' });
+    expect(
+      await sendPush(sub, {}, keys, { fetch: reply(410, '{"reason":"Unregistered"}') }),
+    ).toMatchObject({ gone: true });
   });
 
   it('signs a VAPID token push services accept', async () => {

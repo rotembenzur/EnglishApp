@@ -10,7 +10,14 @@
  * what it can see; a wrong key sees no subscriptions and sends nothing. It holds no database-wide
  * credential. The only secret is VAPID_PRIVATE_KEY.
  */
-import { sendPush, vapidKeysMatch, type VapidKeys } from '../_shared/webpush.ts';
+import {
+  b64urlEncode,
+  decryptPayload,
+  encryptPayload,
+  sendPush,
+  vapidKeysMatch,
+  type VapidKeys,
+} from '../_shared/webpush.ts';
 import {
   localClock,
   nudgeMessage,
@@ -26,7 +33,7 @@ import {
 } from '../_shared/schedule.ts';
 import { ANON_KEY, PROJECT_URL, VAPID_PUBLIC_KEY, VAPID_SUBJECT } from '../_shared/keys.ts';
 
-const VERSION = 1;
+const VERSION = 2;
 const REST = `${(Deno.env.get('SUPABASE_URL') || PROJECT_URL).replace(/\/+$/, '')}/rest/v1/`;
 const VAPID: VapidKeys = {
   publicKey: VAPID_PUBLIC_KEY,
@@ -187,9 +194,53 @@ async function test(store: Db, endpoint: string) {
   return { ok: res.ok, status: res.status };
 }
 
+/**
+ * Self-test inside the real runtime: the encryption round-trips, and Apple's push service is
+ * asked to take a message for a made-up device, so its answer shows whether it accepts our
+ * token and headers (a header or token problem is reported before the unknown device).
+ */
+async function probe() {
+  const enc = new TextEncoder();
+  const ua = (await crypto.subtle.generateKey({ name: 'ECDH', namedCurve: 'P-256' }, true, [
+    'deriveBits',
+  ])) as CryptoKeyPair;
+  const uaPublic = new Uint8Array(await crypto.subtle.exportKey('raw', ua.publicKey));
+  const auth = crypto.getRandomValues(new Uint8Array(16));
+  const token = b64urlEncode(crypto.getRandomValues(new Uint8Array(48)));
+  const sub = {
+    endpoint: `https://web.push.apple.com/Q${token}`,
+    keys: { p256dh: b64urlEncode(uaPublic), auth: b64urlEncode(auth) },
+  };
+  let roundTrip = false;
+  try {
+    const sealed = await encryptPayload(sub, enc.encode('probe'));
+    const opened = await decryptPayload(sealed, ua.privateKey, uaPublic, auth);
+    roundTrip = new TextDecoder().decode(opened) === 'probe';
+  } catch (e) {
+    console.error(`probe crypto: ${(e as Error).message}`);
+  }
+  const apple: Record<string, { status: number; reason: string }> = {};
+  for (const [name, topic] of [
+    ['noTopic', undefined],
+    ['topicTest', 'lexbites-test'],
+    ['topicDaily', 'lexbites-daily'],
+  ] as const) {
+    try {
+      const r = await sendPush(sub, { title: 'probe' }, VAPID, { ttl: 60, topic });
+      apple[name] = { status: r.status, reason: r.reason };
+    } catch (e) {
+      apple[name] = { status: 0, reason: (e as Error).message };
+    }
+  }
+  return { ready: await ready(), version: VERSION, roundTrip, apple };
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
-  if (req.method === 'GET') return json({ ok: true, ready: await ready(), version: VERSION });
+  if (req.method === 'GET') {
+    if (new URL(req.url).searchParams.has('probe')) return json(await probe());
+    return json({ ok: true, ready: await ready(), version: VERSION });
+  }
   if (req.method !== 'POST') return json({ error: 'method' }, 405);
   const key = req.headers.get('x-lexbites-key') ?? '';
   if (!/^[0-9a-f]{64}$/.test(key)) return json({ error: 'unauthorized' }, 401);
