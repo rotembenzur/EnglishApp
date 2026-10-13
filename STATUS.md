@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.6.0
+Last updated: 2026-10-13 · version 0.7.0
 
 ## Deployment
 
@@ -15,15 +15,59 @@ Last updated: 2026-10-13 · version 0.6.0
 
 ## Waiting on owner
 
-1. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
+1. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
+   check on the iPhone" below.
+2. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
    cap: what to check on the iPhone" below.
-2. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
+3. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
    the iPhone" below.
-3. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
+4. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
    nudges, as listed under "Push: what to test on the phones" below.
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## Daily goal of 1000 XP (0.7.0)
+
+Reported: the default goal of 60 XP made no sense; a normal 20-item session earns several hundred.
+
+- New default 1000 XP. **הגדרות**: 300 to 3000 XP in steps of 100, presets 500 / 1000 / 1500 /
+  2500 and a line on what a session is worth.
+- Existing users: a one-time migration on each phone (`src/data/migrations.ts`) sets רתם and נועה to
+  1000 when the phone opens 0.7.0, then syncs. It is recorded per phone and inside each synced
+  profile, so a goal changed by hand later is never overwritten, not even by the other phone
+  updating later with an old copy (two-phone sync test).
+- Server rows set directly on 2026-10-13 15:22 UTC (they were 300 for רתם and 100 for נועה, set by
+  hand under the old range) and read back: both 1000, carrying the same migration marker, ability
+  and badges intact. Stamped one millisecond newer than the stored row, so a phone write at the
+  same moment would win instead of being overwritten. A phone still on 0.6.0 may push its old
+  profile back once; its migration fixes that when it updates.
+- Kept: today counts as met if it was met under 60 (home shows the ring full and **היעד הושלם ✓**),
+  the streak and history are untouched, the celebration fires once when 1000 is crossed on a day
+  not met yet.
+- Rescaled: the level curve (base 1000 instead of 60; the shown level drops once, XP unchanged),
+  push copy (XP left and about how many sessions, instead of "five minutes"; function version 6),
+  a new 250,000 XP badge. The rival card now shows the rival's goal progress.
+- Guards: migration unit tests (runs once, keeps a manual change, keeps today and the streak,
+  stale copy on the other phone), default and range tests, level curve tests, reminder copy tests,
+  and `e2e/goal.spec.ts`, which opens 0.7.0 on top of 0.6.0 data in Chromium.
+
+## Daily goal: what to check on the iPhone
+
+Update to 0.7.0 first (bottom of **הגדרות**). Then:
+
+1. **Home**: the ring reads "/ 1000 XP". If you had already passed your old goal today, the ring is
+   full with **היעד הושלם ✓** and the streak did not drop.
+2. **הגדרות**, **יעד יומי**: 1000 XP, the **1000 רגיל** preset highlighted. The minus and plus buttons move
+   by 100 between 300 and 3000.
+3. Pick another preset, close LexBites completely and reopen it: your choice stays (the migration
+   never runs twice). On the other phone, after a sync, the rival card shows your new goal under
+   **XP היום**.
+4. The level under your name on home is lower than before. That is expected: levels now follow a
+   1000 XP day. Your XP total (**סטטיסטיקה**) is unchanged.
+5. Reminders: the daily reminder and the 20:00 streak alert now read like "עוד 700 XP ליעד של
+   היום. שני סשנים וזה סגור".
+6. Play until you cross 1000 XP on a day not met yet: the 🎯 celebration shows once.
 
 ## Sessions after the daily cap (0.6.0)
 
@@ -233,8 +277,8 @@ owner reported sync working on both phones on 2026-10-13.
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
 - Read mode with word import, confusable pairs.
 - Push notifications and the Supabase keepalive (see above).
-- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 184 unit tests (engine, sync, export/import, content, bidi), Playwright e2e (first run, all tabs, offline,
-  resume, five sessions past the daily cap, two-phone sync), zero console errors, app shell about 190 KB gzipped.
+- Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 195 unit tests (engine, sync, export/import, content, bidi), Playwright e2e (first run, all tabs, offline,
+  resume, five sessions past the daily cap, update to the 1000 XP goal, two-phone sync), zero console errors, app shell about 190 KB gzipped.
 
 ## Content progress
 

@@ -8,6 +8,7 @@ import type { UserId, UserWord } from '@/engine/types';
 import { USER_IDS } from '@/engine/types';
 import { db, getKv, setKv, type DailyStats, type UserProfile, type UserSettings } from '@/data/db';
 import { getDaily, getProfile, getWords, saveProfile } from '@/data/repo';
+import { runMigrations } from '@/data/migrations';
 import { useTheme } from './theme';
 
 export function todayKey(now = Date.now()): string {
@@ -53,6 +54,8 @@ export const useApp = create<AppState>((set, get) => ({
   version: 0,
 
   init: async () => {
+    // One-time data migrations first, so the profile below is read after them.
+    await runMigrations().catch((e: unknown) => console.warn('migration failed', e));
     const stored = (await getKv<UserId | null>('currentUser', null)) ?? rememberedUser();
     const userId = stored && USER_IDS.includes(stored) ? stored : null;
     if (userId) {

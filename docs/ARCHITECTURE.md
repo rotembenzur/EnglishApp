@@ -33,6 +33,10 @@ docs/           Decisions, screens, voice, QA checklist, backlog
 3. Writes also land in an outbox. When a sync backend is configured and the device is online, the
    outbox pushes rows to Supabase and the app pulls the other user's rows (daily stats, presence,
    events) on open, on focus, every 60 seconds while open and after each session.
+4. One-time data migrations (`src/data/migrations.ts`) run at app start, before the profile
+   loads. Each one changes local rows, queues them in the outbox and records itself per phone
+   (`kv`) and per profile (`profile.migrations`, synced), so it never runs twice and never
+   undoes a later manual change. First one: the daily goal moved to 1000 XP (0.7.0).
 
 ## Engine
 

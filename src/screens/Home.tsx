@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { levelOf } from '@/engine/ability';
-import { computeStreak, levelForXp } from '@/engine/game';
+import { computeStreak, DEFAULT_DAILY_GOAL, levelForXp } from '@/engine/game';
 import { createRng, hashString, pick } from '@/engine/rng';
 import { dueWords, minutesFor, MODE_MIN, modePoolSize } from '@/engine/session';
 import { newWordsLeft, suggestCapChange } from '@/engine/selection';
@@ -45,6 +45,8 @@ export function Home() {
   const due = useMemo(() => dueWords([...words.values()], now).length, [words, now]);
   const goal = profile.settings.dailyGoal;
   const xpToday = today?.xp ?? 0;
+  // A day stays met once reached, even if the goal is raised later the same day.
+  const goalMet = !!today?.goalReached || xpToday >= goal;
   const newLeft = newWordsLeft(profile.settings.newPerDay, today?.newWords ?? 0, today?.bonusNew);
   const pool = useMemo(() => {
     const list = [...words.values()];
@@ -121,7 +123,7 @@ export function Home() {
       )}
 
       <div className="card flex items-center gap-5 p-5">
-        <Ring value={xpToday} max={goal} size={112}>
+        <Ring value={goalMet ? goal : xpToday} max={goal} size={112}>
           <div className="text-2xl font-black leading-none" dir="ltr">
             {xpToday}
           </div>
@@ -131,7 +133,7 @@ export function Home() {
         </Ring>
         <div className="flex flex-1 flex-col gap-2">
           <p className="text-sm font-semibold text-ink-2">
-            {xpToday >= goal ? `${t.home.goalDone} ✓` : t.home.goal}
+            {goalMet ? `${t.home.goalDone} ✓` : t.home.goal}
           </p>
           <div className="flex items-center gap-2">
             <FlameIcon className={streak.current > 0 ? 'text-warn' : 'text-ink-3'} size={26} />
@@ -353,7 +355,12 @@ export function RivalCard({ compact = false }: { compact?: boolean }) {
         <>
           <div className="grid grid-cols-3 gap-2 text-center">
             <Stat value={rival?.today?.newWords ?? 0} label={t.rival.wordsToday} />
-            <Stat value={rival?.today?.xp ?? 0} label={t.rival.xpToday} />
+            <Stat
+              value={rival?.today?.xp ?? 0}
+              label={t.rival.xpToday}
+              goal={rival?.profile?.settings.dailyGoal ?? DEFAULT_DAILY_GOAL}
+              met={!!rival?.today?.goalReached}
+            />
             <Stat value={rival?.streak ?? 0} label={t.rival.streak} icon="🔥" />
           </div>
           {!compact && (
@@ -369,14 +376,41 @@ export function RivalCard({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function Stat({ value, label, icon }: { value: number; label: string; icon?: string }) {
+function Stat({
+  value,
+  label,
+  icon,
+  goal,
+  met = false,
+}: {
+  value: number;
+  label: string;
+  icon?: string;
+  /** Shows progress toward this daily goal under the label. */
+  goal?: number;
+  met?: boolean;
+}) {
   return (
     <div className="rounded-xl bg-bg-2/60 px-2 py-2">
       <div className="text-lg font-black" dir="ltr">
         {icon}
         {value}
+        {met && ' ✓'}
       </div>
       <div className="text-[11px] text-ink-3">{label}</div>
+      {goal !== undefined && (
+        <>
+          <Bar
+            value={met ? goal : value}
+            max={goal}
+            color="var(--c-rival)"
+            className="mx-auto mt-1 h-1 w-4/5"
+          />
+          <div className="mt-0.5 text-[10px] text-ink-3">
+            <Ltr>/ {goal} XP</Ltr>
+          </div>
+        </>
+      )}
     </div>
   );
 }

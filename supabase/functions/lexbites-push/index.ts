@@ -33,7 +33,7 @@ import {
 } from '../_shared/schedule.ts';
 import { ANON_KEY, PROJECT_URL, VAPID_PUBLIC_KEY, VAPID_SUBJECT } from '../_shared/keys.ts';
 
-const VERSION = 5;
+const VERSION = 6;
 const REST = `${(Deno.env.get('SUPABASE_URL') || PROJECT_URL).replace(/\/+$/, '')}/rest/v1/`;
 const VAPID: VapidKeys = {
   publicKey: VAPID_PUBLIC_KEY,
@@ -135,10 +135,14 @@ async function tick(store: Db) {
   >(
     `lb_daily?select=user_id,date,xp:data->xp,goalReached:data->goalReached&date=gte.${since}&order=date`,
   );
+  const users = await store.get<{ id: string; goal: number | null }[]>(
+    'lb_users?select=id,goal:data->settings->dailyGoal',
+  );
   let sent = 0;
   for (const row of subs) {
     const prefs = readPrefs(row.data);
     if (!prefs) continue;
+    const goal = users.find((u) => u.id === prefs.userId)?.goal;
     const days: DayRow[] = rows
       .filter((r) => r.user_id === prefs.userId)
       .map((r) => ({ date: r.date, xp: Number(r.xp ?? 0), goalReached: r.goalReached === true }));
@@ -150,6 +154,7 @@ async function tick(store: Db) {
       prefs,
       state: before,
       days,
+      goal: typeof goal === 'number' ? goal : null,
       rivalToday: rival
         ? { xp: Number(rival.xp ?? 0), goalReached: rival.goalReached === true }
         : null,

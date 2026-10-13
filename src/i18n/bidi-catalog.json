@@ -380,6 +380,10 @@
     "text": "רמה 1234"
   },
   {
+    "key": "settings.goalHint",
+    "text": "סשן רגיל שווה בערך 300 עד ‎500 XP‎"
+  },
+  {
     "key": "settings.speedValue(0.95)",
     "text": "מהירות דיבור (0.95)"
   },
@@ -546,6 +550,10 @@
   {
     "key": "badges.xp_50000[1]",
     "text": "‎50,000 XP‎"
+  },
+  {
+    "key": "badges.xp_250000[1]",
+    "text": "‎250,000 XP‎"
   },
   {
     "key": "badges.days_50[1]",

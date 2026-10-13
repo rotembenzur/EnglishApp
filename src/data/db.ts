@@ -4,6 +4,7 @@
  */
 import Dexie, { type Table } from 'dexie';
 import type { Ability, ReviewRecord, UserId, UserWord, WordContent } from '@/engine/types';
+import { DEFAULT_DAILY_GOAL } from '@/engine/game';
 
 export type Accent = 'us' | 'uk';
 
@@ -23,7 +24,7 @@ export interface UserSettings {
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {
-  dailyGoal: 60,
+  dailyGoal: DEFAULT_DAILY_GOAL,
   newPerDay: 8,
   accent: 'us',
   speechRate: 0.95,
@@ -48,6 +49,11 @@ export interface UserProfile {
   badges: Record<string, number>;
   /** Ability history for the stats chart: [timestamp, theta]. */
   thetaHistory: [number, number][];
+  /**
+   * One-time data migrations already applied to this profile: id -> timestamp. Synced with the
+   * row, so a phone with a stale copy never applies one again (src/data/migrations.ts).
+   */
+  migrations?: Record<string, number>;
   createdAt: number;
   updatedAt: number;
   deviceId: string;

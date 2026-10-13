@@ -28,7 +28,7 @@ export function Today() {
       style={{ paddingTop: 'calc(var(--sat) + 1rem)' }}
     >
       <div className="card flex items-center gap-5 p-5">
-        <Ring value={today?.xp ?? 0} max={goal} size={96} stroke={10}>
+        <Ring value={today?.goalReached ? goal : (today?.xp ?? 0)} max={goal} size={96} stroke={10}>
           <span className="text-xl font-black" dir="ltr">
             {today?.xp ?? 0}
           </span>

@@ -6,6 +6,12 @@ import {
   earnedBadges,
   emptyBadgeStats,
   levelForXp,
+  clampGoal,
+  DEFAULT_DAILY_GOAL,
+  GOAL_MAX,
+  GOAL_MIN,
+  GOAL_PRESETS,
+  GOAL_STEP,
   xpForAnswer,
   xpForLevel,
 } from './game';
@@ -34,6 +40,21 @@ describe('XP and combos', () => {
   });
 });
 
+describe('daily goal', () => {
+  it('defaults to 1000 and stays inside the settings range on the step grid', () => {
+    expect(DEFAULT_DAILY_GOAL).toBe(1000);
+    expect(GOAL_PRESETS).toContain(DEFAULT_DAILY_GOAL);
+    for (const g of GOAL_PRESETS) expect(clampGoal(g)).toBe(g);
+    expect(clampGoal(60)).toBe(GOAL_MIN);
+    expect(clampGoal(5000)).toBe(GOAL_MAX);
+    expect(clampGoal(1049)).toBe(1000);
+    expect(clampGoal(Number.NaN)).toBe(DEFAULT_DAILY_GOAL);
+    expect(GOAL_MIN).toBe(300);
+    expect(GOAL_MAX).toBe(3000);
+    expect(GOAL_STEP).toBe(100);
+  });
+});
+
 describe('levels', () => {
   it('thresholds increase gently', () => {
     expect(xpForLevel(1)).toBe(0);
@@ -43,6 +64,19 @@ describe('levels', () => {
       expect(gap).toBeGreaterThanOrEqual(prevGap);
       prevGap = gap;
     }
+  });
+  it('is scaled to a 1000 XP goal day', () => {
+    // Level 2 after the first goal day, level 10 after about a month, the last title after a year.
+    expect(xpForLevel(2)).toBe(1000);
+    expect(levelForXp(999).level).toBe(1);
+    expect(levelForXp(1000).level).toBe(2);
+    expect(levelForXp(30 * 1000).level).toBe(9);
+    expect(levelForXp(31 * 1000).level).toBe(10);
+    expect(levelForXp(365 * 1000).level).toBe(45);
+    expect(levelForXp(370 * 1000).level).toBe(46);
+    // One normal session never jumps more than a level, except at the very start.
+    for (let xp = 2000; xp < 400_000; xp += 5000)
+      expect(levelForXp(xp + 500).level - levelForXp(xp).level).toBeLessThanOrEqual(1);
   });
   it('levelForXp inverts thresholds', () => {
     expect(levelForXp(0).level).toBe(1);

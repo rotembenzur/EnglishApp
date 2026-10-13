@@ -16,7 +16,22 @@ export const XP_BY_TYPE: Record<GradedType, number> = {
 };
 export const XP_NEW_WORD_LEARNED = 25;
 export const XP_PROBE_PASSED = 8;
-export const DEFAULT_DAILY_GOAL = 60;
+/**
+ * Daily goal in XP. A normal 20-item session earns about 300 to 500 XP (spec 6.1 XP values with
+ * combos and new-word bonuses), so 1000 is two or three sessions, about 10 to 15 minutes.
+ */
+export const DEFAULT_DAILY_GOAL = 1000;
+export const GOAL_MIN = 300;
+export const GOAL_MAX = 3000;
+export const GOAL_STEP = 100;
+export const GOAL_PRESETS = [500, 1000, 1500, 2500] as const;
+
+/** Keeps a goal inside the settings range, on the step grid. */
+export function clampGoal(goal: number): number {
+  if (!Number.isFinite(goal)) return DEFAULT_DAILY_GOAL;
+  const stepped = Math.round(goal / GOAL_STEP) * GOAL_STEP;
+  return Math.min(GOAL_MAX, Math.max(GOAL_MIN, stepped));
+}
 
 /** Combo multiplier by consecutive correct answers in a session. */
 export function comboMultiplier(streak: number): number {
@@ -39,12 +54,16 @@ export function xpForAnswer(
 }
 
 // ---------------------------------------------------------------------------
-// Levels: a gentle curve. Level n starts at 60 * (n-1)^1.55 rounded to 10.
+// Levels: a gentle curve. Level n starts at LEVEL_BASE_XP * (n-1)^1.55 rounded to 10.
+// The base is one default goal day: level 2 after the first full day, level 10 after about a
+// month of goal days, the last title (level 46) after about a year.
 // ---------------------------------------------------------------------------
+
+export const LEVEL_BASE_XP = 1000;
 
 export function xpForLevel(level: number): number {
   if (level <= 1) return 0;
-  return Math.round((60 * Math.pow(level - 1, 1.55)) / 10) * 10;
+  return Math.round((LEVEL_BASE_XP * Math.pow(level - 1, 1.55)) / 10) * 10;
 }
 
 export function levelForXp(xp: number): { level: number; into: number; span: number } {
@@ -178,6 +197,7 @@ export const BADGES: BadgeDef[] = [
   { id: 'crowned_100', icon: '🤴', test: (s) => s.fiveCrownWords >= 100 },
   { id: 'xp_10000', icon: '🎯', test: (s) => s.xpTotal >= 10000 },
   { id: 'xp_50000', icon: '🪐', test: (s) => s.xpTotal >= 50000 },
+  { id: 'xp_250000', icon: '🌠', test: (s) => s.xpTotal >= 250000 },
   { id: 'days_50', icon: '📅', test: (s) => s.daysActive >= 50 },
   { id: 'boss_slayer', icon: '🐉', test: (s) => s.bossCompleted >= 1 },
   { id: 'all_ears', icon: '🎧', test: (s) => s.listeningSessions >= 5 },

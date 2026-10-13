@@ -14,6 +14,7 @@ import {
   type SyncTable,
   type UserProfile,
 } from './db';
+import { GOAL_MIGRATION } from './migrations';
 
 export const USER_NAMES: Record<UserId, string> = { rotem: 'רתם', noa: 'נועה' };
 
@@ -43,6 +44,8 @@ export async function getProfile(userId: UserId): Promise<UserProfile> {
     ability: null,
     badges: {},
     thetaHistory: [],
+    // Created with today's defaults: no earlier migration applies to it.
+    migrations: { [GOAL_MIGRATION]: now },
     createdAt: now,
     updatedAt: now,
     deviceId: await deviceId(),

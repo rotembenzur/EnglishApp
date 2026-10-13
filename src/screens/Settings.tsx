@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { rebuildWord } from '@/engine/learn';
 import { clampCap, MAX_CAP, MIN_CAP } from '@/engine/selection';
+import { clampGoal, GOAL_MAX, GOAL_MIN, GOAL_PRESETS, GOAL_STEP } from '@/engine/game';
 import { db, deviceId, type UserSettings } from '@/data/db';
 import {
   downloadBackup,
@@ -123,12 +124,31 @@ export function Settings() {
           <Stepper
             label={t.settings.dailyGoal}
             value={s.dailyGoal}
-            step={10}
-            min={20}
-            max={300}
+            step={GOAL_STEP}
+            min={GOAL_MIN}
+            max={GOAL_MAX}
             suffix=" XP"
-            onChange={(v) => set({ dailyGoal: v })}
+            onChange={(v) => set({ dailyGoal: clampGoal(v) })}
           />
+          <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-4 gap-2">
+              {GOAL_PRESETS.map((g) => (
+                <button
+                  key={g}
+                  type="button"
+                  onClick={() => set({ dailyGoal: g })}
+                  aria-pressed={s.dailyGoal === g}
+                  className={`tap flex flex-col items-center rounded-xl px-1 py-2 text-sm ${s.dailyGoal === g ? 'bg-accent text-accent-ink' : 'bg-card text-ink-2 shadow-card'}`}
+                >
+                  <span className="font-bold" dir="ltr">
+                    {g}
+                  </span>
+                  <span className="text-[11px]">{t.settings.goalPresets[g]}</span>
+                </button>
+              ))}
+            </div>
+            <p className="text-xs text-ink-3">{t.settings.goalHint}</p>
+          </div>
           <Stepper
             label={t.settings.newPerDay}
             value={s.newPerDay}

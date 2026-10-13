@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { db, setKv, type DailyStats } from '@/data/db';
-import { addEvent, bumpDaily, exportAll, importAll, putWord } from '@/data/repo';
+import { db, DEFAULT_SETTINGS, setKv, type DailyStats, type UserProfile } from '@/data/db';
+import { addEvent, bumpDaily, exportAll, importAll, putWord, saveProfile } from '@/data/repo';
+import { GOAL_MIGRATION, migrateDailyGoal } from '@/data/migrations';
 import { introduceWord } from '@/engine/learn';
 import {
   DEFAULT_PROJECT,
@@ -104,6 +105,52 @@ describe('sync', () => {
     expect(touched.has('noa')).toBe(true);
     expect((await db.userWords.get(['noa', 9]))?.favorite).toBe(true);
     expect((await db.dailyStats.get(['noa', '2026-10-12']))?.xp).toBe(99);
+  });
+
+  it('goal migration: syncs up, and a stale copy on the other phone never undoes a manual change', async () => {
+    const server = fakeServer();
+    const old = (id: 'rotem' | 'noa'): UserProfile => ({
+      id,
+      name: id,
+      settings: { ...DEFAULT_SETTINGS, dailyGoal: 60 },
+      ability: null,
+      badges: {},
+      thetaHistory: [],
+      createdAt: 1,
+      updatedAt: 1_000,
+      deviceId: 'old',
+    });
+    // Before the update: both profiles on the server and on both phones, goal 60.
+    await db.users.bulkPut([old('rotem'), old('noa')]);
+    await db.outbox.bulkAdd([
+      { table: 'users', key: 'rotem', at: 1 },
+      { table: 'users', key: 'noa', at: 1 },
+    ]);
+    await push(cfg, server.f);
+
+    // noa's phone updates first, migrates, syncs, then noa sets 700 by hand.
+    expect(await migrateDailyGoal()).toEqual(['rotem', 'noa']);
+    await push(cfg, server.f);
+    const goalOnServer = (id: string) =>
+      (server.tables.get('lb_users')!.get(id)!.row.data as UserProfile).settings.dailyGoal;
+    expect(goalOnServer('noa')).toBe(1000);
+    expect(goalOnServer('rotem')).toBe(1000);
+    const migrated = (await db.users.get('noa'))!;
+    await saveProfile({ ...migrated, settings: { ...migrated.settings, dailyGoal: 700 } });
+    await push(cfg, server.f);
+    expect(goalOnServer('noa')).toBe(700);
+
+    // rotem's phone opens the new version offline, still holding the old copies.
+    await wipe();
+    await db.users.bulkPut([old('rotem'), old('noa')]);
+    expect(await migrateDailyGoal()).toEqual(['rotem', 'noa']);
+    await push(cfg, server.f);
+    await pull(cfg, server.f);
+    // The server kept noa's newer manual change, and the phone took it back.
+    expect(goalOnServer('noa')).toBe(700);
+    expect((await db.users.get('noa'))?.settings.dailyGoal).toBe(700);
+    expect((await db.users.get('rotem'))?.settings.dailyGoal).toBe(1000);
+    expect((await db.users.get('rotem'))?.migrations?.[GOAL_MIGRATION]).toBeGreaterThan(0);
   });
 
   it('ignores rows that do not belong to a known profile', async () => {

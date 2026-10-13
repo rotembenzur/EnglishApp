@@ -2,6 +2,31 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.7.0 (2026-10-13)
+
+A daily goal that matches what a day of practice really earns: 1000 XP instead of 60.
+
+- The default daily goal is 1000 XP. A normal 20-item session earns about 300 to 500 XP, so the
+  goal is two or three sessions. In **הגדרות** the goal now runs from 300 to 3000 XP in steps of
+  100, with four presets (500 קליל, 1000 רגיל, 1500 רציני, 2500 אינטנסיבי) and a hint of what a
+  session is worth.
+- Existing profiles: a one-time migration on each phone sets both goals to 1000 when it opens
+  0.7.0 and syncs the change up. It runs once per phone and once per profile (a marker in the
+  synced profile), so a goal you change afterwards is never touched again, even by the other
+  phone updating later with an old copy. The server rows were also set to 1000 directly.
+- Today and the streak are kept: a day already met under the old goal stays met (home shows it as
+  done, the streak keeps counting it), and days in the history are untouched.
+- Levels are rescaled to a 1000 XP day: level 2 after the first full day, level 10 after about a
+  month of goal days, the last title after about a year. The old curve assumed 60 XP a day and
+  passed through all 16 titles in about a month. Levels shown today will be lower; XP is unchanged.
+- New badge **רבע מיליון** (250,000 XP), a long-term XP milestone next to 10,000 and 50,000.
+- Push reminders no longer promise "five minutes": the daily reminder and the 20:00 streak alert
+  say how much XP is left for today's goal and about how many sessions that is.
+- The rival card shows the rival's progress toward their own goal, with ✓ once it is met.
+- Tests: the migration (runs once, keeps a manual change, keeps today and the streak, a stale copy
+  on the other phone never undoes a manual change through sync), the new default, the goal range,
+  the level curve, the reminder copy, and an e2e test that opens 0.7.0 on top of 0.6.0 data.
+
 ## 0.6.0 (2026-10-13)
 
 Keep playing after the daily new-word cap. Sessions no longer shrink to a single word.

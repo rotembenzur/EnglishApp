@@ -7,6 +7,7 @@ import {
   localClock,
   nudgeMessage,
   planScheduled,
+  xpLeft,
   readPrefs,
   streakToday,
   type DayRow,
@@ -142,7 +143,40 @@ describe('push schedule', () => {
     expect(text({ xp: 40, goalReached: false })).toContain('נועה כבר ב־40 XP היום');
     expect(text({ xp: 90, goalReached: true })).toContain('נועה כבר סגרה את היעד');
     expect(text({ xp: 90, goalReached: true }, 'noa')).toContain('רתם כבר סגר את היעד');
-    expect(text(null)).toBe('חמש דקות של מילים, והיום נסגר');
+    expect(text(null)).toBe('סשן או שניים של מילים, והיום נסגר');
+  });
+
+  it('says how much XP is left for the goal when the goal is known', () => {
+    const today = (xp: number) => [{ date: '2026-10-13', xp, goalReached: false }];
+    const body = (xp: number, goal: number | null) =>
+      stripBidi(
+        planScheduled({
+          now: il('08:31'),
+          prefs: prefs(),
+          state: {},
+          days: today(xp),
+          rivalToday: null,
+          goal,
+        }).messages[0]!.body,
+      );
+    expect(body(0, 1000)).toBe('עוד 1000 XP ליעד של היום. 3 סשנים וזה סגור');
+    expect(body(300, 1000)).toBe('עוד 700 XP ליעד של היום. שני סשנים וזה סגור');
+    expect(body(700, 1000)).toBe('עוד 300 XP ליעד של היום. סשן אחד וזה סגור');
+    expect(body(0, null)).toBe('סשן או שניים של מילים, והיום נסגר');
+    expect(xpLeft(1000, 1200)).toBe(0);
+    expect(xpLeft(undefined, 10)).toBeNull();
+    // The streak alert says the same.
+    const alert = planScheduled({
+      now: il('20:02'),
+      prefs: prefs({ reminderTime: null }),
+      state: {},
+      days: [...streakDays(5), ...today(600)],
+      rivalToday: null,
+      goal: 1000,
+    });
+    expect(stripBidi(alert.messages[0]!.body)).toBe(
+      '5 ימים ברצף, ועוד 400 XP ליעד של היום. סשן אחד וזה סגור',
+    );
   });
 
   it('warns at 20:00 only when a live streak is at risk', () => {

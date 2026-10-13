@@ -170,28 +170,52 @@ function toMinutes(hhmm: string): number {
   return (h ?? 20) * 60 + (m ?? 0);
 }
 
+/** XP a normal session earns, for "how many sessions are left" in reminder copy. */
+export const XP_PER_SESSION = 400;
+
+/** XP still missing for today's goal, or null when the goal is unknown. */
+export function xpLeft(goal: number | null | undefined, xpToday: number): number | null {
+  if (typeof goal !== 'number' || !Number.isFinite(goal) || goal <= 0) return null;
+  return Math.max(0, Math.round(goal - xpToday));
+}
+
+/** "One session and it's done", "two sessions...", "3 sessions..." for this much XP. */
+function sessionsPhrase(left: number | null): string {
+  const n = left === null ? 0 : Math.max(1, Math.ceil(left / XP_PER_SESSION));
+  if (n === 0) return 'סשן או שניים וזה סגור';
+  if (n === 1) return 'סשן אחד וזה סגור';
+  if (n === 2) return 'שני סשנים וזה סגור';
+  return `${n} סשנים וזה סגור`;
+}
+
 export function reminderMessage(
   user: UserId,
   rival: { xp: number; goalReached: boolean } | null,
+  left: number | null = null,
 ): PushMessage {
   const other = rival ? otherUser(user) : null;
-  let body = 'חמש דקות של מילים, והיום נסגר';
+  let body =
+    left === null
+      ? 'סשן או שניים של מילים, והיום נסגר'
+      : `עוד ${left} XP ליעד של היום. ${sessionsPhrase(left)}`;
   if (other && rival?.goalReached) {
     body = `${NAMES[other]} ${FEMALE[other] ? 'כבר סגרה' : 'כבר סגר'} את היעד היום. תורך`;
   } else if (other && rival && rival.xp > 0) {
-    body = `${NAMES[other]} כבר ב־${rival.xp} XP היום. חמש דקות ונכנסים לתמונה`;
+    body = `${NAMES[other]} כבר ב־${rival.xp} XP היום. סשן אחד ונכנסים לתמונה`;
   }
   return pushText({ kind: 'reminder', title: 'LexBites', body, url: './', tag: 'lexbites-daily' });
 }
 
-export function streakMessage(days: number): PushMessage {
+export function streakMessage(days: number, left: number | null = null): PushMessage {
+  const start = days > 1 ? `${days} ימים ברצף` : 'הרצף רק התחיל';
+  const rest =
+    left === null
+      ? `והיעד של היום עוד פתוח. ${sessionsPhrase(null)}`
+      : `ועוד ${left} XP ליעד של היום. ${sessionsPhrase(left)}`;
   return pushText({
     kind: 'streak',
     title: 'הרצף בסכנה 🔥',
-    body:
-      days > 1
-        ? `${days} ימים ברצף, והיעד של היום עוד פתוח. חמש דקות ונגמר הסיפור`
-        : 'הרצף רק התחיל, והיעד של היום עוד פתוח. חמש דקות ונגמר הסיפור',
+    body: `${start}, ${rest}`,
     url: './',
     tag: 'lexbites-daily',
   });
@@ -209,6 +233,8 @@ export interface ScheduleInput {
   days: readonly DayRow[];
   /** The rival's row for the same local date, if any. */
   rivalToday: { xp: number; goalReached: boolean } | null;
+  /** This user's daily goal in XP (from the profile row), when known. */
+  goal?: number | null;
 }
 
 /** Scheduled messages due now, and the state to store afterwards. */
@@ -219,7 +245,9 @@ export function planScheduled(input: ScheduleInput): {
   const { now, prefs, days, rivalToday } = input;
   const state: PushState = { ...input.state };
   const { date, minutes } = localClock(now, prefs.tz, prefs.tzOffset);
-  const reached = days.some((d) => d.date === date && d.goalReached);
+  const todayRow = days.find((d) => d.date === date);
+  const reached = !!todayRow?.goalReached;
+  const left = xpLeft(input.goal, todayRow?.xp ?? 0);
   const streak = streakToday(days, date);
   const recentlySent = state.lastAt !== undefined && now - state.lastAt < MIN_GAP_MS;
 
@@ -241,7 +269,7 @@ export function planScheduled(input: ScheduleInput): {
     if (!reached && streak.pendingToday) {
       // The streak alert says everything the daily reminder would, so it replaces it today.
       if (reminderDue || !recentlySent) {
-        messages.push(streakMessage(streak.current));
+        messages.push(streakMessage(streak.current, left));
         state.streakSent = date;
       }
       if (reminderDue) state.reminder = date;
@@ -251,7 +279,7 @@ export function planScheduled(input: ScheduleInput): {
     state.reminder = date;
     // After a streak alert today, a later daily reminder would only nag.
     if (!reached && state.streakSent !== date && !recentlySent) {
-      messages.push(reminderMessage(prefs.userId, rivalToday));
+      messages.push(reminderMessage(prefs.userId, rivalToday, left));
     }
   }
   if (messages.length) state.lastAt = now;
@@ -299,12 +327,18 @@ export function sampleMessages(now = Date.now()): PushMessage[] {
     );
   return [
     reminderMessage('rotem', null),
+    reminderMessage('rotem', null, 1000),
+    reminderMessage('noa', null, 350),
+    reminderMessage('rotem', null, 760),
+    reminderMessage('noa', null, 2400),
     reminderMessage('rotem', { xp: 40, goalReached: false }),
     reminderMessage('noa', { xp: 1250, goalReached: false }),
     reminderMessage('rotem', { xp: 90, goalReached: true }),
     reminderMessage('noa', { xp: 90, goalReached: true }),
     streakMessage(1),
     streakMessage(12),
+    streakMessage(1, 1000),
+    streakMessage(12, 250),
     nudge('noa', '👋'),
     nudge('rotem', '🔥'),
     TEST_MESSAGE,

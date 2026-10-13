@@ -62,14 +62,14 @@ async function seed(page: Page, me: User) {
           correct: Math.round(xp / 7),
           ms: 6 * 60_000,
           sessions: 1,
-          goal: 60,
-          goalReached: xp >= 60,
+          goal: 1000,
+          goalReached: xp >= 1000,
           updatedAt: now,
           deviceId: 'seed',
         });
       for (let i = 1; i <= 12; i++) {
-        day(rival, now - i * DAY, 40 + ((i * 37) % 90));
-        day(me, now - i * DAY, 30 + ((i * 53) % 100));
+        day(rival, now - i * DAY, 400 + ((i * 370) % 900));
+        day(me, now - i * DAY, 300 + ((i * 530) % 1000));
       }
       day(rival, now, 1250);
       tx.objectStore('presence').put({
