@@ -95,7 +95,7 @@ recorded audio).
 - `scripts/audio/plan.ts` lists every clip: words and curated items in two voices (Kokoro
   `af_heart`, `bf_emma`), normal and slow; example sentences in the American voice. Each clip has
   a generation hash; clips already in the store are skipped.
-- `.github/workflows/audio.yml` renders the rest in 20 parallel jobs with
+- `.github/workflows/audio.yml` renders the rest in 18 parallel jobs with
   `scripts/audio/generate.py` (Kokoro ONNX, misaki G2P, IPA fallback from `phonemes.py`, silence
   and loudness checks, Whisper checks, AAC encoding), then `assemble.ts` builds word packs,
   sentence tars, indexes, `store.json` and a quality report, publishes them to the `audio-store`

@@ -39,6 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
+      changed: ${{ steps.plan.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -57,6 +58,7 @@ jobs:
         run: |
           pnpm exec tsx scripts/audio/plan.ts --store audio-old/store.json --out audio-work --limit "$LIMIT"
           echo "matrix=$(cat audio-work/matrix.json)" >> "$GITHUB_OUTPUT"
+          echo "changed=$(cat audio-work/changed.txt)" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@v4
         with:
           name: audio-work
@@ -71,7 +73,7 @@ jobs:
     timeout-minutes: 300
     strategy:
       fail-fast: false
-      max-parallel: 20
+      max-parallel: 18
       matrix:
         chunk: ${{ fromJson(needs.plan.outputs.matrix) }}
     steps:
@@ -111,7 +113,7 @@ jobs:
   assemble:
     name: Assemble and publish
     needs: [plan, render]
-    if: always() && needs.plan.result == 'success'
+    if: always() && needs.plan.result == 'success' && needs.plan.outputs.changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

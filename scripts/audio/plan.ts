@@ -180,7 +180,9 @@ async function main() {
   const plan = await buildPlan(cfg);
 
   const have = new Set<string>();
+  let storeExists = false;
   if (storePath && existsSync(storePath)) {
+    storeExists = true;
     const store = JSON.parse(await readFile(storePath, 'utf8')) as {
       items: Record<string, unknown>;
     };
@@ -233,6 +235,15 @@ async function main() {
     );
   }
   await writeFile(path.join(out, 'matrix.json'), JSON.stringify(used));
+  // Anything to publish: clips to render, clips no longer wanted, or no store yet.
+  const wanted = new Set([
+    ...plan.words.flatMap((u) => [u.g, u.gs]),
+    ...plan.sentences.map((u) => u.g),
+  ]);
+  const removed = [...have].filter((g) => !wanted.has(g)).length;
+  const changed = !storeExists || todo.length > 0 || removed > 0 || limit > 0;
+  await writeFile(path.join(out, 'changed.txt'), changed ? 'true' : 'false');
+  if (removed) console.info(`no longer wanted: ${removed} clip(s)`);
 
   const count = (kind: string, voice?: string) =>
     todo.filter((u) => u.type === kind && (!voice || u.voice === voice)).length;

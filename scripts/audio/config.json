@@ -9,7 +9,7 @@
   "slowSpeed": 0.75,
   "aacBitrate": "48k",
   "sampleRate": 24000,
-  "chunks": 20,
+  "chunks": 18,
   "asrFirst": "base.en",
   "asrSecond": "small.en",
   "sentenceSampleEvery": 10,
