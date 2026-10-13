@@ -14,5 +14,6 @@
   "asrSecond": "small.en",
   "sentenceSampleEvery": 10,
   "release": "audio-store",
-  "asrThird": "medium.en"
+  "asrThird": "medium.en",
+  "slowRetrySpeed": 0.8
 }

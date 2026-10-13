@@ -123,6 +123,9 @@ def encode(a: np.ndarray, path: Path) -> None:
 # ---------------------------------------------------------------- speech recognition
 
 
+FILLERS = {"oh", "uh", "ah", "er", "um", "hmm", "mm", "eh", "huh", "ooh", "aah", "erm"}
+
+
 class Ears:
     """Whisper (faster-whisper, CPU int8): a small model first, a bigger one for a second opinion."""
 
@@ -191,9 +194,15 @@ class Ears:
             return {"ok": True, "how": "exact"}
         if h and "".join(h) == "".join(t):
             return {"ok": True, "how": "joined"}
+        if kind == "slow" and t:
+            # A stretched vowel at slow speed is often written as a hesitation ("oh", "uh"); the
+            # word itself was heard. Anything else extra still counts as a miss.
+            for i in range(len(h) - len(t) + 1):
+                if h[i : i + len(t)] == t and all(w in FILLERS for w in h[:i] + h[i + len(t) :]):
+                    return {"ok": True, "how": "word+filler"}
         ph, pt = self.phones(h), self.phones(t)
         pd = phone_distance(ph, pt)
-        if kind == "word":
+        if kind in ("word", "slow"):
             # Short words: one phoneme off is within what Whisper mishears ("uh" for "a").
             ok = pd <= 0.2 or (len(strip_stress(pt)) <= 4 and lev(strip_stress(ph), strip_stress(pt)) <= 1)
         else:
@@ -210,7 +219,7 @@ class Ears:
             (CFG["asrThird"], self.third),
         ):
             heard = self._run(model(), path, speed)
-            v = self.judge(heard, text, kind)
+            v = self.judge(heard, text, "slow" if kind == "word" and speed < 1 else kind)
             v["model"] = name
             v["heard"] = heard
             if v["ok"]:
@@ -393,6 +402,16 @@ def main() -> None:
             rest = [c for c in cands if c not in chosen]
             rs = render(voices, ears, out_dir, u, "word", CFG["slowSpeed"], chosen + rest, u["gs"], True)
             rs.update({"key": u["key"], "voice": u["voice"], "kind": "word", "speed": CFG["slowSpeed"]})
+            if rs.get("asrOk") is False:
+                # One more try a little faster, with the pronunciation of the normal clip.
+                alt = render(voices, ears, out_dir, u, "word", CFG["slowRetrySpeed"], chosen, u["gs"] + ".alt", True)
+                if alt.get("asrOk"):
+                    (out_dir / f'{u["gs"]}.alt.m4a').replace(out_dir / f'{u["gs"]}.m4a')
+                    alt.update({"g": u["gs"], "key": u["key"], "voice": u["voice"], "kind": "word",
+                                "speed": CFG["slowRetrySpeed"], "attempts": rs.get("attempts", 1) + 1})
+                    rs = alt
+                else:
+                    (out_dir / f'{u["gs"]}.alt.m4a').unlink(missing_ok=True)
             rows = [r, rs]
         else:
             g2p = voices.g2p["us"](u["text"])[0]

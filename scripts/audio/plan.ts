@@ -24,11 +24,13 @@ export interface AudioConfig {
   modelUrl: string;
   voices: { us: string; uk: string };
   slowSpeed: number;
+  slowRetrySpeed: number;
   aacBitrate: string;
   sampleRate: number;
   chunks: number;
   asrFirst: string;
   asrSecond: string;
+  asrThird: string;
   sentenceSampleEvery: number;
   release: string;
 }

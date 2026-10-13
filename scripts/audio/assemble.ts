@@ -268,6 +268,10 @@ async function main() {
     tag(`${i.voice}.${i.speed < 1 ? 'slow' : 'normal'}`);
     tag(lenOf(g));
     const vs = `${i.voice}.${i.speed < 1 ? 'slow' : 'normal'}`;
+    if (i.asr.ok && i.asr.how === 'word+filler')
+      missBy[`${vs}.word+filler`] = (missBy[`${vs}.word+filler`] ?? 0) + 1;
+    if (i.speed > 0.75 && i.speed < 1)
+      missBy[`${vs}.retried-at-0.8`] = (missBy[`${vs}.retried-at-0.8`] ?? 0) + 1;
     if ((i.asr as { overruled?: string[] }).overruled) {
       missBy[`${vs}.saved-by-bigger-model`] = (missBy[`${vs}.saved-by-bigger-model`] ?? 0) + 1;
     }
