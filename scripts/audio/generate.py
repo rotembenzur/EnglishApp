@@ -135,6 +135,7 @@ class Ears:
         self.first = WhisperModel(CFG["asrFirst"], device="cpu", compute_type="int8",
                                   cpu_threads=threads, download_root=self.root)
         self._second = None
+        self._third = None
         self.g2p = g2p
         self.threads = threads
 
@@ -144,12 +145,20 @@ class Ears:
                                     cpu_threads=self.threads, download_root=self.root)
         return self._second
 
+    def third(self):
+        if self._third is None:
+            self._third = self._WM(CFG["asrThird"], device="cpu", compute_type="int8",
+                                   cpu_threads=self.threads, download_root=self.root)
+        return self._third
+
     @staticmethod
-    def _run(model, path: Path) -> str:
+    def _run(model, path: Path, speed: float = 1.0) -> str:
         # Decode the encoded clip ourselves (16 kHz mono float): checks the AAC file as shipped and
         # keeps faster-whisper away from PyAV, whose API changes between releases.
         pcm = subprocess.run(
             ["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(path),
+             # A slow clip is sped back up (pitch kept) so Whisper hears a word, not syllables.
+             *(["-filter:a", f"atempo={1 / speed:.4f}"] if speed != 1.0 else []),
              "-f", "f32le", "-ac", "1", "-ar", "16000", "pipe:1"],
             capture_output=True, check=True,
         ).stdout
@@ -180,6 +189,8 @@ class Ears:
         h, t = self.norm(heard), self.norm(text)
         if h == t:
             return {"ok": True, "how": "exact"}
+        if h and "".join(h) == "".join(t):
+            return {"ok": True, "how": "joined"}
         ph, pt = self.phones(h), self.phones(t)
         pd = phone_distance(ph, pt)
         if kind == "word":
@@ -189,18 +200,28 @@ class Ears:
             ok = pd <= 0.15 or wer(h, t) <= 0.15
         return {"ok": ok, "how": "phones" if ok else "miss", "pd": round(pd, 3)}
 
-    def hear(self, path: Path, text: str, kind: str) -> dict:
-        heard = self._run(self.first, path)
-        v = self.judge(heard, text, kind)
-        v["model"] = CFG["asrFirst"]
-        v["heard"] = heard
-        if not v["ok"]:
-            heard2 = self._run(self.second(), path)
-            v2 = self.judge(heard2, text, kind)
-            v2["model"] = CFG["asrSecond"]
-            v2["heard"] = heard2
-            v2["first"] = {"heard": heard, "pd": v.get("pd")}
-            v = v2
+    def hear(self, path: Path, text: str, kind: str, speed: float = 1.0) -> dict:
+        """First opinion from a small model; misses go to bigger ones before counting as wrong."""
+        tried = []
+        v: dict = {}
+        for name, model in (
+            (CFG["asrFirst"], lambda: self.first),
+            (CFG["asrSecond"], self.second),
+            (CFG["asrThird"], self.third),
+        ):
+            heard = self._run(model(), path, speed)
+            v = self.judge(heard, text, kind)
+            v["model"] = name
+            v["heard"] = heard
+            if v["ok"]:
+                break
+            tried.append(name)
+        if tried and v["ok"]:
+            v["overruled"] = tried
+        t = self.norm(text)
+        h = self.norm(v.get("heard", ""))
+        if not v["ok"] and t and any(h[i : i + len(t)] == t for i in range(len(h))):
+            v["contains"] = True
         return v
 
 
@@ -323,7 +344,7 @@ def render(voices: Voices, ears: Ears | None, out: Path, u: dict, kind: str, spe
             score: tuple = (0, 0.0)
         elif asr and ears is not None:
             encode(a, tmp)
-            rec["asr"] = ears.hear(tmp, u["text"], kind)
+            rec["asr"] = ears.hear(tmp, u["text"], kind, speed)
             # On a miss, a later candidate wins only if it is clearly closer (Whisper is noisy on
             # isolated words, and the first candidate is the model's own reading).
             score = (2, 0.0) if rec["asr"]["ok"] else (1, -round(rec["asr"].get("pd", 1.0) / 0.25))

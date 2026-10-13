@@ -2,7 +2,10 @@
   "pipeline": 1,
   "model": "kokoro-v1.0",
   "modelUrl": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0",
-  "voices": { "us": "af_heart", "uk": "bf_emma" },
+  "voices": {
+    "us": "af_heart",
+    "uk": "bf_emma"
+  },
   "slowSpeed": 0.75,
   "aacBitrate": "48k",
   "sampleRate": 24000,
@@ -10,5 +13,6 @@
   "asrFirst": "base.en",
   "asrSecond": "small.en",
   "sentenceSampleEvery": 10,
-  "release": "audio-store"
+  "release": "audio-store",
+  "asrThird": "medium.en"
 }

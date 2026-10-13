@@ -267,7 +267,12 @@ async function main() {
     const tag = (k: string) => (missBy[k] = (missBy[k] ?? 0) + (i.asr!.ok ? 0 : 1));
     tag(`${i.voice}.${i.speed < 1 ? 'slow' : 'normal'}`);
     tag(lenOf(g));
+    const vs = `${i.voice}.${i.speed < 1 ? 'slow' : 'normal'}`;
+    if ((i.asr as { overruled?: string[] }).overruled) {
+      missBy[`${vs}.saved-by-bigger-model`] = (missBy[`${vs}.saved-by-bigger-model`] ?? 0) + 1;
+    }
     if (!i.asr.ok) {
+      if ((i.asr as { contains?: boolean }).contains) tag(`${vs}.heard-target-plus-more`);
       const heard = (i.asr.heard ?? '').trim();
       tag(
         !heard

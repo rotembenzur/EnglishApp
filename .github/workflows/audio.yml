@@ -87,7 +87,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: audio-models
-          key: audio-models-kokoro-v1.0-whisper-base.en-small.en
+          key: audio-models-kokoro-v1.0-whisper-base.en-small.en-medium.en
       - name: Models
         run: |
           mkdir -p audio-models
