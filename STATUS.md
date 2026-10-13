@@ -7,13 +7,11 @@ Last updated: 2026-10-13 · version 0.6.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
-- Latest deploy: 0.5.0, CI and deploy run #45 on commit `9e291ca` (2026-10-13), all jobs green;
-  the Push server workflow deployed function version 5 (`GET` on the function answers
-  `"version":5`).
-- Verified on the real URL: the built JS carries 0.5.0; Chromium (iPhone 14 profile) loads home
-  and `/dev/bidi` (154 strings, 10 notifications, both share cards) with no JavaScript errors. The
-  only failed request is the cold deep link `/dev/bidi`, which answers 404 through the `404.html`
-  bounce by design.
+- Latest deploy: 0.6.0, CI and deploy run #49 on commit `303f9eb` (2026-10-13), all jobs green.
+- Verified on the real URL: the built JS carries `appVersion:"0.6.0"`; Chromium (iPhone 14
+  profile) loads home, and `/session/hard` on a fresh profile shows the new explanation with
+  **לסשן למידה**. The only failed request is the cold deep link, which answers 404 through the
+  `404.html` bounce by design.
 
 ## Waiting on owner
 
