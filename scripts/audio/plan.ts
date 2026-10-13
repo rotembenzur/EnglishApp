@@ -189,15 +189,22 @@ async function main() {
     ...plan.sentences.filter((u) => !have.has(u.g)),
   ];
   if (limit > 0) {
-    // Test runs: a slice of each kind, and the plan itself shrinks to match.
-    const pick = <T extends WordUnit | SentenceUnit>(xs: T[]) => xs.slice(0, limit);
+    // Test runs: an even sample across each kind (the first entries are all function words).
+    const pick = <T extends WordUnit | SentenceUnit>(xs: T[]) => {
+      const step = Math.max(1, Math.floor(xs.length / limit));
+      return xs.filter((_, i) => i % step === 0).slice(0, limit);
+    };
     plan.words = [
       ...pick(plan.words.filter((u) => u.voice === 'us')),
       ...pick(plan.words.filter((u) => u.voice === 'uk')),
     ];
-    plan.sentences = pick(plan.sentences);
+    // Test runs check every sentence they render.
+    plan.sentences = pick(plan.sentences).map((u) => ({ ...u, sample: true }));
     const keep = new Set([...plan.words, ...plan.sentences]);
-    todo = todo.filter((u) => keep.has(u));
+    const keys = new Set([...keep].map((u) => `${u.type}:${u.voice}:${u.key}`));
+    todo = [...plan.words, ...plan.sentences].filter((u) =>
+      keys.has(`${u.type}:${u.voice}:${u.key}`),
+    );
   }
 
   const n = Math.max(1, Math.min(cfg.chunks, Math.ceil(todo.length / 50)));

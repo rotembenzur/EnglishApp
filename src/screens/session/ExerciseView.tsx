@@ -14,7 +14,7 @@ import { t } from '@/i18n/he';
 import { useSession, type Feedback } from '@/session/runner';
 import { toOptionWord, type Exercise } from '@/session/exercise';
 import { useApp } from '@/state/app';
-import { isAudioUnlocked, playWord, speak } from '@/audio/speech';
+import { isAudioUnlocked, playSentence, playWord } from '@/audio/speech';
 import type { Sfx } from '@/audio/sfx';
 import { buzz } from '@/audio/sfx';
 import { Bar, Button, En, Pill, Speak } from '@/ui/kit';
@@ -302,7 +302,7 @@ function Choice({
               <Button
                 variant="soft"
                 className="py-2 text-sm"
-                onClick={() => void speak(ex.word.sentences[0]!.en, opts)}
+                onClick={() => void playSentence(ex.word.sentences[0]!.en, opts)}
               >
                 {t.session.playSentence}
               </Button>

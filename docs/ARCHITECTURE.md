@@ -10,7 +10,8 @@ src/
   data/         Dexie database, repositories, migrations, export/import
   state/        Zustand stores (theme, profile, session UI state)
   sync/         Local-first sync layer (outbox, Supabase REST client, presence)
-  audio/        Pronunciation: dictionary audio with service-worker cache, speechSynthesis fallback
+  audio/        Pronunciation: recordings (packs, sentence clips, offline cache), dictionary audio,
+                system voice ranking and speechSynthesis fallback
   gamification/ XP, levels, streaks, badges
   ui/           Reusable components (shell, tab bar, cards, buttons, toasts)
   screens/      One file per screen (see docs/SCREENS.md)
@@ -83,6 +84,27 @@ transaction (word row, review row, profile) and the plan position is persisted f
 - Tier B enrichment happens at runtime (`src/content/enrich.ts`: dictionaryapi.dev, MyMemory,
   Google gtx fallback) and is cached in IndexedDB and the service worker. A word without Hebrew and
   two real example sentences is never shown.
+- Audio follows content: a push of new or edited shards or curated lists to the default branch
+  renders their recordings (see Audio below). `pnpm audio:plan` shows locally what would render.
+
+## Audio
+
+Recordings are rendered at build time, not by the phone (details and reasons: `docs/DECISIONS.md`,
+recorded audio).
+
+- `scripts/audio/plan.ts` lists every clip: words and curated items in two voices (Kokoro
+  `af_heart`, `bf_emma`), normal and slow; example sentences in the American voice. Each clip has
+  a generation hash; clips already in the store are skipped.
+- `.github/workflows/audio.yml` renders the rest in 20 parallel jobs with
+  `scripts/audio/generate.py` (Kokoro ONNX, misaki G2P, IPA fallback from `phonemes.py`, silence
+  and loudness checks, Whisper checks, AAC encoding), then `assemble.ts` builds word packs,
+  sentence tars, indexes, `store.json` and a quality report, publishes them to the `audio-store`
+  release and starts a deploy. `scripts/audio/place.sh` lays them into `dist/audio/` during the
+  deploy.
+- In the app, `src/audio/recordings.ts` reads `audio/index.json`, keeps the word packs of the
+  chosen accent in Cache Storage, caches and prefetches sentence clips, and returns Blobs;
+  `speech.ts` plays them through one `<audio>` element, then falls back to dictionary audio and
+  the system voice (`voices.ts` ranks those). Clips are found by `clipKey(text)` (`key.ts`).
 
 ## Sync
 

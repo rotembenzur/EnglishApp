@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent))
-from phonemes import in_vocab, ipa_to_misaki, phone_distance  # noqa: E402
+from phonemes import in_vocab, ipa_to_misaki, lev, phone_distance, strip_stress  # noqa: E402
 
 CFG = json.loads((Path(__file__).parent / "config.json").read_text())
 SR = CFG["sampleRate"]
@@ -153,7 +153,10 @@ class Ears:
              "-f", "f32le", "-ac", "1", "-ar", "16000", "pipe:1"],
             capture_output=True, check=True,
         ).stdout
-        audio = np.frombuffer(pcm, dtype="<f4").copy()
+        audio = np.frombuffer(pcm, dtype="<f4")
+        # Whisper hears isolated short words better with some silence around them.
+        pad = np.zeros(int(0.5 * 16000), dtype=np.float32)
+        audio = np.concatenate([pad, audio, pad])
         segs, _ = model.transcribe(
             audio, language="en", beam_size=5, temperature=0.0,
             without_timestamps=True, condition_on_previous_text=False, vad_filter=False,
@@ -177,9 +180,11 @@ class Ears:
         h, t = self.norm(heard), self.norm(text)
         if h == t:
             return {"ok": True, "how": "exact"}
-        pd = phone_distance(self.phones(h), self.phones(t))
+        ph, pt = self.phones(h), self.phones(t)
+        pd = phone_distance(ph, pt)
         if kind == "word":
-            ok = pd <= 0.2
+            # Short words: one phoneme off is within what Whisper mishears ("uh" for "a").
+            ok = pd <= 0.2 or (len(strip_stress(pt)) <= 4 and lev(strip_stress(ph), strip_stress(pt)) <= 1)
         else:
             ok = pd <= 0.15 or wer(h, t) <= 0.15
         return {"ok": ok, "how": "phones" if ok else "miss", "pd": round(pd, 3)}
@@ -265,10 +270,11 @@ class Voices:
         add("g2p", g2p)
         if own_ipa:
             add("ipa", ipa_to_misaki(own_ipa, accent == "uk"))
-        try:
-            add("espeak", self.espeak[accent](text)[0])
-        except Exception:  # noqa: BLE001
-            pass
+        if not own_ipa:
+            try:
+                add("espeak", self.espeak[accent](text)[0])
+            except Exception:  # noqa: BLE001
+                pass
         return out
 
     def heteronym(self, u: dict) -> str | None:
@@ -318,7 +324,9 @@ def render(voices: Voices, ears: Ears | None, out: Path, u: dict, kind: str, spe
         elif asr and ears is not None:
             encode(a, tmp)
             rec["asr"] = ears.hear(tmp, u["text"], kind)
-            score = (2 if rec["asr"]["ok"] else 1, -rec["asr"].get("pd", 0.0))
+            # On a miss, a later candidate wins only if it is clearly closer (Whisper is noisy on
+            # isolated words, and the first candidate is the model's own reading).
+            score = (2, 0.0) if rec["asr"]["ok"] else (1, -round(rec["asr"].get("pd", 1.0) / 0.25))
         else:
             score = (2, 0.0)
         if best is None or score > best[0]:

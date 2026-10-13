@@ -255,6 +255,30 @@ async function main() {
   const methods: Record<string, number> = {};
   for (const i of wordClips) methods[i.method ?? '?'] = (methods[i.method ?? '?'] ?? 0) + 1;
   const pct = (a: number, b: number) => (b ? Math.round((1000 * a) / b) / 10 : 0);
+  // Where the misses are (counts only): voice and speed, word length, what Whisper returned.
+  const missBy: Record<string, number> = {};
+  const lenOf = (g: string) => {
+    const u = plan.words.find((w) => w.g === g || w.gs === g);
+    const n = u?.text.length ?? 0;
+    return n <= 3 ? 'len<=3' : n <= 6 ? 'len4-6' : n <= 10 ? 'len7-10' : 'len11+';
+  };
+  for (const [g, i] of Object.entries(items)) {
+    if (i.kind !== 'word' || !i.asr) continue;
+    const tag = (k: string) => (missBy[k] = (missBy[k] ?? 0) + (i.asr!.ok ? 0 : 1));
+    tag(`${i.voice}.${i.speed < 1 ? 'slow' : 'normal'}`);
+    tag(lenOf(g));
+    if (!i.asr.ok) {
+      const heard = (i.asr.heard ?? '').trim();
+      tag(
+        !heard
+          ? 'heard-nothing'
+          : heard.split(/\s+/).length > 1
+            ? 'heard-several-words'
+            : 'heard-one-word',
+      );
+      tag(`pd${Math.min(10, Math.round((i.asr.pd ?? 1) * 10))}`);
+    }
+  }
   const report = {
     pipeline: cfg.pipeline,
     builtAt: new Date().toISOString(),
@@ -274,6 +298,7 @@ async function main() {
       clipsRetried: firstMiss.length,
     },
     pronunciation: methods,
+    missBy,
     renderFailuresThisRun: failed,
     freshThisRun: [...fresh.values()].filter((f) => f.file).length,
     totalBytes,
@@ -310,6 +335,7 @@ async function main() {
     `ASR on sampled sentences: ${missSent.length} of ${sampled.length} mismatched (${report.asr.sentenceMismatchRate}%).`,
     `Clips re-rendered with another pronunciation: ${firstMiss.length}. Render failures this run: ${failed}.`,
     `Pronunciation source of word clips: ${JSON.stringify(methods)}.`,
+    `Word misses by group: ${JSON.stringify(missBy)}.`,
     '',
     `Total: ${report.totalMB} MB, ${report.totalHours} hours of audio.`,
     '',

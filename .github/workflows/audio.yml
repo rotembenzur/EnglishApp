@@ -30,7 +30,7 @@ concurrency:
 
 env:
   PUBLISH: ${{ github.ref_name == github.event.repository.default_branch && (inputs.limit == '' || inputs.limit == null || inputs.limit == '0') }}
-  LIMIT: ${{ inputs.limit != '' && inputs.limit != null && inputs.limit || (github.ref_name == github.event.repository.default_branch && '0' || '12') }}
+  LIMIT: ${{ inputs.limit != '' && inputs.limit != null && inputs.limit || (github.ref_name == github.event.repository.default_branch && '0' || '40') }}
   GH_TOKEN: ${{ github.token }}
 
 jobs:

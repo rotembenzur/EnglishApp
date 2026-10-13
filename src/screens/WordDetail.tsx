@@ -6,6 +6,7 @@ import { getContent, loadInventory } from '@/content/inventory';
 import { confusablesFor, type Confusable } from '@/content/confusables';
 import { ConfusableCard } from '@/ui/ConfusableCard';
 import { deviceId } from '@/data/db';
+import { clipForReport } from '@/audio/speech';
 import { addEvent, putWord } from '@/data/repo';
 import { relTime, t } from '@/i18n/he';
 import { useApp } from '@/state/app';
@@ -23,6 +24,7 @@ export function WordDetail() {
   const userId = useApp((s) => s.userId)!;
   const word = useApp((s) => s.words.get(lemmaId));
   const setWord = useApp((s) => s.setWord);
+  const accent = useApp((s) => s.profile?.settings.accent ?? 'us');
   const [content, setContent] = useState<WordContent | null | undefined>(undefined);
   const [info, setInfo] = useState<LemmaInfo | undefined>();
   const [family, setFamily] = useState<LemmaInfo[]>([]);
@@ -236,10 +238,28 @@ export function WordDetail() {
               key={k}
               variant="outline"
               onClick={async () => {
+                // Which recording (or voice) the user heard, so a bad clip can be re-rendered.
+                const lemma = content?.lemma ?? info?.lemma ?? '';
+                const clip = lemma
+                  ? await clipForReport(
+                      lemma,
+                      [
+                        ...(content?.sentences ?? []).map((x) => x.en),
+                        ...(content?.context ? [content.context.en] : []),
+                      ],
+                      accent,
+                    )
+                  : null;
                 await addEvent({
                   userId,
                   type: 'report',
-                  payload: { lemmaId, lemma: info?.lemma, kind: k, tier: content?.tier ?? 'C' },
+                  payload: {
+                    lemmaId,
+                    lemma: info?.lemma,
+                    kind: k,
+                    tier: content?.tier ?? 'C',
+                    ...(clip ? { clip } : {}),
+                  },
                 });
                 setReporting(false);
                 toast(t.word.reportThanks, { icon: '🛡️' });

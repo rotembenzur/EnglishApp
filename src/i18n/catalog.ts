@@ -51,6 +51,10 @@ export const SAMPLES: Record<string, unknown[]> = {
   aSec: ['7.2'],
   bSec: ['8.1'],
   when: [relTime(NOW - 20 * 60_000, NOW)],
+  words: ['6,799'],
+  sentences: ['20,292'],
+  done: [12],
+  names: ['Ava / Zoe', 'Serena / Jamie'],
 };
 
 /** Parameter names of a function, from its source. */

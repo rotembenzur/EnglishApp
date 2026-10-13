@@ -2,6 +2,7 @@
  * Live session state machine. Progress is saved per item (spec 4.6.6): every answer is written
  * to IndexedDB before the UI moves on, and the plan position is persisted for resume.
  */
+import { prefetchSentences } from '@/audio/recordings';
 import { create } from 'zustand';
 import { applyAnswer, introduceWord } from '@/engine/learn';
 import { createRng } from '@/engine/rng';
@@ -207,6 +208,10 @@ export const useSession = create<SessionState>((set, get) => ({
       deadline: mode === 'speed' ? startedAt + SPEED_ROUND_MS : null,
     });
     void setPresence(app.userId, true);
+    // The sentence recordings of this session, so it keeps its audio if the network drops.
+    void prefetchSentences(
+      [...built.contents.values()].flatMap((c) => c.sentences.map((x) => x.en)),
+    );
     await persist({ built, index: first.index, startedAt });
   },
 

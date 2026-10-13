@@ -1,6 +1,6 @@
 /** Small shared UI building blocks. */
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { playWord, speak, unlockAudio } from '@/audio/speech';
+import { playSentence, playWord, unlockAudio } from '@/audio/speech';
 import { useApp } from '@/state/app';
 import { BackIcon, SpeakerIcon } from './icons';
 import { useToasts } from './toast';
@@ -143,7 +143,7 @@ export function Speak({
     };
     try {
       if (isWord) await playWord(text, urls ?? {}, opts);
-      else await speak(text, opts);
+      else await playSentence(text, opts);
     } finally {
       setPlaying(false);
     }

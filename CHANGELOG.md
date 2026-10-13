@@ -2,6 +2,39 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.8.0 (2026-10-13)
+
+Real recordings instead of the phone's robot voice.
+
+- Every authored word (6,000), curated item (phrasal verbs, idioms, collocations: 800) and
+  example sentence (20,400) now plays a pre-rendered neural recording (Kokoro). American voice
+  for everything; British voice for words and items (with the accent on UK, sentences use the
+  American recording). The numbers actually published are in STATUS.md.
+- A long press on a word plays a real slow recording (rendered at 0.75 speed), not stretched
+  synthesis. A long press on a sentence slows its recording down with the pitch kept.
+- Offline: the words of your accent are stored on the phone in the background (about 70 MB);
+  sentences are stored when played and prefetched for the current and the next session. Works in
+  the home screen app without a connection.
+- Quality: every word clip was checked automatically by speech recognition (Whisper), with a
+  second opinion and a re-render in another pronunciation when it heard something else. Silence,
+  loudness and length are checked on every clip. Heteronyms (read, lead, live, record...) follow
+  the pronunciation on the card.
+- System voice (the fallback for Read mode, notes and anything without a recording): the best
+  installed voice is picked by its real quality (premium, enhanced, compact). Novelty and
+  Eloquence voices (Bells, Zarvox, Grandpa...) are gone from the list, duplicates are merged, the
+  best five are shown with their quality, and the list refreshes when a voice is downloaded.
+  Without a good voice installed, **הגדרות** shows how to download one.
+- **הגדרות** shows the recordings: how many, whether the words are stored for offline use, and a
+  button to hear one. The test button for the system voice stays.
+- "Report a problem" now records which clip you heard (recording or voice), so a bad one can be
+  re-rendered.
+- Fixed: dictionary audio for runtime words landed in the API cache, and offline playback of
+  cached audio could fail on Safari (range requests). Recordings play from stored data, never by
+  streaming a cached URL.
+- New audio pipeline: `scripts/audio` and the Audio workflow render only new or changed text,
+  publish to the `audio-store` release and redeploy. Future authored words get audio
+  automatically on the next push.
+
 ## 0.7.0 (2026-10-13)
 
 A daily goal that matches what a day of practice really earns: 1000 XP instead of 60.

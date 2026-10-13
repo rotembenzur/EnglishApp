@@ -73,23 +73,29 @@ export default defineConfig({
         skipWaiting: false,
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => url.hostname === 'api.dictionaryapi.dev',
+            // Dictionary recordings (runtime Tier B words). Listed before the API rule so they land
+            // in their own cache; range requests are answered from the cached file (Safari asks
+            // for byte ranges). Same-origin recordings (audio/) are cached by the app itself.
+            urlPattern: ({ url, sameOrigin }) =>
+              !sameOrigin &&
+              (/\.(mp3|ogg|wav|m4a)$/i.test(url.pathname) ||
+                (url.hostname.endsWith('dictionaryapi.dev') && url.pathname.startsWith('/media/'))),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'word-audio',
+              rangeRequests: true,
+              expiration: { maxEntries: 4000, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
+            urlPattern: ({ url }) =>
+              url.hostname === 'api.dictionaryapi.dev' && url.pathname.startsWith('/api/'),
             handler: 'CacheFirst',
             options: {
               cacheName: 'dictionary-api',
               expiration: { maxEntries: 5000, maxAgeSeconds: 60 * 60 * 24 * 180 },
               cacheableResponse: { statuses: [0, 200, 404] },
-            },
-          },
-          {
-            urlPattern: ({ url }) =>
-              /\.(mp3|ogg|wav|m4a)$/i.test(url.pathname) ||
-              url.hostname.endsWith('dictionaryapi.dev'),
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'word-audio',
-              expiration: { maxEntries: 4000, maxAgeSeconds: 60 * 60 * 24 * 365 },
-              cacheableResponse: { statuses: [0, 200] },
             },
           },
           {

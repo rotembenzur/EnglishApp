@@ -13,7 +13,16 @@ import {
   resetUser,
   saveProfile,
 } from '@/data/repo';
-import { englishVoices, loadVoices, playWord, unlockAudio } from '@/audio/speech';
+import {
+  currentVoices,
+  loadVoices,
+  onVoicesChanged,
+  playWord,
+  speak,
+  unlockAudio,
+} from '@/audio/speech';
+import { syncWordPacks, useRecordings } from '@/audio/recordings';
+import { hasGoodVoice, PREFERRED, voiceChoices } from '@/audio/voices';
 import { t } from '@/i18n/he';
 import { useApp } from '@/state/app';
 import { useTheme, type ThemeMode } from '@/state/theme';
@@ -78,13 +87,18 @@ export function Settings() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    void loadVoices().then(() => setVoices(englishVoices()));
+    void loadVoices().then(() => setVoices([...currentVoices()]));
+    return onVoicesChanged((v) => setVoices([...v]));
   }, []);
   useEffect(() => {
     if (loc.hash === '#sync') document.getElementById('sync')?.scrollIntoView({ block: 'start' });
   }, [loc.hash]);
 
   const set = (patch: Partial<UserSettings>) => void update(patch);
+  const choices = voiceChoices(voices, s.accent);
+  const isApple =
+    typeof navigator !== 'undefined' && /iPhone|iPad|Macintosh/.test(navigator.userAgent);
+  const showGuide = isApple && voices.length > 0 && !hasGoodVoice(voices, s.accent);
 
   if (pinOpen) {
     return (
@@ -208,11 +222,15 @@ export function Settings() {
                 accent: v as 'us' | 'uk',
                 voiceURI: undefined,
               } as Partial<UserSettings>);
+              void syncWordPacks(v as 'us' | 'uk');
             }}
           />
+          <RecordingsStatus accent={s.accent} speechRate={s.speechRate} />
           <Row label={t.settings.voice}>
             <select
-              value={s.voiceURI ?? ''}
+              value={
+                s.voiceURI && choices.some((c) => c.voice.voiceURI === s.voiceURI) ? s.voiceURI : ''
+              }
               onChange={(e) =>
                 set({ voiceURI: e.target.value || undefined } as Partial<UserSettings>)
               }
@@ -220,15 +238,15 @@ export function Settings() {
               aria-label={t.settings.voice}
             >
               <option value="">{t.settings.voiceAuto}</option>
-              {voices
-                .filter((v) => v.lang.toLowerCase().includes(s.accent === 'us' ? 'us' : 'gb'))
-                .map((v) => (
-                  <option key={v.voiceURI} value={v.voiceURI}>
-                    {v.name}
-                  </option>
-                ))}
+              {choices.map((c) => (
+                <option key={c.voice.voiceURI} value={c.voice.voiceURI}>
+                  {`${c.base} · ${t.settings.voiceQuality[c.quality]}`}
+                </option>
+              ))}
             </select>
           </Row>
+          <p className="-mt-1 px-1 text-xs text-ink-3">{t.settings.voiceHint}</p>
+          {showGuide && <VoiceGuide accent={s.accent} />}
           <Row label={t.settings.speedValue(s.speechRate.toFixed(2))}>
             <input
               type="range"
@@ -252,18 +270,14 @@ export function Settings() {
             variant="soft"
             onClick={() => {
               unlockAudio();
-              void playWord(
-                'Wonderful. This is how I sound.',
-                {},
-                {
-                  accent: s.accent,
-                  ...(s.voiceURI ? { voiceURI: s.voiceURI } : {}),
-                  rate: s.speechRate,
-                },
-              );
+              void speak('Wonderful. This is how I sound.', {
+                accent: s.accent,
+                ...(s.voiceURI ? { voiceURI: s.voiceURI } : {}),
+                rate: s.speechRate,
+              });
             }}
           >
-            🔊 {t.settings.test}
+            🔊 {t.settings.testVoice}
           </Button>
         </Section>
 
@@ -834,5 +848,62 @@ function Field({
         className="rounded-xl border border-line bg-card px-3 py-3 outline-none focus:border-accent"
       />
     </label>
+  );
+}
+
+/** Recorded audio: what is available and whether the words are stored for offline use. */
+function RecordingsStatus({ accent, speechRate }: { accent: 'us' | 'uk'; speechRate: number }) {
+  const r = useRecordings();
+  const fmt = (n: number) => n.toLocaleString('en-US');
+  let line: string;
+  if (!r.root) line = t.settings.recordingsNone;
+  else if (r.packsTotal && r.packsReady >= r.packsTotal) line = t.settings.recordingsOffline;
+  else if (r.packsTotal && r.syncing)
+    line = t.settings.recordingsDownloading(r.packsReady, r.packsTotal);
+  else line = t.settings.recordingsWaiting;
+  return (
+    <div className="card flex flex-col gap-2 px-4 py-3">
+      <div className="flex items-center justify-between gap-3">
+        <span className="font-medium">{t.settings.recordings}</span>
+        {r.root && (
+          <button
+            type="button"
+            className="tap rounded-pill bg-accent-soft px-3 py-1.5 text-sm font-semibold text-accent"
+            onClick={() => {
+              unlockAudio();
+              void playWord('wonderful', {}, { accent, rate: speechRate });
+            }}
+          >
+            🔊 {t.settings.testRecording}
+          </button>
+        )}
+      </div>
+      {r.root && r.words > 0 && (
+        <p className="text-sm text-ink-2">
+          {t.settings.recordingsCount(fmt(r.words), fmt(r.sentences))}
+        </p>
+      )}
+      <p className="text-sm text-ink-2">{line}</p>
+      {r.root && <p className="text-xs text-ink-3">{t.settings.recordingsSentences}</p>}
+    </div>
+  );
+}
+
+/** How to download a better system voice; shown only when none is installed. */
+function VoiceGuide({ accent }: { accent: 'us' | 'uk' }) {
+  const names = PREFERRED[accent].slice(0, 2).join(' / ');
+  return (
+    <div className="card flex flex-col gap-2 border border-line px-4 py-3 text-sm">
+      <p className="font-semibold">{t.settings.guideTitle}</p>
+      <p className="text-ink-2">{t.settings.guideIntro}</p>
+      <ol className="list-decimal space-y-1 ps-5 text-ink-2">
+        {t.settings.guideSteps(names).map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+      <p className="text-xs text-ink-3">
+        {t.settings.guideEnglishLabel} <Ltr>{t.settings.guideEnglishPath}</Ltr>
+      </p>
+    </div>
   );
 }

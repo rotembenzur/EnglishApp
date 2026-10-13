@@ -4,7 +4,8 @@ import { Shell } from '@/ui/Shell';
 import { setupServiceWorker } from '@/pwa/registerSW';
 import { applyThemeToDocument, useTheme } from '@/state/theme';
 import { useApp } from '@/state/app';
-import { loadVoices, unlockAudio } from '@/audio/speech';
+import { isAudioElementUnlocked, loadVoices, unlockAudio } from '@/audio/speech';
+import { loadRecordings, syncWordPacks } from '@/audio/recordings';
 import { loadInventory } from '@/content/inventory';
 import { startSyncLoop, syncNow } from '@/sync/engine';
 import { refreshPush } from '@/sync/push';
@@ -60,6 +61,7 @@ export function App() {
   const mode = useTheme((s) => s.mode);
   const init = useApp((s) => s.init);
   const userId = useApp((s) => s.userId);
+  const accent = useApp((s) => s.profile?.settings.accent);
 
   useEffect(() => {
     applyThemeToDocument(mode);
@@ -72,9 +74,17 @@ export function App() {
   useEffect(() => {
     void init();
     void loadVoices();
-    // iOS only allows speech from inside a user gesture: unlock on the first touch anywhere.
-    const unlock = () => unlockAudio();
-    document.addEventListener('pointerdown', unlock, { once: true, capture: true });
+    // iOS only allows audio from inside a user gesture: unlock on the first touches anywhere
+    // (touchend and click count as gestures for media on iOS, pointerdown not always).
+    const unlock = () => {
+      unlockAudio();
+      if (isAudioElementUnlocked())
+        for (const ev of ['pointerdown', 'touchend', 'click'])
+          document.removeEventListener(ev, unlock, { capture: true });
+    };
+    for (const ev of ['pointerdown', 'touchend', 'click'])
+      document.addEventListener(ev, unlock, { capture: true });
+    void loadRecordings();
     void loadInventory();
     startSyncLoop();
     if (import.meta.env.PROD) setupServiceWorker();
@@ -87,6 +97,18 @@ export function App() {
     schedulePrefetch();
     scheduleWeeklyOptimize();
   }, [userId]);
+
+  // Recorded words of the chosen accent are stored for offline use in the background.
+  useEffect(() => {
+    if (!accent) return;
+    const run = () => void syncWordPacks(accent);
+    const t = window.setTimeout(run, 5000);
+    window.addEventListener('online', run);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener('online', run);
+    };
+  }, [accent]);
 
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>

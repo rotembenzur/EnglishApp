@@ -14,7 +14,21 @@ interface ReportEvent {
   type: string;
   userId: string;
   at: number;
-  payload: { lemmaId?: number; lemma?: string; kind?: string; tier?: string };
+  payload: {
+    lemmaId?: number;
+    lemma?: string;
+    kind?: string;
+    tier?: string;
+    /** What played before the report (0.8.0+): recording key and file, or the system voice. */
+    clip?: {
+      text?: string;
+      source?: string;
+      voice?: string;
+      key?: string;
+      file?: string;
+      slow?: boolean;
+    };
+  };
 }
 
 async function fromBackup(file: string): Promise<ReportEvent[]> {
@@ -52,6 +66,14 @@ async function main() {
       count: number;
       kinds: Record<string, number>;
       lastAt: number;
+      clips: {
+        source: string;
+        voice: string;
+        key?: string;
+        file?: string;
+        slow?: boolean;
+        text?: string;
+      }[];
     }
   >();
   for (const e of events) {
@@ -66,11 +88,23 @@ async function main() {
       count: 0,
       kinds: {},
       lastAt: 0,
+      clips: [],
     };
     row.count++;
     const k = e.payload.kind ?? 'other';
     row.kinds[k] = (row.kinds[k] ?? 0) + 1;
     row.lastAt = Math.max(row.lastAt, e.at);
+    const c = e.payload.clip;
+    if (c && !row.clips.some((x) => x.key === c.key && x.file === c.file && x.slow === c.slow)) {
+      row.clips.push({
+        source: c.source ?? '?',
+        voice: c.voice ?? '?',
+        ...(c.key ? { key: c.key } : {}),
+        ...(c.file ? { file: c.file } : {}),
+        ...(c.slow ? { slow: true } : {}),
+        ...(c.text ? { text: c.text } : {}),
+      });
+    }
     by.set(id, row);
   }
   const out = [...by.values()].sort((a, b) => b.count - a.count || b.lastAt - a.lastAt);

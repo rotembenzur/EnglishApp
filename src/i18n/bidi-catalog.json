@@ -384,6 +384,14 @@
     "text": "סשן רגיל שווה בערך 300 עד ‎500 XP‎"
   },
   {
+    "key": "settings.recordingsCount(6,799, 20,292)",
+    "text": "6,799 מילים וביטויים, 20,292 משפטים"
+  },
+  {
+    "key": "settings.recordingsDownloading(12, 40)",
+    "text": "שומר מילים לשימוש בלי רשת: 12 מתוך 40"
+  },
+  {
     "key": "settings.speedValue(0.95)",
     "text": "מהירות דיבור (0.95)"
   },
