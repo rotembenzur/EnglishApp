@@ -1,20 +1,35 @@
 # STATUS
 
-**Live URL:** https://rotembenzur.github.io/EnglishApp/ (goes live after step 1 of `SETUP.md`)
+**Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-12 · version 0.3.0
+Last updated: 2026-10-13 · version 0.3.0
+
+## Deployment
+
+- Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
+- Latest deploy: CI and deploy run #25 on commit `4ad8c02` (2026-10-13), all three jobs green
+  (lint/typecheck/test/build, Playwright smoke, Deploy to GitHub Pages); GitHub reports the
+  `github-pages` deployment as successful at https://rotembenzur.github.io/EnglishApp/.
+- Runs #23 and #24 failed in the Playwright job: with the dictionary APIs reachable on GitHub's
+  runners, building a learning session took about 18 s (probe and plan-content lookups each waited
+  online), and the test raced the loading skeleton. Fixed in `4ad8c02`: sessions now start in about
+  3 s online, e2e blocks third-party APIs by default, and a new `[online]` test with slow mocked
+  APIs guards the start time.
+- How the deploy was verified: this build container's network policy blocks `*.github.io` and the
+  artifact storage host, so the live URL could not be opened from here. Instead, the same commit
+  was rebuilt with the CI command and served under `/EnglishApp/` by a GitHub Pages stand-in (real
+  404s from `404.html`), with Chromium mapped to `rotembenzur.github.io`. Result: page loads in
+  Hebrew RTL, manifest scope and start URL `/EnglishApp/`, icons and service worker served, all
+  content loads (30 shards, 3 curated lists), deep links work warm and cold, zero errors.
+  Opening the real URL on a phone is the remaining check (QA list below).
 
 ## Waiting on owner
 
-1. **Publish the app** (two minutes, `SETUP.md` step 1): make `claude/trusting-knuth-gbbnzv` the
-   default branch and set Pages source to GitHub Actions. The repository's default branch is still
-   the first session's branch and Pages is off, so the deploy job is skipped. Everything else
-   (lint, typecheck, tests, build, e2e) runs and passes on every push.
-2. **Sync backend** (optional, five minutes, `SETUP.md` step 3): needed for the live rivalry
+1. **Sync backend** (optional, five minutes, `SETUP.md` step 3): needed for the live rivalry
    between two phones. The app is fully usable without it.
-3. **Push reminders** (optional, `SETUP.md` step 4).
+2. **Push reminders** (optional, `SETUP.md` step 4).
 
-## Live now (in the code, deploys once Pages is on)
+## Live now
 
 - Profile picker (רתם / נועה) with optional PIN, remembered per device.
 - Placement test: adaptive, about 25 words with meaning checks, level reveal.
@@ -50,11 +65,11 @@ Last updated: 2026-10-12 · version 0.3.0
 Run from `docs/QA_CHECKLIST.md`. Items verifiable without a phone are verified in a headless
 iPhone 14 profile; items that need a real iPhone stay open until checked on the device.
 
-- [ ] Installs on iPhone from Safari and opens full screen (needs the live URL)
-- [x] Works offline after first load: service worker precaches the shell and all content (2026-10-12, build check)
+- [ ] Installs on iPhone from Safari and opens full screen (URL is live; needs a check on a real iPhone)
+- [x] Works offline after first load: service worker precaches the shell and all content (2026-10-12, e2e offline test; 2026-10-13, Pages-like build)
 - [ ] Audio plays in standalone mode (needs a real iPhone)
 - [x] RTL layout and bidi strings look right (2026-10-12, screenshots in `docs/screenshots/`)
 - [x] Dark and light mode (2026-10-12, screenshots)
-- [ ] Two profiles on two phones (needs the live URL)
+- [ ] Two profiles on two phones (URL is live; needs both phones)
 - [x] Sync and rival card: merge rules covered by unit tests (2026-10-12); live check needs the backend
 - [x] Export and import round trip (2026-10-12, unit test)

@@ -2,7 +2,7 @@
 
 Everything here is one-time. The app works fully in local mode without the optional parts.
 
-## 1. Publish the app (required once, about two minutes)
+## 1. Publish the app (done 2026-10-13)
 
 The code lives on the branch `claude/trusting-knuth-gbbnzv`. The deploy job publishes the
 repository's default branch to GitHub Pages, and Pages is not switched on yet.
