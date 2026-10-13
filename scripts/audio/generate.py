@@ -331,7 +331,10 @@ def render(voices: Voices, ears: Ears | None, out: Path, u: dict, kind: str, spe
     for method, p in cands:
         attempts += 1
         try:
-            raw = voices.say(p, u["voice"], speed)
+            # Words are rendered as a finished utterance: a falling, clean ending instead of the
+            # trailing sound Kokoro can leave after a bare word (worst at slow speed).
+            said = p + "." if kind == "word" and p[-1] not in ".!?" else p
+            raw = voices.say(said, u["voice"], speed)
         except Exception as e:  # noqa: BLE001
             print(f"synthesis error ({method}): {str(e)[:80]}", flush=True)
             continue
