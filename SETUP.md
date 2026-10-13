@@ -138,3 +138,11 @@ Free Supabase projects pause after about a week without activity, which would si
 `.github/workflows/keepalive.yml` makes real requests every 2 days (a small write that only stamps
 a time, plus reads), with no secret needed. If a run ever fails, GitHub emails a notice; open
 https://supabase.com/dashboard, open the project and tap **Restore project** if it shows.
+
+## 6. Recorded audio (nothing to do)
+
+The recordings are rendered by the **Audio** workflow in GitHub Actions and kept as files of the
+release named `audio-store` (marked pre-release; it is storage, not a software release). Every deploy
+copies them into the site. Do not delete that release: the next deploy would ship without
+recordings and the app would fall back to the phone's voice until the workflow runs again
+(Actions, **Audio**, **Run workflow** rebuilds everything in about an hour).

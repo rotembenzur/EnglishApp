@@ -22,8 +22,13 @@ date.
 
 ## Audio
 
-- [ ] Word audio plays in standalone mode after the first tap.
-- [ ] Sentence audio plays through speechSynthesis with an English voice.
+- [ ] Word audio plays in standalone mode after the first tap: the recording (not the phone voice).
+- [ ] Long press on a word plays the slow recording; long press on a sentence plays it slower.
+- [ ] Sentence audio plays the recording; text without one (Read mode) uses the best system voice.
+- [ ] **הגדרות** shows the recordings and "כל המילים שמורות במכשיר" after a minute online.
+- [ ] Airplane mode: words still play recordings; sentences played before still play.
+- [ ] The system voice list has no novelty voices, at most five, labeled by quality.
+- [ ] UK accent: words in the British recording, sentences in the American one.
 - [ ] Tap-and-hold plays slowly.
 
 ## RTL and bidi
