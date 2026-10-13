@@ -47,6 +47,8 @@ export interface Clip {
   file: string;
   voice: string;
   slow: boolean;
+  /** Slow requested but only the normal clip exists: play it slower. */
+  stretch?: boolean;
 }
 
 interface State {
@@ -251,12 +253,23 @@ export async function wordRecording(
   const loc =
     words?.get(key) ??
     (text !== text.toLowerCase() ? words?.get(clipKey(text.toLowerCase())) : undefined);
-  const part = loc && (slow ? loc.s : loc.n);
+  // No confirmed slow clip: the normal one, played slower by the caller (`stretch`).
+  const part = loc && (slow ? (loc.s ?? loc.n) : loc.n);
   if (!loc || !part) return null;
   const blob = await packSlice(loc.pack, part);
   if (!blob) return null;
   const root = useRecordings.getState().root;
-  return { blob, clip: { key, file: loc.pack, voice: root?.voices[accent] ?? accent, slow } };
+  const stretch = slow && !loc.s;
+  return {
+    blob,
+    clip: {
+      key,
+      file: loc.pack,
+      voice: root?.voices[accent] ?? accent,
+      slow,
+      ...(stretch ? { stretch } : {}),
+    },
+  };
 }
 
 function sentenceUrl(key: string): string {

@@ -39,6 +39,7 @@ interface Result {
 
 interface StoreItem extends Result {
   asset: string;
+  leftOut?: boolean;
   off?: number;
   len?: number;
 }
@@ -124,7 +125,7 @@ async function main() {
     const f = fresh.get(g);
     if (f?.file) return { meta: f.r, bytes: readFileSync(f.file) };
     const o = oldStore?.items[g];
-    if (o?.ok) {
+    if (o?.ok && o.asset) {
       const b = oldBytes(o);
       if (b) return { meta: o, bytes: b };
     }
@@ -148,6 +149,7 @@ async function main() {
   let totalBytes = 0;
   let totalSeconds = 0;
 
+  const dropped: string[] = [];
   // Word packs, one per voice and bucket.
   for (const voice of ['us', 'uk'] as const) {
     const byBucket = new Map<string, WordUnit[]>();
@@ -163,7 +165,17 @@ async function main() {
       let off = 0;
       for (const u of [...units].sort((a, b) => a.key.localeCompare(b.key))) {
         const n = clip(u.g);
-        const s = clip(u.gs);
+        let s = clip(u.gs);
+        // A slow clip Whisper could not confirm is left out: the app slows the normal one instead.
+        // It stays in the store (without bytes) so the next run does not render it again.
+        const prevOut = !s && oldStore?.items[u.gs]?.leftOut ? oldStore.items[u.gs]! : null;
+        if ((s && s.meta.asr && !s.meta.asr.ok) || prevOut) {
+          const meta = s?.meta ?? prevOut!;
+          items[u.gs] = { ...strip(meta), asset: '', leftOut: true } as StoreItem;
+          s = null;
+          bump(`${voice}.slow-left-out`);
+          dropped.push(u.gs);
+        }
         if (!n && !s) continue;
         keys += u.key;
         for (const [g, c] of [
@@ -244,8 +256,9 @@ async function main() {
   assets[sName] = sha(sJson, 64);
 
   // Quality report over the whole store (reused and fresh clips alike).
-  const all = Object.values(items);
+  const all = Object.values(items).filter((i) => !i.leftOut);
   const wordClips = all.filter((i) => i.kind === 'word');
+  const slowLeftOut = dropped.length;
   const checkedWords = wordClips.filter((i) => i.asr);
   const missWords = checkedWords.filter((i) => !i.asr!.ok);
   const sampled = all.filter((i) => i.kind === 'sentence' && i.asr);
@@ -305,6 +318,7 @@ async function main() {
       sentencesMismatched: missSent.length,
       sentenceMismatchRate: pct(missSent.length, sampled.length),
       clipsRetried: firstMiss.length,
+      slowClipsLeftOut: slowLeftOut,
     },
     pronunciation: methods,
     missBy,
@@ -340,7 +354,8 @@ async function main() {
     '',
     `Planned: ${report.planned.wordsPerVoice} words and items per voice, ${report.planned.sentences} sentences.`,
     '',
-    `ASR on word clips: ${missWords.length} of ${checkedWords.length} mismatched (${report.asr.wordMismatchRate}%).`,
+    `ASR on published word clips: ${missWords.length} of ${checkedWords.length} mismatched (${report.asr.wordMismatchRate}%).`,
+    `Slow clips left out after every retry missed (the app slows the normal clip): ${slowLeftOut}.`,
     `ASR on sampled sentences: ${missSent.length} of ${sampled.length} mismatched (${report.asr.sentenceMismatchRate}%).`,
     `Clips re-rendered with another pronunciation: ${firstMiss.length}. Render failures this run: ${failed}.`,
     `Pronunciation source of word clips: ${JSON.stringify(methods)}.`,

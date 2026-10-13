@@ -298,7 +298,8 @@ export async function playWord(
 ): Promise<void> {
   const slow = !!opts.slow;
   const rec = await wordRecording(word, opts.accent, slow).catch(() => null);
-  if (await playRecording(word, rec, recordingRate(opts.rate))) return;
+  const rate = recordingRate(opts.rate) * (rec?.clip.stretch ? 0.75 : 1);
+  if (await playRecording(word, rec, rate)) return;
   const url = opts.accent === 'uk' ? (urls.uk ?? urls.us) : (urls.us ?? urls.uk);
   if (url && !slow && (await playDictionary(word, url, Math.min(1, Math.max(0.75, opts.rate)))))
     return;
