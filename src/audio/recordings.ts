@@ -340,6 +340,7 @@ export async function syncWordPacks(accent: Accent): Promise<void> {
   const run = ++syncRun;
   const root = await loadRecordings();
   if (!root || run !== syncRun) return;
+  void sentenceKeys(); // also fills the sentence count shown in settings
   const idx = await fetchImmutableJson<PackIndex>(root.w[accent]);
   if (!idx || run !== syncRun) return;
   const words = idx.packs.reduce((n, p) => n + p.k.length / KEY_LEN, 0);

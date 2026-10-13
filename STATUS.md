@@ -7,8 +7,8 @@ Last updated: 2026-10-13 · version 0.8.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
-- Latest deploy: 0.7.0, CI and deploy run #53 on commit `afac24d` (2026-10-13), all three jobs
-  (verify, e2e, deploy) green; Push server run #13 green, the function reports version 6.
+- Latest deploy: 0.8.0 (see below for the run and the live check). The site now includes the
+  recordings from the `audio-store` release.
 - Verified on the real URL: the built JS carries 0.7.0; Chromium (iPhone 14 profile) on a fresh
   profile shows "/ 1000 XP" on home, **יעד יומי** 1000 XP with the 1000 preset selected and 0.7.0
   at the bottom of **הגדרות**, zero console errors. Server rows re-read at 15:40 UTC: both 1000.
@@ -51,9 +51,10 @@ Reported: the default voice was acceptable, the other voices terrible.
   - 528.5 MB, 21.4 hours of audio, AAC 48 kbps mono.
 - Hosting: the `audio-store` release of this repository holds the files (not the git history);
   every deploy copies them into the site under `audio/`. Pages limit 1 GB: the site is about
-  SITE_SIZE.
-- Offline: the words of your accent are stored on the phone in the background; sentences are
-  stored when played and prefetched for the next session.
+  540 MB (13 MB app, 528.5 MB audio).
+- Offline: the words of your accent are stored on the phone in the background (91.5 MB American,
+  87.4 MB British, 33 files); sentences are stored when played and prefetched for the next
+  session.
 - System voices: ranked by real quality (premium, enhanced, compact from the voice URI), novelty
   and Eloquence voices blocked, duplicates merged, best five shown. **הגדרות** explains how to
   download a Premium voice when none is installed.

@@ -12,7 +12,7 @@ Real recordings instead of the phone's robot voice.
   American recording). 528.5 MB in total; the full numbers are in STATUS.md.
 - A long press on a word plays a real slow recording (rendered at 0.75 speed), not stretched
   synthesis. A long press on a sentence slows its recording down with the pitch kept.
-- Offline: the words of your accent are stored on the phone in the background (about 70 MB);
+- Offline: the words of your accent are stored on the phone in the background (about 90 MB);
   sentences are stored when played and prefetched for the current and the next session. Works in
   the home screen app without a connection.
 - Quality: every word clip was checked automatically by speech recognition (Whisper), with a
