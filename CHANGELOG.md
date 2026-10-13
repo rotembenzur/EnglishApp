@@ -30,6 +30,9 @@ in the right visual order on every screen, in toasts, on the share cards and in 
   search fields read RTL while empty and follow what is typed; confusables search also finds
   Hebrew. The session timer reads "56 שנ׳".
 - Nudge toasts no longer show the emoji twice. Inline Hebrew strings moved into `he.ts`.
+- Icon and splash links resolve from the app root, so a nested screen no longer requests
+  `dev/icons/favicon.svg` (a console 404) and adding to the home screen from any page keeps the
+  icon.
 - Regression guards: unit tests check every UI string and every notification against a reference
   Unicode Bidirectional Algorithm; a source scan fails on Hebrew mixed with English or digits
   outside the helper; `pnpm tsx scripts/bidi-screens.ts` photographs every screen on an iPhone
