@@ -8,6 +8,8 @@ import { unlockAudio, stopAudio } from '@/audio/speech';
 import { syncNow } from '@/sync/engine';
 import { Bar, Button, Sheet } from '@/ui/kit';
 import { CloseIcon } from '@/ui/icons';
+import { CapCard } from '@/ui/CapCard';
+import { useCapReached } from '@/ui/cap';
 import { ExerciseView } from './session/ExerciseView';
 import { Summary } from './session/Summary';
 import { sfx } from '@/audio/sfx';
@@ -126,12 +128,11 @@ export function Session() {
           </div>
         )}
         {status === 'empty' && (
-          <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
-            <p className="text-5xl">🌤️</p>
-            <p className="text-xl font-bold">{t.session.empty}</p>
-            <p className="text-ink-2">{t.session.emptyBody}</p>
-            <Button onClick={() => nav('/', { replace: true })}>{t.summary.home}</Button>
-          </div>
+          <EmptySession
+            mode={built?.mode ?? 'learn'}
+            onLearn={() => void start('learn')}
+            onHome={() => nav('/', { replace: true })}
+          />
         )}
         {status === 'running' && exercise && (
           <ExerciseView
@@ -154,6 +155,42 @@ export function Session() {
           </Button>
         </div>
       </Sheet>
+    </div>
+  );
+}
+
+/** A mode with nothing to play explains why and offers the way forward (never a dead end). */
+function EmptySession({
+  mode,
+  onLearn,
+  onHome,
+}: {
+  mode: SessionMode;
+  onLearn: () => void;
+  onHome: () => void;
+}) {
+  const capReached = useCapReached();
+  return (
+    <div
+      className="flex flex-1 flex-col items-center justify-center gap-4 text-center"
+      data-testid="session-empty"
+    >
+      <p className="text-5xl">🌤️</p>
+      <p className="text-xl font-bold">{t.session.empty}</p>
+      <p className="text-ink-2">{t.session.emptyBy[mode] ?? t.session.emptyBody}</p>
+      {capReached && (
+        <div className="w-full text-start">
+          <CapCard onRaised={onLearn} />
+        </div>
+      )}
+      <div className="flex gap-3">
+        {mode !== 'learn' && mode !== 'duel' && (
+          <Button onClick={onLearn}>{t.session.emptyLearn}</Button>
+        )}
+        <Button variant="outline" onClick={onHome}>
+          {t.summary.home}
+        </Button>
+      </div>
     </div>
   );
 }

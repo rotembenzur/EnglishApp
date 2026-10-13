@@ -8,6 +8,7 @@ import {
   suggestCapChange,
   windowWeight,
   clampCap,
+  CAP_BONUS_STEP,
 } from './selection';
 import type { LemmaInfo } from './types';
 
@@ -138,6 +139,10 @@ describe('daily cap', () => {
     expect(newWordsLeft(8, 0)).toBe(8);
     expect(newWordsLeft(8, 5)).toBe(3);
     expect(newWordsLeft(8, 9)).toBe(0);
+    // "עוד 5 מילים חדשות": a bonus for today only, on top of the setting.
+    expect(newWordsLeft(8, 8, CAP_BONUS_STEP)).toBe(5);
+    expect(newWordsLeft(25, 25, 10)).toBe(10);
+    expect(newWordsLeft(8, 8, undefined)).toBe(0);
     expect(clampCap(1)).toBe(3);
     expect(clampCap(40)).toBe(25);
   });

@@ -110,9 +110,15 @@ export function selectNewWords(
   return chosen.slice(0, k);
 }
 
-/** New words still allowed today under the daily cap. */
-export function newWordsLeft(cap: number, introducedToday: number): number {
-  return Math.max(0, clampCap(cap) - introducedToday);
+/** One tap on "עוד 5 מילים חדשות" raises today's cap by this much, for today only. */
+export const CAP_BONUS_STEP = 5;
+
+/**
+ * New words still allowed today under the daily cap. `bonus` is what the user added for today
+ * with the one-tap option; it is not clamped (an explicit choice), the setting itself is.
+ */
+export function newWordsLeft(cap: number, introducedToday: number, bonus = 0): number {
+  return Math.max(0, clampCap(cap) + Math.max(0, bonus) - introducedToday);
 }
 
 export function clampCap(cap: number): number {

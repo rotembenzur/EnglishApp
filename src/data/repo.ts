@@ -98,6 +98,7 @@ export interface DailyDelta {
   correct?: number;
   ms?: number;
   sessions?: number;
+  bonusNew?: number;
 }
 
 export async function bumpDaily(
@@ -115,6 +116,9 @@ export async function bumpDaily(
     correct: before.correct + (delta.correct ?? 0),
     ms: before.ms + (delta.ms ?? 0),
     sessions: before.sessions + (delta.sessions ?? 0),
+    ...(delta.bonusNew || before.bonusNew
+      ? { bonusNew: (before.bonusNew ?? 0) + (delta.bonusNew ?? 0) }
+      : {}),
     goal,
     updatedAt: Date.now(),
     deviceId: await deviceId(),

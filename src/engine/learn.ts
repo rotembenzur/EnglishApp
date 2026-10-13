@@ -16,7 +16,7 @@ import {
   speedRoundRating,
   type SpeedProfile,
 } from './srs';
-import type { Ability, AnswerBehavior, ReviewRecord, UserId, UserWord } from './types';
+import type { Ability, AnswerBehavior, FsrsRating, ReviewRecord, UserId, UserWord } from './types';
 
 export function introduceWord(
   userId: UserId,
@@ -144,10 +144,15 @@ export function applyAnswer(i: AnswerInput): AnswerOutcome {
   }
 
   const base = i.word ?? introduceWord(i.userId, i.lemmaId, now, i.deviceId);
-  const rating =
-    i.role === 'speed' ? speedRoundRating(correct, b.responseMs) : deriveRating(b, i.profile);
-  const card = review(base.card, rating, now, opts);
   const firstExposure = i.role === 'recognition' || i.role === 'production';
+  // Early review: a graded word answered before it was due (sessions filled after the daily cap).
+  const early = !firstExposure && base.card.fsrsState !== 0 && base.card.due > now;
+  const derived =
+    i.role === 'speed' ? speedRoundRating(correct, b.responseMs) : deriveRating(b, i.profile);
+  // FSRS already scales the stability gain by retrievability, so an early Good is honest. Easy
+  // would add its bonus on top of a word that was not even due and overshoot: cap it at Good.
+  const rating: FsrsRating = early && derived === 4 ? 3 : derived;
+  const card = review(base.card, rating, now, opts);
   const learnedNow = i.role === 'production' && correct && !base.learnedAt;
   const crowns = crownsFor(card);
   const word: UserWord = {
@@ -183,6 +188,7 @@ export function applyAnswer(i: AnswerInput): AnswerOutcome {
       responseMs: b.responseMs,
       firstExposure,
       purpose: i.role === 'speed' ? 'speed' : firstExposure ? 'learn' : 'review',
+      ...(early ? { early: true } : {}),
       d: i.d,
       at: now,
       deviceId: i.deviceId,

@@ -16,6 +16,7 @@ import { Confetti } from '@/ui/Confetti';
 import { He } from '@/ui/bidi';
 import { RivalCard } from '../Home';
 import { shareSessionCard } from '@/ui/share';
+import { CapCard } from '@/ui/CapCard';
 
 export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
   const nav = useNavigate();
@@ -119,6 +120,8 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
             )}
           </div>
         )}
+
+        {s.mode !== 'duel' && <CapCard onRaised={() => onAgain('learn')} />}
 
         <div className="flex flex-col gap-2">
           <p className="text-sm font-bold text-ink-3">{t.summary.vsRival}</p>

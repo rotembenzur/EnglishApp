@@ -10,6 +10,13 @@ export type SessionMode = 'learn' | 'review' | 'hard' | 'listening' | 'speed' | 
 export type ItemRole =
   'review' | 'intro' | 'recognition' | 'production' | 'probe' | 'match' | 'speed';
 
+/**
+ * Where a review item came from. Due reviews come first; the rest fills a session when the queue
+ * is short (spec 4.6, cap reached): early reviews by lowest retrievability, then the hard-words
+ * pool, then practice of words learned today, then repeats of the same words in other exercises.
+ */
+export type FillSource = 'due' | 'early' | 'hard' | 'today' | 'repeat';
+
 export interface PlanItem {
   /** Stable key within the session (for React lists and resume). */
   key: string;
@@ -18,6 +25,8 @@ export interface PlanItem {
   role: ItemRole;
   /** Match pairs carry all their words. */
   matchIds?: number[];
+  /** Review items only (older saved plans have none). */
+  source?: FillSource;
 }
 
 export interface ComposeInput {
@@ -32,6 +41,8 @@ export interface ComposeInput {
   retention?: number;
   /** Lemma ids that have usable sentences for cloze. */
   clozeable?: ReadonlySet<number>;
+  /** Start of the user's local day: words reviewed or learned since then count as "today". */
+  dayStart?: number;
   rng: Rng;
 }
 
@@ -40,6 +51,26 @@ export const MAX_NEW_PER_SESSION = 5;
 export const TYPING_EVERY = 5;
 export const SPEED_ROUND_ITEMS = 60;
 export const BOSS_SIZE = 30;
+/** No session (besides the timed ones) is shorter than this when there is anything to practice. */
+export const MIN_SESSION = 15;
+/** Upper bound on how often one word may appear in a session when the pool is tiny. */
+export const MAX_REPEATS = 5;
+/** Extra practice items per new word when a session would otherwise be short. */
+export const EXTRA_PER_NEW = 3;
+
+/**
+ * Smallest pool of learned words each optional mode needs to make sense. Below it the mode shows
+ * a message with a way forward instead of a tiny session (review and learn always run).
+ */
+export const MODE_MIN: Record<SessionMode, number> = {
+  learn: 0,
+  review: 1,
+  hard: 3,
+  listening: 3,
+  speed: 4,
+  boss: 30,
+  duel: 0,
+};
 
 /** Approximate exercise mix for review items (spec 4.6 item 4). */
 export const MIX: Record<
@@ -61,6 +92,173 @@ export function dueWords(words: readonly UserWord[], now: number): UserWord[] {
 }
 
 const isProductionType = (t: ExerciseType) => t === 'typing' || t === 'spell_audio';
+
+/** Learned words with at least one graded answer: the pool every practice mode draws from. */
+export function practicePool(words: readonly UserWord[]): UserWord[] {
+  return words.filter(
+    (w) => (w.state === 'learning' || w.state === 'review') && w.card.fsrsState !== 0,
+  );
+}
+
+/** Pool size for a mode, as the home screen shows it (speed rounds also use passed probes). */
+export function modePoolSize(mode: SessionMode, words: readonly UserWord[]): number {
+  if (mode === 'speed') return speedPool(words).length;
+  return practicePool(words).length;
+}
+
+const HOUR = 3_600_000;
+
+function touchedSince(w: UserWord, dayStart: number): boolean {
+  return (
+    w.firstSeenAt >= dayStart ||
+    (w.lastReviewAt ?? 0) >= dayStart ||
+    (w.card.lastReview ?? 0) >= dayStart
+  );
+}
+
+/**
+ * Words to fill a session once the due queue is used up, in order (spec 4.6, owner's bug report):
+ *  1. early reviews: not due, not touched today, lowest FSRS retrievability first;
+ *  2. the hard-words pool among words reviewed today: leeches, then lowest stability;
+ *  3. practice of words learned today, weakest first.
+ * FSRS schedules early and same-day reviews from the real elapsed time, so the intervals stay
+ * honest (see applyAnswer for the one guard: no Easy bonus on a word that was not due).
+ */
+export function fillCandidates(
+  words: readonly UserWord[],
+  now: number,
+  opts: { exclude?: ReadonlySet<number>; dayStart?: number; retention?: number } = {},
+): { word: UserWord; source: FillSource }[] {
+  const dayStart = opts.dayStart ?? now - 12 * HOUR;
+  const pool = practicePool(words).filter((w) => w.card.due > now && !opts.exclude?.has(w.lemmaId));
+  const early: { w: UserWord; r: number }[] = [];
+  const hard: UserWord[] = [];
+  const today: UserWord[] = [];
+  for (const w of pool) {
+    if (!touchedSince(w, dayStart))
+      early.push({ w, r: retrievability(w.card, now, opts.retention) });
+    else if (w.firstSeenAt < dayStart) hard.push(w);
+    else today.push(w);
+  }
+  early.sort((a, b) => a.r - b.r || a.w.lemmaId - b.w.lemmaId);
+  hard.sort(
+    (a, b) =>
+      Number(b.isLeech) - Number(a.isLeech) ||
+      a.card.stability - b.card.stability ||
+      b.lapses - a.lapses,
+  );
+  today.sort((a, b) => a.card.stability - b.card.stability || a.lemmaId - b.lemmaId);
+  return [
+    ...early.map((x) => ({ word: x.w, source: 'early' as const })),
+    ...hard.map((w) => ({ word: w, source: 'hard' as const })),
+    ...today.map((w) => ({ word: w, source: 'today' as const })),
+  ];
+}
+
+/**
+ * Tops a list of review words up to `target`: due words (already in `picked`), then fill
+ * candidates, then repeats of the same words (each repeat is its own object so it gets its own
+ * exercise type) up to MAX_REPEATS appearances per word.
+ */
+function topUp(
+  picked: UserWord[],
+  target: number,
+  input: Pick<ComposeInput, 'words' | 'now' | 'dayStart' | 'retention'>,
+  sources: Map<UserWord, FillSource>,
+): UserWord[] {
+  const out = [...picked];
+  for (const w of out) if (!sources.has(w)) sources.set(w, 'due');
+  if (out.length >= target) return out;
+  const exclude = new Set(out.map((w) => w.lemmaId));
+  for (const { word, source } of fillCandidates(input.words, input.now, {
+    exclude,
+    dayStart: input.dayStart,
+    retention: input.retention,
+  })) {
+    if (out.length >= target) break;
+    out.push(word);
+    exclude.add(word.lemmaId);
+    sources.set(word, source);
+  }
+  const unique = [...out];
+  for (let round = 1; round < MAX_REPEATS && out.length < target && unique.length; round++) {
+    for (const w of unique) {
+      if (out.length >= target) break;
+      const copy = { ...w };
+      out.push(copy);
+      sources.set(copy, 'repeat');
+    }
+  }
+  return out;
+}
+
+const VARIETY: ExerciseType[] = ['en_he', 'he_en', 'listening', 'typing', 'cloze'];
+
+/** Repeated words get a different exercise each time they come back. */
+function varyRepeats(items: PlanItem[], clozeable: ReadonlySet<number> | undefined) {
+  const used = new Map<number, Set<ExerciseType>>();
+  for (let i = 0; i < items.length; i++) {
+    const it = items[i]!;
+    if (it.role !== 'review' && it.role !== 'speed') continue;
+    const seen = used.get(it.lemmaId) ?? new Set<ExerciseType>();
+    if (seen.has(it.type)) {
+      const alt = VARIETY.find(
+        (t) => !seen.has(t) && (t !== 'cloze' || !clozeable || clozeable.has(it.lemmaId)),
+      );
+      if (alt) items[i] = { ...it, type: alt, role: 'review' };
+    }
+    seen.add(items[i]!.type);
+    used.set(it.lemmaId, seen);
+  }
+}
+
+/**
+ * The same word never comes twice in a row when anything else can go in between. Only review and
+ * production items move (a production stays after its recognition); the last item (the closer)
+ * stays last when `keepLast` is set.
+ */
+function separateRepeats(items: PlanItem[], keepLast = false) {
+  const movable = (k: number) =>
+    (items[k]!.role === 'review' ||
+      items[k]!.role === 'speed' ||
+      items[k]!.role === 'production') &&
+    !(keepLast && k === items.length - 1);
+  // A new word's practice never moves ahead of its intro or recognition check (those never move).
+  const anchorOf = (id: number) => {
+    let at = -1;
+    items.forEach((x, k) => {
+      if (x.lemmaId === id && (x.role === 'intro' || x.role === 'recognition')) at = k;
+    });
+    return at;
+  };
+  const fits = (x: PlanItem, k: number) => k > anchorOf(x.lemmaId);
+  const same = (a: number, b: number) =>
+    a >= 0 && b < items.length && items[a]!.lemmaId === items[b]!.lemmaId;
+  const clashAt = (k: number) => same(k - 1, k) || same(k, k + 1);
+  for (let i = 1; i < items.length; i++) {
+    if (!same(i - 1, i)) continue;
+    // 1. Swap the movable one of the pair with an item elsewhere.
+    const from = movable(i) ? i : movable(i - 1) ? i - 1 : -1;
+    let fixed = false;
+    for (let j = 0; from >= 0 && j < items.length && !fixed; j++) {
+      if (j === from || !movable(j) || items[j]!.lemmaId === items[from]!.lemmaId) continue;
+      if (!fits(items[from]!, j) || !fits(items[j]!, from)) continue;
+      [items[from], items[j]] = [items[j]!, items[from]!];
+      if (!clashAt(from) && !clashAt(j)) fixed = true;
+      else [items[from], items[j]] = [items[j]!, items[from]!];
+    }
+    if (fixed) continue;
+    // 2. Pull an earlier item of another word in between (moving later never breaks an anchor).
+    for (let k = i - 2; k >= 0 && !fixed; k--) {
+      if (!movable(k) || items[k]!.lemmaId === items[i]!.lemmaId) continue;
+      if (same(k - 1, k + 1)) continue;
+      const [moved] = items.splice(k, 1);
+      items.splice(i - 1, 0, moved!);
+      if (!clashAt(i - 1)) fixed = true;
+      else items.splice(k, 0, items.splice(i - 1, 1)[0]!);
+    }
+  }
+}
 
 /** Distribute review exercise types across words: mature words get the production-heavy types. */
 function assignReviewTypes(
@@ -143,28 +341,18 @@ export function composeSession(input: ComposeInput): PlanItem[] {
     MAX_NEW_PER_SESSION,
     Math.max(0, Math.floor((size - probeSlots - reviewBudgetIfNew) / 3)),
   );
-  let reviewWords = due.slice(0, Math.max(0, size - probeSlots - newCount * 3));
-
-  // Review and boss sessions top up with the weakest not-yet-due words when the queue is short.
-  if (mode !== 'learn' && reviewWords.length < size) {
-    const extra = input.words
-      .filter(
-        (w) =>
-          (w.state === 'learning' || w.state === 'review') &&
-          !reviewWords.includes(w) &&
-          w.card.fsrsState !== 0,
-      )
-      .map((w) => ({ w, r: retrievability(w.card, now, input.retention) }))
-      .sort((a, b) => a.r - b.r)
-      .slice(0, size - reviewWords.length)
-      .map((x) => x.w);
-    reviewWords = [...reviewWords, ...extra];
-  }
+  const reviewSlots = Math.max(0, size - probeSlots - newCount * 3);
+  // Due reviews first; when they run short (typically after the daily new-word cap), the session
+  // is filled so it never shrinks to a lone probe (owner's bug report, 0.6.0).
+  const sources = new Map<UserWord, FillSource>();
+  let reviewWords = topUp(due.slice(0, reviewSlots), reviewSlots, input, sources);
+  // A probe alone is not a session: with nothing else to practice, there is no session.
+  if (!reviewWords.length && !newCount) return [];
 
   // Keep the easiest review for the final slot (end on a win).
   let closer: UserWord | undefined;
   if (reviewWords.length >= 2) {
-    const easiest = [...reviewWords].sort(
+    const easiest = [...reviewWords.filter((w) => sources.get(w) !== 'repeat')].sort(
       (a, b) =>
         retrievability(b.card, now, input.retention) - retrievability(a.card, now, input.retention),
     )[0]!;
@@ -174,11 +362,18 @@ export function composeSession(input: ComposeInput): PlanItem[] {
 
   // Match pairs take 5 review words as one item when there are enough reviews.
   const items: PlanItem[] = [];
-  let pool = shuffle(rng, reviewWords).sort((a, b) => a.card.due - b.card.due);
+  // Oldest due first; repeats go after every first appearance so copies are spread apart.
+  const isRepeat = (w: UserWord) => (sources.get(w) === 'repeat' ? 1 : 0);
+  let pool = shuffle(rng, reviewWords).sort(
+    (a, b) => isRepeat(a) - isRepeat(b) || a.card.due - b.card.due,
+  );
   const matchCount = pool.length >= 10 ? 1 : 0;
   const matchItems: PlanItem[] = [];
   for (let m = 0; m < matchCount; m++) {
-    const group = pool.filter((w) => w.crowns >= 1).slice(0, 5);
+    const seen = new Set<number>();
+    const group = pool
+      .filter((w) => w.crowns >= 1 && !seen.has(w.lemmaId) && seen.add(w.lemmaId))
+      .slice(0, 5);
     if (group.length < 5) break;
     pool = pool.filter((w) => !group.includes(w));
     matchItems.push({
@@ -196,6 +391,7 @@ export function composeSession(input: ComposeInput): PlanItem[] {
       lemmaId: word.lemmaId,
       type,
       role: type === 'speed' ? 'speed' : 'review',
+      source: sources.get(word) ?? 'due',
     }),
   );
 
@@ -213,6 +409,17 @@ export function composeSession(input: ComposeInput): PlanItem[] {
     // Up to `gap` reviews before each intro (at least one between consecutive intro pairs).
     const run = i === 0 ? Math.min(1, backbone.length) : gap;
     for (let r = 0; r < run && b < backbone.length; r++) items.push(backbone[b++]!);
+    // No reviews left to space the intros: an earlier word's recognition check does it, once at
+    // least one item sits between that word's intro and its check.
+    if (b >= backbone.length && i > 0) {
+      const ready = pendingRecognition.findIndex(
+        (p) =>
+          items.length -
+            items.findIndex((x) => x.role === 'intro' && x.lemmaId === p.item.lemmaId) >=
+          2,
+      );
+      if (ready >= 0) items.push(pendingRecognition.splice(ready, 1)[0]!.item);
+    }
     const w = chosenNew[i]!;
     items.push({ key: mkKey('intro', w.id), lemmaId: w.id, type: 'intro', role: 'intro' });
     pendingRecognition.push({
@@ -258,16 +465,61 @@ export function composeSession(input: ComposeInput): PlanItem[] {
     items.splice(Math.min(items.length, at + Math.floor(rng() * 2)), 0, p);
   }
 
+  // Still short (a brand-new user, a low cap, almost nothing learned yet): the new words get extra
+  // practice later in the session, after their recognition check.
+  const extraTypes: ExerciseType[] = ['listening', 'he_en', 'cloze'];
+  for (let round = 0; round < EXTRA_PER_NEW; round++) {
+    for (const w of chosenNew) {
+      if (items.length + (closer ? 1 : 0) >= size) break;
+      const rec = items.findIndex((x) => x.role === 'recognition' && x.lemmaId === w.id);
+      if (rec < 0) continue;
+      const t = extraTypes[(round + w.id) % extraTypes.length]!;
+      const type = t === 'cloze' && input.clozeable && !input.clozeable.has(w.id) ? 'he_en' : t;
+      // A random spot after the recognition check, never next to the same word.
+      const lo = rec + 2;
+      const span = Math.max(1, items.length - lo + 1);
+      const start = Math.floor(rng() * span);
+      let at = -1;
+      for (let k = 0; k < span && at < 0; k++) {
+        const pos = Math.min(items.length, lo + ((start + k) % span));
+        const before = items[pos - 1];
+        const after = items[pos];
+        if (before?.lemmaId !== w.id && after?.lemmaId !== w.id) at = pos;
+      }
+      if (at < 0) continue;
+      items.splice(at, 0, {
+        key: mkKey('review', w.id),
+        lemmaId: w.id,
+        type,
+        role: 'review',
+        source: 'today',
+      });
+    }
+  }
+
+  varyRepeats(items, input.clozeable);
   enforceNoTripleIntro(items);
+  // After the intro rule (it pulls items forward); swaps keep the intro layout as it is.
+  separateRepeats(items);
   enforceTypingRhythm(items);
 
   if (closer) {
+    // A recognition, the easiest kind; another one if this word already had it (tiny pools).
+    const had = new Set(items.filter((x) => x.lemmaId === closer.lemmaId).map((x) => x.type));
+    const easy: ExerciseType[] = ['en_he', 'he_en', 'listening', 'cloze', 'speed'];
+    const fresh = easy.filter(
+      (t) => t !== 'cloze' || !input.clozeable || input.clozeable.has(closer.lemmaId),
+    );
+    const type = fresh.find((t) => !had.has(t)) ?? 'en_he';
     items.push({
       key: mkKey('review', closer.lemmaId),
       lemmaId: closer.lemmaId,
-      type: 'en_he',
-      role: 'review',
+      type,
+      role: type === 'speed' ? 'speed' : 'review',
+      source: sources.get(closer) ?? 'due',
     });
+    // End on a win, but never right after the same word.
+    separateRepeats(items, true);
   }
   return items;
 }
@@ -323,51 +575,73 @@ function enforceTypingRhythm(items: PlanItem[]) {
   }
 }
 
-function composeSpeed(input: ComposeInput): PlanItem[] {
-  const learned = input.words.filter(
+function speedPool(words: readonly UserWord[]): UserWord[] {
+  return words.filter(
     (w) =>
       (w.state === 'review' || w.state === 'learning' || w.state === 'known') && w.card.reps > 0,
   );
+}
+
+function composeSpeed(input: ComposeInput): PlanItem[] {
+  const learned = speedPool(input.words);
+  // Fewer than a handful of words makes a 60-second round the same three questions on a loop.
+  if (learned.length < MODE_MIN.speed) return [];
   const pool = shuffle(input.rng, learned);
   const out: PlanItem[] = [];
-  for (let i = 0; i < SPEED_ROUND_ITEMS && pool.length; i++) {
-    const w = pool[i % pool.length]!;
+  for (let i = 0; i < SPEED_ROUND_ITEMS; i++) {
+    let w = pool[i % pool.length]!;
+    // Small pools wrap around: never the same word twice in a row.
+    if (out.length && out[out.length - 1]!.lemmaId === w.lemmaId) w = pool[(i + 1) % pool.length]!;
     out.push({ key: mkKey('speed', w.lemmaId), lemmaId: w.lemmaId, type: 'speed', role: 'speed' });
   }
   return out;
 }
 
+/** Listening: due words, then fill (early, hard, today), then repeats, all as listening. */
 function composeListening(input: ComposeInput): PlanItem[] {
   const size = input.size ?? SESSION_SIZE;
-  const due = dueWords(input.words, input.now);
-  let pick = due.slice(0, size);
-  if (pick.length < size) {
-    const rest = input.words
-      .filter((w) => (w.state === 'learning' || w.state === 'review') && !pick.includes(w))
-      .sort((a, b) => (b.lastReviewAt ?? 0) - (a.lastReviewAt ?? 0));
-    pick = [...pick, ...rest.slice(0, size - pick.length)];
-  }
-  return shuffle(input.rng, pick).map((w) => ({
+  if (practicePool(input.words).length < MODE_MIN.listening) return [];
+  const sources = new Map<UserWord, FillSource>();
+  const due = dueWords(input.words, input.now).slice(0, size);
+  const pick = topUp(due, size, input, sources);
+  const firsts = shuffle(
+    input.rng,
+    pick.filter((w) => sources.get(w) !== 'repeat'),
+  );
+  const repeats = pick.filter((w) => sources.get(w) === 'repeat');
+  const items = [...firsts, ...repeats].map((w) => ({
     key: mkKey('review', w.lemmaId),
     lemmaId: w.lemmaId,
     type: 'listening' as ExerciseType,
     role: 'review' as ItemRole,
+    source: sources.get(w) ?? 'due',
   }));
+  separateRepeats(items);
+  return items;
 }
 
-/** Hard words: leeches first, then the lowest stability words. Production-heavy. */
+/**
+ * Hard words: leeches first, then the lowest stability words. Production-heavy. A small pool is
+ * repeated in other exercise types so the session keeps a normal length.
+ */
 function composeHard(input: ComposeInput): PlanItem[] {
   const size = input.size ?? SESSION_SIZE;
-  const active = input.words.filter(
-    (w) => (w.state === 'learning' || w.state === 'review') && w.card.fsrsState !== 0,
-  );
+  const active = practicePool(input.words);
+  if (active.length < MODE_MIN.hard) return [];
   const leeches = active.filter((w) => w.isLeech);
   const weak = active
     .filter((w) => !w.isLeech)
     .sort((a, b) => a.card.stability - b.card.stability || b.lapses - a.lapses);
-  const pick = [...leeches, ...weak].slice(0, size);
+  const unique = [...leeches, ...weak].slice(0, size);
+  const sources = new Map<UserWord, FillSource>(unique.map((w) => [w, 'hard'] as const));
+  const pick = topUp(unique, size, { ...input, words: unique }, sources);
   const types: ExerciseType[] = ['en_he', 'typing', 'cloze', 'he_en', 'listening'];
-  return shuffle(input.rng, pick).map((w, i) => ({
+  const firsts = shuffle(
+    input.rng,
+    pick.filter((w) => sources.get(w) !== 'repeat'),
+  );
+  const repeats = pick.filter((w) => sources.get(w) === 'repeat');
+  const items = [...firsts, ...repeats].map((w, i) => ({
     key: mkKey('review', w.lemmaId),
     lemmaId: w.lemmaId,
     type:
@@ -375,7 +649,11 @@ function composeHard(input: ComposeInput): PlanItem[] {
         ? 'typing'
         : types[i % types.length]!,
     role: 'review' as ItemRole,
+    source: sources.get(w) ?? 'hard',
   }));
+  varyRepeats(items, input.clozeable);
+  separateRepeats(items);
+  return items;
 }
 
 /** Rough minutes needed for a number of reviews (spec 7.2 "clear the queue" planning). */

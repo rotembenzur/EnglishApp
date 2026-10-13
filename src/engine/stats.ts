@@ -31,10 +31,14 @@ export function recallAfterGap(
   return n ? { rate: ok / n, n } : null;
 }
 
-/** Share of correct review answers (not first exposures) since `since`. */
+/** Share of correct review answers (not first exposures, not early reviews) since `since`. */
 export function retentionSince(reviews: readonly ReviewRecord[], since: number) {
   const rs = reviews.filter(
-    (r) => r.at >= since && !r.firstExposure && (r.purpose === 'review' || r.purpose === 'learn'),
+    (r) =>
+      r.at >= since &&
+      !r.firstExposure &&
+      !r.early &&
+      (r.purpose === 'review' || r.purpose === 'learn'),
   );
   return { rate: rs.length ? rs.filter((r) => r.correct).length / rs.length : 0, n: rs.length };
 }

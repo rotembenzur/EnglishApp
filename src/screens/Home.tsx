@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { levelOf } from '@/engine/ability';
 import { computeStreak, levelForXp } from '@/engine/game';
 import { createRng, hashString, pick } from '@/engine/rng';
-import { dueWords, minutesFor } from '@/engine/session';
+import { dueWords, minutesFor, MODE_MIN, modePoolSize } from '@/engine/session';
 import { newWordsLeft, suggestCapChange } from '@/engine/selection';
 import { retentionSince } from '@/engine/stats';
 import type { WordContent } from '@/engine/types';
@@ -29,6 +29,7 @@ import {
   SwordsIcon,
 } from '@/ui/icons';
 import { SyncDot } from '@/ui/SyncDot';
+import { CapCard } from '@/ui/CapCard';
 import { USER_EMOJI } from './ProfilePicker';
 
 const DAY = 86_400_000;
@@ -44,7 +45,11 @@ export function Home() {
   const due = useMemo(() => dueWords([...words.values()], now).length, [words, now]);
   const goal = profile.settings.dailyGoal;
   const xpToday = today?.xp ?? 0;
-  const newLeft = newWordsLeft(profile.settings.newPerDay, today?.newWords ?? 0);
+  const newLeft = newWordsLeft(profile.settings.newPerDay, today?.newWords ?? 0, today?.bonusNew);
+  const pool = useMemo(() => {
+    const list = [...words.values()];
+    return { practice: modePoolSize('review', list), speed: modePoolSize('speed', list) };
+  }, [words]);
 
   const daily = useLive(() => allDaily(userId), [userId]);
   const streak = useMemo(() => computeStreak(daily ?? [], todayKey()), [daily]);
@@ -169,38 +174,40 @@ export function Home() {
         <ChevronIcon size={26} />
       </button>
 
+      {ability && <CapCard onRaised={() => nav('/session/learn')} />}
+
       <div className="grid grid-cols-2 gap-3">
         <ModeButton
           icon={<RepeatIcon />}
           label={t.home.review}
           sub={due ? String(due) : undefined}
           to="/session/review"
-          disabled={!words.size}
+          disabled={!due && pool.practice < MODE_MIN.review}
         />
         <ModeButton
           icon={<MountainIcon />}
           label={t.home.hard}
           to="/session/hard"
-          disabled={words.size < 5}
+          disabled={pool.practice < MODE_MIN.hard}
         />
         <ModeButton
           icon={<BoltIcon />}
           label={t.home.speed}
           to="/session/speed"
-          disabled={words.size < 8}
+          disabled={pool.speed < MODE_MIN.speed}
         />
         <ModeButton
           icon={<HeadphonesIcon />}
           label={t.home.listening}
           to="/session/listening"
-          disabled={!words.size}
+          disabled={pool.practice < MODE_MIN.listening}
         />
         <ModeButton icon={<SwordsIcon />} label={t.home.duel} to="/rivalry" />
         <ModeButton
           icon={<span className="text-lg">🐉</span>}
           label={t.home.boss}
           to="/session/boss"
-          disabled={words.size < 30}
+          disabled={pool.practice < MODE_MIN.boss}
         />
       </div>
 

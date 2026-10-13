@@ -136,6 +136,11 @@ export interface ReviewRecord {
   firstExposure: boolean;
   /** Theta-only items (placement, probes) do not schedule. */
   purpose: 'learn' | 'review' | 'probe' | 'verify' | 'speed' | 'duel';
+  /**
+   * Answered before the word was due (early review or same-day practice). FSRS still schedules
+   * it from the real elapsed time; retention stats leave it out because it flatters them.
+   */
+  early?: boolean;
   d: number;
   at: number;
   deviceId: string;

@@ -62,6 +62,8 @@ export interface DailyStats {
   correct: number;
   ms: number;
   sessions: number;
+  /** New words added to today's cap with the one-tap option (today only; absent = 0). */
+  bonusNew?: number;
   goal: number;
   goalReached: boolean;
   updatedAt: number;

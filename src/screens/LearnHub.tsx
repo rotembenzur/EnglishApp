@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { dueWords, minutesFor } from '@/engine/session';
+import { dueWords, minutesFor, MODE_MIN, modePoolSize } from '@/engine/session';
 import { newWordsLeft } from '@/engine/selection';
 import { t } from '@/i18n/he';
 import { useApp } from '@/state/app';
@@ -21,7 +21,9 @@ export function LearnHub() {
   const words = useApp((s) => s.words);
   const today = useApp((s) => s.today);
   const due = useMemo(() => dueWords([...words.values()], Date.now()).length, [words]);
-  const left = newWordsLeft(profile.settings.newPerDay, today?.newWords ?? 0);
+  const left = newWordsLeft(profile.settings.newPerDay, today?.newWords ?? 0, today?.bonusNew);
+  const list = useMemo(() => [...words.values()], [words]);
+  const practice = modePoolSize('review', list);
   const items: {
     key: string;
     label: string;
@@ -29,6 +31,8 @@ export function LearnHub() {
     to: string;
     badge?: string;
     min?: number;
+    /** Pool the minimum applies to (default: learned words). */
+    pool?: number;
   }[] = [
     {
       key: 'learn',
@@ -43,23 +47,36 @@ export function LearnHub() {
       icon: <RepeatIcon />,
       to: '/session/review',
       badge: due ? String(due) : undefined,
-      min: 1,
+      min: due ? 0 : MODE_MIN.review,
     },
-    { key: 'hard', label: t.home.hard, icon: <MountainIcon />, to: '/session/hard', min: 5 },
-    { key: 'speed', label: t.home.speed, icon: <BoltIcon />, to: '/session/speed', min: 8 },
+    {
+      key: 'hard',
+      label: t.home.hard,
+      icon: <MountainIcon />,
+      to: '/session/hard',
+      min: MODE_MIN.hard,
+    },
+    {
+      key: 'speed',
+      label: t.home.speed,
+      icon: <BoltIcon />,
+      to: '/session/speed',
+      min: MODE_MIN.speed,
+      pool: modePoolSize('speed', list),
+    },
     {
       key: 'listening',
       label: t.home.listening,
       icon: <HeadphonesIcon />,
       to: '/session/listening',
-      min: 1,
+      min: MODE_MIN.listening,
     },
     {
       key: 'boss',
       label: t.home.boss,
       icon: <span className="text-xl">🐉</span>,
       to: '/session/boss',
-      min: 30,
+      min: MODE_MIN.boss,
     },
     { key: 'duel', label: t.home.duel, icon: <SwordsIcon />, to: '/session/duel' },
     { key: 'read', label: t.read.title, icon: <span className="text-xl">📖</span>, to: '/read' },
@@ -78,7 +95,7 @@ export function LearnHub() {
           {due ? t.home.queue(due, minutesFor(due)) : t.home.queueEmpty}
         </p>
         {items.map((it) => {
-          const disabled = (it.min ?? 0) > words.size;
+          const disabled = (it.min ?? 0) > (it.pool ?? practice);
           return (
             <button
               key={it.key}

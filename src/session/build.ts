@@ -35,6 +35,13 @@ export interface BuiltSession {
 const DAY = 86_400_000;
 const ENRICH_BUDGET_MS = 4000;
 
+/** Local midnight: the "today" boundary for fill buckets, like the daily stats key. */
+function startOfDay(now: number): number {
+  const d = new Date(now);
+  d.setHours(0, 0, 0, 0);
+  return d.getTime();
+}
+
 function withTimeout<T>(p: Promise<T>, ms: number): Promise<T | null> {
   return Promise.race([p, new Promise<null>((r) => setTimeout(() => r(null), ms))]);
 }
@@ -75,7 +82,10 @@ export async function buildSession(opts: {
   let newWords: LemmaInfo[] = [];
   let probe: LemmaInfo | null = null;
   if (opts.mode === 'learn') {
-    const left = Math.min(newWordsLeft(settings.newPerDay, opts.today.newWords), MAX_CAP);
+    const left = Math.min(
+      newWordsLeft(settings.newPerDay, opts.today.newWords, opts.today.bonusNew),
+      MAX_CAP,
+    );
     if (left > 0) {
       const ctx = {
         theta,
@@ -158,6 +168,7 @@ export async function buildSession(opts: {
       newWords,
       probe,
       retention: settings.retention,
+      dayStart: startOfDay(now),
       rng,
     });
   }
