@@ -84,8 +84,12 @@ Local-first (`src/sync/engine.ts`). Every write goes to IndexedDB and an outbox.
 the outbox as upserts and pulls each table incrementally by the server's `server_at`. Row tables
 (`users`, `userWords`, `dailyStats`, `presence`) are last-write-wins by `updatedAt`, enforced on the
 server by a trigger; `reviews` and `events` are append-only unions. Pulls run on open, on focus,
-every 60 seconds and after each session. Access is gated by RLS on an `x-lexbites-key` header
-(sha256 of the shared passphrase). Schema: `supabase/schema.sql`. Steps: `SETUP.md`.
+every 60 seconds and after each session. Each pull starts two minutes behind the stored cursor,
+because a row is stamped before its transaction commits and could otherwise be skipped when both
+phones push at once. Access is gated by RLS on an `x-lexbites-key` header (sha256 of the shared
+passphrase). The project URL and anon key are built in (`src/sync/config.ts`); a phone stores only
+the passphrase hash. Schema: `supabase/schema.sql`. Steps: `SETUP.md`. The two-phone e2e test
+(`e2e/sync.spec.ts`) runs against a local PostgREST with the same schema.
 
 ## Push
 
