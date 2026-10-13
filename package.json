@@ -19,6 +19,7 @@
     "content:validate": "tsx scripts/validate-content.ts",
     "enrich": "tsx scripts/enrich.ts",
     "reports": "tsx scripts/reports.ts",
+    "audio:plan": "tsx scripts/audio/plan.ts",
     "prepare": "husky",
     "content:fetch": "bash scripts/fetch-data.sh",
     "content:lemmas": "scripts/.cache/venv/bin/python -I scripts/build_lemmas.py",
