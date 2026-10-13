@@ -14,6 +14,7 @@ import { toast } from '@/ui/toast';
 import { WordCard } from '@/ui/WordCard';
 import { highlight } from '@/ui/word-utils';
 import { EyeOffIcon, FlagIcon, StarIcon } from '@/ui/icons';
+import { He, Ltr } from '@/ui/bidi';
 
 export function WordDetail() {
   const { id } = useParams();
@@ -90,7 +91,7 @@ export function WordDetail() {
           {info && (
             <>
               <Pill className="bg-accent-soft text-accent">
-                {t.word.band} <span dir="ltr">{info.band}</span>
+                {t.word.band} <Ltr>{info.band}</Ltr>
               </Pill>
               {info.rank > 0 && (
                 <Pill className="bg-card-2 text-ink-2">{t.word.rank(info.rank)}</Pill>
@@ -133,7 +134,7 @@ export function WordDetail() {
                 <En className="flex-1 leading-relaxed">{highlight(content.context.en, content)}</En>
                 <Speak text={content.context.en} size="sm" />
               </div>
-              <p className="text-sm leading-relaxed text-ink-2">{content.context.he}</p>
+              <He className="text-sm leading-relaxed text-ink-2">{content.context.he}</He>
             </div>
           </Section>
         )}

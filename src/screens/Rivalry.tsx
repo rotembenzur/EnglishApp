@@ -15,6 +15,7 @@ import { Button, Header, Section } from '@/ui/kit';
 import { toast } from '@/ui/toast';
 import { shareLeagueCard } from '@/ui/share';
 import { TrophyIcon } from '@/ui/icons';
+import { Ltr } from '@/ui/bidi';
 import { USER_EMOJI } from './ProfilePicker';
 
 const NUDGES = ['👋', '🔥', '😴', '🏆'];
@@ -134,8 +135,9 @@ export function Rivalry() {
                     isFemale(lastWeek.winner === 'a' ? me : rival),
                   )}
             </p>
-            <span className="text-xs text-ink-3" dir="ltr">
-              {lastWeek.a} : {lastWeek.b}
+            {/* Read right to left like the players above: my score first, on the right. */}
+            <span className="text-xs text-ink-3">
+              <Ltr>{lastWeek.a}</Ltr> : <Ltr>{lastWeek.b}</Ltr>
             </span>
           </div>
         )}
@@ -179,9 +181,15 @@ export function Rivalry() {
                       : duelResult === 'b'
                         ? t.rivalry.duelLose
                         : t.rivalry.duelDraw}
-                    <span className="ms-2 text-xs font-normal text-ink-3" dir="ltr">
-                      {myDuel.correct}/10 · {(myDuel.ms / 1000).toFixed(1)}s vs {theirDuel!.correct}
-                      /10 · {(theirDuel!.ms / 1000).toFixed(1)}s
+                    <span className="mt-1 block text-xs font-normal text-ink-3">
+                      {t.rivalry.duelScore(
+                        a.name,
+                        myDuel.correct,
+                        (myDuel.ms / 1000).toFixed(1),
+                        b.name,
+                        theirDuel!.correct,
+                        (theirDuel!.ms / 1000).toFixed(1),
+                      )}
                     </span>
                   </p>
                 ) : (
@@ -203,7 +211,7 @@ export function Rivalry() {
                 disabled={!configured}
                 onClick={() => void nudge(e)}
                 className={`card tap grid h-16 place-items-center text-3xl transition active:scale-90 disabled:opacity-40 ${sent === e ? 'animate-pop' : ''}`}
-                aria-label={`nudge ${e}`}
+                aria-label={t.rivalry.nudgeLabel(e)}
               >
                 {e}
               </button>
@@ -232,9 +240,7 @@ function Player({ id, xp, lead }: { id: UserId; xp: number; lead: boolean }) {
         {lead && <span className="absolute -top-2 text-lg">👑</span>}
       </span>
       <span className="font-bold">{USER_NAMES[id]}</span>
-      <span className="text-lg font-black" dir="ltr">
-        {xp} XP
-      </span>
+      <Ltr className="text-lg font-black">{xp} XP</Ltr>
     </div>
   );
 }

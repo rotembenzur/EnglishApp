@@ -5,6 +5,7 @@ import { newWordsLeft } from '@/engine/selection';
 import { t } from '@/i18n/he';
 import { useApp } from '@/state/app';
 import { Header } from '@/ui/kit';
+import { Ltr } from '@/ui/bidi';
 import {
   BoltIcon,
   ChevronIcon,
@@ -13,18 +14,6 @@ import {
   RepeatIcon,
   SwordsIcon,
 } from '@/ui/icons';
-
-const DESCRIPTIONS: Record<string, string> = {
-  learn: 'חזרות ומילים חדשות, בערך 5 דקות',
-  review: 'רק מה שמחכה לחזרה, בלי מילים חדשות',
-  hard: 'המילים העקשניות והחלשות, עם הרבה הקלדה',
-  speed: '60 שניות של זיהוי מהיר, XP כפול וחצי',
-  listening: 'ידיים עסוקות? רק לשמוע ולבחור, כפתורים גדולים',
-  boss: '30 פריטים מעורבבים. לנצח את הבוס של השבוע',
-  duel: '10 מילים זהות לשניכם, פעם ביום',
-  read: 'מדביקים טקסט באנגלית ולוקחים ממנו מילים',
-  confusables: 'זוגות כמו affect ו־effect, עם הסבר קצר',
-};
 
 export function LearnHub() {
   const nav = useNavigate();
@@ -103,12 +92,12 @@ export function LearnHub() {
               </span>
               <span className="flex flex-1 flex-col">
                 <span className="font-bold">{it.label}</span>
-                <span className="text-xs text-ink-3">{DESCRIPTIONS[it.key]}</span>
+                <span className="text-xs text-ink-3">{t.learnHub[it.key]}</span>
               </span>
               {it.badge && (
-                <span className="rounded-pill bg-accent px-2 py-0.5 text-xs font-bold text-accent-ink">
+                <Ltr className="rounded-pill bg-accent px-2 py-0.5 text-xs font-bold text-accent-ink">
                   {it.badge}
-                </span>
+                </Ltr>
               )}
               <ChevronIcon className="text-ink-3" />
             </button>

@@ -7,11 +7,11 @@ import { relTime, t } from '@/i18n/he';
 import { useApp } from '@/state/app';
 import { Crowns, En, Header } from '@/ui/kit';
 import { SearchIcon } from '@/ui/icons';
+import { He, Ltr } from '@/ui/bidi';
+import { hasHebrew } from '@/i18n/bidi';
 
 type Filter = keyof typeof t.library.filters;
 type Sort = keyof typeof t.library.sort;
-
-const HEBREW = /[֐-׿]/;
 
 export function Library() {
   const words = useApp((s) => s.words);
@@ -62,7 +62,7 @@ export function Library() {
     if (band) list = list.filter((w) => inv.byId.get(w.lemmaId)?.band === band);
     if (topic) list = list.filter((w) => inv.byId.get(w.lemmaId)?.tags.includes(topic));
     if (query) {
-      const he = HEBREW.test(query);
+      const he = hasHebrew(query);
       list = list.filter((w) => {
         if (he) return peekContent(w.lemmaId)?.hebrew.some((h) => h.includes(query)) ?? false;
         return inv.byId.get(w.lemmaId)?.lemma.toLowerCase().includes(query) ?? false;
@@ -87,7 +87,7 @@ export function Library() {
   // Dictionary search beyond the user's words: every lemma is reachable (spec 5.5, 7.3).
   const explore = useMemo(() => {
     const query = q.trim().toLowerCase();
-    if (!inv || query.length < 2 || HEBREW.test(query)) return [];
+    if (!inv || query.length < 2 || hasHebrew(query)) return [];
     return inv.lemmas.filter((l) => l.lemma.startsWith(query) && !words.has(l.id)).slice(0, 12);
   }, [inv, q, words]);
 
@@ -115,7 +115,8 @@ export function Library() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={t.library.search}
-            dir="auto"
+            // Empty, the Hebrew placeholder reads right to left; typed text picks its own side.
+            dir={q ? 'auto' : 'rtl'}
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
@@ -166,7 +167,7 @@ export function Library() {
             value={sort}
             onChange={(e) => setSort(e.target.value as Sort)}
             className="rounded-lg bg-transparent py-1 text-sm"
-            aria-label="מיון"
+            aria-label={t.library.sortLabel}
           >
             {(Object.keys(t.library.sort) as Sort[]).map((s) => (
               <option key={s} value={s}>
@@ -187,7 +188,7 @@ export function Library() {
                   className="w-full rounded-t-md bg-accent"
                   style={{ height: `${8 + (n / maxCrown) * 56}px`, opacity: 0.35 + i * 0.13 }}
                 />
-                <span className="text-[11px] text-warn">{i}♛</span>
+                <Ltr className="text-[11px] text-warn">{i}♛</Ltr>
               </div>
             ))}
           </div>
@@ -208,9 +209,7 @@ export function Library() {
                 <Link to={`/word/${w.lemmaId}`} className="card flex items-center gap-3 px-4 py-3">
                   <div className="flex min-w-0 flex-1 flex-col">
                     <En className="truncate text-lg font-semibold">{l?.lemma}</En>
-                    <span className="truncate text-sm text-ink-2">
-                      {c?.hebrew.join(' · ') ?? ''}
-                    </span>
+                    <He className="truncate text-sm text-ink-2">{c?.hebrew.join(' · ') ?? ''}</He>
                   </div>
                   <div className="flex flex-col items-end gap-1">
                     <Crowns n={w.crowns} className="text-xs" />

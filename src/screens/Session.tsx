@@ -173,10 +173,9 @@ function Countdown({ deadline, onEnd }: { deadline: number; onEnd: () => void })
   }, [deadline, onEnd]);
   return (
     <span
-      className={`min-w-12 text-center text-sm font-black tabular-nums ${left < 10_000 ? 'text-bad' : 'text-ink-2'}`}
-      dir="ltr"
+      className={`min-w-14 text-center text-sm font-black tabular-nums ${left < 10_000 ? 'text-bad' : 'text-ink-2'}`}
     >
-      {Math.ceil(left / 1000)}s
+      {t.session.secondsLeft(Math.ceil(left / 1000))}
     </span>
   );
 }

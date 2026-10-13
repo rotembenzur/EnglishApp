@@ -15,7 +15,8 @@ import { todayKey, useApp } from '@/state/app';
 import { useLive } from '@/state/live';
 import { isFemale, otherUser, snapshot } from '@/state/rival';
 import { useSync } from '@/sync/engine';
-import { Bar, Bidi, Button, En, Ring, Speak } from '@/ui/kit';
+import { Bar, Button, En, Ring, Speak } from '@/ui/kit';
+import { He, Ltr } from '@/ui/bidi';
 import { toast } from '@/ui/toast';
 import {
   BoltIcon,
@@ -119,8 +120,8 @@ export function Home() {
           <div className="text-2xl font-black leading-none" dir="ltr">
             {xpToday}
           </div>
-          <div className="text-[11px] text-ink-3" dir="ltr">
-            / {goal} XP
+          <div className="text-[11px] text-ink-3">
+            <Ltr>/ {goal} XP</Ltr>
           </div>
         </Ring>
         <div className="flex flex-1 flex-col gap-2">
@@ -333,9 +334,7 @@ export function RivalCard({ compact = false }: { compact?: boolean }) {
           <p className="font-bold" style={{ color: 'var(--c-rival)' }}>
             {rival?.name ?? ''}
           </p>
-          <p className="text-xs text-ink-2">
-            <Bidi>{configured ? status : t.rival.noSync}</Bidi>
-          </p>
+          <p className="text-xs text-ink-2">{configured ? status : t.rival.noSync}</p>
         </div>
         {configured && rival && rival.lastActivity > 0 && (
           <span className="text-[11px] text-ink-3">
@@ -426,10 +425,10 @@ function WordOfDay() {
           />
         </span>
       </div>
-      <p className="text-lg font-semibold text-ink-2">{word.hebrew.join(' · ')}</p>
+      <He className="text-lg font-semibold text-ink-2">{word.hebrew.join(' · ')}</He>
       {s && (
-        <p className="text-sm text-ink-2">
-          <En>{s.en}</En>
+        <p className="en text-sm text-ink-2" dir="ltr">
+          {s.en}
         </p>
       )}
     </Link>

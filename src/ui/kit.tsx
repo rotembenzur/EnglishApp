@@ -4,20 +4,14 @@ import { playWord, speak, unlockAudio } from '@/audio/speech';
 import { useApp } from '@/state/app';
 import { BackIcon, SpeakerIcon } from './icons';
 import { useToasts } from './toast';
+import { He, Ltr } from './bidi';
+import { hasHebrew } from '@/i18n/bidi';
+import { t as strings } from '@/i18n/he';
 
 /** English content inside the RTL layout. */
 export function En({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <span dir="ltr" className={`en ${className}`}>
-      {children}
-    </span>
-  );
-}
-
-/** Mixed Hebrew/English text: direction from the first strong character. */
-export function Bidi({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return (
-    <span dir="auto" className={`bidi-auto ${className}`}>
       {children}
     </span>
   );
@@ -125,7 +119,7 @@ export function Speak({
   isWord = false,
   size = 'md',
   className = '',
-  label = 'השמעה',
+  label = strings.common.play,
 }: {
   text: string;
   urls?: { us?: string; uk?: string };
@@ -216,7 +210,7 @@ export function Sheet({
     >
       <button
         type="button"
-        aria-label="סגירה"
+        aria-label={strings.common.close}
         className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"
         onClick={onClose}
       />
@@ -252,7 +246,7 @@ export function Toasts() {
           className="card pointer-events-auto flex max-w-md animate-fade-up items-center gap-2 px-4 py-3 text-sm font-medium"
         >
           {t.icon && <span className="text-lg">{t.icon}</span>}
-          <Bidi>{t.text}</Bidi>
+          <He>{t.text}</He>
         </div>
       ))}
     </div>
@@ -291,7 +285,7 @@ export function Pill({ children, className = '' }: { children: ReactNode; classN
 
 export function Crowns({ n, className = '' }: { n: number; className?: string }) {
   return (
-    <span className={`inline-flex gap-0.5 ${className}`} aria-label={`${n} כתרים`}>
+    <span className={`inline-flex gap-0.5 ${className}`} aria-label={strings.word.crownsLabel(n)}>
       {Array.from({ length: 5 }, (_, i) => (
         <span key={i} className={i < n ? 'text-warn' : 'text-line'} aria-hidden>
           ♛
@@ -317,13 +311,15 @@ export function Header({
         <button
           type="button"
           onClick={onBack}
-          aria-label="חזרה"
+          aria-label={strings.common.back}
           className="tap grid place-items-center rounded-full text-ink-2"
         >
           <BackIcon />
         </button>
       )}
-      <h1 className="flex-1 truncate px-2 text-xl font-bold">{title}</h1>
+      <h1 className="flex-1 truncate px-2 text-xl font-bold">
+        {title && !hasHebrew(title) ? <Ltr className="en">{title}</Ltr> : title}
+      </h1>
       {right}
     </header>
   );

@@ -20,6 +20,7 @@ import { useApp } from '@/state/app';
 import { unlockAudio } from '@/audio/speech';
 import { Bar, Button, En, Speak } from '@/ui/kit';
 import { CloseIcon } from '@/ui/icons';
+import { He } from '@/ui/bidi';
 
 interface BankItem {
   id: number;
@@ -246,7 +247,7 @@ export function Placement() {
                       : 'border-line bg-card'
                 }`}
               >
-                {o.he}
+                <He>{o.he}</He>
               </button>
             );
           })}

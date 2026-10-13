@@ -81,7 +81,7 @@ export function PinPad({
               type="button"
               className="tap h-16 rounded-2xl bg-card text-2xl font-semibold shadow-card active:scale-95"
               onClick={() => (k === '⌫' ? setPin((p) => p.slice(0, -1)) : press(k))}
-              aria-label={k === '⌫' ? 'מחיקה' : k}
+              aria-label={k === '⌫' ? t.common.erase : k}
             >
               {k}
             </button>

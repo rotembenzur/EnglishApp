@@ -2,6 +2,40 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.5.0 (2026-10-13)
+
+RTL and bidi, everywhere. Hebrew mixed with English, numbers, XP, signs, emoji or URLs now renders
+in the right visual order on every screen, in toasts, on the share cards and in push notifications.
+
+- One shared bidi helper for the app and the push server, with plain-text rules that work in
+  WebKit (directional marks; iPhone Safari ignores the Unicode isolate characters) and two React
+  components: `<Ltr>` for an LTR fragment and `<He>` for Hebrew paragraphs that carry English.
+- Memory hooks, confusable explanations and tips, sentence translations, translations, placement
+  options and toasts render as Hebrew paragraphs. Most hooks start with the English word, and they
+  used to flip the whole paragraph left to right.
+- A Hebrew prefix stays attached to its English word and on the same line ("מ-LexBites",
+  "ב־40 XP"). Numbers keep their units and signs in order: "(403 BadJwtToken)" in the push test
+  error, "+0.4" and "−0.3" for level changes, "×3" combos, "~25" in placement, "+8" on the learn
+  hub, "10,000 XP" badges, "XP היום".
+- English sentences (word of the day, cloze, mistakes) are left-aligned LTR blocks again, and
+  English elements that ask to be centered are centered (the placement check word, match cards).
+- Push notifications: every title and body goes through the helper on the server (function
+  version 5), so "נועה כבר ב־40 XP היום" and "LexBites: …" read right to left on the lock screen.
+- Share cards: Hebrew drawn right to left with the same marks, stats in the app's order (XP on the
+  right), the week shown as "12.10".
+- Charts: time runs right to left on every chart (minutes, forecast, retention, heatmap, level over
+  time), the heatmap opens on the current week, retention dates read "5.10". The last week's score
+  reads in the players' order. The duel result is written in Hebrew with both names.
+- Header titles that are English words (word detail) are isolated LTR. Library and confusables
+  search fields read RTL while empty and follow what is typed; confusables search also finds
+  Hebrew. The session timer reads "56 שנ׳".
+- Nudge toasts no longer show the emoji twice. Inline Hebrew strings moved into `he.ts`.
+- Regression guards: unit tests check every UI string and every notification against a reference
+  Unicode Bidirectional Algorithm; a source scan fails on Hebrew mixed with English or digits
+  outside the helper; `pnpm tsx scripts/bidi-screens.ts` photographs every screen on an iPhone
+  viewport (both profiles, light and dark). The bidi test page (`/dev/bidi`) lists every tricky
+  string, Hebrew content with English, every notification and both share cards.
+
 ## 0.4.1 (2026-10-13)
 
 - Push: the test notification failed every time on iPhone. The sender no longer sends the

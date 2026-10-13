@@ -33,7 +33,7 @@ import {
 } from '../_shared/schedule.ts';
 import { ANON_KEY, PROJECT_URL, VAPID_PUBLIC_KEY, VAPID_SUBJECT } from '../_shared/keys.ts';
 
-const VERSION = 4;
+const VERSION = 5;
 const REST = `${(Deno.env.get('SUPABASE_URL') || PROJECT_URL).replace(/\/+$/, '')}/rest/v1/`;
 const VAPID: VapidKeys = {
   publicKey: VAPID_PUBLIC_KEY,

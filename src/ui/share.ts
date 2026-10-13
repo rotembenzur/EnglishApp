@@ -3,6 +3,7 @@
  * (WhatsApp and friends). Falls back to downloading the PNG.
  */
 import { t } from '@/i18n/he';
+import { bidiPlain } from '@/i18n/bidi';
 
 const W = 1080;
 const H = 1080;
@@ -11,6 +12,28 @@ function accent(): string {
   return (
     getComputedStyle(document.documentElement).getPropertyValue('--c-accent').trim() || '#ff6b4a'
   );
+}
+
+/**
+ * Hebrew on the canvas: the context draws right to left from the right edge, and the text gets
+ * the plain-text bidi marks (English, numbers with units and signs isolated), since a canvas has
+ * no CSS.
+ */
+function hebrew(ctx: CanvasRenderingContext2D, text: string, x: number, y: number) {
+  ctx.direction = 'rtl';
+  ctx.fillText(bidiPlain(text), x, y);
+}
+
+/** English or numbers on the canvas, drawn left to right. */
+function latin(ctx: CanvasRenderingContext2D, text: string, x: number, y: number) {
+  ctx.direction = 'ltr';
+  ctx.fillText(text, x, y);
+}
+
+/** "2026-10-12" as "12.10". */
+function shortDate(key: string): string {
+  const [, m, d] = key.split('-');
+  return `${Number(d)}.${Number(m)}`;
 }
 
 function base(ctx: CanvasRenderingContext2D, title: string) {
@@ -26,16 +49,14 @@ function base(ctx: CanvasRenderingContext2D, title: string) {
   ctx.arc(W - 120, 140, 320, 0, Math.PI * 2);
   ctx.fill();
   ctx.globalAlpha = 1;
-  ctx.direction = 'rtl';
   ctx.textAlign = 'right';
   ctx.fillStyle = '#ffffff';
   ctx.font = '700 64px "Heebo Variable", Heebo, sans-serif';
-  ctx.fillText(title, W - 90, 170);
-  ctx.direction = 'ltr';
+  hebrew(ctx, title, W - 90, 170);
   ctx.textAlign = 'left';
   ctx.font = '800 44px "Outfit Variable", Outfit, sans-serif';
   ctx.fillStyle = a;
-  ctx.fillText('LexBites', 90, H - 90);
+  latin(ctx, 'LexBites', 90, H - 90);
 }
 
 async function share(canvas: HTMLCanvasElement, name: string): Promise<void> {
@@ -62,70 +83,82 @@ async function share(canvas: HTMLCanvasElement, name: string): Promise<void> {
 
 function stat(ctx: CanvasRenderingContext2D, x: number, y: number, value: string, label: string) {
   ctx.textAlign = 'center';
-  ctx.direction = 'ltr';
   ctx.fillStyle = '#ffffff';
   ctx.font = '900 120px "Outfit Variable", Outfit, sans-serif';
-  ctx.fillText(value, x, y);
-  ctx.direction = 'rtl';
+  latin(ctx, value, x, y);
   ctx.font = '500 40px "Heebo Variable", Heebo, sans-serif';
   ctx.fillStyle = '#b4b9c8';
-  ctx.fillText(label, x, y + 64);
+  hebrew(ctx, label, x, y + 64);
 }
 
-export async function shareSessionCard(s: {
+export interface SessionCard {
   name: string;
   xp: number;
   accuracy: number;
   words: number;
   mode: string;
-}) {
-  const canvas = document.createElement('canvas');
-  canvas.width = W;
-  canvas.height = H;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-  base(ctx, `${s.name} · ${t.common.today}`);
-  stat(ctx, W * 0.25, 560, `+${s.xp}`, 'XP');
-  stat(ctx, W * 0.5, 560, `${s.accuracy}%`, t.summary.accuracy);
-  stat(ctx, W * 0.75, 560, String(s.words), t.summary.newWords);
-  await share(canvas, 'lexbites-today.png');
 }
 
-export async function shareLeagueCard(l: {
+export interface LeagueCard {
   a: string;
   b: string;
   aXp: number;
   bXp: number;
   week: string;
-}) {
+}
+
+function newCanvas(): [HTMLCanvasElement, CanvasRenderingContext2D | null] {
   const canvas = document.createElement('canvas');
   canvas.width = W;
   canvas.height = H;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
+  canvas.dir = 'rtl';
+  return [canvas, canvas.getContext('2d')];
+}
+
+/** Draws the session card; also used by the bidi test page to preview it. */
+export function drawSessionCard(s: SessionCard): HTMLCanvasElement {
+  const [canvas, ctx] = newCanvas();
+  if (!ctx) return canvas;
+  base(ctx, `${s.name} · ${t.common.today}`);
+  // Right to left like the app: XP first, on the right.
+  stat(ctx, W * 0.75, 560, `+${s.xp}`, t.summary.xp);
+  stat(ctx, W * 0.5, 560, `${s.accuracy}%`, t.summary.accuracy);
+  stat(ctx, W * 0.25, 560, String(s.words), t.summary.newWords);
+  return canvas;
+}
+
+export async function shareSessionCard(s: SessionCard) {
+  await share(drawSessionCard(s), 'lexbites-today.png');
+}
+
+export async function shareLeagueCard(l: LeagueCard) {
+  await share(drawLeagueCard(l), 'lexbites-league.png');
+}
+
+/** Draws the weekly league card; also used by the bidi test page to preview it. */
+export function drawLeagueCard(l: LeagueCard): HTMLCanvasElement {
+  const [canvas, ctx] = newCanvas();
+  if (!ctx) return canvas;
   base(ctx, t.rivalry.league);
   const max = Math.max(1, l.aXp, l.bXp);
   const bar = (y: number, name: string, xp: number, color: string) => {
-    ctx.direction = 'rtl';
     ctx.textAlign = 'right';
     ctx.fillStyle = '#ffffff';
     ctx.font = '700 52px "Heebo Variable", Heebo, sans-serif';
-    ctx.fillText(name, W - 90, y);
+    hebrew(ctx, name, W - 90, y);
     ctx.fillStyle = color;
     const w = ((W - 180) * xp) / max;
     ctx.fillRect(W - 90 - w, y + 30, w, 60);
-    ctx.direction = 'ltr';
     ctx.textAlign = 'left';
     ctx.fillStyle = '#ffffff';
     ctx.font = '800 48px "Outfit Variable", Outfit, sans-serif';
-    ctx.fillText(`${xp} XP`, 90, y);
+    latin(ctx, `${xp} XP`, 90, y);
   };
   bar(420, l.a, l.aXp, '#ff6b4a');
   bar(640, l.b, l.bXp, '#7c5cff');
-  ctx.direction = 'rtl';
   ctx.textAlign = 'right';
   ctx.fillStyle = '#b4b9c8';
   ctx.font = '500 36px "Heebo Variable", Heebo, sans-serif';
-  ctx.fillText(t.rivalry.weekOf(l.week), W - 90, 250);
-  await share(canvas, 'lexbites-league.png');
+  hebrew(ctx, t.rivalry.weekOf(shortDate(l.week)), W - 90, 250);
+  return canvas;
 }

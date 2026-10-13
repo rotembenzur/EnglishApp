@@ -13,6 +13,7 @@ import { sfx } from '@/audio/sfx';
 import { Button, En, Speak } from '@/ui/kit';
 import { audioUrls } from '@/ui/word-utils';
 import { Confetti } from '@/ui/Confetti';
+import { He } from '@/ui/bidi';
 import { RivalCard } from '../Home';
 import { shareSessionCard } from '@/ui/share';
 
@@ -73,10 +74,7 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
           <Tile value={`+${s.xp}`} label={t.summary.xp} />
           <Tile value={`${accuracy}%`} label={t.summary.accuracy} />
           {s.mode === 'speed' ? (
-            <Tile
-              value={String(s.speedScore ?? 0)}
-              label={t.session.speedScore(s.speedScore ?? 0).replace(/^\d+ /, '')}
-            />
+            <Tile value={String(s.speedScore ?? 0)} label={t.summary.speedCorrect} />
           ) : (
             <Tile
               value={String(s.newLearned.length || s.introduced.length)}
@@ -90,9 +88,7 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
           </p>
         )}
         {Math.abs(delta) >= 0.05 && (
-          <p className="text-center text-xs text-ink-3">
-            {t.summary.levelMoved(`${delta > 0 ? '+' : ''}${delta.toFixed(1)}`)}
-          </p>
+          <p className="text-center text-xs text-ink-3">{t.summary.levelMoved(delta)}</p>
         )}
 
         {s.badges.length > 0 && (
@@ -114,7 +110,7 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
               <En className="flex-1 text-3xl font-bold">{wos.lemma}</En>
               <Speak text={wos.lemma} urls={audioUrls(wos)} isWord />
             </div>
-            <p className="font-semibold text-ink-2">{wos.hebrew.join(' · ')}</p>
+            <He className="font-semibold text-ink-2">{wos.hebrew.join(' · ')}</He>
             {wos.sentences[0] && (
               <div className="flex items-start gap-2">
                 <En className="flex-1 text-sm text-ink-2">{wos.sentences[0].en}</En>

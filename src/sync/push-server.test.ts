@@ -13,6 +13,7 @@ import {
   type PushPrefs,
 } from '../../supabase/functions/_shared/schedule.ts';
 import { computeStreak } from '@/engine/game';
+import { stripBidi } from '@/i18n/bidi';
 import { pushRowData, DEFAULT_PUSH_PREFS } from './push';
 
 // ---------------------------------------------------------------------------
@@ -136,10 +137,12 @@ describe('push schedule', () => {
         days: [],
         rivalToday,
       }).messages[0]!.body;
-    expect(run({ xp: 40, goalReached: false })).toContain('נועה כבר ב-40 XP היום');
-    expect(run({ xp: 90, goalReached: true })).toContain('נועה כבר סגרה את היעד');
-    expect(run({ xp: 90, goalReached: true }, 'noa')).toContain('רתם כבר סגר את היעד');
-    expect(run(null)).toBe('חמש דקות של מילים, והיום נסגר');
+    // Copy only; the bidi marks are covered in src/i18n/bidi.test.ts.
+    const text = (...a: Parameters<typeof run>) => stripBidi(run(...a));
+    expect(text({ xp: 40, goalReached: false })).toContain('נועה כבר ב־40 XP היום');
+    expect(text({ xp: 90, goalReached: true })).toContain('נועה כבר סגרה את היעד');
+    expect(text({ xp: 90, goalReached: true }, 'noa')).toContain('רתם כבר סגר את היעד');
+    expect(text(null)).toBe('חמש דקות של מילים, והיום נסגר');
   });
 
   it('warns at 20:00 only when a live streak is at risk', () => {
@@ -152,7 +155,7 @@ describe('push schedule', () => {
       rivalToday: null,
     });
     expect(atRisk.messages.map((m) => m.kind)).toEqual(['streak']);
-    expect(atRisk.messages[0]!.body).toContain('5 ימים ברצף');
+    expect(stripBidi(atRisk.messages[0]!.body)).toContain('5 ימים ברצף');
     expect(
       planScheduled({
         now: il('19:58'),
@@ -258,14 +261,14 @@ describe('push schedule', () => {
   it('pushes fresh nudges only, with the sender in the copy', () => {
     const now = Date.now();
     const ev = { type: 'nudge', userId: 'noa' as const, to: 'rotem' as const, at: now - 5000 };
-    expect(nudgeMessage({ ...ev, payload: { emoji: '🔥' } }, now)).toMatchObject({
-      kind: 'nudge',
-      title: 'נועה',
-      body: 'נועה שלחה לך 🔥',
-      url: './rivalry',
-    });
+    const fire = nudgeMessage({ ...ev, payload: { emoji: '🔥' } }, now)!;
+    expect(fire).toMatchObject({ kind: 'nudge', url: './rivalry' });
+    expect(stripBidi(fire.title)).toBe('נועה');
+    expect(stripBidi(fire.body)).toBe('נועה שלחה לך 🔥');
     expect(
-      nudgeMessage({ ...ev, userId: 'rotem', to: 'noa', payload: { emoji: '👋' } }, now)!.body,
+      stripBidi(
+        nudgeMessage({ ...ev, userId: 'rotem', to: 'noa', payload: { emoji: '👋' } }, now)!.body,
+      ),
     ).toBe('רתם שלח לך 👋');
     expect(nudgeMessage({ ...ev, at: now - 7 * 3600_000 }, now)).toBeNull();
     expect(nudgeMessage({ ...ev, type: 'badge' }, now)).toBeNull();

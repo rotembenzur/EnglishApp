@@ -1,8 +1,16 @@
+import { bidiStrings } from './bidi';
+
 /**
  * All UI strings live here. Hebrew, modern, warm. See docs/VOICE.md.
  * Keys are stable identifiers; never put English UI text in screens directly.
+ *
+ * Every string (and every string a function here returns) passes through bidi() once, below:
+ * English words, numbers with units, signs and codes inside Hebrew are wrapped in directional
+ * marks, so they render in the right order in React, toasts, aria labels, canvas and titles alike
+ * (spec 8.3, src/i18n/bidi.ts). src/i18n/bidi.test.ts fails on any string that mixes directions
+ * without it.
  */
-export const t = {
+const strings = {
   app: {
     name: 'LexBites',
     tagline: 'ביס אחד ביום, אוצר מילים שלם',
@@ -35,6 +43,12 @@ export const t = {
     today: 'היום',
     yesterday: 'אתמול',
     never: 'עוד לא',
+    play: 'השמעה',
+    playSentence: 'השמעת המשפט',
+    less: 'פחות',
+    more: 'יותר',
+    erase: 'מחיקה',
+    mainNav: 'ניווט ראשי',
   },
   pwa: {
     updateReady: 'יש גרסה חדשה. לרענן?',
@@ -162,6 +176,11 @@ export const t = {
     winnerOfWeek: (name: string, female: boolean) =>
       `${name} ${female ? 'ניצחה' : 'ניצח'} בשבוע שעבר`,
     recap: 'סיכום שבועי',
+    recapToast: (result: string, mine: number, theirs: number) =>
+      `סיכום שבועי: ${result}, ${mine} מול ${theirs}`,
+    duelScore: (a: string, aOk: number, aSec: string, b: string, bOk: number, bSec: string) =>
+      `${a} ${aOk}/10 (${aSec} שנ׳) · ${b} ${bOk}/10 (${bSec} שנ׳)`,
+    nudgeLabel: (emoji: string) => `נקירה ${emoji}`,
     shareWeek: 'לשתף את הליגה',
   },
   session: {
@@ -193,6 +212,7 @@ export const t = {
     wrong: 'רגע, זה לא זה',
     near: 'כמעט. אות אחת הפרידה בינך לבין המילה',
     theAnswer: 'התשובה:',
+    theAnswerIs: (word: string) => `התשובה: ${word}`,
     combo: (n: number) => `קומבו ×${n}`,
     newWord: 'מילה חדשה',
     probe: 'בדיקת רמה',
@@ -217,7 +237,9 @@ export const t = {
     again: 'עוד סשן',
     home: 'לבית',
     newBadge: 'תג חדש',
-    levelMoved: (delta: string) => `הרמה זזה ב־${delta}`,
+    levelMoved: (delta: number) =>
+      `הרמה זזה ב־${delta > 0 ? '+' : '−'}${Math.abs(delta).toFixed(1)}`,
+    speedCorrect: 'נכונות',
     share: 'לשתף',
     missed: 'כדאי לחזור עליהן',
   },
@@ -256,6 +278,7 @@ export const t = {
     notStudied: 'עוד לא נלמדה',
     leech: 'מילה עקשנית',
     lapses: (n: number) => `נשכחה ${n} פעמים`,
+    crownsLabel: (n: number) => (n === 1 ? 'כתר אחד' : `${n} כתרים`),
     addToLearning: 'להוסיף ללמידה',
     added: 'נוספה. היא תופיע בסשן הבא',
     loadingContent: 'טוענים את המילה...',
@@ -266,6 +289,7 @@ export const t = {
   library: {
     title: 'המילים שלי',
     search: 'חיפוש באנגלית או בעברית',
+    sortLabel: 'מיון',
     filters: {
       all: 'הכול',
       learning: 'בלמידה',
@@ -304,6 +328,7 @@ export const t = {
     totalXp: 'XP כולל',
     totalReviews: 'תשובות',
     badges: 'תגים',
+    badgesCount: (got: number, total: number) => `תגים (${got}/${total})`,
     notEnough: 'עוד אין מספיק נתונים',
     types: {
       en_he: 'אנגלית ← עברית',
@@ -337,6 +362,7 @@ export const t = {
     voice: 'קול',
     voiceAuto: 'אוטומטי (הכי טוב שיש)',
     speed: 'מהירות דיבור',
+    speedValue: (rate: string) => `מהירות דיבור (${rate})`,
     autoplay: 'השמעה אוטומטית',
     sounds: 'צלילי משחק',
     test: 'לנסות',
@@ -531,6 +557,17 @@ export const t = {
     fullCard: 'לכרטיס המלא',
     entry: 'מצב קריאה: מדביקים טקסט ולומדים ממנו',
   },
+  learnHub: {
+    learn: 'חזרות ומילים חדשות, בערך 5 דקות',
+    review: 'רק מה שמחכה לחזרה, בלי מילים חדשות',
+    hard: 'המילים העקשניות והחלשות, עם הרבה הקלדה',
+    speed: '60 שניות של זיהוי מהיר, XP כפול וחצי',
+    listening: 'ידיים עסוקות? רק לשמוע ולבחור, כפתורים גדולים',
+    boss: '30 פריטים מעורבבים. לנצח את הבוס של השבוע',
+    duel: '10 מילים זהות לשניכם, פעם ביום',
+    read: 'מדביקים טקסט באנגלית ולוקחים ממנו מילים',
+    confusables: 'זוגות כמו affect ו־effect, עם הסבר קצר',
+  } as Record<string, string>,
   today: {
     title: 'היום',
     open: 'לפתוח את LexBites',
@@ -540,6 +577,11 @@ export const t = {
     levelUp: (title: string) => `עלית רמה: ${title}`,
   },
 } as const;
+
+export const t: typeof strings = bidiStrings(strings);
+
+/** The table before bidi(), for tooling only (the catalog reads parameter names from it). */
+export const rawStrings = strings;
 
 export type Strings = typeof t;
 

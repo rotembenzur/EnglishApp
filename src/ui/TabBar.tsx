@@ -12,7 +12,7 @@ const tabs = [
 export function TabBar() {
   return (
     <nav
-      aria-label="ניווט ראשי"
+      aria-label={t.common.mainNav}
       className="shrink-0 border-t border-line bg-card/95 backdrop-blur"
       style={{ paddingBottom: 'var(--sab)' }}
     >

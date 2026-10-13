@@ -41,6 +41,7 @@ import {
   type PushPrefs,
 } from '@/sync/push';
 import { USER_NAMES } from '@/data/repo';
+import { Ltr } from '@/ui/bidi';
 
 const TOPICS = [
   'family',
@@ -208,7 +209,7 @@ export function Settings() {
                 ))}
             </select>
           </Row>
-          <Row label={`${t.settings.speed} (${s.speechRate.toFixed(2)})`}>
+          <Row label={t.settings.speedValue(s.speechRate.toFixed(2))}>
             <input
               type="range"
               min={0.6}
@@ -354,7 +355,7 @@ export function Settings() {
         </Section>
 
         <p className="text-center text-xs text-ink-3">
-          {t.settings.version} <span dir="ltr">{__APP_VERSION__}</span>
+          {t.settings.version} <Ltr>{__APP_VERSION__}</Ltr>
           {import.meta.env.DEV && (
             <>
               {' · '}
@@ -711,7 +712,7 @@ function Stepper({
       <div className="flex items-center gap-2" dir="ltr">
         <button
           type="button"
-          aria-label="פחות"
+          aria-label={t.common.less}
           className="tap grid h-10 w-10 place-items-center rounded-full bg-card-2 text-xl"
           onClick={() => onChange(Math.max(min, value - step))}
         >
@@ -723,7 +724,7 @@ function Stepper({
         </span>
         <button
           type="button"
-          aria-label="יותר"
+          aria-label={t.common.more}
           className="tap grid h-10 w-10 place-items-center rounded-full bg-card-2 text-xl"
           onClick={() => onChange(Math.min(max, value + step))}
         >

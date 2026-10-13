@@ -17,7 +17,12 @@ export function Confusables() {
   const list = useMemo(() => {
     const query = q.trim().toLowerCase();
     return (all ?? [])
-      .filter((c) => !query || c.words.some((w) => w.toLowerCase().includes(query)))
+      .filter(
+        (c) =>
+          !query ||
+          c.words.some((w) => w.toLowerCase().includes(query)) ||
+          c.explanation.includes(query),
+      )
       .sort((a, b) => a.d - b.d);
   }, [all, q]);
   return (
@@ -30,12 +35,12 @@ export function Confusables() {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            dir="ltr"
+            dir={q ? 'auto' : 'rtl'}
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
-            placeholder="affect, borrow..."
-            className="en h-12 flex-1 bg-transparent outline-none"
+            placeholder={t.library.search}
+            className="h-12 flex-1 bg-transparent outline-none"
             aria-label={t.confusables.title}
           />
         </label>

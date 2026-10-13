@@ -1,0 +1,602 @@
+[
+  {
+    "key": "common.minutes(2)",
+    "text": "2 דקות"
+  },
+  {
+    "key": "common.minutes(12)",
+    "text": "12 דקות"
+  },
+  {
+    "key": "common.minutes(1234)",
+    "text": "1234 דקות"
+  },
+  {
+    "key": "common.words(2)",
+    "text": "2 מילים"
+  },
+  {
+    "key": "common.words(12)",
+    "text": "12 מילים"
+  },
+  {
+    "key": "common.words(1234)",
+    "text": "1,234 מילים"
+  },
+  {
+    "key": "placement.introBody",
+    "text": "שתי דקות, בערך 25 מילים. על כל מילה פשוט אומרים אם מכירים. מדי פעם נבדוק אם באמת, אז אין טעם לבלף."
+  },
+  {
+    "key": "placement.progress(5, 1)",
+    "text": "5 מתוך ‎~1‎"
+  },
+  {
+    "key": "placement.progress(5, 2)",
+    "text": "5 מתוך ‎~2‎"
+  },
+  {
+    "key": "placement.progress(5, 12)",
+    "text": "5 מתוך ‎~12‎"
+  },
+  {
+    "key": "placement.progress(5, 1234)",
+    "text": "5 מתוך ‎~1234‎"
+  },
+  {
+    "key": "placement.resultBody(4,200)",
+    "text": "נראה שכבר יש לך בערך 4,200 מילים בכיס. מכאן נתחיל להוסיף מילים קצת מעל הרמה, לאט ובטוח."
+  },
+  {
+    "key": "home.streakDays(2)",
+    "text": "2 ימים"
+  },
+  {
+    "key": "home.streakDays(12)",
+    "text": "12 ימים"
+  },
+  {
+    "key": "home.streakDays(1234)",
+    "text": "1234 ימים"
+  },
+  {
+    "key": "home.record(1)",
+    "text": "שיא: 1"
+  },
+  {
+    "key": "home.record(2)",
+    "text": "שיא: 2"
+  },
+  {
+    "key": "home.record(12)",
+    "text": "שיא: 12"
+  },
+  {
+    "key": "home.record(1234)",
+    "text": "שיא: 1234"
+  },
+  {
+    "key": "home.freezes(2)",
+    "text": "2 הקפאות שמורות"
+  },
+  {
+    "key": "home.freezes(12)",
+    "text": "12 הקפאות שמורות"
+  },
+  {
+    "key": "home.freezes(1234)",
+    "text": "1234 הקפאות שמורות"
+  },
+  {
+    "key": "home.learnSub(0, 8)",
+    "text": "8 מילים חדשות"
+  },
+  {
+    "key": "home.learnSub(12, 0)",
+    "text": "12 חזרות מחכות"
+  },
+  {
+    "key": "home.learnSub(12, 8)",
+    "text": "12 חזרות ו־8 מילים חדשות"
+  },
+  {
+    "key": "home.queue(0, 4)",
+    "text": "יש 0 חזרות, בערך 4 דקות"
+  },
+  {
+    "key": "home.queue(12, 4)",
+    "text": "יש 12 חזרות, בערך 4 דקות"
+  },
+  {
+    "key": "home.newLeft(1)",
+    "text": "נשארו 1 מילים חדשות להיום"
+  },
+  {
+    "key": "home.newLeft(2)",
+    "text": "נשארו 2 מילים חדשות להיום"
+  },
+  {
+    "key": "home.newLeft(12)",
+    "text": "נשארו 12 מילים חדשות להיום"
+  },
+  {
+    "key": "home.newLeft(1234)",
+    "text": "נשארו 1234 מילים חדשות להיום"
+  },
+  {
+    "key": "home.capUp(5)",
+    "text": "הזכירה שלך מצוינת. להעלות ל־5 מילים חדשות ביום?"
+  },
+  {
+    "key": "home.capUp(12)",
+    "text": "הזכירה שלך מצוינת. להעלות ל־12 מילים חדשות ביום?"
+  },
+  {
+    "key": "home.capDown(5)",
+    "text": "החזרות נערמות. להוריד ל־5 מילים חדשות ביום?"
+  },
+  {
+    "key": "home.capDown(12)",
+    "text": "החזרות נערמות. להוריד ל־12 מילים חדשות ביום?"
+  },
+  {
+    "key": "home.together(1)",
+    "text": "ביחד למדתם 1 מילים"
+  },
+  {
+    "key": "home.together(2)",
+    "text": "ביחד למדתם 2 מילים"
+  },
+  {
+    "key": "home.together(12)",
+    "text": "ביחד למדתם 12 מילים"
+  },
+  {
+    "key": "home.together(1234)",
+    "text": "ביחד למדתם 1,234 מילים"
+  },
+  {
+    "key": "rival.lastSeen(לפני 20 דקות)",
+    "text": "נראה לאחרונה לפני 20 דקות"
+  },
+  {
+    "key": "rival.xpToday",
+    "text": "‏‎XP‎ היום"
+  },
+  {
+    "key": "rival.leading(40)",
+    "text": "מובילים ב־⁠‎40 XP‎ השבוע"
+  },
+  {
+    "key": "rival.leading(1250)",
+    "text": "מובילים ב־⁠‎1250 XP‎ השבוע"
+  },
+  {
+    "key": "rival.trailing(40)",
+    "text": "מפגרים ב־⁠‎40 XP‎ השבוע"
+  },
+  {
+    "key": "rival.trailing(1250)",
+    "text": "מפגרים ב־⁠‎1250 XP‎ השבוע"
+  },
+  {
+    "key": "rivalry.weekOf(12.10)",
+    "text": "שבוע מ־12.10"
+  },
+  {
+    "key": "rivalry.duelBody",
+    "text": "10 מילים, אותן מילים לשניכם. מי עונה נכון יותר ומהר יותר"
+  },
+  {
+    "key": "rivalry.duelDone(7)",
+    "text": "ענית נכון על 7 מתוך 10"
+  },
+  {
+    "key": "rivalry.recapToast(נועה ניצחה בשבוע שעבר, 465, 585)",
+    "text": "סיכום שבועי: נועה ניצחה בשבוע שעבר, 465 מול 585"
+  },
+  {
+    "key": "rivalry.duelScore(רתם, 7, 7.2, נועה, 6, 8.1)",
+    "text": "רתם 7/10 (7.2 שנ׳) · נועה 6/10 (8.1 שנ׳)"
+  },
+  {
+    "key": "session.theAnswerIs(decide)",
+    "text": "התשובה: ‎decide‎"
+  },
+  {
+    "key": "session.combo(1)",
+    "text": "קומבו ‎×1‎"
+  },
+  {
+    "key": "session.combo(2)",
+    "text": "קומבו ‎×2‎"
+  },
+  {
+    "key": "session.combo(12)",
+    "text": "קומבו ‎×12‎"
+  },
+  {
+    "key": "session.combo(1234)",
+    "text": "קומבו ‎×1234‎"
+  },
+  {
+    "key": "session.secondsLeft(24)",
+    "text": "24 שנ׳"
+  },
+  {
+    "key": "session.speedScore(1)",
+    "text": "1 נכונות"
+  },
+  {
+    "key": "session.speedScore(2)",
+    "text": "2 נכונות"
+  },
+  {
+    "key": "session.speedScore(12)",
+    "text": "12 נכונות"
+  },
+  {
+    "key": "session.speedScore(1234)",
+    "text": "1234 נכונות"
+  },
+  {
+    "key": "session.formHint(went)",
+    "text": "צריך את הצורה ‎went‎"
+  },
+  {
+    "key": "summary.levelMoved(0.4)",
+    "text": "הרמה זזה ב־⁠‎+0.4‎"
+  },
+  {
+    "key": "summary.levelMoved(-0.3)",
+    "text": "הרמה זזה ב־⁠‎−0.3‎"
+  },
+  {
+    "key": "word.lapses(1)",
+    "text": "נשכחה 1 פעמים"
+  },
+  {
+    "key": "word.lapses(2)",
+    "text": "נשכחה 2 פעמים"
+  },
+  {
+    "key": "word.lapses(12)",
+    "text": "נשכחה 12 פעמים"
+  },
+  {
+    "key": "word.lapses(1234)",
+    "text": "נשכחה 1234 פעמים"
+  },
+  {
+    "key": "word.crownsLabel(2)",
+    "text": "2 כתרים"
+  },
+  {
+    "key": "word.crownsLabel(12)",
+    "text": "12 כתרים"
+  },
+  {
+    "key": "word.crownsLabel(1234)",
+    "text": "1234 כתרים"
+  },
+  {
+    "key": "word.rank(1)",
+    "text": "מקום 1 בשכיחות"
+  },
+  {
+    "key": "word.rank(2)",
+    "text": "מקום 2 בשכיחות"
+  },
+  {
+    "key": "word.rank(12)",
+    "text": "מקום 12 בשכיחות"
+  },
+  {
+    "key": "word.rank(1234)",
+    "text": "מקום 1,234 בשכיחות"
+  },
+  {
+    "key": "library.dueIn(24)",
+    "text": "חזרה 24"
+  },
+  {
+    "key": "stats.forecast",
+    "text": "חזרות ב־14 הימים הקרובים"
+  },
+  {
+    "key": "stats.totalXp",
+    "text": "‏‎XP‎ כולל"
+  },
+  {
+    "key": "stats.badgesCount(3, 40)",
+    "text": "תגים (3/40)"
+  },
+  {
+    "key": "stats.level_n(1)",
+    "text": "רמה 1"
+  },
+  {
+    "key": "stats.level_n(2)",
+    "text": "רמה 2"
+  },
+  {
+    "key": "stats.level_n(12)",
+    "text": "רמה 12"
+  },
+  {
+    "key": "stats.level_n(1234)",
+    "text": "רמה 1234"
+  },
+  {
+    "key": "settings.speedValue(0.95)",
+    "text": "מהירות דיבור (0.95)"
+  },
+  {
+    "key": "settings.pinPrompt",
+    "text": "4 ספרות. זה רק כדי לא להיכנס בטעות לפרופיל הלא נכון"
+  },
+  {
+    "key": "settings.export",
+    "text": "לייצא גיבוי (‎JSON‎)"
+  },
+  {
+    "key": "settings.imported(120, 860)",
+    "text": "יובאו 120 מילים ו־860 תשובות"
+  },
+  {
+    "key": "settings.importBad",
+    "text": "הקובץ הזה לא נראה כמו גיבוי של ‎LexBites‎"
+  },
+  {
+    "key": "settings.rebuilt(1)",
+    "text": "נבנו מחדש 1 מילים"
+  },
+  {
+    "key": "settings.rebuilt(2)",
+    "text": "נבנו מחדש 2 מילים"
+  },
+  {
+    "key": "settings.rebuilt(12)",
+    "text": "נבנו מחדש 12 מילים"
+  },
+  {
+    "key": "settings.rebuilt(1234)",
+    "text": "נבנו מחדש 1234 מילים"
+  },
+  {
+    "key": "settings.syncUrl",
+    "text": "כתובת הפרויקט (‎Supabase URL‎)"
+  },
+  {
+    "key": "settings.syncKey",
+    "text": "מפתח ציבורי (‎anon key‎)"
+  },
+  {
+    "key": "settings.pushStreak",
+    "text": "הרצף בסכנה (20:00)"
+  },
+  {
+    "key": "settings.pushTestFailed(403 BadJwtToken)",
+    "text": "השליחה לא הצליחה (‎403 BadJwtToken‎)"
+  },
+  {
+    "key": "settings.pushDenied",
+    "text": "ההתראות חסומות. אפשר לפתוח אותן בהגדרות של האייפון: התראות, ‎LexBites‎"
+  },
+  {
+    "key": "settings.pushStatus.needs-install",
+    "text": "באייפון, התראות עובדות רק כשפותחים את ‎LexBites‎ ממסך הבית: בספארי, שיתוף, הוספה למסך הבית"
+  },
+  {
+    "key": "settings.pushStatus.unsupported",
+    "text": "הדפדפן הזה לא תומך בהתראות. באייפון צריך ‎iOS 16.4‎ ומעלה"
+  },
+  {
+    "key": "settings.pushStatus.server-off",
+    "text": "שרת ההתראות עוד לא הופעל (קובץ ההגדרה, שלב 4)"
+  },
+  {
+    "key": "settings.fsrsNotEnough",
+    "text": "צריך לפחות 400 תשובות"
+  },
+  {
+    "key": "badges.words_100[1]",
+    "text": "100 מילים בלמידה"
+  },
+  {
+    "key": "badges.words_500[1]",
+    "text": "500 מילים בלמידה"
+  },
+  {
+    "key": "badges.words_1000[1]",
+    "text": "1,000 מילים בלמידה"
+  },
+  {
+    "key": "badges.words_5000[1]",
+    "text": "5,000 מילים בלמידה"
+  },
+  {
+    "key": "badges.streak_7[1]",
+    "text": "רצף של 7 ימים"
+  },
+  {
+    "key": "badges.streak_30[1]",
+    "text": "רצף של 30 ימים"
+  },
+  {
+    "key": "badges.streak_100[1]",
+    "text": "רצף של 100 ימים"
+  },
+  {
+    "key": "badges.streak_365[1]",
+    "text": "רצף של 365 ימים"
+  },
+  {
+    "key": "badges.perfect_10[1]",
+    "text": "10 סשנים מושלמים"
+  },
+  {
+    "key": "badges.typist_50[1]",
+    "text": "50 מילים מוקלדות נכון"
+  },
+  {
+    "key": "badges.typist_500[1]",
+    "text": "500 מילים מוקלדות נכון"
+  },
+  {
+    "key": "badges.speed_20[1]",
+    "text": "20 נכונות בסיבוב מהיר"
+  },
+  {
+    "key": "badges.speed_35[1]",
+    "text": "35 נכונות בסיבוב מהיר"
+  },
+  {
+    "key": "badges.early_bird[1]",
+    "text": "למדת מילה בין 5 ל־7 בבוקר"
+  },
+  {
+    "key": "badges.night_owl[1]",
+    "text": "למדת מילה אחרי 23:00"
+  },
+  {
+    "key": "badges.quality_guardian[1]",
+    "text": "10 דיווחים על תוכן"
+  },
+  {
+    "key": "badges.rival_4_weeks[1]",
+    "text": "ניצחת 4 שבועות ברצף"
+  },
+  {
+    "key": "badges.duelist[1]",
+    "text": "10 דו־קרבות"
+  },
+  {
+    "key": "badges.duel_champion[1]",
+    "text": "10 ניצחונות בדו־קרב"
+  },
+  {
+    "key": "badges.nudger[1]",
+    "text": "10 נקירות ליריב"
+  },
+  {
+    "key": "badges.crowned_10[1]",
+    "text": "10 מילים עם 5 כתרים"
+  },
+  {
+    "key": "badges.crowned_100[1]",
+    "text": "100 מילים עם 5 כתרים"
+  },
+  {
+    "key": "badges.xp_10000[1]",
+    "text": "‎10,000 XP‎"
+  },
+  {
+    "key": "badges.xp_50000[1]",
+    "text": "‎50,000 XP‎"
+  },
+  {
+    "key": "badges.days_50[1]",
+    "text": "50 ימי אימון"
+  },
+  {
+    "key": "badges.all_ears[1]",
+    "text": "5 סשנים במצב האזנה"
+  },
+  {
+    "key": "badges.hard_mode[1]",
+    "text": "5 סשנים של מילים קשות"
+  },
+  {
+    "key": "badges.combo_20[1]",
+    "text": "קומבו של 20"
+  },
+  {
+    "key": "badges.matchmaker[1]",
+    "text": "זוגות בפחות מ־10 שניות, 5 פעמים"
+  },
+  {
+    "key": "badges.note_taker[1]",
+    "text": "5 הערות אישיות"
+  },
+  {
+    "key": "badges.collector[1]",
+    "text": "20 מילים מועדפות"
+  },
+  {
+    "key": "badges.honest_level[1]",
+    "text": "25 בדיקות רמה עברו"
+  },
+  {
+    "key": "badges.leech_tamer[1]",
+    "text": "3 מילים עקשניות עם 2 כתרים"
+  },
+  {
+    "key": "badges.goal_100[1]",
+    "text": "100 ימים עם יעד"
+  },
+  {
+    "key": "confusables.entry",
+    "text": "זוגות כמו ‎affect‎ ו־⁠‎effect‎, עם הסבר קצר"
+  },
+  {
+    "key": "read.addAll(1)",
+    "text": "להוסיף את 1 המילים החדשות ללמידה"
+  },
+  {
+    "key": "read.addAll(2)",
+    "text": "להוסיף את 2 המילים החדשות ללמידה"
+  },
+  {
+    "key": "read.addAll(12)",
+    "text": "להוסיף את 12 המילים החדשות ללמידה"
+  },
+  {
+    "key": "read.addAll(1234)",
+    "text": "להוסיף את 1234 המילים החדשות ללמידה"
+  },
+  {
+    "key": "read.added(2)",
+    "text": "2 מילים נוספו ללמידה"
+  },
+  {
+    "key": "read.added(12)",
+    "text": "12 מילים נוספו ללמידה"
+  },
+  {
+    "key": "read.added(1234)",
+    "text": "1234 מילים נוספו ללמידה"
+  },
+  {
+    "key": "learnHub.learn",
+    "text": "חזרות ומילים חדשות, בערך 5 דקות"
+  },
+  {
+    "key": "learnHub.speed",
+    "text": "60 שניות של זיהוי מהיר, ‎XP‎ כפול וחצי"
+  },
+  {
+    "key": "learnHub.boss",
+    "text": "30 פריטים מעורבבים. לנצח את הבוס של השבוע"
+  },
+  {
+    "key": "learnHub.duel",
+    "text": "10 מילים זהות לשניכם, פעם ביום"
+  },
+  {
+    "key": "today.open",
+    "text": "לפתוח את ‎LexBites‎"
+  },
+  {
+    "key": "relTime(-90000)",
+    "text": "לפני 2 דקות"
+  },
+  {
+    "key": "relTime(-10800000)",
+    "text": "לפני 3 שעות"
+  },
+  {
+    "key": "relTime(432000000)",
+    "text": "בעוד 5 ימים"
+  }
+]

@@ -10,6 +10,8 @@
  * arrive within the same hour.
  */
 
+import { bidiPlain } from './bidi.ts';
+
 export type UserId = 'rotem' | 'noa';
 
 export const NAMES: Record<UserId, string> = { rotem: 'רתם', noa: 'נועה' };
@@ -154,24 +156,36 @@ export function streakToday(
   return { current: streak, pendingToday };
 }
 
+/**
+ * Every notification passes through here: iOS draws title and body as plain text with no CSS, so
+ * English, numbers with units and emoji get their bidi marks and each Hebrew line starts with an
+ * RLM (a Hebrew paragraph even when the text starts with a name or a number). See ./bidi.ts.
+ */
+export function pushText<T extends PushMessage>(m: T): T {
+  return { ...m, title: bidiPlain(m.title), body: bidiPlain(m.body) };
+}
+
 function toMinutes(hhmm: string): number {
   const [h, m] = hhmm.split(':').map(Number);
   return (h ?? 20) * 60 + (m ?? 0);
 }
 
-function reminderMessage(user: UserId, rival: { xp: number; goalReached: boolean } | null) {
+export function reminderMessage(
+  user: UserId,
+  rival: { xp: number; goalReached: boolean } | null,
+): PushMessage {
   const other = rival ? otherUser(user) : null;
   let body = 'חמש דקות של מילים, והיום נסגר';
   if (other && rival?.goalReached) {
     body = `${NAMES[other]} ${FEMALE[other] ? 'כבר סגרה' : 'כבר סגר'} את היעד היום. תורך`;
   } else if (other && rival && rival.xp > 0) {
-    body = `${NAMES[other]} כבר ב-${rival.xp} XP היום. חמש דקות ונכנסים לתמונה`;
+    body = `${NAMES[other]} כבר ב־${rival.xp} XP היום. חמש דקות ונכנסים לתמונה`;
   }
-  return { kind: 'reminder' as const, title: 'LexBites', body, url: './', tag: 'lexbites-daily' };
+  return pushText({ kind: 'reminder', title: 'LexBites', body, url: './', tag: 'lexbites-daily' });
 }
 
-function streakMessage(days: number): PushMessage {
-  return {
+export function streakMessage(days: number): PushMessage {
+  return pushText({
     kind: 'streak',
     title: 'הרצף בסכנה 🔥',
     body:
@@ -180,7 +194,7 @@ function streakMessage(days: number): PushMessage {
         : 'הרצף רק התחיל, והיעד של היום עוד פתוח. חמש דקות ונגמר הסיפור',
     url: './',
     tag: 'lexbites-daily',
-  };
+  });
 }
 
 export function otherUser(u: UserId): UserId {
@@ -259,19 +273,40 @@ export function nudgeMessage(ev: NudgeEvent, now: number): PushMessage | null {
   if (!(now - ev.at < NUDGE_MAX_AGE_MS)) return null;
   const emoji = typeof ev.payload?.emoji === 'string' ? ev.payload.emoji.slice(0, 8) : '👋';
   const from = ev.userId;
-  return {
+  return pushText({
     kind: 'nudge',
     title: NAMES[from],
     body: `${NAMES[from]} ${FEMALE[from] ? 'שלחה' : 'שלח'} לך ${emoji}`,
     url: './rivalry',
     tag: `lexbites-nudge-${from}`,
-  };
+  });
 }
 
-export const TEST_MESSAGE: PushMessage = {
+export const TEST_MESSAGE: PushMessage = pushText({
   kind: 'test',
   title: 'LexBites',
   body: 'ככה נראית תזכורת. ההתראות עובדות ✓',
   url: './',
   tag: 'lexbites-test',
-};
+});
+
+/** One of every notification the server can send, for the bidi tests and the dev bidi page. */
+export function sampleMessages(now = Date.now()): PushMessage[] {
+  const nudge = (userId: UserId, emoji: string) =>
+    nudgeMessage(
+      { type: 'nudge', userId, to: otherUser(userId), payload: { emoji }, at: now },
+      now,
+    );
+  return [
+    reminderMessage('rotem', null),
+    reminderMessage('rotem', { xp: 40, goalReached: false }),
+    reminderMessage('noa', { xp: 1250, goalReached: false }),
+    reminderMessage('rotem', { xp: 90, goalReached: true }),
+    reminderMessage('noa', { xp: 90, goalReached: true }),
+    streakMessage(1),
+    streakMessage(12),
+    nudge('noa', '👋'),
+    nudge('rotem', '🔥'),
+    TEST_MESSAGE,
+  ].filter((m): m is PushMessage => m !== null);
+}

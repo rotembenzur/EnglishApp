@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.4.1
+Last updated: 2026-10-13 · version 0.5.0
 
 ## Deployment
 
@@ -20,11 +20,51 @@ Last updated: 2026-10-13 · version 0.4.1
 
 ## Waiting on owner
 
-1. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
+1. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
+   the iPhone" below.
+2. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
    nudges, as listed under "Push: what to test on the phones" below.
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## RTL and bidi audit (0.5.0)
+
+Reported: on the iPhone, Hebrew mixed with English, numbers, XP, punctuation or emoji rendered in
+the wrong order, and Hebrew prefixes on English words ("מ-LexBites") broke apart.
+
+- Root causes found: Hebrew paragraphs shown with `dir="auto"` flipped to LTR when they started
+  with an English word (1,388 of 1,587 memory hooks, 83 of 120 confusable explanations, toasts);
+  number and English pairs swapped inside Hebrew ("(BadJwtToken 403)"); signs landed on the wrong
+  side (+3, −0.3, ×3, ~25); pure-English badge texts read "XP 10,000"; English sentences inside
+  RTL paragraphs right-aligned; an unlayered CSS rule cancelled `text-center` on English
+  elements; push notifications and share cards had no bidi handling at all; charts ran in mixed
+  directions.
+- Fix: one helper for the app and the push server (`supabase/functions/_shared/bidi.ts`), with
+  directional marks for plain text (WebKit ignores the Unicode isolate characters) and `<Ltr>` /
+  `<He>` for the DOM. Every UI string passes through it at the source. Details and rules in
+  `docs/DECISIONS.md`, "RTL and bidi".
+- Guards: unit tests run every UI string and every notification through a reference bidi
+  algorithm; a source scan fails on Hebrew mixed with English or digits outside the helper.
+- Reviewed in screenshots: every screen on an iPhone 14 viewport, both profiles, light and dark
+  (`pnpm tsx scripts/bidi-screens.ts <dir>` against `pnpm preview`).
+
+## RTL and bidi: what to check on the iPhone
+
+Update to 0.5.0 first (bottom of **הגדרות**). Then:
+
+1. **Bidi test page**: open `https://rotembenzur.github.io/EnglishApp/dev/bidi` in Safari. Every
+   card should read naturally right to left, English and numbers in their normal order. It also
+   shows every push notification and both share cards.
+2. **A new word card and a mistake card** in a session: the lightbulb tip (most start with the
+   English word) reads right to left, the English sentence is left aligned.
+3. **מילים מבלבלות**: open a pair; the explanation and tip read right to left.
+4. **Home**: rival card ("XP היום", "מובילים ב־… XP השבוע"), word of the day.
+5. **Summary** after a session: "+XP", "הרמה זזה ב־+0.4", share card (↗).
+6. **יריבות**: last week's score (yours on the right), today's duel result line, nudge toast.
+7. **סטטיסטיקה**: charts run right to left, the heatmap opens on this week.
+8. **הגדרות**, test notification: if it fails, the error in brackets reads "(403 BadJwtToken)",
+   not reversed. A real reminder or nudge on the lock screen reads right to left.
 
 ## Push: the failing test notification (fixed in 0.4.1)
 
@@ -178,7 +218,7 @@ iPhone 14 profile; items that need a real iPhone stay open until checked on the 
 - [ ] Installs on iPhone from Safari and opens full screen (URL is live; needs a check on a real iPhone)
 - [x] Works offline after first load: service worker precaches the shell and all content (2026-10-12, e2e offline test; 2026-10-13, Pages-like build)
 - [ ] Audio plays in standalone mode (needs a real iPhone)
-- [x] RTL layout and bidi strings look right (2026-10-12, screenshots in `docs/screenshots/`)
+- [x] RTL layout and bidi strings look right (2026-10-13, full audit in 0.5.0: unit tests on every string and notification, screenshots of every screen; real iPhone check listed above)
 - [x] Dark and light mode (2026-10-12, screenshots)
 - [x] Two profiles on two phones (owner report, 2026-10-13)
 - [x] Sync, rival card, league, duel, nudges: two-phone e2e against PostgREST with the real schema (2026-10-13)

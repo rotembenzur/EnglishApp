@@ -19,6 +19,8 @@ import type { Sfx } from '@/audio/sfx';
 import { buzz } from '@/audio/sfx';
 import { Bar, Button, En, Pill, Speak } from '@/ui/kit';
 import { WordCard } from '@/ui/WordCard';
+import { He, Ltr } from '@/ui/bidi';
+import { hasHebrew } from '@/i18n/bidi';
 import { audioUrls, highlight } from '@/ui/word-utils';
 import { SpeakerIcon } from '@/ui/icons';
 
@@ -191,7 +193,7 @@ function Options({
             } ${dirAttr === 'ltr' ? 'en' : ''}`}
           >
             {!large && <span className="hidden text-xs text-ink-3 sm:inline">{i + 1}</span>}
-            <span className="flex-1">{label}</span>
+            <span className="flex-1">{dirAttr === 'rtl' ? <He>{label}</He> : label}</span>
           </button>
         );
       })}
@@ -220,9 +222,7 @@ function Choice({
   const opts = useSpeakOpts();
   const listening = ex.prompt === 'audio';
   const urls = audioUrls(ex.word);
-  const sideLtr = ex.options.options[0]
-    ? /^[\x20-\x7e]+$/.test(ex.options.options[0].label)
-    : false;
+  const sideLtr = ex.options.options[0] ? !hasHebrew(ex.options.options[0].label) : false;
   const speedy = mode === 'speed' || mode === 'duel' || !!ex.timerMs;
   useAutoplay(ex.word.lemma, urls, listening || ex.prompt === 'en');
 
@@ -286,13 +286,13 @@ function Choice({
           </div>
         )}
         {ex.prompt === 'he' && (
-          <p className="text-center text-4xl font-bold">{ex.word.hebrew[0]}</p>
+          <He className="text-center text-4xl font-bold">{ex.word.hebrew[0] ?? ''}</He>
         )}
         {listening && (
           <div className="flex flex-col items-center gap-4">
             <button
               type="button"
-              aria-label="השמעה"
+              aria-label={t.common.play}
               onClick={() => void playWord(ex.word.lemma, urls, opts)}
               className="tap grid h-28 w-28 place-items-center rounded-full bg-accent text-accent-ink shadow-[0_14px_30px_-12px_var(--c-accent)] active:scale-95"
             >
@@ -380,22 +380,20 @@ function Typing({ ex, onSfx }: { ex: Extract<Exercise, { kind: 'typing' }>; onSf
         {ex.audioOnly ? (
           <button
             type="button"
-            aria-label="השמעה"
+            aria-label={t.common.play}
             onClick={() => void playWord(ex.word.lemma, urls, opts)}
             className="tap grid h-24 w-24 place-items-center rounded-full bg-accent text-accent-ink active:scale-95"
           >
             <SpeakerIcon size={40} />
           </button>
         ) : (
-          <p className="text-center text-3xl font-bold">{ex.word.hebrew.join(' · ')}</p>
+          <He className="text-center text-3xl font-bold">{ex.word.hebrew.join(' · ')}</He>
         )}
         {ex.cloze && !ex.audioOnly && (
-          <p className="text-center text-lg text-ink-2">
-            <En>
-              {ex.cloze.before}
-              <span className="mx-1 inline-block min-w-16 border-b-2 border-accent" />
-              {ex.cloze.after}
-            </En>
+          <p className="en text-center text-lg text-ink-2" dir="ltr">
+            {ex.cloze.before}
+            <span className="mx-1 inline-block min-w-16 border-b-2 border-accent" />
+            {ex.cloze.after}
           </p>
         )}
       </div>
@@ -492,22 +490,20 @@ function ClozeView({ ex, onSfx }: { ex: Extract<Exercise, { kind: 'cloze' }>; on
       <RoleTag ex={ex} />
       <p className="text-center text-sm font-semibold text-ink-3">{t.session.fillBlank}</p>
       <div className="card flex items-start gap-3 p-4">
-        <p className="flex-1 text-xl leading-relaxed">
-          <En>
-            {ex.cloze.before}
-            {feedback ? (
-              <strong className={feedback.correct ? 'text-good' : 'text-bad'}>
-                {ex.cloze.answer}
-              </strong>
-            ) : (
-              <span className="mx-1 inline-block min-w-16 border-b-2 border-accent" />
-            )}
-            {ex.cloze.after}
-          </En>
+        <p className="en flex-1 text-xl leading-relaxed" dir="ltr">
+          {ex.cloze.before}
+          {feedback ? (
+            <strong className={feedback.correct ? 'text-good' : 'text-bad'}>
+              {ex.cloze.answer}
+            </strong>
+          ) : (
+            <span className="mx-1 inline-block min-w-16 border-b-2 border-accent" />
+          )}
+          {ex.cloze.after}
         </p>
         <Speak text={sentence} size="sm" />
       </div>
-      <p className="text-center text-sm text-ink-3">{ex.sentenceHe}</p>
+      <He className="text-center text-sm text-ink-3">{ex.sentenceHe}</He>
       {ex.options ? (
         <Options
           labels={ex.options.options.map((o) => o.label)}
@@ -650,7 +646,7 @@ function Match({ ex, onSfx }: { ex: Extract<Exercise, { kind: 'match' }>; onSfx:
               onClick={() => tryPair(r.lemmaId)}
               className={cell(false, done.has(r.lemmaId), flash === r.lemmaId)}
             >
-              {r.label}
+              <He>{r.label}</He>
             </button>
           ))}
         </div>
@@ -673,11 +669,7 @@ function Praise({ feedback }: { feedback: Feedback }) {
     <div className="animate-pop text-center">
       <p className="text-lg font-bold text-good">
         {word}
-        {feedback.xp > 0 && (
-          <span className="ms-2 text-sm text-ink-3" dir="ltr">
-            +{feedback.xp} XP
-          </span>
-        )}
+        {feedback.xp > 0 && <Ltr className="ms-2 text-sm text-ink-3">+{feedback.xp} XP</Ltr>}
       </p>
       {feedback.learnedNow && (
         <p className="text-sm font-semibold text-accent">{t.session.learned} ✨</p>
@@ -717,7 +709,7 @@ function MistakePanel({
           <p
             className="en text-2xl font-bold tracking-wide"
             dir="ltr"
-            aria-label={`${t.session.theAnswer} ${feedback.expected}`}
+            aria-label={t.session.theAnswerIs(feedback.expected)}
           >
             {diffSpelling(feedback.typed, feedback.expected).map((op, i) =>
               op.op === 'extra' ? null : (
@@ -735,8 +727,8 @@ function MistakePanel({
         )}
       <WordCard word={ex.word} big={false} sentences={1} />
       {ex.kind === 'cloze' && ex.cloze.answer.toLowerCase() !== ex.word.lemma.toLowerCase() && (
-        <p className="text-sm text-ink-2">
-          <En>{highlight(ex.cloze.before + ex.cloze.answer + ex.cloze.after, ex.word)}</En>
+        <p className="en text-sm text-ink-2" dir="ltr">
+          {highlight(ex.cloze.before + ex.cloze.answer + ex.cloze.after, ex.word)}
         </p>
       )}
       <Button onClick={() => next()} autoFocus>

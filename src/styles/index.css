@@ -177,22 +177,33 @@ body {
   overflow: hidden;
 }
 
-/* Bidi helpers */
-.en,
-[dir='ltr'] {
-  direction: ltr;
-  unicode-bidi: isolate;
-  text-align: left;
+/* Bidi helpers (spec 8.3, src/ui/bidi.tsx). WebKit ignores the Unicode isolate characters, so
+   isolation in the DOM is always done with CSS on an element that carries dir. Direction and
+   alignment sit in the base layer so utilities such as text-center still win. */
+@layer base {
+  .en,
+  [dir='ltr'] {
+    direction: ltr;
+    unicode-bidi: isolate;
+    text-align: left;
+  }
+  /* An inline LTR fragment inside Hebrew keeps the line's alignment. */
+  .ltr {
+    text-align: inherit;
+  }
+  .he {
+    direction: rtl;
+    unicode-bidi: isolate;
+  }
+  .ipa {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
 }
 .en {
   font-family: var(--font-en);
 }
-.bidi-auto {
-  unicode-bidi: plaintext;
-}
 .ipa {
-  direction: ltr;
-  unicode-bidi: isolate;
   font-family: 'Charis SIL', 'Doulos SIL', 'Gentium', 'Times New Roman', serif;
 }
 

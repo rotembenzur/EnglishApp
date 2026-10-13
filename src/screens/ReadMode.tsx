@@ -11,6 +11,7 @@ import { Button, En, Header, Sheet, Speak } from '@/ui/kit';
 import { toast } from '@/ui/toast';
 import { audioUrls } from '@/ui/word-utils';
 import { lemmatize } from '@/content/lemmatize';
+import { He } from '@/ui/bidi';
 
 type Status = 'studied' | 'new' | 'easy' | 'none';
 
@@ -149,7 +150,7 @@ export function ReadMode() {
             {content === undefined && (
               <div className="h-16 animate-pulse-soft rounded-xl bg-card-2" />
             )}
-            {content && <p className="text-xl font-semibold">{content.hebrew.join(' · ')}</p>}
+            {content && <He className="text-xl font-semibold">{content.hebrew.join(' · ')}</He>}
             {content?.sentences[0] && (
               <En className="text-sm text-ink-2">{content.sentences[0].en}</En>
             )}

@@ -1,5 +1,7 @@
 import type { Confusable } from '@/content/confusables';
-import { Bidi, En, Speak } from './kit';
+import { En, Speak } from './kit';
+import { He } from './bidi';
+import { t } from '@/i18n/he';
 import { LightbulbIcon } from './icons';
 
 export function ConfusableCard({ c }: { c: Confusable }) {
@@ -14,11 +16,11 @@ export function ConfusableCard({ c }: { c: Confusable }) {
         ))}
       </p>
       <p className="leading-relaxed">
-        <Bidi>{c.explanation}</Bidi>
+        <He>{c.explanation}</He>
       </p>
       <p className="flex items-start gap-2 rounded-2xl bg-accent-soft p-3 text-sm">
         <LightbulbIcon size={18} className="mt-0.5 shrink-0 text-accent" />
-        <Bidi>{c.tip}</Bidi>
+        <He>{c.tip}</He>
       </p>
       <ul className="flex flex-col gap-2">
         {c.examples.map((e) => (
@@ -28,9 +30,9 @@ export function ConfusableCard({ c }: { c: Confusable }) {
                 {e.word}
               </span>
               <En className="leading-snug">{e.en}</En>
-              <span className="text-sm text-ink-2">{e.he}</span>
+              <He className="text-sm text-ink-2">{e.he}</He>
             </div>
-            <Speak text={e.en} size="sm" />
+            <Speak text={e.en} size="sm" label={t.common.playSentence} />
           </li>
         ))}
       </ul>

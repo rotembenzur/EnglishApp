@@ -8,6 +8,7 @@ import { todayKey, useApp } from '@/state/app';
 import { useLive } from '@/state/live';
 import { otherUser, snapshot } from '@/state/rival';
 import { Ring } from '@/ui/kit';
+import { Ltr } from '@/ui/bidi';
 
 /** Compact card for a Safari start-page bookmark (spec 7.2 widget substitute). */
 export function Today() {
@@ -45,7 +46,7 @@ export function Today() {
           <span className="font-semibold" style={{ color: 'var(--c-rival)' }}>
             {rival.name}
           </span>
-          <span dir="ltr">{rival.today?.xp ?? 0} XP</span>
+          <Ltr>{rival.today?.xp ?? 0} XP</Ltr>
           <span>🔥 {rival.streak}</span>
         </div>
       )}

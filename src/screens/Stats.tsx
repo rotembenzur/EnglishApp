@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { levelOf } from '@/engine/ability';
 import { BANDS } from '@/engine/difficulty';
@@ -19,6 +19,7 @@ import { t } from '@/i18n/he';
 import { todayKey, useApp } from '@/state/app';
 import { useLive } from '@/state/live';
 import { Bar, Header, Section } from '@/ui/kit';
+import { Ltr } from '@/ui/bidi';
 
 const DAY = 86_400_000;
 
@@ -58,7 +59,7 @@ export function Stats() {
         reviews.filter((x) => x.at < end),
         end - 7 * DAY,
       );
-      weeks.push({ label: dayKey(end - 7 * DAY, tz).slice(5), rate: r.rate, n: r.n });
+      weeks.push({ label: shortDate(dayKey(end - 7 * DAY, tz)), rate: r.rate, n: r.n });
     }
     const activity = activityByDay(reviews, (ts) => dayKey(ts, tz));
     const minutes = new Map(daily.map((d) => [d.date, Math.round(d.ms / 60000)]));
@@ -103,9 +104,9 @@ export function Stats() {
               <Bar value={lvl.progress} max={1} />
               <p className="text-xs text-ink-3">
                 {t.stats.theta}:{' '}
-                <span dir="ltr">
+                <Ltr>
                   {ability.theta.toFixed(1)} ± {ability.sigma.toFixed(1)}
-                </span>
+                </Ltr>
               </p>
             </div>
           </div>
@@ -202,7 +203,10 @@ export function Stats() {
         </Section>
 
         <Section
-          title={`${t.stats.badges} (${Object.keys(derived.profile?.badges ?? {}).length}/${BADGES.length})`}
+          title={t.stats.badgesCount(
+            Object.keys(derived.profile?.badges ?? {}).length,
+            BADGES.length,
+          )}
         >
           <div className="grid grid-cols-4 gap-2">
             {BADGES.map((b) => {
@@ -225,6 +229,12 @@ export function Stats() {
   );
 }
 
+/** "2026-10-05" as "5.10", the way dates are written in Hebrew. */
+function shortDate(key: string): string {
+  const [, m, d] = key.split('-');
+  return `${Number(d)}.${Number(m)}`;
+}
+
 function lastDays(n: number): string[] {
   const tz = new Date().getTimezoneOffset();
   return Array.from({ length: n }, (_, i) => dayKey(Date.now() - (n - 1 - i) * DAY, tz));
@@ -241,10 +251,11 @@ function Tile({ label, value }: { label: string; value: number | string }) {
   );
 }
 
+/** Bars over time. Like every time axis in the app, time runs right to left (spec 8.3). */
 function MiniBars({ values, labels }: { values: number[]; labels: string[] }) {
   const max = Math.max(1, ...values);
   return (
-    <div className="card flex items-end gap-1 p-4" dir="ltr">
+    <div className="card flex items-end gap-1 p-4">
       {values.map((v, i) => (
         <div key={i} className="flex flex-1 flex-col items-center gap-1">
           <span className="text-[9px] text-ink-3">{v || ''}</span>
@@ -259,8 +270,17 @@ function MiniBars({ values, labels }: { values: number[]; labels: string[] }) {
   );
 }
 
-/** GitHub-style heatmap of the last 26 weeks (LTR, oldest on the left). */
+/**
+ * Heatmap of the last 26 weeks. Time runs right to left like the other charts: the oldest week on
+ * the right, this week on the left, scrolled into view.
+ */
 function Heatmap({ activity }: { activity: Map<string, number> }) {
+  const pane = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // In RTL the scroll origin is the right edge; the far left (this week) is the most negative.
+    const el = pane.current;
+    if (el) el.scrollLeft = -el.scrollWidth;
+  }, []);
   const tz = new Date().getTimezoneOffset();
   const weeks = 26;
   const today = new Date();
@@ -277,7 +297,7 @@ function Heatmap({ activity }: { activity: Map<string, number> }) {
   }
   const level = (n: number) => (n <= 0 ? 0 : n < 10 ? 1 : n < 25 ? 2 : n < 50 ? 3 : 4);
   return (
-    <div className="card overflow-x-auto p-4" dir="ltr">
+    <div ref={pane} className="card overflow-x-auto p-4">
       <div className="flex gap-[3px]">
         {cells.map((col, i) => (
           <div key={i} className="flex flex-col gap-[3px]">
@@ -314,14 +334,16 @@ function LineChart({ points, min, max }: { points: [number, number][]; min: numb
   const ys = points.map((p) => p[1]);
   const lo = Math.max(min, Math.floor(Math.min(...ys) - 5));
   const hi = Math.min(max, Math.ceil(Math.max(...ys) + 5));
-  const px = (x: number) => ((x - x0) / Math.max(1, x1 - x0)) * (W - 20) + 10;
+  // Time runs right to left: the first point on the right, today on the left.
+  const px = (x: number) => W - 10 - ((x - x0) / Math.max(1, x1 - x0)) * (W - 20);
   const py = (y: number) => H - 10 - ((y - lo) / Math.max(1, hi - lo)) * (H - 20);
   const d = points
     .map((p, i) => `${i ? 'L' : 'M'}${px(p[0]).toFixed(1)},${py(p[1]).toFixed(1)}`)
     .join(' ');
   return (
-    <div className="card p-4" dir="ltr">
+    <div className="card p-4">
       <svg
+        direction="ltr"
         viewBox={`0 0 ${W} ${H}`}
         className="h-32 w-full"
         role="img"
@@ -335,10 +357,10 @@ function LineChart({ points, min, max }: { points: [number, number][]; min: numb
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <text x="4" y="12" fontSize="10" fill="var(--c-ink-3)">
+        <text x={W - 4} y="12" fontSize="10" fill="var(--c-ink-3)" textAnchor="end">
           {hi}
         </text>
-        <text x="4" y={H - 2} fontSize="10" fill="var(--c-ink-3)">
+        <text x={W - 4} y={H - 2} fontSize="10" fill="var(--c-ink-3)" textAnchor="end">
           {lo}
         </text>
       </svg>
