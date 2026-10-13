@@ -7,11 +7,11 @@ Last updated: 2026-10-13 · version 0.7.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
-- Latest deploy: 0.6.0, CI and deploy run #49 on commit `303f9eb` (2026-10-13), all jobs green.
-- Verified on the real URL: the built JS carries `appVersion:"0.6.0"`; Chromium (iPhone 14
-  profile) loads home, and `/session/hard` on a fresh profile shows the new explanation with
-  **לסשן למידה**. The only failed request is the cold deep link, which answers 404 through the
-  `404.html` bounce by design.
+- Latest deploy: 0.7.0, CI and deploy run #53 on commit `afac24d` (2026-10-13), all three jobs
+  (verify, e2e, deploy) green; Push server run #13 green, the function reports version 6.
+- Verified on the real URL: the built JS carries 0.7.0; Chromium (iPhone 14 profile) on a fresh
+  profile shows "/ 1000 XP" on home, **יעד יומי** 1000 XP with the 1000 preset selected and 0.7.0
+  at the bottom of **הגדרות**, zero console errors. Server rows re-read at 15:40 UTC: both 1000.
 
 ## Waiting on owner
 
