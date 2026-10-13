@@ -7,6 +7,7 @@ import {
   getContent,
   getContents,
   loadInventory,
+  peekContent,
   usable,
 } from '@/content/inventory';
 import { pickProbe, selectNewWords, newWordsLeft, MAX_CAP } from '@/engine/selection';
@@ -96,8 +97,12 @@ export async function buildSession(opts: {
         // Enrich the rest online, but never keep the user waiting more than a few seconds.
         // Whatever finishes later is cached for the next session.
         const missing = candidates.filter((c) => !contents.has(c.id)).map((c) => c.id);
-        const fetched = await withTimeout(getContents(missing, { online: true }), ENRICH_BUDGET_MS);
-        for (const [id, c] of fetched ?? []) contents.set(id, c);
+        await withTimeout(getContents(missing, { online: true }), ENRICH_BUDGET_MS);
+        // Keep whatever finished within the budget; the rest keeps loading into the cache.
+        for (const id of missing) {
+          const c = peekContent(id);
+          if (c) contents.set(id, c);
+        }
       }
       newWords = candidates
         .filter((c) => {
@@ -127,12 +132,11 @@ export async function buildSession(opts: {
         newWords = fallback.filter((l) => fc.has(l.id) && usable(fc.get(l.id)!)).slice(0, left);
       }
     }
-    for (let tries = 0; tries < 6 && !probe; tries++) {
+    // Probes use local content only (Tier A or cached): a probe is never worth a network wait.
+    for (let tries = 0; tries < 12 && !probe; tries++) {
       const p = pickProbe(inv.lemmas, { theta, studied }, rng);
       if (!p) break;
-      const c =
-        (await getContent(p.id, { online: false })) ??
-        (online ? await withTimeout(getContent(p.id, { online }), 2500) : null);
+      const c = await getContent(p.id, { online: false });
       if (c && usable(c)) probe = p;
       else studied.add(p.id); // do not pick it again this time
     }
@@ -159,12 +163,9 @@ export async function buildSession(opts: {
   }
 
   const ids = [...new Set(plan.flatMap((p) => p.matchIds ?? [p.lemmaId]))];
+  // Everything in the plan already has local content (new words were enriched above, reviews
+  // were shown before), so this is a local read; items without content are dropped, not awaited.
   const contents = await getContents(ids, { online: false });
-  const missing = ids.filter((id) => !contents.has(id));
-  if (missing.length && online) {
-    const more = await withTimeout(getContents(missing, { online }), 2500);
-    for (const [id, c] of more ?? []) contents.set(id, c);
-  }
   plan = plan.filter((p) => (p.matchIds ?? [p.lemmaId]).every((id) => contents.has(id)));
 
   const infos = new Map<number, LemmaInfo>();

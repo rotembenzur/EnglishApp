@@ -113,7 +113,7 @@ export function Session() {
       </div>
 
       <div className="scroll-pane flex flex-1 flex-col px-4 pb-4">
-        {status === 'building' && (
+        {(status === 'building' || status === 'idle') && (
           <div
             className="flex flex-1 flex-col gap-4 pt-6"
             aria-busy="true"

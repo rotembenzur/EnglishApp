@@ -1,5 +1,48 @@
 import { expect, test, type Page } from '@playwright/test';
 
+const EXTERNAL = /dictionaryapi\.dev|mymemory\.translated\.net|translate\.googleapis\.com/;
+
+// Third-party APIs are blocked by default so CI never depends on them; tests tagged [online]
+// install their own deterministic mocks.
+test.beforeEach(async ({ context }, info) => {
+  if (!info.title.includes('[online]')) await context.route(EXTERNAL, (r) => r.abort());
+});
+
+/** Wait until the session shows its first exercise (intro card, options or a typing field). */
+async function waitForExercise(page: Page, timeout = 20_000) {
+  await expect(
+    page
+      .getByRole('button', { name: 'הבנתי' })
+      .or(page.locator('button.tap.rounded-2xl.border-2'))
+      .or(page.locator('input.en'))
+      .first(),
+  ).toBeVisible({ timeout });
+}
+
+/** Finish placement: "know" most words, so the level lands above the authored range. */
+async function finishPlacement(page: Page, pattern: 'high' | 'low') {
+  await page.getByRole('button', { name: 'למבחן רמה' }).click();
+  await page.getByRole('button', { name: 'מתחילים' }).click();
+  for (let i = 0; i < 40; i++) {
+    if (await page.getByRole('button', { name: 'יאללה, ללמוד' }).isVisible()) break;
+    const know = page.getByRole('button', { name: 'מכיר', exact: true });
+    if (await know.isVisible()) {
+      if (pattern === 'low') await page.getByRole('button', { name: 'לא מכיר' }).click();
+      else await (i % 3 === 2 ? page.getByRole('button', { name: 'לא מכיר' }) : know).click();
+    } else {
+      await page
+        .locator('#root')
+        .getByRole('button')
+        .last()
+        .click({ timeout: 3000 })
+        .catch(() => undefined);
+      await page.waitForTimeout(800);
+    }
+    await page.waitForTimeout(80);
+  }
+  await page.getByRole('button', { name: 'יאללה, ללמוד' }).click();
+}
+
 function trackErrors(page: Page): string[] {
   const errors: string[] = [];
   page.on('console', (msg) => {
@@ -49,7 +92,7 @@ test('new user: placement, then a learning session with answers saved', async ({
 
   await page.getByRole('button', { name: /ללמוד/ }).first().click();
   await expect(page).toHaveURL(/session\/learn/);
-  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0, { timeout: 20_000 });
+  await waitForExercise(page);
   // Work through a few items.
   for (let i = 0; i < 12; i++) {
     const got = page.getByRole('button', { name: 'הבנתי' });
@@ -145,7 +188,7 @@ test('an interrupted session can be resumed from home', async ({ page }) => {
   }
   await page.getByRole('button', { name: 'יאללה, ללמוד' }).click();
   await page.getByRole('button', { name: /ללמוד/ }).first().click();
-  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0, { timeout: 20_000 });
+  await waitForExercise(page);
   // Acknowledge the first new word, then leave abruptly (like closing the app).
   const got = page.getByRole('button', { name: 'הבנתי' });
   if (await got.isVisible()) await got.click();
@@ -153,7 +196,53 @@ test('an interrupted session can be resumed from home', async ({ page }) => {
   await page.goto('/');
   await page.getByText('להמשיך מאיפה שעצרת?').click();
   await expect(page).toHaveURL(/session\/resume/);
-  await expect(page.locator('[aria-busy="true"]')).toHaveCount(0, { timeout: 20_000 });
+  await waitForExercise(page);
   await expect(page.getByRole('progressbar').first()).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('[online] a session starts within seconds even when dictionary APIs are slow', async ({
+  page,
+  context,
+}) => {
+  const errors = trackErrors(page);
+  // Slow but working enrichment endpoints, like a real phone on a mediocre connection.
+  await context.route(/dictionaryapi\.dev/, async (r) => {
+    const word = decodeURIComponent(r.request().url().split('/').pop() ?? 'word');
+    await new Promise((x) => setTimeout(x, 1500));
+    await r.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify([
+        {
+          word,
+          phonetic: '/wɜrd/',
+          phonetics: [],
+          meanings: [
+            {
+              partOfSpeech: 'noun',
+              definitions: [
+                { definition: 'a test meaning', example: `the ${word} was there yesterday` },
+                { definition: 'another meaning', example: `we talked about the ${word} today` },
+              ],
+            },
+          ],
+        },
+      ]),
+    });
+  });
+  await context.route(/mymemory\.translated\.net|translate\.googleapis\.com/, async (r) => {
+    await new Promise((x) => setTimeout(x, 1200));
+    await r.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({ responseData: { translatedText: 'מילה' }, responseStatus: 200 }),
+    });
+  });
+  await page.goto('/welcome');
+  await page.getByRole('button', { name: /רתם/ }).click();
+  await finishPlacement(page, 'high');
+  const started = Date.now();
+  await page.getByRole('button', { name: /ללמוד/ }).first().click();
+  await waitForExercise(page, 15_000);
+  expect(Date.now() - started).toBeLessThan(9_000);
   expect(errors).toEqual([]);
 });
