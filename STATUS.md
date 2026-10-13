@@ -37,7 +37,18 @@ Reported: the default voice was acceptable, the other voices terrible.
   build time (Kokoro): American `af_heart` for everything, British `bf_emma` for words and items.
   Long press on a word plays a real slow recording. Without a recording (Read mode, notes, context
   paragraphs) the best installed system voice speaks.
-- Coverage, quality and size: AUDIO_NUMBERS
+- Coverage, quality and size, from the first full render (Audio run 38436027692, 2026-10-13):
+  - American: all 6,000 words and all 800 curated items (6,799 clips: one item shares its text
+    with a word), and all 20,400 example sentences (20,292 clips: 108 sentences appear twice).
+  - British: all 6,000 words and 800 items. Slow versions confirmed by Whisper: 6,499 of 6,799
+    American and 4,861 of 6,799 British. The rest (300 and 1,938) were left out after every retry
+    missed; their long press plays the normal recording at 0.75 speed (pitch kept).
+  - Whisper checked all 27,196 word clips (normal and slow) and a 10% sample of 1,991 sentences.
+    Published word clips that still mismatch: 346 of 24,958 (1.4%): 42 American normal (0.6%),
+    304 British normal (4.5%), no slow ones. Sentences: 0 of 1,991. 1,874 clips were re-rendered
+    after a miss with another pronunciation (509 use the heteronym reading that matches our IPA,
+    373 phonemes converted from our IPA).
+  - 528.5 MB, 21.4 hours of audio, AAC 48 kbps mono.
 - Hosting: the `audio-store` release of this repository holds the files (not the git history);
   every deploy copies them into the site under `audio/`. Pages limit 1 GB: the site is about
   SITE_SIZE.

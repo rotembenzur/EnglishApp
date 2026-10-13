@@ -9,14 +9,17 @@ Real recordings instead of the phone's robot voice.
 - Every authored word (6,000), curated item (phrasal verbs, idioms, collocations: 800) and
   example sentence (20,400) now plays a pre-rendered neural recording (Kokoro). American voice
   for everything; British voice for words and items (with the accent on UK, sentences use the
-  American recording). The numbers actually published are in STATUS.md.
+  American recording). 528.5 MB in total; the full numbers are in STATUS.md.
 - A long press on a word plays a real slow recording (rendered at 0.75 speed), not stretched
   synthesis. A long press on a sentence slows its recording down with the pitch kept.
 - Offline: the words of your accent are stored on the phone in the background (about 70 MB);
   sentences are stored when played and prefetched for the current and the next session. Works in
   the home screen app without a connection.
 - Quality: every word clip was checked automatically by speech recognition (Whisper), with a
-  second opinion and a re-render in another pronunciation when it heard something else. Silence,
+  second and third opinion and a re-render in another pronunciation when it heard something else.
+  1.4% of the published word clips still mismatch (0.6% American, 4.5% British), 0 of 1,991
+  sampled sentences. Slow clips Whisper could not confirm were left out; their long press plays
+  the normal recording slowed down. Silence,
   loudness and length are checked on every clip. Heteronyms (read, lead, live, record...) follow
   the pronunciation on the card.
 - System voice (the fallback for Read mode, notes and anything without a recording): the best
