@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-13 · version 0.8.0
+Last updated: 2026-10-14 · version 0.8.1
 
 ## Deployment
 
@@ -71,6 +71,9 @@ Reported: the default voice was acceptable, the other voices terrible.
   and redeploys.
 
 ## Audio: what to check on the iPhone
+
+0.8.1: recordings play through Web Audio, so no "Now Playing" panel should open in the Dynamic
+Island when a word or sentence plays. Check that too, including with the silent switch on.
 
 Update to 0.8.0 first (bottom of **הגדרות**). Then:
 

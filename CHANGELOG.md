@@ -2,6 +2,13 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.8.1 (2026-10-14)
+
+- Recordings play through Web Audio instead of a media element, so the iPhone no longer opens a
+  "Now Playing" panel in the Dynamic Island for every word or sentence. Offline playback, the
+  slow long press and the fallback to the system voice work as before; slowed playback keeps its
+  pitch.
+
 ## 0.8.0 (2026-10-13)
 
 Real recordings instead of the phone's robot voice.

@@ -4,12 +4,15 @@
  * the recording (American voice), then the system voice. Anything else (Read mode, notes): the
  * best installed system voice (see voices.ts).
  *
- * Recordings play through one persistent <audio> element. iOS only allows playback after a user
- * gesture, so `unlockAudio()` (called from the first tap) plays a silent clip on that element and
- * primes speech synthesis; later autoplay in the session reuses both.
+ * Recordings are decoded and played through the Web Audio API (an AudioBufferSourceNode), not an
+ * <audio> element, so iOS shows no "Now Playing" media panel. iOS only allows audio after a user
+ * gesture, so `unlockAudio()` (called from the first taps) resumes the AudioContext with a silent
+ * buffer and primes speech synthesis; later autoplay in the session reuses both. Rates other than
+ * 1 (speed slider, slow long press without a slow clip) are time-stretched with the pitch kept.
  */
 import { DEFAULT_SETTINGS, type Accent } from '@/data/db';
 import { describeRecording, sentenceRecording, wordRecording, type Clip } from './recordings';
+import { stretch } from './stretch';
 import { chooseVoice } from './voices';
 
 let voices: SpeechSynthesisVoice[] = [];
@@ -65,45 +68,35 @@ export function pickVoice(accent: Accent, voiceURI?: string): SpeechSynthesisVoi
   return chooseVoice(voices, accent, voiceURI);
 }
 
-/** 0.1 s of silence as a WAV, used to unlock the <audio> element inside a gesture. */
-function silentWav(): string {
-  const rate = 8000;
-  const samples = 800;
-  const buf = new ArrayBuffer(44 + samples * 2);
-  const v = new DataView(buf);
-  const str = (o: number, s: string) =>
-    [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
-  str(0, 'RIFF');
-  v.setUint32(4, 36 + samples * 2, true);
-  str(8, 'WAVE');
-  str(12, 'fmt ');
-  v.setUint32(16, 16, true);
-  v.setUint16(20, 1, true);
-  v.setUint16(22, 1, true);
-  v.setUint32(24, rate, true);
-  v.setUint32(28, rate * 2, true);
-  v.setUint16(32, 2, true);
-  v.setUint16(34, 16, true);
-  str(36, 'data');
-  v.setUint32(40, samples * 2, true);
-  return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+let ctx: AudioContext | null = null;
+let ctxUnlocked = false;
+
+function audioContext(): AudioContext | null {
+  if (ctx) return ctx;
+  const AC =
+    typeof window === 'undefined'
+      ? undefined
+      : (window.AudioContext ??
+        (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext);
+  if (!AC) return null;
+  // iOS 17+: play like media (also with the silent switch on), as the <audio> element did.
+  const session = (navigator as Navigator & { audioSession?: { type: string } }).audioSession;
+  if (session) session.type = 'playback';
+  ctx = new AC();
+  return ctx;
 }
 
+/** Only for dictionary audio a server streams without CORS (no bytes to decode). */
 function element(): HTMLAudioElement | null {
   if (typeof Audio === 'undefined') return null;
-  if (!el) {
-    el = new Audio();
-    el.preload = 'auto';
-  }
+  el ??= new Audio();
   return el;
 }
 
-let elementUnlocked = false;
-let silentUrl = '';
-
 /**
- * Must run inside a user gesture (iOS). Speech is primed once; the <audio> element is retried on
- * later gestures until a play succeeds (iOS counts touchend and click, not always pointerdown).
+ * Must run inside a user gesture (iOS). Speech is primed once; the AudioContext is resumed with a
+ * silent buffer on later gestures until it runs (iOS counts touchend and click, not always
+ * pointerdown).
  */
 export function unlockAudio(): void {
   if (!unlocked) {
@@ -115,23 +108,22 @@ export function unlockAudio(): void {
       s.speak(u);
     }
   }
-  const a = element();
-  if (a && !elementUnlocked && a.paused) {
+  const c = audioContext();
+  if (c && !ctxUnlocked) {
     try {
-      silentUrl ||= silentWav();
-      a.src = silentUrl;
-      void a.play().then(
-        () => (elementUnlocked = true),
-        () => undefined,
-      );
+      const src = c.createBufferSource();
+      src.buffer = c.createBuffer(1, 1, 22050);
+      src.connect(c.destination);
+      src.start(0);
+      void c.resume().then(() => (ctxUnlocked = c.state === 'running'));
     } catch {
-      // no media support
+      // no Web Audio
     }
   }
 }
 
 export function isAudioElementUnlocked(): boolean {
-  return elementUnlocked;
+  return ctxUnlocked;
 }
 
 export function isAudioUnlocked(): boolean {
@@ -182,35 +174,42 @@ export function recordingRate(rate: number): number {
   return Math.abs(r - 1) < 0.01 ? 1 : Math.min(1.3, Math.max(0.7, r));
 }
 
-/** Play a Blob on the shared element. Rejects when the element refuses (caller falls back). */
+/** Decode a clip and play it through Web Audio. Rejects when it cannot (caller falls back). */
 async function playBlob(blob: Blob, rate: number): Promise<void> {
-  const a = element();
-  if (!a) throw new Error('no audio element');
+  const c = audioContext();
+  if (!c) throw new Error('no Web Audio');
   stopAudio();
-  const url = URL.createObjectURL(blob);
-  try {
-    a.src = url;
-    a.defaultPlaybackRate = rate;
-    a.playbackRate = rate;
-    await a.play();
-    elementUnlocked = true;
-    await new Promise<void>((resolve) => {
-      const done = () => {
-        a.removeEventListener('ended', done);
-        a.removeEventListener('error', done);
-        a.removeEventListener('pause', done);
-        clearTimeout(t);
-        resolve();
-      };
-      stopCurrent = done;
-      a.addEventListener('ended', done);
-      a.addEventListener('error', done);
-      a.addEventListener('pause', done);
-      const t = setTimeout(done, Math.max(4000, ((a.duration || 10) / rate) * 1000 + 1500));
-    });
-  } finally {
-    URL.revokeObjectURL(url);
+  if (c.state !== 'running') await c.resume();
+  const decoded = await c.decodeAudioData(await blob.arrayBuffer());
+  let buffer = decoded;
+  if (Math.abs(rate - 1) >= 0.005) {
+    const data = stretch(decoded.getChannelData(0), rate, decoded.sampleRate);
+    buffer = c.createBuffer(1, data.length, decoded.sampleRate);
+    buffer.copyToChannel(data, 0);
   }
+  const src = c.createBufferSource();
+  src.buffer = buffer;
+  src.connect(c.destination);
+  await new Promise<void>((resolve) => {
+    const done = () => {
+      clearTimeout(t);
+      src.onended = null;
+      if (stopCurrent === done) stopCurrent = null;
+      resolve();
+    };
+    stopCurrent = () => {
+      try {
+        src.stop();
+      } catch {
+        // already stopped
+      }
+      done();
+    };
+    src.onended = done;
+    const t = setTimeout(done, buffer.duration * 1000 + 1500);
+    src.start();
+  });
+  ctxUnlocked = true;
 }
 
 /** The system voice. */
