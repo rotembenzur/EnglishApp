@@ -146,3 +146,25 @@ release named `audio-store` (marked pre-release; it is storage, not a software r
 copies them into the site. Do not delete that release: the next deploy would ship without
 recordings and the app would fall back to the phone's voice until the workflow runs again
 (Actions, **Audio**, **Run workflow** rebuilds everything in about an hour).
+
+## 7. Natural voice for texts: start in seconds instead of minutes (optional, one token)
+
+When a text is saved in **טקסטים**, its sentences and rare words are voiced by the **Text audio**
+workflow (the same Kokoro voice as the recordings). It works with nothing to do: the workflow
+checks for new texts every five minutes. With this token the app starts it the moment a text is
+saved, so the natural voice is ready in about two minutes.
+
+1. Open https://github.com/settings/personal-access-tokens/new (sign in if asked).
+2. **Token name**: `lexbites-text-audio`. **Expiration**: the longest offered (or none).
+3. **Repository access**: **Only select repositories**, pick `rotembenzur/EnglishApp`.
+4. **Permissions**, **Repository permissions**: **Actions**, set to **Read and write**. Leave
+   everything else as it is.
+5. Click **Generate token** and copy it (it starts with `github_pat_`). GitHub shows it only once.
+6. Open https://github.com/rotembenzur/EnglishApp/settings/secrets/actions, click **New repository
+   secret**. **Name**: `TTS_DISPATCH_TOKEN`. **Secret**: paste the token. Click **Add secret**.
+7. Open https://github.com/rotembenzur/EnglishApp/actions/workflows/push-server.yml, click **Run
+   workflow**, keep the default branch, click the green **Run workflow**. After about two minutes
+   the run is green and its log no longer says "No TTS_DISPATCH_TOKEN secret".
+
+The token can only start workflows in this repository. If it expires, texts are still voiced, on
+the five-minute schedule, until a new one is added the same way.

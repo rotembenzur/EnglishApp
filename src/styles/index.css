@@ -107,6 +107,8 @@
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
   --tabbar-h: 64px;
+  --vv-h: 100dvh;
+  --vv-top: 0px;
 }
 
 :root[data-user='noa'] {
@@ -167,6 +169,11 @@ body {
   position: fixed;
   inset: 0;
   overflow: hidden;
+}
+
+/* src/ui/viewport.ts: the iOS keyboard is up and covers the home indicator area. */
+:root[data-keyboard] {
+  --sab: 0px;
 }
 
 #root {

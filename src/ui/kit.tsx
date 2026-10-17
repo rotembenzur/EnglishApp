@@ -3,7 +3,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { playSentence, playWord, unlockAudio } from '@/audio/speech';
 import { useApp } from '@/state/app';
 import { BackIcon, SpeakerIcon } from './icons';
-import { useToasts } from './toast';
+import { toast, useToasts } from './toast';
+import { isPending, usePendingClips } from '@/audio/pending';
 import { createPortal } from 'react-dom';
 import { He, Ltr } from './bidi';
 import { hasHebrew } from '@/i18n/bidi';
@@ -130,11 +131,19 @@ export function Speak({
   label?: string;
 }) {
   const settings = useApp((s) => s.profile?.settings);
+  // A natural clip for a saved text is on its way: say so instead of using the system voice.
+  const pending = usePendingClips((s) =>
+    isPending(s.pending, text, isWord ? 'word' : 'sentence', settings?.accent ?? 'us'),
+  );
   const timer = useRef<number | null>(null);
   const longFired = useRef(false);
   const [playing, setPlaying] = useState(false);
   const play = async (slow: boolean) => {
     unlockAudio();
+    if (pending) {
+      toast(strings.textAudio.preparing, { icon: '⏳' });
+      return;
+    }
     setPlaying(true);
     const opts = {
       accent: settings?.accent ?? 'us',
@@ -154,8 +163,9 @@ export function Speak({
   return (
     <button
       type="button"
-      aria-label={label}
-      className={`tap grid shrink-0 place-items-center rounded-full bg-accent-soft text-accent transition active:scale-95 ${dims} ${playing ? 'animate-pulse-soft' : ''} ${className}`}
+      aria-label={pending ? `${label}, ${strings.textAudio.preparingLabel}` : label}
+      data-pending={pending ? '1' : undefined}
+      className={`tap grid shrink-0 place-items-center rounded-full bg-accent-soft text-accent transition active:scale-95 ${dims} ${playing ? 'animate-pulse-soft' : ''} ${pending ? 'border-2 border-dashed border-accent/60 opacity-70' : ''} ${className}`}
       onPointerDown={() => {
         longFired.current = false;
         timer.current = window.setTimeout(() => {
@@ -189,11 +199,14 @@ export function Sheet({
   onClose,
   children,
   title,
+  footer,
 }: {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
   title?: string;
+  /** Always visible under the scrolling content (the sheet's main action). */
+  footer?: ReactNode;
 }) {
   useEffect(() => {
     if (!open) return;
@@ -202,11 +215,13 @@ export function Sheet({
     return () => window.removeEventListener('keydown', onKey);
   }, [open, onClose]);
   if (!open) return null;
-  // Portaled to <body> so no transformed ancestor can trap it under the tab bar; the panel never
-  // grows past the visible viewport (dvh shrinks with the iOS keyboard) and scrolls inside.
+  // Portaled to <body> so no transformed ancestor can trap it under the tab bar. The overlay
+  // covers the visual viewport (src/ui/viewport.ts), so with the iOS keyboard open the panel sits
+  // right above it; the panel never grows past that area and scrolls inside.
   return createPortal(
     <div
-      className="fixed inset-0 z-[55] flex items-end justify-center"
+      className="fixed inset-x-0 z-[55] flex items-end justify-center"
+      style={{ top: 'var(--vv-top, 0px)', height: 'var(--vv-h, 100dvh)' }}
       role="dialog"
       aria-modal="true"
       aria-label={title}
@@ -218,12 +233,24 @@ export function Sheet({
         onClick={onClose}
       />
       <div
-        className="relative max-h-[calc(100vh-var(--sat)-1rem)] w-full max-w-md animate-fade-up overflow-y-auto overscroll-contain rounded-t-[1.75rem] bg-card p-5 supports-[height:100dvh]:max-h-[calc(100dvh-var(--sat)-1rem)]"
-        style={{ paddingBottom: 'calc(var(--sab) + 1.25rem)' }}
+        className="relative flex max-h-full w-full max-w-md animate-fade-up flex-col rounded-t-[1.75rem] bg-card"
+        style={{ maxHeight: 'calc(var(--vv-h, 100dvh) - var(--sat) - 0.5rem)' }}
+        data-testid="sheet-panel"
       >
-        <div className="mx-auto mb-4 h-1.5 w-10 rounded-pill bg-line" />
-        {title && <h2 className="mb-3 text-lg font-bold">{title}</h2>}
-        {children}
+        <div className="scroll-pane min-h-0 flex-1 p-5 pb-3">
+          <div className="mx-auto mb-4 h-1.5 w-10 rounded-pill bg-line" />
+          {title && <h2 className="mb-3 text-lg font-bold">{title}</h2>}
+          {children}
+        </div>
+        {footer && (
+          <div
+            className="shrink-0 border-t border-line/60 px-5 pt-3"
+            style={{ paddingBottom: 'calc(var(--sab) + 0.75rem)' }}
+          >
+            {footer}
+          </div>
+        )}
+        {!footer && <div className="shrink-0" style={{ height: 'calc(var(--sab) + 0.5rem)' }} />}
       </div>
     </div>,
     document.body,

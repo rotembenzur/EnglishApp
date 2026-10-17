@@ -103,8 +103,24 @@ recorded audio).
   deploy.
 - In the app, `src/audio/recordings.ts` reads `audio/index.json`, keeps the word packs of the
   chosen accent in Cache Storage, caches and prefetches sentence clips, and returns Blobs;
-  `speech.ts` plays them through one `<audio>` element, then falls back to dictionary audio and
+  `speech.ts` plays them through Web Audio, then generated clips (below), then dictionary audio and
   the system voice (`voices.ts` ranks those). Clips are found by `clipKey(text)` (`key.ts`).
+
+### Text audio (0.10.0)
+
+Saved texts get the same voices for everything that has no recording.
+
+- `src/audio/textAudio.ts` lists a text's units (sentences without a recording, then words without
+  one, in the accent's voice), adds a job to `lb_tts_jobs` with the sync passphrase hash and calls
+  the `lexbites-tts` Edge Function, which dispatches `.github/workflows/tts.yml` when it has its
+  GitHub token (otherwise the workflow's five-minute schedule finds the job).
+- `scripts/tts/render.py` (on the runner) renders with `scripts/audio/generate.py`'s voices, G2P,
+  loudness and checks, uploads base64 m4a clips to `lb_tts_clips` four at a time and updates the
+  job's progress. It prints counts only: the logs are public, the texts are not.
+- A background watcher on the phone polls every 5 seconds while a job is open (any screen, resumed
+  at app start), downloads new clips into Cache Storage (`generated.ts`) and marks clips still on
+  their way as pending (`pending.ts`), so speaker buttons show "preparing" instead of using the
+  system voice.
 
 ## Sync
 

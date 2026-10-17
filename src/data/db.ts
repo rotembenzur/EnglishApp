@@ -121,6 +121,19 @@ export interface StoredText {
   practicedAt?: number;
   /** Last comprehension check: correct out of total. */
   check?: { correct: number; total: number; at: number };
+  /** Natural audio for the text (0.10.0, src/audio/textAudio.ts). */
+  audio?: {
+    /** Render job in lb_tts_jobs ('' when everything already had a recording). */
+    job: string;
+    at: number;
+    /** "v:k" of every clip the text needs, in reading order. */
+    keys: string[];
+    /** Started right away by the Edge Function (else by the five-minute schedule). */
+    dispatch?: boolean;
+    /** Every clip is on the phone, or the job ended; `failed` were not rendered. */
+    readyAt?: number;
+    failed?: number;
+  };
 }
 
 /** Cached machine translation of one English string (Read mode, texts). */

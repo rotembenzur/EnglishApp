@@ -2,7 +2,9 @@ name: Push server
 
 # Deploys push notifications (SETUP.md step 4) to the Supabase project:
 #  1. the lexbites-push Edge Function and its VAPID_PRIVATE_KEY secret,
-#  2. supabase/push.sql: a 5-minute pg_cron job for reminders and an lb_events trigger for nudges.
+#  2. supabase/push.sql: a 5-minute pg_cron job for reminders and an lb_events trigger for nudges,
+#  3. text audio (0.10.0): the lexbites-tts Edge Function, its optional GH_DISPATCH_TOKEN secret
+#     (from the TTS_DISPATCH_TOKEN repository secret, SETUP.md step 7) and supabase/tts.sql.
 # Needs two GitHub repository secrets: VAPID_PRIVATE_KEY and SUPABASE_ACCESS_TOKEN. Without them
 # every run ends green with a notice and changes nothing.
 #
@@ -15,6 +17,7 @@ on:
     paths:
       - 'supabase/functions/**'
       - 'supabase/push.sql'
+      - 'supabase/tts.sql'
       - 'supabase/config.toml'
       - 'scripts/check-vapid.ts'
       - '.github/workflows/push-server.yml'
@@ -37,6 +40,7 @@ jobs:
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+      TTS_DISPATCH_TOKEN: ${{ secrets.TTS_DISPATCH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -48,7 +52,8 @@ jobs:
           REF=${URL#https://}; REF=${REF%%.*}
           FN=$URL/functions/v1/lexbites-push
           VERSION=$(grep -o "^const VERSION = [0-9]*" supabase/functions/lexbites-push/index.ts | grep -o "[0-9]*$")
-          { echo "url=$URL"; echo "ref=$REF"; echo "fn=$FN"; echo "version=$VERSION"; } >> "$GITHUB_OUTPUT"
+          TTS_VERSION=$(grep -o "^const VERSION = [0-9]*" supabase/functions/lexbites-tts/index.ts | grep -o "[0-9]*$")
+          { echo "url=$URL"; echo "ref=$REF"; echo "fn=$FN"; echo "version=$VERSION"; echo "tts=$URL/functions/v1/lexbites-tts"; } >> "$GITHUB_OUTPUT"
           missing=""
           [ -n "$VAPID_PRIVATE_KEY" ] || missing="$missing VAPID_PRIVATE_KEY"
           [ -n "$SUPABASE_ACCESS_TOKEN" ] || missing="$missing SUPABASE_ACCESS_TOKEN"
@@ -61,7 +66,10 @@ jobs:
           if [ "${{ github.event_name }}" = schedule ]; then
             live=$(curl -sS --max-time 30 "$FN" || true)
             echo "live: $live"
-            if echo "$live" | grep -q "\"ready\":true" && echo "$live" | grep -q "\"version\":$VERSION[,}]"; then
+            tts=$(curl -sS --max-time 30 "$URL/functions/v1/lexbites-tts" || true)
+            echo "tts: $tts"
+            if echo "$live" | grep -q "\"ready\":true" && echo "$live" | grep -q "\"version\":$VERSION[,}]" \
+              && echo "$tts" | grep -q "\"version\":$TTS_VERSION[,}]"; then
               echo "Function is live, ready and current; nothing to do."
               deploy=false
             fi
@@ -76,7 +84,7 @@ jobs:
       - name: Check the code and the VAPID key
         if: steps.setup.outputs.deploy == 'true'
         run: |
-          deno check supabase/functions/lexbites-push/index.ts
+          deno check supabase/functions/lexbites-push/index.ts supabase/functions/lexbites-tts/index.ts
           deno run --allow-env=VAPID_PRIVATE_KEY scripts/check-vapid.ts
 
       - uses: supabase/setup-cli@v1
@@ -90,6 +98,14 @@ jobs:
           KEY=$(printf '%s' "$VAPID_PRIVATE_KEY" | tr -d "[:space:]\"'")
           supabase secrets set --project-ref "${{ steps.setup.outputs.ref }}" "VAPID_PRIVATE_KEY=$KEY"
           supabase functions deploy lexbites-push --project-ref "${{ steps.setup.outputs.ref }}" --no-verify-jwt
+          if [ -n "$TTS_DISPATCH_TOKEN" ]; then
+            TOKEN=$(printf '%s' "$TTS_DISPATCH_TOKEN" | tr -d "[:space:]\"'")
+            supabase secrets set --project-ref "${{ steps.setup.outputs.ref }}" "GH_DISPATCH_TOKEN=$TOKEN" \
+              "GH_REPO=${{ github.repository }}" "GH_BRANCH=${{ github.event.repository.default_branch }}"
+          else
+            echo "::notice::No TTS_DISPATCH_TOKEN secret: text audio starts on the five-minute schedule instead of right away (SETUP.md step 7)."
+          fi
+          supabase functions deploy lexbites-tts --project-ref "${{ steps.setup.outputs.ref }}" --no-verify-jwt
 
       - name: Install the schedule and the nudge trigger
         if: steps.setup.outputs.deploy == 'true'
@@ -106,6 +122,18 @@ jobs:
             || { echo "::error::push.sql ran but the cron job or trigger is missing"; exit 1; }
           grep -q '"push_url_set":true' "$RUNNER_TEMP/out.json" \
             || echo "::warning::lb_config has no row yet: run supabase/schema.sql with your passphrase first, then re-run this workflow."
+
+      - name: Install the text audio tables
+        if: steps.setup.outputs.deploy == 'true'
+        run: |
+          jq -n --rawfile q supabase/tts.sql '{query: $q}' > "$RUNNER_TEMP/tts.json"
+          status=$(curl -sS -o "$RUNNER_TEMP/tts-out.json" -w '%{http_code}' --max-time 60 \
+            -X POST "https://api.supabase.com/v1/projects/${{ steps.setup.outputs.ref }}/database/query" \
+            -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H 'Content-Type: application/json' \
+            --data @"$RUNNER_TEMP/tts.json")
+          echo "HTTP $status"; cat "$RUNNER_TEMP/tts-out.json"; echo
+          [ "$status" -lt 300 ] && grep -q '"tts_tables":2' "$RUNNER_TEMP/tts-out.json" \
+            || { echo "::error::tts.sql did not install both tables"; exit 1; }
 
       - name: Smoke test
         if: steps.setup.outputs.deploy == 'true'
@@ -130,4 +158,12 @@ jobs:
           echo "$probe" | grep -q '"roundTrip":true' || { echo "::error::encryption self-test failed"; exit 1; }
           echo "$probe" | grep -q '"real":{"status":400,"reason":"BadDeviceToken"}' \
             || echo "::warning::Apple did not answer the probe as expected; check the probe output above."
+          tts=$(curl -sS --max-time 30 "${{ steps.setup.outputs.tts }}")
+          echo "tts: $tts"
+          echo "$tts" | grep -q '"ok":true' || { echo "::error::lexbites-tts does not answer"; exit 1; }
+          # A key that matches no passphrase sees no job and starts nothing.
+          out=$(curl -sS --max-time 30 -X POST "${{ steps.setup.outputs.tts }}" -H 'Content-Type: application/json' \
+            -H "x-lexbites-key: $(printf '0%.0s' $(seq 64))" -d '{"job":"none"}')
+          echo "tts with a wrong key: $out"
+          echo "$out" | grep -q '"unknown job"' || { echo "::error::lexbites-tts accepted a wrong key"; exit 1; }
           echo "::notice::Push server is live. Enable notifications on each iPhone (SETUP.md step 4)."

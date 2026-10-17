@@ -98,6 +98,16 @@ export function App() {
     scheduleWeeklyOptimize();
   }, [userId]);
 
+  // Natural audio for saved texts that was still being prepared when the app was last open.
+  useEffect(() => {
+    if (!userId || !accent) return;
+    const t = window.setTimeout(
+      () => void import('@/audio/textAudio').then((m) => m.resumeTextAudio(userId, accent)),
+      3000,
+    );
+    return () => window.clearTimeout(t);
+  }, [userId, accent]);
+
   // Recorded words of the chosen accent are stored for offline use in the background.
   useEffect(() => {
     if (!accent) return;

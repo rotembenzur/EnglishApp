@@ -151,3 +151,18 @@ export const BookIcon = (p: P) => (
     <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5" />
   </Svg>
 );
+export const TrashIcon = (p: P) => (
+  <Svg {...p}>
+    <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6" />
+  </Svg>
+);
+export const PencilIcon = (p: P) => (
+  <Svg {...p}>
+    <path d="M17 3a2.8 2.8 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+  </Svg>
+);
+export const StopIcon = (p: P) => (
+  <Svg {...p}>
+    <rect x="6" y="6" width="12" height="12" rx="2" />
+  </Svg>
+);

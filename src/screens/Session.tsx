@@ -62,7 +62,10 @@ export function Session() {
         const id = search.get('id');
         const prep =
           id && app.userId
-            ? await prepareTextPractice(id, app.userId, app.words, { online: navigator.onLine })
+            ? await prepareTextPractice(id, app.userId, app.words, {
+                online: navigator.onLine,
+                accent: app.profile?.settings.accent ?? 'us',
+              })
             : null;
         if (!prep || !id) return nav('/texts', { replace: true });
         await start('text', { lemmaIds: prep.lemmaIds, text: { id, sentences: prep.sentences } });
@@ -127,7 +130,7 @@ export function Session() {
         {deadline && <Countdown deadline={deadline} onEnd={() => void finish()} />}
       </div>
 
-      <div className="scroll-pane flex flex-1 flex-col px-4 pb-4">
+      <div className="scroll-pane flex min-h-0 flex-1 flex-col px-4 pb-4">
         {(status === 'building' || status === 'idle') && (
           <div
             className="flex flex-1 flex-col gap-4 pt-6"

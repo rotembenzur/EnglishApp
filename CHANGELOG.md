@@ -2,6 +2,25 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.10.0 (2026-10-17)
+
+טקסטים, reviewed on an iPhone-sized screen.
+
+- Natural voice for texts: every sentence and word without a recording is rendered with Kokoro
+  (the recordings' voice) by a GitHub Actions workflow and downloaded to the phone, in reading
+  order, so playback can start before the whole text is ready; afterwards it plays offline. The
+  text shows what is happening (preparing, progress, ready, or a clear failure with a retry).
+  The system voice is only the fallback when rendering fails.
+- Recorded words and sentences: the word index is warmed when a text opens and gets 3 seconds
+  instead of 1.5 on a cold start, so a recorded word never falls back to the system voice.
+- Layout: sheets stay above the iOS keyboard with their main button always visible, scroll inside,
+  and the page is put back when the keyboard closes (content no longer hides under the tab bar).
+- No title needed: a short title is generated from the text (or the article) and can be renamed.
+  A link pasted into the text box fetches the article.
+- Only words to learn are highlighted (no more green underline). The most frequent words are never
+  marked. Delete is a trash icon, not an X.
+- Comprehension check: shorter answers, English answers left aligned.
+
 ## 0.9.1 (2026-10-17)
 
 - Fixed: a long pasted text made the "טקסט חדש" sheet taller than the screen, hiding the save

@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { isPending, usePendingClips } from '@/audio/pending';
+import { warmRecordings } from '@/audio/recordings';
+import { playSentence, stopAudio, unlockAudio } from '@/audio/speech';
+import { useTextAudio, watchTextAudio, type TextAudioStatus } from '@/audio/textAudio';
 import { cachedTranslations, ensureContent, translateAll } from '@/content/gloss';
 import { loadInventory, type Inventory } from '@/content/inventory';
 import { analyzeText, sentencesWith, type TextToken } from '@/content/text';
-import { playSentence, stopAudio, unlockAudio } from '@/audio/speech';
 import { deviceId, type StoredText } from '@/data/db';
 import { putWord } from '@/data/repo';
 import { deleteText, getText, textProgress, touchText } from '@/data/texts';
@@ -13,7 +16,7 @@ import { t } from '@/i18n/he';
 import { useApp } from '@/state/app';
 import { Bar, Button, En, Header, Sheet, Speak } from '@/ui/kit';
 import { He } from '@/ui/bidi';
-import { CloseIcon, SpeakerIcon } from '@/ui/icons';
+import { PencilIcon, SpeakerIcon, StopIcon, TrashIcon } from '@/ui/icons';
 import { toast } from '@/ui/toast';
 import { WordLookup } from '@/ui/WordLookup';
 
@@ -21,7 +24,8 @@ type Tap = 'word' | 'sentence';
 type Open =
   | { kind: 'word'; token: TextToken; sentence: number }
   | { kind: 'sentence'; index: number }
-  | { kind: 'delete' };
+  | { kind: 'delete' }
+  | { kind: 'rename' };
 
 export function TextRead() {
   const { id = '' } = useParams();
@@ -30,6 +34,7 @@ export function TextRead() {
   const words = useApp((s) => s.words);
   const setWord = useApp((s) => s.setWord);
   const settings = useApp((s) => s.profile?.settings);
+  const accent = settings?.accent ?? 'us';
   const [text, setText] = useState<StoredText | null | undefined>(undefined);
   const [inv, setInv] = useState<Inventory | null>(null);
   const [tap, setTap] = useState<Tap>('word');
@@ -38,8 +43,10 @@ export function TextRead() {
   const [showAll, setShowAll] = useState(false);
   const [translating, setTranslating] = useState(false);
   const [playing, setPlaying] = useState<number | null>(null);
+  const [waitingFor, setWaitingFor] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
   const stopRef = useRef(false);
+  const audio = useTextAudio((s) => s.byText[id]);
 
   useEffect(() => {
     void getText(id).then((x) => {
@@ -52,6 +59,16 @@ export function TextRead() {
       stopAudio();
     };
   }, [id]);
+
+  // Natural audio: submit the text's missing clips once, then keep them coming (in the background,
+  // so leaving this screen does not stop them).
+  useEffect(() => {
+    if (!text) return;
+    warmRecordings(accent);
+    watchTextAudio(text.id, accent);
+    // The text's identity, not every edit of it (marks, title), matters here.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text?.id, accent]);
 
   const analysis = useMemo(
     () => (text && inv ? analyzeText(text.body, inv.byLemma) : null),
@@ -91,7 +108,7 @@ export function TextRead() {
   }
 
   const speakOpts = {
-    accent: settings?.accent ?? 'us',
+    accent,
     ...(settings?.voiceURI ? { voiceURI: settings.voiceURI } : {}),
     rate: settings?.speechRate ?? 0.95,
   };
@@ -127,20 +144,32 @@ export function TextRead() {
     if (!ok) toast(t.texts.translateFailed, { icon: '⚠️' });
   };
 
+  /** Read the text aloud; a sentence whose natural clip is still rendering is waited for. */
   const playAll = async () => {
-    if (playing !== null) {
+    if (playing !== null || waitingFor !== null) {
       stopRef.current = true;
       stopAudio();
       setPlaying(null);
+      setWaitingFor(null);
       return;
     }
     unlockAudio();
     stopRef.current = false;
     for (let i = 0; i < sentences.length && !stopRef.current; i++) {
+      while (
+        !stopRef.current &&
+        isPending(usePendingClips.getState().pending, sentences[i]!, 'sentence', accent)
+      ) {
+        setWaitingFor(i);
+        await new Promise((r) => setTimeout(r, 1000));
+      }
+      setWaitingFor(null);
+      if (stopRef.current) break;
       setPlaying(i);
       await playSentence(sentences[i]!, speakOpts);
     }
     setPlaying(null);
+    setWaitingFor(null);
   };
 
   const add = async (infos: LemmaInfo[]) => {
@@ -166,12 +195,9 @@ export function TextRead() {
   };
 
   const progress = textProgress(text, words);
+  // Only the words to learn are highlighted.
   const tokenClass = (tk: TextToken) =>
-    tk.lemma && words.has(tk.lemma.id)
-      ? 'border-b-2 border-good'
-      : tk.lemma && marked.has(tk.lemma.id)
-        ? 'bg-accent-soft font-semibold text-accent'
-        : '';
+    tk.lemma && marked.has(tk.lemma.id) ? 'bg-accent-soft font-semibold text-accent' : '';
 
   const renderTokens = (si: number) =>
     analysis.sentences[si]!.tokens.map((tk, i) =>
@@ -192,16 +218,29 @@ export function TextRead() {
       ),
     );
 
-  /** A sentence in the flowing view (word taps); its gap keeps line breaks. */
-  const sentenceSpan = (si: number) => (
-    <span key={si}>
-      <span className={playing === si ? 'rounded bg-warn-soft' : ''}>{renderTokens(si)}</span>
-      {analysis.sentences[si]!.gap}
-    </span>
-  );
+  const live = (si: number) =>
+    playing === si ? 'rounded bg-warn-soft' : waitingFor === si ? 'rounded bg-card-2' : '';
+
+  const openSentence = (si: number) => setOpen({ kind: 'sentence', index: si });
+  const sentenceSpan = (si: number) =>
+    tap === 'sentence' ? (
+      <span
+        role="button"
+        tabIndex={0}
+        onClick={() => openSentence(si)}
+        onKeyDown={(e) => e.key === 'Enter' && openSentence(si)}
+        className={`cursor-pointer rounded active:bg-card-2 ${live(si)}`}
+        data-testid="sentence"
+      >
+        {renderTokens(si)}
+      </span>
+    ) : (
+      <span className={live(si)}>{renderTokens(si)}</span>
+    );
 
   const openWord = open?.kind === 'word' ? open : null;
-  const openSentence = open?.kind === 'sentence' ? open.index : null;
+  const openIndex = open?.kind === 'sentence' ? open.index : null;
+  const reading = playing !== null || waitingFor !== null;
 
   return (
     <div className="flex flex-col gap-4 pb-10">
@@ -215,12 +254,24 @@ export function TextRead() {
             onClick={() => setOpen({ kind: 'delete' })}
             className="tap grid place-items-center rounded-full text-ink-3"
           >
-            <CloseIcon />
+            <TrashIcon size={20} />
           </button>
         }
       />
       <div className="flex flex-col gap-4 px-4">
-        <En className="text-2xl font-extrabold leading-tight">{text.title}</En>
+        <div className="flex items-start gap-2">
+          <En className="min-w-0 flex-1 break-words text-2xl font-extrabold leading-tight">
+            {text.title}
+          </En>
+          <button
+            type="button"
+            aria-label={t.texts.rename}
+            onClick={() => setOpen({ kind: 'rename' })}
+            className="tap -mt-2 grid shrink-0 place-items-center rounded-full text-ink-3"
+          >
+            <PencilIcon size={18} />
+          </button>
+        </div>
         {progress.total > 0 && (
           <div className="flex flex-col gap-1">
             <Bar value={progress.learned} max={progress.total} className="h-2" />
@@ -229,6 +280,11 @@ export function TextRead() {
             </span>
           </div>
         )}
+
+        <AudioState
+          status={audio}
+          onRetry={() => watchTextAudio(text.id, accent, { retry: true })}
+        />
 
         <div className="flex flex-wrap items-center gap-2 text-sm">
           <span className="text-ink-3">{t.texts.tapLabel}</span>
@@ -255,46 +311,30 @@ export function TextRead() {
                 ? t.texts.hideTranslation
                 : t.texts.translateAll}
           </Button>
-          <Button variant="outline" onClick={() => void playAll()}>
+          <Button variant="outline" onClick={() => void playAll()} data-testid="play-all">
             <span className="inline-flex items-center gap-2">
-              <SpeakerIcon size={18} />
-              {playing !== null ? t.texts.stop : t.texts.playAll}
+              {reading ? <StopIcon size={18} /> : <SpeakerIcon size={18} />}
+              {reading ? t.texts.stop : t.texts.playAll}
             </span>
           </Button>
         </div>
+        {waitingFor !== null && (
+          <p className="text-center text-xs text-ink-3" role="status">
+            {t.textAudio.waitingAll}
+          </p>
+        )}
 
-        <div className="flex flex-wrap gap-3 text-xs text-ink-3">
-          <span>
-            <span className="me-1 inline-block h-3 w-3 rounded bg-accent-soft align-middle" />{' '}
-            {t.texts.legendMarked}
-          </span>
-          <span>
-            <span className="me-1 inline-block h-3 w-3 rounded border-b-2 border-good align-middle" />{' '}
-            {t.texts.legendStudied}
-          </span>
-        </div>
+        <p className="flex items-center gap-2 text-xs text-ink-3">
+          <span className="inline-block h-3 w-3 rounded bg-accent-soft" />
+          {t.texts.legendMarked}
+        </p>
 
         <div className="card p-4 text-lg leading-loose" dir="ltr" data-testid="text-view">
           {showAll ? (
             <div className="flex flex-col gap-3">
               {analysis.sentences.map((s, si) => (
                 <div key={si} className={s.gap.includes('\n') ? 'pb-2' : ''}>
-                  <p className="en">
-                    {tap === 'sentence' ? (
-                      <span
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => setOpen({ kind: 'sentence', index: si })}
-                        className={playing === si ? 'rounded bg-warn-soft' : ''}
-                      >
-                        {renderTokens(si)}
-                      </span>
-                    ) : (
-                      <span className={playing === si ? 'rounded bg-warn-soft' : ''}>
-                        {renderTokens(si)}
-                      </span>
-                    )}
-                  </p>
+                  <p className="en">{sentenceSpan(si)}</p>
                   {he[si] && (
                     <p dir="rtl" className="text-base leading-snug text-ink-2">
                       <He>{he[si]!}</He>
@@ -305,27 +345,12 @@ export function TextRead() {
             </div>
           ) : (
             <p className="en whitespace-pre-wrap">
-              {analysis.sentences.map((s, si) =>
-                tap === 'sentence' ? (
-                  <span key={si}>
-                    <span
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => setOpen({ kind: 'sentence', index: si })}
-                      onKeyDown={(e) =>
-                        e.key === 'Enter' && setOpen({ kind: 'sentence', index: si })
-                      }
-                      className={`cursor-pointer rounded ${playing === si ? 'bg-warn-soft' : 'active:bg-card-2'}`}
-                      data-testid="sentence"
-                    >
-                      {renderTokens(si)}
-                    </span>
-                    {s.gap}
-                  </span>
-                ) : (
-                  sentenceSpan(si)
-                ),
-              )}
+              {analysis.sentences.map((s, si) => (
+                <span key={si}>
+                  {sentenceSpan(si)}
+                  {s.gap}
+                </span>
+              ))}
             </p>
           )}
         </div>
@@ -340,7 +365,7 @@ export function TextRead() {
               {markedInfos.map((l) => (
                 <span
                   key={l.id}
-                  className={`inline-flex items-center gap-1 rounded-pill px-3 py-1 text-sm ${words.has(l.id) ? 'bg-good-soft' : 'bg-accent-soft text-accent'}`}
+                  className="inline-flex items-center gap-1 rounded-pill bg-accent-soft py-1 pe-1 ps-3 text-sm text-accent"
                 >
                   <button
                     type="button"
@@ -353,13 +378,13 @@ export function TextRead() {
                       setOpen({ kind: 'word', token, sentence: si });
                     }}
                   >
-                    {l.lemma}
+                    {words.has(l.id) ? `✓ ${l.lemma}` : l.lemma}
                   </button>
                   <button
                     type="button"
                     aria-label={`${t.texts.unmark} ${l.lemma}`}
                     onClick={() => toggleMark(l.id)}
-                    className="grid h-5 w-5 place-items-center rounded-full text-ink-3"
+                    className="grid h-7 w-7 place-items-center rounded-full text-ink-3"
                   >
                     ×
                   </button>
@@ -373,7 +398,7 @@ export function TextRead() {
                 {busy ? t.common.loading : t.texts.addAll(toAdd.length)}
               </Button>
             ) : (
-              <p className="text-sm text-good">{t.texts.allAdded}</p>
+              <p className="text-sm text-ink-2">{t.texts.allAdded}</p>
             ))}
         </section>
 
@@ -399,56 +424,170 @@ export function TextRead() {
 
       <Sheet open={!!openWord} onClose={() => setOpen(null)}>
         {openWord && (
-          <WordLookup
-            key={`${openWord.sentence}:${openWord.token.part}`}
-            surface={openWord.token.part}
-            {...(openWord.token.lemma ? { info: openWord.token.lemma } : {})}
-            context={{ en: sentences[openWord.sentence] ?? '', he: he[openWord.sentence] ?? null }}
-            {...(openWord.token.lemma
-              ? {
-                  marked: marked.has(openWord.token.lemma.id),
-                  onToggleMark: () => toggleMark(openWord.token.lemma!.id),
-                  onAdd: () => {
-                    void add([openWord.token.lemma!]);
-                    setOpen(null);
-                  },
-                }
-              : {})}
-          />
+          <>
+            <WordLookup
+              key={`${openWord.sentence}:${openWord.token.part}`}
+              surface={openWord.token.part}
+              {...(openWord.token.lemma ? { info: openWord.token.lemma } : {})}
+              context={{
+                en: sentences[openWord.sentence] ?? '',
+                he: he[openWord.sentence] ?? null,
+              }}
+              {...(openWord.token.lemma
+                ? {
+                    marked: marked.has(openWord.token.lemma.id),
+                    onToggleMark: () => toggleMark(openWord.token.lemma!.id),
+                    onAdd: () => {
+                      void add([openWord.token.lemma!]);
+                      setOpen(null);
+                    },
+                  }
+                : {})}
+            />
+            {openWord.token.proper && <p className="pt-2 text-xs text-ink-3">{t.texts.name}</p>}
+          </>
         )}
-        {openWord?.token.proper && <p className="pt-2 text-xs text-ink-3">{t.texts.name}</p>}
       </Sheet>
 
-      <Sheet open={openSentence !== null} onClose={() => setOpen(null)}>
-        {openSentence !== null && (
+      <Sheet open={openIndex !== null} onClose={() => setOpen(null)}>
+        {openIndex !== null && (
           <SentenceCard
-            en={sentences[openSentence] ?? ''}
-            he={he[openSentence] ?? null}
-            load={() => translateSome([openSentence])}
+            en={sentences[openIndex] ?? ''}
+            he={he[openIndex] ?? null}
+            load={() => translateSome([openIndex])}
           />
         )}
       </Sheet>
 
-      <Sheet open={open?.kind === 'delete'} onClose={() => setOpen(null)}>
-        <p className="mb-5 text-lg font-semibold">{t.texts.deleteConfirm}</p>
-        <div className="grid grid-cols-2 gap-3">
-          <Button variant="outline" onClick={() => setOpen(null)}>
-            {t.common.cancel}
-          </Button>
-          <Button
-            variant="danger"
-            onClick={() =>
-              void deleteText(text.id).then(() => {
-                toast(t.texts.deleted);
-                nav('/texts', { replace: true });
-              })
-            }
-          >
-            {t.texts.deleteText}
-          </Button>
-        </div>
+      {open?.kind === 'rename' && (
+        <Rename
+          title={text.title}
+          onClose={() => setOpen(null)}
+          onSave={(title) => {
+            setText({ ...text, title });
+            void touchText(text.id, { title, updatedAt: Date.now() });
+            toast(t.texts.renamed, { icon: '✓' });
+            setOpen(null);
+          }}
+        />
+      )}
+
+      <Sheet
+        open={open?.kind === 'delete'}
+        onClose={() => setOpen(null)}
+        footer={
+          <div className="grid grid-cols-2 gap-3">
+            <Button variant="outline" onClick={() => setOpen(null)}>
+              {t.common.cancel}
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() =>
+                void deleteText(text.id).then(() => {
+                  toast(t.texts.deleted);
+                  nav('/texts', { replace: true });
+                })
+              }
+            >
+              {t.texts.deleteText}
+            </Button>
+          </div>
+        }
+      >
+        <p className="text-lg font-semibold">{t.texts.deleteConfirm}</p>
       </Sheet>
     </div>
+  );
+}
+
+/** Where the text's natural audio stands, with a retry when it failed. */
+function AudioState({
+  status,
+  onRetry,
+}: {
+  status: TextAudioStatus | undefined;
+  onRetry: () => void;
+}) {
+  if (!status) return null;
+  const { phase, local, total } = status;
+  const line =
+    phase === 'checking'
+      ? t.textAudio.checking
+      : phase === 'queued'
+        ? t.textAudio.queued(!!status.dispatch)
+        : phase === 'rendering'
+          ? t.textAudio.rendering(local, total)
+          : phase === 'ready'
+            ? t.textAudio.ready
+            : phase === 'partial'
+              ? t.textAudio.partial(total - local)
+              : phase === 'failed'
+                ? t.textAudio.failed
+                : phase === 'slow'
+                  ? t.textAudio.slow
+                  : phase === 'offline'
+                    ? t.textAudio.offline
+                    : t.textAudio.nosync;
+  const busy = phase === 'checking' || phase === 'queued' || phase === 'rendering';
+  const bad = phase === 'failed' || phase === 'partial' || phase === 'slow';
+  return (
+    <div
+      className={`flex flex-col gap-2 rounded-2xl p-3 text-sm ${bad ? 'bg-warn-soft' : 'bg-card-2'}`}
+      role="status"
+      data-testid="audio-state"
+      data-phase={phase}
+    >
+      <p className="flex items-center gap-2">
+        <span aria-hidden>{phase === 'ready' ? '🔊' : busy ? '⏳' : 'ℹ️'}</span>
+        <span className="flex-1">{line}</span>
+        {bad && (
+          <Button
+            variant="outline"
+            className="!min-h-0 shrink-0 px-3 py-1.5 text-sm"
+            onClick={onRetry}
+          >
+            {t.textAudio.retry}
+          </Button>
+        )}
+      </p>
+      {busy && total > 0 && <Bar value={local} max={total} className="h-1.5" />}
+    </div>
+  );
+}
+
+function Rename({
+  title,
+  onClose,
+  onSave,
+}: {
+  title: string;
+  onClose: () => void;
+  onSave: (title: string) => void;
+}) {
+  const [value, setValue] = useState(title);
+  const clean = value.replace(/\s+/g, ' ').trim().slice(0, 120);
+  return (
+    <Sheet
+      open
+      onClose={onClose}
+      title={t.texts.rename}
+      footer={
+        <Button className="w-full" disabled={!clean} onClick={() => onSave(clean)}>
+          {t.common.save}
+        </Button>
+      }
+    >
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && clean && onSave(clean)}
+        dir="auto"
+        enterKeyHint="done"
+        aria-label={t.texts.titleLabel}
+        className="w-full rounded-2xl border border-line bg-bg p-3 text-base outline-none focus:ring-2 focus:ring-accent"
+        data-testid="rename-input"
+      />
+    </Sheet>
   );
 }
 

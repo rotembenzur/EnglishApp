@@ -1,7 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { createRng } from '@/engine/rng';
 import type { LemmaInfo } from '@/engine/types';
-import { analyzeText, autoMark, buildCheck, sentencesWith, splitSentences } from './text';
+import {
+  analyzeText,
+  autoMark,
+  autoTitle,
+  buildCheck,
+  cardWord,
+  sentencesWith,
+  splitSentences,
+} from './text';
 
 // prettier-ignore
 const lemmas = [
@@ -13,7 +21,8 @@ const lemmas = [
 const byLemma = new Map<string, LemmaInfo>(
   lemmas.map(([lemma, d], i) => [
     lemma,
-    { id: i + 1, lemma, rank: i + 1, pos: ['noun'], d, band: 'B2', tags: [], family: 0 },
+    // Rank by difficulty, so the easy words count as frequent (the basic-word floor).
+    { id: i + 1, lemma, rank: d * 100, pos: ['noun'], d, band: 'B2', tags: [], family: 0 },
   ]),
 );
 const id = (l: string) => byLemma.get(l)!.id;
@@ -69,6 +78,19 @@ describe('analyzeText', () => {
     expect(marked[0]).toBe(id('multimodal'));
   });
 
+  it('never marks the most frequent words, whatever the level', () => {
+    // A very low level: "the" (rank 100) is at or above it, but never worth marking.
+    const marked = autoMark(a, new Set(), 0);
+    expect(marked).not.toContain(id('the'));
+    expect(marked).not.toContain(id('and'));
+    expect(marked).toContain(id('multimodal'));
+  });
+
+  it('gives each token the word its card shows and plays', () => {
+    expect(cardWord(find('released')[0]!)).toBe('release');
+    expect(cardWord(find('Anthropic')[0]!)).toBe('anthropic');
+  });
+
   it('finds the sentences a word appears in', () => {
     expect(sentencesWith(a, id('model')).map((s) => s.index)).toEqual([0, 1]);
     expect(sentencesWith(a, id('model'))[1]!.surface).toBe('models');
@@ -101,5 +123,25 @@ describe('buildCheck', () => {
 
   it('asks nothing about a text that is too short', () => {
     expect(buildCheck(['One short sentence here today.'], ['א'], createRng(1))).toEqual([]);
+  });
+});
+
+describe('autoTitle', () => {
+  it('keeps a headline-like first line', () => {
+    expect(autoTitle('Why the lab opened its weights\n\nAnthropic released a new model.')).toBe(
+      'Why the lab opened its weights',
+    );
+  });
+
+  it('otherwise takes the first clause, at most six words', () => {
+    expect(
+      autoTitle('Anthropic released a new multimodal model today, and Meta answered quickly.'),
+    ).toBe('Anthropic released a new multimodal model…');
+    expect(autoTitle('Critics want transparent benchmarks.')).toBe(
+      'Critics want transparent benchmarks',
+    );
+    expect(autoTitle('Paragraph 1: the lab released a model. More text.')).toBe(
+      'Paragraph 1: the lab released a…',
+    );
   });
 });

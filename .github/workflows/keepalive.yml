@@ -7,7 +7,7 @@ name: Supabase keepalive
 # anon key are public (supabase/functions/_shared/keys.ts) and nothing here reads user data.
 #
 # GitHub also disables scheduled workflows in public repositories after 60 days without commits,
-# so each run re-enables this workflow and the push server workflow.
+# so each run re-enables this workflow, the push server and the text audio workflows.
 
 on:
   schedule:
@@ -53,7 +53,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for wf in keepalive.yml push-server.yml; do
+          for wf in keepalive.yml push-server.yml tts.yml; do
             gh api -X PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" \
               && echo "$wf enabled" || echo "::warning::could not re-enable $wf"
           done

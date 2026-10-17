@@ -100,6 +100,11 @@ const isCapitalized = (w: string) => /^[A-Z][a-z]/.test(w);
 /** OpenAI, ChatGPT, GPU, NASA: capitals after the first letter. */
 const isMixedOrCaps = (w: string) => w.length >= 2 && /[A-Z]/.test(w.slice(1));
 
+/** The word a token's card shows and plays: its lemma, else the bare surface form in lower case. */
+export function cardWord(t: TextToken): string {
+  return t.lemma?.lemma ?? bare(t.part).toLowerCase();
+}
+
 export function analyzeText(body: string, byLemma: Map<string, LemmaInfo>): TextAnalysis {
   const raw = splitSentences(body).map((s) => ({ ...s, toks: tokenize(s.text) }));
   // Words seen capitalized in mid-sentence, and words seen in lower case anywhere.
@@ -157,7 +162,13 @@ export function textLemmas(a: TextAnalysis): LemmaInfo[] {
   return [...seen.values()];
 }
 
-/** Words to mark: at or above the level (theta − 4, as before), not studied yet. Hardest first. */
+/** The most frequent words ("the", "with", "say"): never marked, whatever the level. */
+export const BASIC_RANK = 400;
+
+/**
+ * Words to mark: at or above the level (theta − 4, as before), not studied yet, not among the
+ * most frequent words. Hardest first.
+ */
 export function autoMark(
   a: TextAnalysis,
   studied: { has(id: number): boolean },
@@ -165,7 +176,13 @@ export function autoMark(
   max = 60,
 ): number[] {
   return textLemmas(a)
-    .filter((l) => l.d >= theta - 4 && !studied.has(l.id) && l.lemma.length >= 3)
+    .filter(
+      (l) =>
+        l.d >= theta - 4 &&
+        !studied.has(l.id) &&
+        l.lemma.length >= 3 &&
+        (l.rank === 0 || l.rank > BASIC_RANK),
+    )
     .sort((x, y) => y.d - x.d)
     .slice(0, max)
     .map((l) => l.id);
@@ -184,15 +201,29 @@ export function sentencesWith(
   return out;
 }
 
-/** A title from the first line: at most 8 words. */
-export function guessTitle(body: string): string {
-  const line = body.trim().split('\n')[0]?.trim() ?? '';
-  const words = line.split(/\s+/).filter(Boolean);
-  const t = words
-    .slice(0, 8)
+const words = (x: string) => x.split(/\s+/).filter(Boolean);
+
+/**
+ * A short title made from the text: a headline-like first line as it is (up to 10 words, no
+ * final period), else the first clause of the first sentence, at most 6 words.
+ */
+export function autoTitle(body: string): string {
+  const lines = body
+    .trim()
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean);
+  const first = lines[0] ?? '';
+  if (lines.length > 1 && words(first).length <= 10 && !/[.!?]["”’)]*$/.test(first))
+    return first.replace(/[:;,]+$/, '');
+  const sentence = splitSentences(body)[0]?.text.trim() ?? first;
+  const clause = sentence.split(/[,;:(\u2013\u2014]/)[0]!.trim();
+  const w = words(words(clause).length >= 3 ? clause : sentence);
+  const title = w
+    .slice(0, 6)
     .join(' ')
-    .replace(/[.:,;]+$/, '');
-  return words.length > 8 ? `${t}…` : t;
+    .replace(/[.,;:!?"'”’)]+$/, '');
+  return w.length > 6 ? `${title}…` : title;
 }
 
 export type CheckKind = 'meaning' | 'which' | 'next';
@@ -205,7 +236,9 @@ export interface CheckQuestion {
   correct: number;
 }
 
-const wordCount = (s: string) => s.split(/\s+/).filter(Boolean).length;
+const wordCount = (s: string) => words(s).length;
+/** Longer sentences make answer options too long to read on a phone. */
+const MAX_CHECK_WORDS = 28;
 
 /**
  * A short comprehension check from the text itself (no AI): what a sentence means (pick the
@@ -220,7 +253,7 @@ export function buildCheck(
 ): CheckQuestion[] {
   const ok = sentences
     .map((s, i) => ({ s, i, he: hebrew[i] ?? null }))
-    .filter((x) => wordCount(x.s) >= 5 && wordCount(x.s) <= 40);
+    .filter((x) => wordCount(x.s) >= 5 && wordCount(x.s) <= MAX_CHECK_WORDS);
   if (ok.length < 3) return [];
   const withHe = ok.filter((x) => x.he);
   const out: CheckQuestion[] = [];
@@ -241,7 +274,11 @@ export function buildCheck(
     if (out.length >= n) break;
     if (kind === 'next') {
       const q = order(ok).find(
-        (x) => !used.has(x.i) && x.i + 1 < sentences.length && wordCount(sentences[x.i + 1]!) >= 4,
+        (x) =>
+          !used.has(x.i) &&
+          x.i + 1 < sentences.length &&
+          wordCount(sentences[x.i + 1]!) >= 4 &&
+          wordCount(sentences[x.i + 1]!) <= MAX_CHECK_WORDS,
       );
       if (!q) continue;
       const right = sentences[q.i + 1]!;

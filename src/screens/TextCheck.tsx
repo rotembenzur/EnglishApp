@@ -95,9 +95,10 @@ export function TextCheck() {
                     key={i}
                     type="button"
                     onClick={() => answer(i)}
-                    className={`tap rounded-2xl border border-line bg-card p-3 text-start ${state}`}
+                    dir={q.kind === 'meaning' ? 'rtl' : 'ltr'}
+                    className={`tap rounded-2xl border border-line bg-card p-3 text-start leading-snug ${q.kind === 'meaning' ? '' : 'en'} ${state}`}
                   >
-                    {q.kind === 'meaning' ? <He>{o}</He> : <En>{o}</En>}
+                    {q.kind === 'meaning' ? <He>{o}</He> : o}
                   </button>
                 );
               })}

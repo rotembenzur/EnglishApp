@@ -2,11 +2,13 @@
  * Getting a text ready for practice: content for every marked word (the text's own sentences,
  * translated), the session's word list, and priority in regular sessions for a few days.
  */
+import { refreshTextAudio } from '@/audio/textAudio';
 import { analyzeText, sentencesWith } from '@/content/text';
 import { cachedTranslations, ensureContent, translateAll } from '@/content/gloss';
 import { getContent, loadInventory } from '@/content/inventory';
 import { boostWords, getText } from '@/data/texts';
 import { TEXT_SESSION_WORDS } from '@/engine/session';
+import type { Accent } from '@/data/db';
 import type { Sentence, UserId, UserWord } from '@/engine/types';
 
 export interface TextPractice {
@@ -31,10 +33,13 @@ export async function prepareTextPractice(
   textId: string,
   userId: UserId,
   words: Map<number, UserWord>,
-  opts: { online?: boolean } = {},
+  opts: { online?: boolean; accent?: Accent } = {},
 ): Promise<TextPractice | null> {
   const text = await getText(textId);
   if (!text) return null;
+  // The text's natural clips (its sentences are the session's clozes): take what is ready.
+  if (opts.online !== false && text.audio && !text.audio.readyAt)
+    await refreshTextAudio(textId, opts.accent ?? 'us').catch(() => null);
   const inv = await loadInventory();
   const analysis = analyzeText(text.body, inv.byLemma);
   const ids = practiceOrder(text.marked, words).slice(0, TEXT_SESSION_WORDS);

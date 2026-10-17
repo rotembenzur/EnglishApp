@@ -12,3 +12,4 @@ test-results
 !.env.example
 scripts/.cache
 public/content
+scripts/tts/__pycache__/

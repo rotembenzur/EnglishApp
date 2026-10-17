@@ -19,6 +19,8 @@ export const SAMPLES: Record<string, unknown[]> = {
   n: [1, 2, 12, 1234],
   name: ['רתם', 'נועה'],
   female: [false, true],
+  now: [false, true],
+  local: [0, 12],
   hour: [3, 9, 14, 19, 23],
   due: [0, 1, 12],
   fresh: [0, 1, 8],

@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-17 · version 0.9.1
+Last updated: 2026-10-17 · version 0.10.0
 
 ## Deployment
 
@@ -24,8 +24,10 @@ Last updated: 2026-10-17 · version 0.9.1
 
 ## Waiting on owner
 
-0. **Texts on the iPhone** (0.9.0): the checks listed under "Texts: what to check on the iPhone"
+0. **Texts on the iPhone** (0.10.0): the checks listed under "Texts: what to check on the iPhone"
    below.
+   0b. **Optional: start text audio in seconds** (`SETUP.md` step 7, one GitHub token). Without it
+   texts are voiced on the workflow's five-minute schedule.
 1. **Recorded audio on the iPhone** (0.8.0): the checks listed under "Audio: what to check on the
    iPhone" below.
 2. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
@@ -63,26 +65,55 @@ Hebrew and no audio; names such as Anthropic, Meta and Mistral were highlighted.
 - Not verifiable from here: fetching an article through `r.jina.ai` (blocked in this container)
   and the real translator (it answers 429 to this container).
 
+## Texts review and natural audio (0.10.0)
+
+Reported on the iPhone: screens and sheets of טקסטים overflowed (content under the tab bar,
+buttons out of reach, no scroll); reading, sentences and words used the system voice; recorded
+words were highlighted green; a title was required.
+
+- Layout: sheets now cover the visual viewport, so with the iOS keyboard up the panel sits above
+  it, scrolls inside, and keeps its main button in a footer; the page is scrolled back when the
+  keyboard closes (WebKit could leave it offset, hiding content under the tab bar). Guarded by
+  `e2e/texts-layout.spec.ts`, which walks every screen of the feature on an iPhone 14 viewport and
+  checks every control is reachable and on top, with the keyboard emulated both ways (a shorter
+  page, and the iOS way: full page, shorter visual viewport).
+- Audio, why it was the system voice: recordings did play when the exact word or sentence was
+  recorded (checked in a test), but pasted sentences are never in the recorded set, the 0.9.0
+  practice replaced the recorded example sentences with the text's own, and a cold word index could
+  miss its 1.5-second deadline. Now every sentence and word without a recording is rendered with
+  Kokoro (same voices and pipeline as the recordings) by `.github/workflows/tts.yml` and downloaded
+  to the phone clip by clip; details in `docs/DECISIONS.md`, "Text audio".
+- Timing measured: Kokoro renders 3.4 times faster than real time on 4 cores (the runner's size);
+  on the phone in WebAssembly it would be 2 to 3 times slower than real time, so it is not done
+  there. A typical article (2 to 4 minutes of speech) renders in under a minute after about a
+  minute of runner start; the first sentences arrive first.
+- No green highlight, no title field (generated, renamable), basic words never marked, trash icon
+  for delete, shorter comprehension answers aligned correctly.
+- Guards: `e2e/text-audio.spec.ts` (submission excludes recorded words and sentences, "preparing"
+  never plays the system voice, progressive download, play all, offline, failure and retry),
+  `e2e/tts-stack.spec.ts` (local only: the app, the real `tts.sql` under PostgREST, the real Edge
+  Function under Deno and the real renderer with Kokoro; passed here: 12 of 12 clips rendered,
+  downloaded and valid), unit tests for titles, marking, article parsing.
+
 ## Texts: what to check on the iPhone
 
-Update to 0.9.0 first (bottom of **הגדרות**). Then:
+Update to 0.10.0 first (bottom of **הגדרות**). Sync must be connected (it is on both phones).
 
-1. **למידה**, **טקסטים**, **טקסט חדש**: paste a few paragraphs of a tech article that mentions
-   Anthropic, Meta or Mistral, save. Names are plain; hard words are highlighted.
-2. Tap "multimodal" (or any rare highlighted word): a short shimmer, then Hebrew, and the sentence
-   from the text. The speaker plays the word (a recording, or the iPhone voice). With airplane
-   mode on, a word never opened before says there is no connection, with **ניסיון נוסף**.
-3. Switch **לחיצה על** to **משפט** and tap a sentence: its Hebrew and a play button. **לתרגם את כל
-   הטקסט** puts a Hebrew line under every sentence. **להשמיע הכול** reads the text, sentence by
-   sentence, and **לעצור** stops it.
-4. Remove a mark (× in the list, or **להסיר סימון** on a card), add one from a card, then **להוסיף
-   ... ללמידה**.
-5. **לתרגל את הטקסט**: new words come with their intro card, clozes use the text's sentences. At
-   the end, **לבדיקת ההבנה**: 4 questions. Back on the list, the text shows how many of its words
-   you learned and the check score.
-6. Paste a link to an article in **או קישור לכתבה** and tap **להביא את הכתבה**. If the site blocks
-   it, a message says to paste the text instead.
-7. The next learn or review sessions start with the text's words.
+1. **למידה**, **טקסטים**, **טקסט חדש**: paste a long article (or only its link). With the keyboard
+   up the **לשמור ולקרוא** button stays visible above it. Save without a title: a short title
+   appears; the pencil next to it renames it.
+2. On the text: a grey box says **מכינים קול טבעי לטקסט** with a progress bar, then **הקול הטבעי
+   מוכן, גם בלי רשת**. Speakers of sentences not ready yet have a dashed ring; tapping one says it
+   is still being prepared (no robot voice).
+3. **להשמיע הכול**: the whole text in the natural female voice; if it reaches a sentence that is not
+   ready yet it waits for it. **לעצור** stops.
+4. Tap a rare word (for example "multimodal"): the speaker plays the natural voice too. A common
+   word plays its recording.
+5. Only words to learn are highlighted; nothing is green. The trash icon at the top deletes, after
+   a confirmation.
+6. Scroll to the bottom: **לתרגל את הטקסט** and **רק בדיקת הבנה** are reachable above the tab bar.
+   Practice: the sentences from the text play in the natural voice.
+7. Airplane mode afterwards: the text still plays in the natural voice.
 
 ## Recorded audio (0.8.0)
 

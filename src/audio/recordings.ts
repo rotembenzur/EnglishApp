@@ -248,7 +248,7 @@ export async function wordRecording(
   accent: Accent,
   slow: boolean,
 ): Promise<{ blob: Blob; clip: Clip } | null> {
-  const words = await within(wordsFor(accent), 1500);
+  const words = await within(wordsFor(accent), 3000);
   const key = clipKey(text);
   const loc =
     words?.get(key) ??
@@ -299,9 +299,29 @@ async function sentenceBlob(key: string): Promise<Blob | null> {
   return blob;
 }
 
+/**
+ * Which clip keys have a recording: sentences (American voice) and the accent's words. Null for a
+ * kind whose index cannot be loaded (offline before the first download).
+ */
+export async function recordedKeys(
+  accent: Accent,
+): Promise<{ sentences: Set<string> | null; words: Set<string> | null }> {
+  const [sentences, words] = await Promise.all([
+    sentenceKeys().catch(() => null),
+    wordsFor(accent).catch(() => null),
+  ]);
+  return { sentences, words: words ? new Set(words.keys()) : null };
+}
+
+/** Load the indexes ahead of the first tap, so the first word played is never a timeout. */
+export function warmRecordings(accent: Accent): void {
+  void sentenceKeys().catch(() => null);
+  void wordsFor(accent).catch(() => null);
+}
+
 /** The recorded clip of an example sentence (American voice), if there is one. */
 export async function sentenceRecording(text: string): Promise<{ blob: Blob; clip: Clip } | null> {
-  const keys = await within(sentenceKeys(), 1500);
+  const keys = await within(sentenceKeys(), 3000);
   const key = clipKey(text);
   if (!keys?.has(key)) return null;
   const blob = await sentenceBlob(key);

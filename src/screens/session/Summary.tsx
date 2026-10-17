@@ -55,7 +55,7 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
       style={{ paddingTop: 'var(--sat)', paddingBottom: 'var(--sab)' }}
     >
       {celebrate && <Confetti />}
-      <div className="scroll-pane flex flex-1 flex-col gap-5 px-4 pb-6 pt-6">
+      <div className="scroll-pane flex min-h-0 flex-1 flex-col gap-5 px-4 pb-6 pt-6">
         <div className="text-center">
           <p className="text-5xl">{s.perfect ? '💎' : s.goalReachedNow ? '🎯' : '🎉'}</p>
           <h1 className="mt-2 text-3xl font-extrabold">

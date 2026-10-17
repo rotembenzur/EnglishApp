@@ -11,6 +11,7 @@
  * 1 (speed slider, slow long press without a slow clip) are time-stretched with the pitch kept.
  */
 import { DEFAULT_SETTINGS, type Accent } from '@/data/db';
+import { generatedSentence, generatedWord } from './generated';
 import { describeRecording, sentenceRecording, wordRecording, type Clip } from './recordings';
 import { stretch } from './stretch';
 import { chooseVoice } from './voices';
@@ -173,7 +174,8 @@ export interface SpeakOpts {
 /** One entry per play, newest last: what the user heard (for "report a problem"). */
 export interface PlayedClip {
   text: string;
-  source: 'recording' | 'dictionary' | 'system';
+  /** generated: rendered for a saved text (src/audio/textAudio.ts). */
+  source: 'recording' | 'generated' | 'dictionary' | 'system';
   voice: string;
   slow: boolean;
   at: number;
@@ -306,6 +308,24 @@ async function playRecording(
   }
 }
 
+/** A clip rendered for a saved text (same voices as the recordings). */
+async function playGenerated(
+  text: string,
+  clip: { blob: Blob; key: string } | null,
+  voice: string,
+  rate: number,
+  slow: boolean,
+): Promise<boolean> {
+  if (!clip) return false;
+  try {
+    await playBlob(clip.blob, rate);
+    logPlay({ text, source: 'generated', voice, slow, key: clip.key });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** Dictionary audio (Tier B): fetched as a Blob when the server allows CORS, else streamed. */
 async function playDictionary(text: string, url: string, rate: number): Promise<boolean> {
   try {
@@ -347,6 +367,9 @@ export async function playWord(
   const rec = await wordRecording(word, opts.accent, slow).catch(() => null);
   const rate = recordingRate(opts.rate) * (rec?.clip.stretch ? 0.75 : 1);
   if (await playRecording(word, rec, rate)) return;
+  const gen = await generatedWord(word, opts.accent).catch(() => null);
+  const genRate = recordingRate(opts.rate) * (slow ? 0.75 : 1);
+  if (await playGenerated(word, gen, gen?.voice ?? opts.accent, genRate, slow)) return;
   const url = opts.accent === 'uk' ? (urls.uk ?? urls.us) : (urls.us ?? urls.uk);
   if (url && !slow && (await playDictionary(word, url, Math.min(1, Math.max(0.75, opts.rate)))))
     return;
@@ -359,6 +382,8 @@ export async function playSentence(text: string, opts: SpeakOpts): Promise<void>
   // A long press slows the recording down (pitch kept) rather than switching voices.
   const rate = recordingRate(opts.rate) * (opts.slow ? 0.75 : 1);
   if (await playRecording(text, rec, rate)) return;
+  const gen = await generatedSentence(text).catch(() => null);
+  if (await playGenerated(text, gen, 'us', rate, !!opts.slow)) return;
   await speak(text, opts);
 }
 

@@ -5,3 +5,7 @@ project_id = "ngosxhpmudbgiiktqgoa"
 # Called by pg_cron, the nudge trigger and the app without a JWT; it authorizes every POST with
 # the passphrase hash through row-level security instead.
 verify_jwt = false
+
+[functions.lexbites-tts]
+# Called by the app without a JWT; it checks the passphrase hash through row-level security.
+verify_jwt = false

@@ -1,0 +1,120 @@
+name: Text audio
+
+# Natural Kokoro audio for the texts saved in the app (טקסטים, docs/DECISIONS.md "Text audio").
+# A phone that saves a text adds a job to lb_tts_jobs (Supabase) and asks the lexbites-tts Edge
+# Function to start this workflow; without its GitHub token the five-minute schedule picks the job
+# up instead. scripts/tts/render.py renders the clips with the recordings' voices and G2P and
+# stores them in lb_tts_clips, a few at a time, so the phone can start playing early.
+#
+# The repository and these logs are public and the texts are not: nothing here prints a text.
+# Needs the SUPABASE_ACCESS_TOKEN secret (SETUP.md step 4); idle runs end in seconds.
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      selftest:
+        description: 'Also render a built-in sample end to end, check it and delete it'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tts
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Render
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SELFTEST: ${{ inputs.selftest == true }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audio
+            scripts/tts
+            supabase/functions/_shared/keys.ts
+          sparse-checkout-cone-mode: false
+
+      - name: Jobs waiting
+        id: jobs
+        run: |
+          if [ -z "$SUPABASE_ACCESS_TOKEN" ]; then
+            echo "::notice::SUPABASE_ACCESS_TOKEN is not set (SETUP.md step 4); nothing to do."
+            echo "work=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          URL=$(grep -o "https://[a-z0-9]*\.supabase\.co" supabase/functions/_shared/keys.ts | head -1)
+          REF=${URL#https://}; REF=${REF%%.*}
+          curl -sS --fail --max-time 30 --retry 3 -o "$RUNNER_TEMP/keys.json" \
+            "https://api.supabase.com/v1/projects/$REF/api-keys?reveal=true" \
+            -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN"
+          KEY=$(jq -r '[.[] | select(.name == "service_role" or .type == "secret") | .api_key][0] // empty' "$RUNNER_TEMP/keys.json")
+          rm -f "$RUNNER_TEMP/keys.json"
+          [ -n "$KEY" ] || { echo "::error::No service key from the Management API"; exit 1; }
+          echo "::add-mask::$KEY"
+          { echo "SUPABASE_URL=$URL"; echo "SUPABASE_SERVICE_KEY=$KEY"; } >> "$GITHUB_ENV"
+          AUTH=(-H "apikey: $KEY")
+          case "$KEY" in eyJ*) AUTH+=(-H "Authorization: Bearer $KEY") ;; esac
+          status=$(curl -sS -o "$RUNNER_TEMP/open.json" -w '%{http_code}' --max-time 30 --retry 3 \
+            "${AUTH[@]}" "$URL/rest/v1/lb_tts_jobs?select=id&status=in.(pending,running)")
+          if [ "$status" != 200 ]; then
+            echo "::warning::lb_tts_jobs answered HTTP $status (is supabase/tts.sql installed? The Push server workflow installs it)."
+            echo "work=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          n=$(jq length "$RUNNER_TEMP/open.json")
+          echo "open jobs: $n"
+          if [ "$n" -gt 0 ] || [ "$SELFTEST" = true ]; then echo "work=true"; else echo "work=false"; fi >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-python@v5
+        if: steps.jobs.outputs.work == 'true'
+        with:
+          python-version: '3.12'
+
+      - uses: astral-sh/setup-uv@v6
+        if: steps.jobs.outputs.work == 'true'
+        with:
+          enable-cache: true
+          cache-dependency-glob: scripts/tts/requirements.txt
+
+      - name: Python packages
+        if: steps.jobs.outputs.work == 'true'
+        run: |
+          uv venv -q -p 3.12 "$RUNNER_TEMP/venv"
+          uv pip install -q -p "$RUNNER_TEMP/venv/bin/python" -r scripts/tts/requirements.txt
+          command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -y -q ffmpeg)
+
+      - uses: actions/cache@v4
+        if: steps.jobs.outputs.work == 'true'
+        with:
+          path: tts-models
+          key: tts-models-kokoro-v1.0
+
+      - name: Models
+        if: steps.jobs.outputs.work == 'true'
+        run: |
+          mkdir -p tts-models
+          url=$(jq -r .modelUrl scripts/audio/config.json)
+          for f in kokoro-v1.0.onnx voices-v1.0.bin; do
+            [ -s "tts-models/$f" ] || curl -sSfL --retry 4 -o "tts-models/$f" "$url/$f"
+          done
+
+      - name: Render
+        if: steps.jobs.outputs.work == 'true'
+        run: |
+          args=(tts-models --linger 150)
+          [ "$SELFTEST" = true ] && args+=(--selftest)
+          # Library messages can quote the text, so they go to a file that is only counted.
+          status=0
+          "$RUNNER_TEMP/venv/bin/python" -I -B scripts/tts/render.py "${args[@]}" 2> "$RUNNER_TEMP/lib.log" || status=$?
+          echo "library messages: $(wc -l < "$RUNNER_TEMP/lib.log") lines (not shown)"
+          if [ "$status" != 0 ]; then
+            echo "::error::render.py failed: $(grep -o '^[A-Za-z]*Error' "$RUNNER_TEMP/lib.log" | tail -1)"
+            exit "$status"
+          fi

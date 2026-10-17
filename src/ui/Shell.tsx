@@ -7,7 +7,7 @@ export function Shell() {
   return (
     <div className="flex h-full w-full flex-col bg-bg">
       <main
-        className="scroll-pane mx-auto w-full max-w-md flex-1"
+        className="scroll-pane mx-auto min-h-0 w-full max-w-md flex-1"
         style={{ paddingTop: 'var(--sat)' }}
       >
         <Outlet />

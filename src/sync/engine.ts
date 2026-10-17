@@ -81,7 +81,11 @@ export async function saveConfig(cfg: SyncConfig | null): Promise<void> {
   useSync.setState({ configured: !!cfg, status: cfg ? 'pending' : 'off', error: null });
 }
 
-function headers(cfg: SyncConfig, extra: Record<string, string> = {}): Record<string, string> {
+/** Headers for any request to the project's REST API (row-level security reads the key). */
+export function headers(
+  cfg: SyncConfig,
+  extra: Record<string, string> = {},
+): Record<string, string> {
   return {
     apikey: cfg.anonKey,
     Authorization: `Bearer ${cfg.anonKey}`,
@@ -91,7 +95,7 @@ function headers(cfg: SyncConfig, extra: Record<string, string> = {}): Record<st
   };
 }
 
-function base(cfg: SyncConfig): string {
+export function base(cfg: SyncConfig): string {
   return cfg.url.replace(/\/+$/, '') + '/rest/v1/';
 }
 
