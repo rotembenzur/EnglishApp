@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-17 · version 0.9.0
+Last updated: 2026-10-17 · version 0.9.1
 
 ## Deployment
 

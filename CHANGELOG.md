@@ -2,6 +2,12 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.9.1 (2026-10-17)
+
+- Fixed: a long pasted text made the "טקסט חדש" sheet taller than the screen, hiding the save
+  button behind the tab bar. Sheets now fit the visible screen (keyboard included) and scroll;
+  the text box scrolls inside; the save button stays visible.
+
 ## 0.9.0 (2026-10-17)
 
 Read mode becomes **טקסטים**: study a whole English text.

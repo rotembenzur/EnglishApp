@@ -4,6 +4,7 @@ import { playSentence, playWord, unlockAudio } from '@/audio/speech';
 import { useApp } from '@/state/app';
 import { BackIcon, SpeakerIcon } from './icons';
 import { useToasts } from './toast';
+import { createPortal } from 'react-dom';
 import { He, Ltr } from './bidi';
 import { hasHebrew } from '@/i18n/bidi';
 import { t as strings } from '@/i18n/he';
@@ -201,9 +202,11 @@ export function Sheet({
     return () => window.removeEventListener('keydown', onKey);
   }, [open, onClose]);
   if (!open) return null;
-  return (
+  // Portaled to <body> so no transformed ancestor can trap it under the tab bar; the panel never
+  // grows past the visible viewport (dvh shrinks with the iOS keyboard) and scrolls inside.
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center"
+      className="fixed inset-0 z-[55] flex items-end justify-center"
       role="dialog"
       aria-modal="true"
       aria-label={title}
@@ -215,14 +218,15 @@ export function Sheet({
         onClick={onClose}
       />
       <div
-        className="relative w-full max-w-md animate-fade-up rounded-t-[1.75rem] bg-card p-5"
+        className="relative max-h-[calc(100vh-var(--sat)-1rem)] w-full max-w-md animate-fade-up overflow-y-auto overscroll-contain rounded-t-[1.75rem] bg-card p-5 supports-[height:100dvh]:max-h-[calc(100dvh-var(--sat)-1rem)]"
         style={{ paddingBottom: 'calc(var(--sab) + 1.25rem)' }}
       >
         <div className="mx-auto mb-4 h-1.5 w-10 rounded-pill bg-line" />
         {title && <h2 className="mb-3 text-lg font-bold">{title}</h2>}
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

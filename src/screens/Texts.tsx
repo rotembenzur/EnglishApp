@@ -123,11 +123,11 @@ function NewText({ onSaved }: { onSaved: (id: string) => void }) {
           onChange={(e) => setBody(e.target.value)}
           dir="ltr"
           lang="en"
-          rows={7}
+          rows={6}
           placeholder={t.texts.bodyPlaceholder}
           autoCapitalize="off"
           spellCheck={false}
-          className="card en w-full resize-y border-0 p-3 text-base font-normal outline-none focus:ring-2 focus:ring-accent"
+          className="card en max-h-[32dvh] min-h-24 w-full resize-none overflow-y-auto border-0 p-3 text-base font-normal outline-none focus:ring-2 focus:ring-accent"
           data-testid="text-body"
         />
       </label>
@@ -153,9 +153,15 @@ function NewText({ onSaved }: { onSaved: (id: string) => void }) {
           </Button>
         </div>
       </label>
-      <Button disabled={!/[A-Za-z]{2}/.test(body) || saving} onClick={() => void save()}>
-        {t.texts.save}
-      </Button>
+      <div className="sticky -bottom-5 -mx-5 -mb-5 bg-card px-5 pb-5 pt-2">
+        <Button
+          className="w-full"
+          disabled={!/[A-Za-z]{2}/.test(body) || saving}
+          onClick={() => void save()}
+        >
+          {t.texts.save}
+        </Button>
+      </div>
     </div>
   );
 }
