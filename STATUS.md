@@ -7,6 +7,14 @@ Last updated: 2026-10-17 · version 0.10.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
+- Latest deploy: 0.10.0, CI and deploy run #80 on commit `abd043a` (2026-10-17), all three jobs
+  green; Push server run #19 green (deployed `lexbites-tts` version 1 and `supabase/tts.sql`).
+  Checked on the real project: the function answers `{"ok":true,"version":1,"dispatch":false}`
+  (no `TTS_DISPATCH_TOKEN` yet), refuses a wrong passphrase, both tables answer `[]` without the
+  passphrase and refuse writes (401). Text audio run #1 (self-test on GitHub against the real
+  database): 4 of 4 clips rendered, stored and valid m4a, then deleted; the run started rendering
+  38 seconds after it was triggered (cold caches). The live site serves 0.10.0; Chromium (iPhone 14
+  profile) saves a text with zero console errors.
 - Latest deploy: 0.8.0, CI and deploy run #67 on commit `dd0007a` (2026-10-13), all three jobs
   (verify, e2e, deploy) green. The recordings came from Audio run #8 (full render, 20 parallel
   jobs, about 2.5 hours); Audio run #9 on the same push found nothing new and skipped publishing.
