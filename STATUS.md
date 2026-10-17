@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-14 · version 0.8.1
+Last updated: 2026-10-17 · version 0.8.2
 
 ## Deployment
 
@@ -74,6 +74,8 @@ Reported: the default voice was acceptable, the other voices terrible.
 
 0.8.1: recordings play through Web Audio, so no "Now Playing" panel should open in the Dynamic
 Island when a word or sentence plays. Check that too, including with the silent switch on.
+0.8.2: words must never be silent. Lock the phone or take a call mid-session, come back and tap a
+word: the recording plays (or, at worst, the iPhone voice), never nothing.
 
 Update to 0.8.0 first (bottom of **הגדרות**). Then:
 

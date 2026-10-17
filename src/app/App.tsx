@@ -4,7 +4,7 @@ import { Shell } from '@/ui/Shell';
 import { setupServiceWorker } from '@/pwa/registerSW';
 import { applyThemeToDocument, useTheme } from '@/state/theme';
 import { useApp } from '@/state/app';
-import { isAudioElementUnlocked, loadVoices, unlockAudio } from '@/audio/speech';
+import { loadVoices, resumeAudio, unlockAudio } from '@/audio/speech';
 import { loadRecordings, syncWordPacks } from '@/audio/recordings';
 import { loadInventory } from '@/content/inventory';
 import { startSyncLoop, syncNow } from '@/sync/engine';
@@ -74,16 +74,14 @@ export function App() {
   useEffect(() => {
     void init();
     void loadVoices();
-    // iOS only allows audio from inside a user gesture: unlock on the first touches anywhere
+    // iOS only allows audio from inside a user gesture, and suspends it after a call, the lock
+    // screen or other audio: unlock and resume on every touch and on return to the foreground
     // (touchend and click count as gestures for media on iOS, pointerdown not always).
-    const unlock = () => {
-      unlockAudio();
-      if (isAudioElementUnlocked())
-        for (const ev of ['pointerdown', 'touchend', 'click'])
-          document.removeEventListener(ev, unlock, { capture: true });
-    };
     for (const ev of ['pointerdown', 'touchend', 'click'])
-      document.addEventListener(ev, unlock, { capture: true });
+      document.addEventListener(ev, unlockAudio, { capture: true, passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resumeAudio();
+    });
     void loadRecordings();
     void loadInventory();
     startSyncLoop();

@@ -2,6 +2,14 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.8.2 (2026-10-17)
+
+- Fixed: on the iPhone a word sometimes played nothing. The audio engine is now resumed before
+  every play, on every tap and when the app returns to the foreground, and rebuilt if iOS left it
+  stuck (after a call, the lock screen or other audio). If a recording still does not start within
+  a moment, that play uses the iPhone voice instead of staying silent. Recordings are not muted by
+  the silent switch (iOS 17+), and no "Now Playing" panel appears.
+
 ## 0.8.1 (2026-10-14)
 
 - Recordings play through Web Audio instead of a media element, so the iPhone no longer opens a

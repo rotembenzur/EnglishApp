@@ -71,19 +71,49 @@ export function pickVoice(accent: Accent, voiceURI?: string): SpeechSynthesisVoi
 let ctx: AudioContext | null = null;
 let ctxUnlocked = false;
 
-function audioContext(): AudioContext | null {
-  if (ctx) return ctx;
+/** iOS 17+: play like media, so the silent switch does not mute recordings (no media panel). */
+function playbackSession(): void {
+  const session = (navigator as Navigator & { audioSession?: { type: string } }).audioSession;
+  if (session && session.type !== 'playback') session.type = 'playback';
+}
+
+function audioContext(fresh = false): AudioContext | null {
+  if (ctx && !fresh && ctx.state !== 'closed') return ctx;
   const AC =
     typeof window === 'undefined'
       ? undefined
       : (window.AudioContext ??
         (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext);
   if (!AC) return null;
-  // iOS 17+: play like media (also with the silent switch on), as the <audio> element did.
-  const session = (navigator as Navigator & { audioSession?: { type: string } }).audioSession;
-  if (session) session.type = 'playback';
+  playbackSession();
+  if (ctx && ctx.state !== 'closed') void ctx.close().catch(() => undefined);
   ctx = new AC();
   return ctx;
+}
+
+/** Resume within `ms`; iOS can leave a context "suspended" or "interrupted" after a call, a lock
+ * screen or other audio, and `resume()` may never settle. */
+async function resumeWithin(c: AudioContext, ms: number): Promise<boolean> {
+  if (c.state === 'running') return true;
+  await Promise.race([c.resume().catch(() => undefined), new Promise((r) => setTimeout(r, ms))]);
+  return (c.state as string) === 'running';
+}
+
+/** A running context for the next play: resume it, else replace it once. */
+async function runningContext(): Promise<AudioContext | null> {
+  playbackSession();
+  const c = audioContext();
+  if (!c) return null;
+  if (await resumeWithin(c, 600)) return c;
+  const n = audioContext(true);
+  return n && (await resumeWithin(n, 600)) ? n : null;
+}
+
+/** On every tap and when the app comes back to the foreground. */
+export function resumeAudio(): void {
+  playbackSession();
+  if (ctx && ctx.state !== 'running' && ctx.state !== 'closed')
+    void ctx.resume().catch(() => undefined);
 }
 
 /** Only for dictionary audio a server streams without CORS (no bytes to decode). */
@@ -109,13 +139,16 @@ export function unlockAudio(): void {
     }
   }
   const c = audioContext();
-  if (c && !ctxUnlocked) {
+  if (c && (!ctxUnlocked || c.state !== 'running')) {
     try {
       const src = c.createBufferSource();
       src.buffer = c.createBuffer(1, 1, 22050);
       src.connect(c.destination);
       src.start(0);
-      void c.resume().then(() => (ctxUnlocked = c.state === 'running'));
+      void c.resume().then(
+        () => (ctxUnlocked = c.state === 'running'),
+        () => undefined,
+      );
     } catch {
       // no Web Audio
     }
@@ -176,10 +209,9 @@ export function recordingRate(rate: number): number {
 
 /** Decode a clip and play it through Web Audio. Rejects when it cannot (caller falls back). */
 async function playBlob(blob: Blob, rate: number): Promise<void> {
-  const c = audioContext();
-  if (!c) throw new Error('no Web Audio');
   stopAudio();
-  if (c.state !== 'running') await c.resume();
+  const c = await runningContext();
+  if (!c) throw new Error('audio context not running');
   const decoded = await c.decodeAudioData(await blob.arrayBuffer());
   let buffer = decoded;
   if (Math.abs(rate - 1) >= 0.005) {
@@ -190,9 +222,10 @@ async function playBlob(blob: Blob, rate: number): Promise<void> {
   const src = c.createBufferSource();
   src.buffer = buffer;
   src.connect(c.destination);
-  await new Promise<void>((resolve) => {
+  await new Promise<void>((resolve, reject) => {
     const done = () => {
       clearTimeout(t);
+      clearTimeout(stall);
       src.onended = null;
       if (stopCurrent === done) stopCurrent = null;
       resolve();
@@ -207,6 +240,21 @@ async function playBlob(blob: Blob, rate: number): Promise<void> {
     };
     src.onended = done;
     const t = setTimeout(done, buffer.duration * 1000 + 1500);
+    // Silent failure guard: if the clock does not move, the context is stuck; the caller then
+    // speaks with the system voice instead.
+    const t0 = c.currentTime;
+    const stall = setTimeout(() => {
+      if (c.state === 'running' && c.currentTime - t0 > 0.05) return;
+      try {
+        src.stop();
+      } catch {
+        // never started
+      }
+      clearTimeout(t);
+      src.onended = null;
+      if (stopCurrent) stopCurrent = null;
+      reject(new Error('audio did not start'));
+    }, 700);
     src.start();
   });
   ctxUnlocked = true;
