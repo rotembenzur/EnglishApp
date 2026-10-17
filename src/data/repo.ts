@@ -12,6 +12,7 @@ import {
   type OutboxRow,
   type Presence,
   type SyncTable,
+  type StoredText,
   type UserProfile,
 } from './db';
 import { GOAL_MIGRATION } from './migrations';
@@ -208,15 +209,18 @@ export interface ExportFile {
   reviews: ReviewRecord[];
   dailyStats: DailyStats[];
   events: AppEvent[];
+  /** Saved texts (0.9.0); older files have none. */
+  texts?: StoredText[];
 }
 
 export async function exportAll(): Promise<ExportFile> {
-  const [users, userWords, reviews, dailyStats, events] = await Promise.all([
+  const [users, userWords, reviews, dailyStats, events, texts] = await Promise.all([
     db.users.toArray(),
     db.userWords.toArray(),
     db.reviews.toArray(),
     db.dailyStats.toArray(),
     db.events.toArray(),
+    db.texts.toArray(),
   ]);
   return {
     app: 'lexbites',
@@ -227,6 +231,7 @@ export async function exportAll(): Promise<ExportFile> {
     reviews,
     dailyStats,
     events: events.map(({ seen: _seen, ...e }) => e),
+    texts,
   };
 }
 
@@ -251,7 +256,7 @@ export async function importAll(
   const counts = { words: 0, reviews: 0, days: 0, events: 0 };
   await db.transaction(
     'rw',
-    [db.users, db.userWords, db.reviews, db.dailyStats, db.events, db.outbox],
+    [db.users, db.userWords, db.reviews, db.dailyStats, db.events, db.outbox, db.texts],
     async () => {
       for (const u of file.users) {
         const cur = await db.users.get(u.id);
@@ -279,6 +284,10 @@ export async function importAll(
       const newEvents = file.events.filter((e) => !evKeys.has(e.id));
       await db.events.bulkPut(newEvents.map((e) => ({ ...e, seen: 1 as const })));
       counts.events = newEvents.length;
+      for (const t of file.texts ?? []) {
+        const cur = await db.texts.get(t.id);
+        if (!cur || cur.updatedAt < t.updatedAt) await db.texts.put(t);
+      }
     },
   );
   return counts;

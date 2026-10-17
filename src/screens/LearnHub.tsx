@@ -79,7 +79,7 @@ export function LearnHub() {
       min: MODE_MIN.boss,
     },
     { key: 'duel', label: t.home.duel, icon: <SwordsIcon />, to: '/session/duel' },
-    { key: 'read', label: t.read.title, icon: <span className="text-xl">📖</span>, to: '/read' },
+    { key: 'texts', label: t.texts.title, icon: <span className="text-xl">📖</span>, to: '/texts' },
     {
       key: 'confusables',
       label: t.confusables.title,

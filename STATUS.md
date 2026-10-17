@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-17 · version 0.8.2
+Last updated: 2026-10-17 · version 0.9.0
 
 ## Deployment
 
@@ -24,6 +24,8 @@ Last updated: 2026-10-17 · version 0.8.2
 
 ## Waiting on owner
 
+0. **Texts on the iPhone** (0.9.0): the checks listed under "Texts: what to check on the iPhone"
+   below.
 1. **Recorded audio on the iPhone** (0.8.0): the checks listed under "Audio: what to check on the
    iPhone" below.
 2. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
@@ -37,6 +39,50 @@ Last updated: 2026-10-17 · version 0.8.2
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## Texts (0.9.0)
+
+Reported: in Read mode many highlighted words (example "multimodal") opened an empty card, with no
+Hebrew and no audio; names such as Anthropic, Meta and Mistral were highlighted.
+
+- Root cause (`src/content/enrich.ts`, `src/content/inventory.ts`): the card used the session
+  enrichment, which returns nothing for a word with fewer than two dictionary examples (most words
+  outside the authored 6,000; "multimodal" has no dictionary entry at all) and then caches that
+  failure for 7 days. Fix: the card has its own lookup (Hebrew required, definition, IPA and audio
+  when known), Google's translation endpoint first and MyMemory as fallback, cached in IndexedDB;
+  a loading state, and a message with retry when a lookup truly fails.
+- Names and brands are detected per text and never highlighted or marked.
+- Read mode is now **טקסטים** (`/texts`, `/read` redirects): saved texts with progress, paste or
+  fetch from a link, word taps, sentence taps with translation, whole-text translation, play a
+  sentence or the whole text, marked words with add/remove and one-tap add to learning, "practice
+  this text" (session mode `text`, clozes from the text, then a comprehension check), and 4 days of
+  priority for the practiced words in learn and review sessions. Decisions in `docs/DECISIONS.md`.
+- Guards: unit tests for sentence splitting, names, marking, the comprehension check, the lookup
+  with no dictionary entry, batch translation, text sessions and priority; `e2e/texts.spec.ts`
+  plays the whole flow with the dictionary answering 404 and a failing then recovering translator.
+- Not verifiable from here: fetching an article through `r.jina.ai` (blocked in this container)
+  and the real translator (it answers 429 to this container).
+
+## Texts: what to check on the iPhone
+
+Update to 0.9.0 first (bottom of **הגדרות**). Then:
+
+1. **למידה**, **טקסטים**, **טקסט חדש**: paste a few paragraphs of a tech article that mentions
+   Anthropic, Meta or Mistral, save. Names are plain; hard words are highlighted.
+2. Tap "multimodal" (or any rare highlighted word): a short shimmer, then Hebrew, and the sentence
+   from the text. The speaker plays the word (a recording, or the iPhone voice). With airplane
+   mode on, a word never opened before says there is no connection, with **ניסיון נוסף**.
+3. Switch **לחיצה על** to **משפט** and tap a sentence: its Hebrew and a play button. **לתרגם את כל
+   הטקסט** puts a Hebrew line under every sentence. **להשמיע הכול** reads the text, sentence by
+   sentence, and **לעצור** stops it.
+4. Remove a mark (× in the list, or **להסיר סימון** on a card), add one from a card, then **להוסיף
+   ... ללמידה**.
+5. **לתרגל את הטקסט**: new words come with their intro card, clozes use the text's sentences. At
+   the end, **לבדיקת ההבנה**: 4 questions. Back on the list, the text shows how many of its words
+   you learned and the check score.
+6. Paste a link to an article in **או קישור לכתבה** and tap **להביא את הכתבה**. If the site blocks
+   it, a message says to paste the text instead.
+7. The next learn or review sessions start with the text's words.
 
 ## Recorded audio (0.8.0)
 
@@ -343,7 +389,7 @@ owner reported sync working on both phones on 2026-10-13.
   theme, large text, PIN, retake placement, FSRS tuning, sync, export, import, rebuild, reset.
 - Content: 62,000-lemma inventory, Tier A authored words (see below), 300 phrasal verbs, 300
   idioms, 200 collocations, placement bank, Tier B runtime enrichment with background prefetch.
-- Read mode with word import, confusable pairs.
+- Texts (טקסטים): saved texts, word and sentence taps, translation, practice and comprehension check (0.9.0). Confusable pairs.
 - Push notifications and the Supabase keepalive (see above).
 - Quality gates: Lighthouse mobile performance 95, accessibility 100, best practices 100; 195 unit tests (engine, sync, export/import, content, bidi), Playwright e2e (first run, all tabs, offline,
   resume, five sessions past the daily cap, update to the 1000 XP goal, two-phone sync), zero console errors, app shell about 190 KB gzipped.

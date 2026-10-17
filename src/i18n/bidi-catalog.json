@@ -608,32 +608,96 @@
     "text": "זוגות כמו ‎affect‎ ו־⁠‎effect‎, עם הסבר קצר"
   },
   {
-    "key": "read.addAll(1)",
-    "text": "להוסיף את 1 המילים החדשות ללמידה"
+    "key": "texts.trimmed",
+    "text": "הטקסט ארוך, שמרנו את 20,000 התווים הראשונים"
   },
   {
-    "key": "read.addAll(2)",
-    "text": "להוסיף את 2 המילים החדשות ללמידה"
+    "key": "texts.progress(0, 40)",
+    "text": "0 מתוך 40 מילים נלמדו"
   },
   {
-    "key": "read.addAll(12)",
-    "text": "להוסיף את 12 המילים החדשות ללמידה"
+    "key": "texts.progress(7, 40)",
+    "text": "7 מתוך 40 מילים נלמדו"
   },
   {
-    "key": "read.addAll(1234)",
-    "text": "להוסיף את 1234 המילים החדשות ללמידה"
+    "key": "texts.marked(2)",
+    "text": "2 מילים מסומנות"
   },
   {
-    "key": "read.added(2)",
+    "key": "texts.marked(12)",
+    "text": "12 מילים מסומנות"
+  },
+  {
+    "key": "texts.marked(1234)",
+    "text": "1234 מילים מסומנות"
+  },
+  {
+    "key": "texts.addAll(2)",
+    "text": "להוסיף 2 מילים ללמידה"
+  },
+  {
+    "key": "texts.addAll(12)",
+    "text": "להוסיף 12 מילים ללמידה"
+  },
+  {
+    "key": "texts.addAll(1234)",
+    "text": "להוסיף 1234 מילים ללמידה"
+  },
+  {
+    "key": "texts.added(2)",
     "text": "2 מילים נוספו ללמידה"
   },
   {
-    "key": "read.added(12)",
+    "key": "texts.added(12)",
     "text": "12 מילים נוספו ללמידה"
   },
   {
-    "key": "read.added(1234)",
+    "key": "texts.added(1234)",
     "text": "1234 מילים נוספו ללמידה"
+  },
+  {
+    "key": "texts.notReady(2)",
+    "text": "2 מילים לא נטענו. ננסה שוב כשיהיה חיבור"
+  },
+  {
+    "key": "texts.notReady(12)",
+    "text": "12 מילים לא נטענו. ננסה שוב כשיהיה חיבור"
+  },
+  {
+    "key": "texts.notReady(1234)",
+    "text": "1234 מילים לא נטענו. ננסה שוב כשיהיה חיבור"
+  },
+  {
+    "key": "texts.checkResult(7, 1)",
+    "text": "7 מתוך 1 נכונות"
+  },
+  {
+    "key": "texts.checkResult(7, 2)",
+    "text": "7 מתוך 2 נכונות"
+  },
+  {
+    "key": "texts.checkResult(7, 12)",
+    "text": "7 מתוך 12 נכונות"
+  },
+  {
+    "key": "texts.checkResult(7, 1234)",
+    "text": "7 מתוך 1234 נכונות"
+  },
+  {
+    "key": "texts.lastCheck(7, 1)",
+    "text": "בדיקת הבנה: 7 מתוך 1"
+  },
+  {
+    "key": "texts.lastCheck(7, 2)",
+    "text": "בדיקת הבנה: 7 מתוך 2"
+  },
+  {
+    "key": "texts.lastCheck(7, 12)",
+    "text": "בדיקת הבנה: 7 מתוך 12"
+  },
+  {
+    "key": "texts.lastCheck(7, 1234)",
+    "text": "בדיקת הבנה: 7 מתוך 1234"
   },
   {
     "key": "learnHub.learn",

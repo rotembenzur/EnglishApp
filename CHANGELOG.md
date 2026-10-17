@@ -2,6 +2,32 @@
 
 All notable changes to LexBites. Versions follow semantic versioning.
 
+## 0.9.0 (2026-10-17)
+
+Read mode becomes **טקסטים**: study a whole English text.
+
+- Fixed: in Read mode, many highlighted words (for example "multimodal") opened an empty card.
+  Cause: the card used the session enrichment, which drops any word with fewer than two
+  dictionary examples (most words outside the authored set) and then remembers that failure for
+  a week. The card now uses its own lookup: Hebrew (Google's translation endpoint first, MyMemory
+  as fallback), plus definition, IPA and dictionary audio when there is an entry, cached on the
+  phone. A loading state while it looks; a clear message and a retry when it truly fails.
+  Audio: recording, else dictionary clip, else the iPhone voice.
+- Names and brands are no longer highlighted (Anthropic, Meta, Mistral, OpenAI, acronyms, and
+  any word capitalized mid-sentence that the text never writes in lower case).
+- Texts: paste a text or fetch an article from a link, save it with a title. A list of saved
+  texts with how many of their words you learned.
+- Read view: tap a word for its card, or switch to sentences and tap one for its translation.
+  Translate the whole text (one line of Hebrew under each sentence). Play any sentence or the
+  whole text.
+- The words above your level that you do not know yet are marked. Add or remove marks from each
+  word's card or the list under the text, then add them all to learning with one tap.
+- Practice this text: up to 10 of its words as exercises (new words get the full intro path),
+  with clozes from the text's own sentences, then a short comprehension check built from the
+  text (what a sentence means, which sentence says something, what comes next). The text's
+  words go first in regular sessions for 4 days.
+- Texts are stored on the phone and included in backup export and import (not synced).
+
 ## 0.8.2 (2026-10-17)
 
 - Fixed: on the iPhone a word sometimes played nothing. The audio engine is now resumed before

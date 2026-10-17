@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import type { SessionMode } from '@/engine/session';
 import { comboMultiplier } from '@/engine/game';
 import { t } from '@/i18n/he';
@@ -17,11 +17,13 @@ import { schedulePrefetch } from '@/session/prefetch';
 import { duelLemmaIds, todayDuel } from '@/session/duel';
 import { todayKey, useApp } from '@/state/app';
 import { hashString } from '@/engine/rng';
+import { prepareTextPractice } from '@/session/textPractice';
 
 const MODES: SessionMode[] = ['learn', 'review', 'hard', 'listening', 'speed', 'boss'];
 
 export function Session() {
   const { mode } = useParams();
+  const [search] = useSearchParams();
   const nav = useNavigate();
   const status = useSession((s) => s.status);
   const exercise = useSession((s) => s.exercise);
@@ -54,13 +56,24 @@ export function Session() {
           seed: hashString(todayKey()),
         });
       })();
+    } else if (mode === 'text') {
+      void (async () => {
+        const app = useApp.getState();
+        const id = search.get('id');
+        const prep =
+          id && app.userId
+            ? await prepareTextPractice(id, app.userId, app.words, { online: navigator.onLine })
+            : null;
+        if (!prep || !id) return nav('/texts', { replace: true });
+        await start('text', { lemmaIds: prep.lemmaIds, text: { id, sentences: prep.sentences } });
+      })();
     } else if (mode && MODES.includes(mode as SessionMode)) {
       void start(mode as SessionMode);
     } else nav('/', { replace: true });
     return () => {
       stopAudio();
     };
-  }, [mode, start, resume, nav]);
+  }, [mode, start, resume, nav, search]);
 
   useEffect(() => {
     if (status === 'done') {

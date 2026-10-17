@@ -5,6 +5,7 @@
 import Dexie, { type Table } from 'dexie';
 import type { Ability, ReviewRecord, UserId, UserWord, WordContent } from '@/engine/types';
 import { DEFAULT_DAILY_GOAL } from '@/engine/game';
+import type { Gloss } from '@/content/enrich';
 
 export type Accent = 'us' | 'uk';
 
@@ -105,6 +106,37 @@ export interface CachedContent extends WordContent {
   failedUntil?: number;
 }
 
+/** A saved English text (טקסטים). Local to the phone; part of export/import. */
+export interface StoredText {
+  id: string;
+  userId: UserId;
+  title: string;
+  body: string;
+  url?: string;
+  /** Lemma ids marked for study (auto-marked above the level, then edited by hand). */
+  marked: number[];
+  createdAt: number;
+  updatedAt: number;
+  openedAt?: number;
+  practicedAt?: number;
+  /** Last comprehension check: correct out of total. */
+  check?: { correct: number; total: number; at: number };
+}
+
+/** Cached machine translation of one English string (Read mode, texts). */
+export interface CachedTranslation {
+  en: string;
+  he: string;
+  at: number;
+}
+
+/** Cached word lookup for words without authored content (src/content/enrich.ts, Gloss). */
+export interface CachedGloss {
+  lemma: string;
+  gloss: Gloss;
+  at: number;
+}
+
 export type SyncTable = 'users' | 'userWords' | 'reviews' | 'dailyStats' | 'events' | 'presence';
 
 export interface OutboxRow {
@@ -129,6 +161,9 @@ export class LexDb extends Dexie {
   contentCache!: Table<CachedContent, number>;
   outbox!: Table<OutboxRow, number>;
   kv!: Table<KV, string>;
+  texts!: Table<StoredText, string>;
+  translations!: Table<CachedTranslation, string>;
+  glossCache!: Table<CachedGloss, string>;
 
   constructor(name = 'lexbites') {
     super(name);
@@ -142,6 +177,12 @@ export class LexDb extends Dexie {
       contentCache: 'lemmaId',
       outbox: '++seq, table, key',
       kv: 'key',
+    });
+    // 0.9.0: texts and lookup caches. New tables only, nothing to migrate.
+    this.version(2).stores({
+      texts: 'id, userId, updatedAt',
+      translations: 'en',
+      glossCache: 'lemma',
     });
   }
 }

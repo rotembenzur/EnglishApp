@@ -18,13 +18,15 @@ import {
   type SessionMode,
 } from '@/engine/session';
 import { createRng, type Rng } from '@/engine/rng';
-import type { LemmaInfo, UserWord, WordContent } from '@/engine/types';
+import type { LemmaInfo, Sentence, UserWord, WordContent } from '@/engine/types';
 import type { UserProfile, DailyStats } from '@/data/db';
 import { toOptionWord } from './exercise';
 import type { OptionWord } from '@/engine/exercises';
 
 export interface BuiltSession {
   mode: SessionMode;
+  /** Text practice: the text it came from. */
+  textId?: string;
   plan: PlanItem[];
   contents: Map<number, WordContent>;
   infos: Map<number, LemmaInfo>;
@@ -65,8 +67,12 @@ export async function buildSession(opts: {
   today: DailyStats;
   now?: number;
   seed?: number;
-  /** For duels: an explicit list of lemma ids. */
+  /** For duels and text practice: an explicit list of lemma ids. */
   lemmaIds?: number[];
+  /** Text practice: the text and its sentences per word (used for the clozes). */
+  text?: { id: string; sentences: Map<number, Sentence[]> };
+  /** Words of recently practiced texts: they go first in regular sessions. */
+  priority?: ReadonlySet<number>;
 }): Promise<BuiltSession> {
   const now = opts.now ?? Date.now();
   const seed = opts.seed ?? (now ^ 0x5bd1e995) >>> 0;
@@ -169,6 +175,8 @@ export async function buildSession(opts: {
       probe,
       retention: settings.retention,
       dayStart: startOfDay(now),
+      ...(opts.priority ? { priority: opts.priority } : {}),
+      ...(opts.mode === 'text' && opts.lemmaIds ? { textIds: opts.lemmaIds } : {}),
       rng,
     });
   }
@@ -177,6 +185,12 @@ export async function buildSession(opts: {
   // Everything in the plan already has local content (new words were enriched above, reviews
   // were shown before), so this is a local read; items without content are dropped, not awaited.
   const contents = await getContents(ids, { online: false });
+  // Text practice: the word's sentences from the text replace the others, so every cloze and
+  // every intro shows the text itself.
+  for (const [id, sents] of opts.text?.sentences ?? []) {
+    const c = contents.get(id);
+    if (c && sents.length) contents.set(id, { ...c, sentences: sents });
+  }
   plan = plan.filter((p) => (p.matchIds ?? [p.lemmaId]).every((id) => contents.has(id)));
 
   const infos = new Map<number, LemmaInfo>();
@@ -196,5 +210,13 @@ export async function buildSession(opts: {
     }
   }
   const pool = poolContent.map((c) => toOptionWord(c, inv.byId.get(c.lemmaId)));
-  return { mode: opts.mode, plan, contents, infos, pool, seed };
+  return {
+    mode: opts.mode,
+    ...(opts.text ? { textId: opts.text.id } : {}),
+    plan,
+    contents,
+    infos,
+    pool,
+    seed,
+  };
 }

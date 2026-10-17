@@ -8,7 +8,7 @@ import { applyAnswer, introduceWord } from '@/engine/learn';
 import { createRng } from '@/engine/rng';
 import type { PlanItem, SessionMode } from '@/engine/session';
 import { speedProfile, type SpeedProfile } from '@/engine/srs';
-import type { AnswerBehavior, ReviewRecord, UserWord } from '@/engine/types';
+import type { AnswerBehavior, ReviewRecord, Sentence, UserWord } from '@/engine/types';
 import { XP_BY_TYPE } from '@/engine/game';
 import { matchTimeBonus } from '@/engine/exercises';
 import { db, deviceId, getKv, setKv } from '@/data/db';
@@ -23,6 +23,7 @@ import {
 } from '@/data/repo';
 import { todayKey, useApp } from '@/state/app';
 import { buildSession, type BuiltSession } from './build';
+import { priorityWords, touchText } from '@/data/texts';
 import { buildExercise, type Exercise } from './exercise';
 import { afterSession } from '@/gamification/awards';
 
@@ -44,6 +45,8 @@ export interface SessionSummary {
   badges: string[];
   speedScore?: number;
   duel?: { correct: number; ms: number };
+  /** Text practice: the text, for the comprehension check that follows. */
+  textId?: string;
 }
 
 export interface Feedback {
@@ -70,7 +73,14 @@ interface SessionState {
   deadline: number | null;
   /** Lemmas whose remaining items were dropped (verified "I already know this"). */
   dropped: Set<number>;
-  start: (mode: SessionMode, opts?: { lemmaIds?: number[]; seed?: number }) => Promise<void>;
+  start: (
+    mode: SessionMode,
+    opts?: {
+      lemmaIds?: number[];
+      seed?: number;
+      text?: { id: string; sentences: Map<number, Sentence[]> };
+    },
+  ) => Promise<void>;
   resume: () => Promise<boolean>;
   acknowledgeIntro: () => Promise<void>;
   answer: (
@@ -128,6 +138,7 @@ async function persist(state: { built: BuiltSession | null; index: number; start
     mode: state.built.mode,
     seed: state.built.seed,
     plan: state.built.plan,
+    ...(state.built.textId ? { textId: state.built.textId } : {}),
     index: state.index,
     startedAt: state.startedAt,
   });
@@ -184,6 +195,8 @@ export const useSession = create<SessionState>((set, get) => ({
     if (!app.profile || !app.today || !app.userId) return;
     set({ status: 'building', summary: null, feedback: null, combo: 0, dropped: new Set() });
     await loadSpeedProfile(app.userId);
+    const priority =
+      mode === 'learn' || mode === 'review' ? await priorityWords(app.userId) : undefined;
     const built = await buildSession({
       mode,
       profile: app.profile,
@@ -191,6 +204,8 @@ export const useSession = create<SessionState>((set, get) => ({
       today: app.today,
       ...(opts.lemmaIds ? { lemmaIds: opts.lemmaIds } : {}),
       ...(opts.seed !== undefined ? { seed: opts.seed } : {}),
+      ...(opts.text ? { text: opts.text } : {}),
+      ...(priority?.size ? { priority } : {}),
     });
     resetAcc(app.profile.ability?.theta ?? 40);
     if (!built.plan.length) {
@@ -222,6 +237,7 @@ export const useSession = create<SessionState>((set, get) => ({
       mode: SessionMode;
       seed: number;
       plan: PlanItem[];
+      textId?: string;
       index: number;
       startedAt: number;
     } | null>(persistKey(), null);
@@ -245,6 +261,7 @@ export const useSession = create<SessionState>((set, get) => ({
     );
     const built: BuiltSession = {
       mode: saved.mode,
+      ...(saved.textId ? { textId: saved.textId } : {}),
       plan: saved.plan,
       contents,
       infos,
@@ -567,7 +584,9 @@ export const useSession = create<SessionState>((set, get) => ({
       badges,
       ...(built.mode === 'speed' ? { speedScore: acc.correct } : {}),
       ...(built.mode === 'duel' ? { duel: { correct: acc.correct, ms: acc.ms } } : {}),
+      ...(built.textId ? { textId: built.textId } : {}),
     };
+    if (built.textId) await touchText(built.textId, { practicedAt: Date.now() });
     set({ status: 'done', summary, exercise: null, feedback: null, deadline: null });
   },
 

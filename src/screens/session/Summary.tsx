@@ -121,7 +121,17 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
           </div>
         )}
 
-        {s.mode !== 'duel' && <CapCard onRaised={() => onAgain('learn')} />}
+        {s.textId && (
+          <div className="card flex flex-col gap-3 p-4">
+            <p className="font-bold">{t.texts.checkTitle}</p>
+            <p className="text-sm text-ink-2">{t.texts.checkIntro}</p>
+            <Button onClick={() => nav(`/texts/${s.textId}/check`, { replace: true })}>
+              {t.texts.checkStart}
+            </Button>
+          </div>
+        )}
+
+        {s.mode !== 'duel' && s.mode !== 'text' && <CapCard onRaised={() => onAgain('learn')} />}
 
         <div className="flex flex-col gap-2">
           <p className="text-sm font-bold text-ink-3">{t.summary.vsRival}</p>
@@ -147,9 +157,17 @@ export function Summary({ onAgain }: { onAgain: (m: SessionMode) => void }) {
         <Button variant="outline" onClick={() => nav('/', { replace: true })}>
           {t.summary.home}
         </Button>
-        <Button onClick={() => onAgain(s.mode === 'duel' ? 'learn' : s.mode)}>
-          {t.summary.again}
-        </Button>
+        {s.textId ? (
+          <Button variant="soft" onClick={() => nav(`/texts/${s.textId}`, { replace: true })}>
+            {t.texts.backToText}
+          </Button>
+        ) : (
+          <Button
+            onClick={() => onAgain(s.mode === 'duel' || s.mode === 'text' ? 'learn' : s.mode)}
+          >
+            {t.summary.again}
+          </Button>
+        )}
       </div>
     </div>
   );

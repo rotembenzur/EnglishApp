@@ -41,6 +41,7 @@ export const SAMPLES: Record<string, unknown[]> = {
   r: [860],
   got: [3],
   total: [40],
+  learned: [0, 7],
   mine: [465],
   theirs: [585],
   result: ['נועה ניצחה בשבוע שעבר'],

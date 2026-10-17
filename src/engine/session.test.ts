@@ -508,3 +508,70 @@ describe('composeSession over many pool shapes (property check)', () => {
     }
   });
 });
+
+describe('composeSession (text practice)', () => {
+  const known = [reviewWord(1, -3, 20), reviewWord(2, -3, 20, 0)];
+  const ids = [1, 2, 301, 302, 303];
+  const plan = composeSession({ mode: 'text', now, words: known, textIds: ids, rng: createRng(4) });
+
+  it('gives new words the intro path and known words a cloze and a check', () => {
+    for (const id of [301, 302, 303]) {
+      const types = plan.filter((p) => p.lemmaId === id).map((p) => p.type);
+      expect(types[0]).toBe('intro');
+      expect(types).toContain('cloze');
+      expect(types).toContain('typing');
+      expect(types).toHaveLength(4);
+    }
+    for (const id of [1, 2]) {
+      const items = plan.filter((p) => p.lemmaId === id);
+      expect(items.map((p) => p.type)).toContain('cloze');
+      expect(items.some((p) => p.role === 'intro')).toBe(false);
+    }
+    // A known word without crowns is not asked to type it yet.
+    expect(plan.filter((p) => p.lemmaId === 2).map((p) => p.type)).not.toContain('typing');
+  });
+
+  it('keeps every item after its intro, and the same word never twice in a row', () => {
+    for (const id of [301, 302, 303]) {
+      const intro = plan.findIndex((p) => p.lemmaId === id && p.role === 'intro');
+      expect(plan.findIndex((p) => p.lemmaId === id)).toBe(intro);
+    }
+    for (let i = 1; i < plan.length; i++) expect(plan[i]!.lemmaId).not.toBe(plan[i - 1]!.lemmaId);
+  });
+
+  it('takes at most ten words', () => {
+    const many = Array.from({ length: 25 }, (_, i) => 500 + i);
+    const p = composeSession({ mode: 'text', now, words: [], textIds: many, rng: createRng(2) });
+    expect(new Set(p.map((x) => x.lemmaId)).size).toBe(10);
+  });
+});
+
+describe('priority words (recent texts)', () => {
+  it('go first among due reviews and among fill candidates', () => {
+    const words = Array.from({ length: 40 }, (_, i) => reviewWord(i + 1, 40 - i, 5 + i));
+    // Not due: in the future. Without priority they would not make a 20-item session.
+    const late = [reviewWord(200, -5, 50), reviewWord(201, -5, 60)];
+    const all = [...words, ...late];
+    const plain = composeSession({ mode: 'review', now, words: all, rng: createRng(9) });
+    expect(plain.some((p) => p.lemmaId === 200)).toBe(false);
+    const boosted = composeSession({
+      mode: 'review',
+      now,
+      words: all,
+      priority: new Set([40, 200, 201]),
+      rng: createRng(9),
+    });
+    // 40 is the newest due word (last in due order) and still gets in; 200 and 201 are not due.
+    expect(boosted.some((p) => p.lemmaId === 40)).toBe(true);
+    const fewDue = [reviewWord(1, 2, 5), ...late, reviewWord(300, -5, 1), reviewWord(301, -5, 1)];
+    const fill = composeSession({
+      mode: 'review',
+      now,
+      words: fewDue,
+      priority: new Set([200]),
+      size: 3,
+      rng: createRng(1),
+    });
+    expect(fill.map((p) => p.lemmaId)).toContain(200);
+  });
+});

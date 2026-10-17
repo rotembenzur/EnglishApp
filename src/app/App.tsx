@@ -29,7 +29,9 @@ const Stats = lazy(() => import('@/screens/Stats').then((m) => ({ default: m.Sta
 const Rivalry = lazy(() => import('@/screens/Rivalry').then((m) => ({ default: m.Rivalry })));
 const Settings = lazy(() => import('@/screens/Settings').then((m) => ({ default: m.Settings })));
 const Today = lazy(() => import('@/screens/Today').then((m) => ({ default: m.Today })));
-const ReadMode = lazy(() => import('@/screens/ReadMode').then((m) => ({ default: m.ReadMode })));
+const Texts = lazy(() => import('@/screens/Texts').then((m) => ({ default: m.Texts })));
+const TextRead = lazy(() => import('@/screens/TextRead').then((m) => ({ default: m.TextRead })));
+const TextCheck = lazy(() => import('@/screens/TextCheck').then((m) => ({ default: m.TextCheck })));
 const Confusables = lazy(() =>
   import('@/screens/Confusables').then((m) => ({ default: m.Confusables })),
 );
@@ -155,7 +157,10 @@ export function App() {
             <Route path="stats" element={<Stats />} />
             <Route path="stats/:user" element={<Stats />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="read" element={<ReadMode />} />
+            <Route path="read" element={<Navigate to="/texts" replace />} />
+            <Route path="texts" element={<Texts />} />
+            <Route path="texts/:id" element={<TextRead />} />
+            <Route path="texts/:id/check" element={<TextCheck />} />
             <Route path="confusables" element={<Confusables />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

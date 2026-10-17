@@ -5,7 +5,8 @@ import { type Rng, shuffle } from './rng';
 import { retrievability } from './srs';
 import type { ExerciseType, LemmaInfo, UserWord } from './types';
 
-export type SessionMode = 'learn' | 'review' | 'hard' | 'listening' | 'speed' | 'boss' | 'duel';
+export type SessionMode =
+  'learn' | 'review' | 'hard' | 'listening' | 'speed' | 'boss' | 'duel' | 'text';
 
 export type ItemRole =
   'review' | 'intro' | 'recognition' | 'production' | 'probe' | 'match' | 'speed';
@@ -43,6 +44,10 @@ export interface ComposeInput {
   clozeable?: ReadonlySet<number>;
   /** Start of the user's local day: words reviewed or learned since then count as "today". */
   dayStart?: number;
+  /** Words from a recently practiced text: they go first among due and fill reviews. */
+  priority?: ReadonlySet<number>;
+  /** Text practice: the text's words, in order. */
+  textIds?: readonly number[];
   rng: Rng;
 }
 
@@ -70,7 +75,11 @@ export const MODE_MIN: Record<SessionMode, number> = {
   speed: 4,
   boss: 30,
   duel: 0,
+  text: 0,
 };
+
+/** Most words one text practice takes (the rest wait for the next round). */
+export const TEXT_SESSION_WORDS = 10;
 
 /** Approximate exercise mix for review items (spec 4.6 item 4). */
 export const MIX: Record<
@@ -84,6 +93,12 @@ export const MIX: Record<
   match: 0.1,
   speed: 0.05,
 };
+
+/** Stable reorder: items whose lemma is in `p` first. */
+function priorityFirst<T>(items: T[], id: (x: T) => number, p?: ReadonlySet<number>): T[] {
+  if (!p?.size) return items;
+  return [...items.filter((x) => p.has(id(x))), ...items.filter((x) => !p.has(id(x)))];
+}
 
 export function dueWords(words: readonly UserWord[], now: number): UserWord[] {
   return words
@@ -163,18 +178,19 @@ export function fillCandidates(
 function topUp(
   picked: UserWord[],
   target: number,
-  input: Pick<ComposeInput, 'words' | 'now' | 'dayStart' | 'retention'>,
+  input: Pick<ComposeInput, 'words' | 'now' | 'dayStart' | 'retention' | 'priority'>,
   sources: Map<UserWord, FillSource>,
 ): UserWord[] {
   const out = [...picked];
   for (const w of out) if (!sources.has(w)) sources.set(w, 'due');
   if (out.length >= target) return out;
   const exclude = new Set(out.map((w) => w.lemmaId));
-  for (const { word, source } of fillCandidates(input.words, input.now, {
+  const fill = fillCandidates(input.words, input.now, {
     exclude,
     dayStart: input.dayStart,
     retention: input.retention,
-  })) {
+  });
+  for (const { word, source } of priorityFirst(fill, (c) => c.word.lemmaId, input.priority)) {
     if (out.length >= target) break;
     out.push(word);
     exclude.add(word.lemmaId);
@@ -326,11 +342,13 @@ export function composeSession(input: ComposeInput): PlanItem[] {
       return composeListening(input);
     case 'hard':
       return composeHard(input);
+    case 'text':
+      return composeText(input);
     default:
       break;
   }
   const size = mode === 'boss' ? BOSS_SIZE : (input.size ?? SESSION_SIZE);
-  const due = dueWords(input.words, now);
+  const due = priorityFirst(dueWords(input.words, now), (w) => w.lemmaId, input.priority);
   const newWords = mode === 'learn' ? (input.newWords ?? []) : [];
   const probe = mode === 'learn' ? (input.probe ?? null) : null;
   const probeSlots = probe ? 1 : 0;
@@ -652,6 +670,50 @@ function composeHard(input: ComposeInput): PlanItem[] {
     source: sources.get(w) ?? 'hard',
   }));
   varyRepeats(items, input.clozeable);
+  separateRepeats(items);
+  return items;
+}
+
+/**
+ * Practice of one text's words. New words get the full intro path (intro, recognition, cloze,
+ * typing); words already in learning get a cloze and a typing or recall check. Clozes use the
+ * text's own sentences (the caller puts them first in the content). Rounds keep a word's items
+ * apart: first appearances, then recognitions, then clozes, then production.
+ */
+function composeText(input: ComposeInput): PlanItem[] {
+  const ids = [...new Set(input.textIds ?? [])].slice(0, TEXT_SESSION_WORDS);
+  const byId = new Map(input.words.map((w) => [w.lemmaId, w]));
+  const isNew = (id: number) => {
+    const w = byId.get(id);
+    return !w || (w.card.reps === 0 && w.card.fsrsState === 0);
+  };
+  const order = shuffle(input.rng, ids);
+  const item = (id: number, type: ExerciseType, role: ItemRole): PlanItem => ({
+    key: mkKey(role, id),
+    lemmaId: id,
+    type,
+    role,
+    ...(role === 'review' ? { source: 'due' as const } : {}),
+  });
+  const first: PlanItem[] = [];
+  const second: PlanItem[] = [];
+  const third: PlanItem[] = [];
+  const last: PlanItem[] = [];
+  for (const id of order) {
+    if (isNew(id)) {
+      first.push(item(id, 'intro', 'intro'));
+      second.push(item(id, input.rng() < 0.6 ? 'en_he' : 'listening', 'recognition'));
+      third.push(item(id, 'cloze', 'review'));
+      last.push(item(id, 'typing', 'production'));
+    } else {
+      const crowns = byId.get(id)?.crowns ?? 0;
+      first.push(item(id, 'cloze', 'review'));
+      last.push(item(id, crowns >= 1 ? 'typing' : 'he_en', 'review'));
+    }
+  }
+  // Intros come in pairs at most: a known word's cloze goes between when there is one.
+  const items = [...first, ...second, ...third, ...shuffle(input.rng, last)];
+  enforceNoTripleIntro(items);
   separateRepeats(items);
   return items;
 }
