@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-17 · version 0.10.0
+Last updated: 2026-10-23 · version 0.10.1
 
 ## Deployment
 
@@ -32,23 +32,50 @@ Last updated: 2026-10-17 · version 0.10.0
 
 ## Waiting on owner
 
-0. **Texts on the iPhone** (0.10.0): the checks listed under "Texts: what to check on the iPhone"
+0. **Sound on the iPhone** (0.10.1): the checks listed under "Silent audio: what to check on the
+   iPhone" below.
+1. **Texts on the iPhone** (0.10.0): the checks listed under "Texts: what to check on the iPhone"
    below.
    0b. **Optional: start text audio in seconds** (`SETUP.md` step 7, one GitHub token). Without it
    texts are voiced on the workflow's five-minute schedule.
-1. **Recorded audio on the iPhone** (0.8.0): the checks listed under "Audio: what to check on the
+2. **Recorded audio on the iPhone** (0.8.0): the checks listed under "Audio: what to check on the
    iPhone" below.
-2. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
+3. **Daily goal of 1000 XP on the iPhone** (0.7.0): the checks listed under "Daily goal: what to
    check on the iPhone" below.
-3. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
+4. **Sessions after the daily cap on the iPhone** (0.6.0): the checks listed under "After the
    cap: what to check on the iPhone" below.
-4. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
+5. **RTL check on the iPhone** (0.5.0): the screens listed under "RTL and bidi: what to check on
    the iPhone" below.
-5. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
+6. **Push on the phones** (0.4.1): update the app, send a test notification, and check the
    nudges, as listed under "Push: what to test on the phones" below.
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## Silent audio (fixed in 0.10.1)
+
+Reported: sometimes the app plays no sound at all until it is closed and opened again.
+
+- Causes (all in `src/audio/speech.ts`): steps without a deadline (Cache Storage, fetch,
+  `decodeAudioData`, an element's `play()`) that iOS can leave unsettled; an AudioContext that iOS
+  brings back from the background "running" but silent; speech synthesis left paused with
+  utterances queued behind it. Details and the rejected options: `docs/DECISIONS.md`, "Audio that
+  never goes silent".
+- Fix: every step has a deadline and falls through to the next source; the context is replaced
+  inside the next tap after the background, an interruption, a failed play or two idle minutes;
+  speech is resumed and flushed before each utterance and retried once when it does not start; a
+  newer play supersedes one still looking up its clip. Unit tests (`src/audio/speech.test.ts`)
+  simulate each failure.
+
+## Silent audio: what to check on the iPhone
+
+1. Update the app (close it from the app switcher and open it again once, so 0.10.1 loads; the
+   version is at the bottom of **הגדרות**).
+2. Play a word, lock the phone for a minute, unlock, tap the speaker: the word plays.
+3. Play a word, switch to another app that plays sound (music, a voice message), come back, tap the
+   speaker: the word plays.
+4. Leave the app open on a word card for three minutes without touching it, then tap the speaker.
+5. In a text, start "play all", leave the app mid-sentence, come back and tap any speaker.
 
 ## Texts (0.9.0)
 

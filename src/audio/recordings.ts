@@ -73,6 +73,17 @@ export const useRecordings = create<State>(() => ({
 const hasCaches = () => typeof caches !== 'undefined';
 const online = () => typeof navigator === 'undefined' || navigator.onLine !== false;
 
+/** A fetch that gives up after `ms` (a weak connection can leave a request open for minutes). */
+async function fetchWithin(url: string, ms: number, init: RequestInit = {}): Promise<Response> {
+  const ac = typeof AbortController === 'undefined' ? null : new AbortController();
+  const t = setTimeout(() => ac?.abort(), ms);
+  try {
+    return await fetch(url, ac ? { ...init, signal: ac.signal } : init);
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 async function readJson<T>(res: Response | undefined | null): Promise<T | null> {
   if (!res || !res.ok) return null;
   try {
@@ -88,7 +99,7 @@ async function fetchRoot(): Promise<RootIndex | null> {
   const url = `${ROOT}index.json`;
   if (online()) {
     try {
-      const res = await fetch(url, { cache: 'no-cache' });
+      const res = await fetchWithin(url, 5000, { cache: 'no-cache' });
       const copy = res.clone();
       const root = await readJson<RootIndex>(res);
       if (root?.v === 1 && root.w && root.s) {
@@ -113,7 +124,7 @@ async function fetchImmutableJson<T>(name: string): Promise<T | null> {
   }
   if (!online()) return null;
   try {
-    const res = await fetch(url);
+    const res = await fetchWithin(url, 15000);
     const copy = res.clone();
     const data = await readJson<T>(res);
     if (data && hasCaches()) await (await caches.open(INDEX_CACHE)).put(url, copy);
@@ -130,7 +141,7 @@ let sentenceFile = '';
 
 export function loadRecordings(force = false): Promise<RootIndex | null> {
   if (!rootPromise || force) {
-    rootPromise = fetchRoot().then((root) => {
+    const p: Promise<RootIndex | null> = fetchRoot().then((root) => {
       const prev = useRecordings.getState().root;
       if (
         root &&
@@ -141,8 +152,12 @@ export function loadRecordings(force = false): Promise<RootIndex | null> {
         sentencePromise = null;
       }
       useRecordings.setState({ root });
+      // Not reachable now (offline at start, say): try again on the next play.
+      if (!root && rootPromise === p) rootPromise = null;
       return root;
     });
+    rootPromise = p;
+    return p;
   }
   return rootPromise;
 }

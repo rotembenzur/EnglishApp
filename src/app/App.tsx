@@ -4,7 +4,7 @@ import { Shell } from '@/ui/Shell';
 import { setupServiceWorker } from '@/pwa/registerSW';
 import { applyThemeToDocument, useTheme } from '@/state/theme';
 import { useApp } from '@/state/app';
-import { loadVoices, resumeAudio, unlockAudio } from '@/audio/speech';
+import { audioHidden, loadVoices, resumeAudio, unlockAudio } from '@/audio/speech';
 import { loadRecordings, syncWordPacks } from '@/audio/recordings';
 import { loadInventory } from '@/content/inventory';
 import { startSyncLoop, syncNow } from '@/sync/engine';
@@ -81,9 +81,14 @@ export function App() {
     // (touchend and click count as gestures for media on iOS, pointerdown not always).
     for (const ev of ['pointerdown', 'touchend', 'click'])
       document.addEventListener(ev, unlockAudio, { capture: true, passive: true });
+    // In the background iOS can leave the audio silent while it reports "running": the next tap
+    // replaces it (src/audio/speech.ts).
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') resumeAudio();
+      else audioHidden();
     });
+    window.addEventListener('pagehide', audioHidden);
+    window.addEventListener('pageshow', resumeAudio);
     void loadRecordings();
     void loadInventory();
     startSyncLoop();

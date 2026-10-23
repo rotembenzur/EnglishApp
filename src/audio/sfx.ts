@@ -3,21 +3,12 @@
  * settings. Played only after a user gesture.
  */
 import { useApp } from '@/state/app';
+import { sharedAudioContext } from './speech';
 
 export type Sfx = 'correct' | 'wrong' | 'goal' | 'level' | 'tap';
 
-let ctx: AudioContext | null = null;
-
-function audio(): AudioContext | null {
-  if (typeof window === 'undefined') return null;
-  const Ctor =
-    window.AudioContext ??
-    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-  if (!Ctor) return null;
-  ctx ??= new Ctor();
-  if (ctx.state === 'suspended') void ctx.resume();
-  return ctx;
-}
+/** The context the words play through (one context for iOS to keep alive, replaced with it). */
+const audio = sharedAudioContext;
 
 function tone(
   freq: number,
