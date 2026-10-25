@@ -7,6 +7,10 @@ Last updated: 2026-10-25 · version 0.11.0
 ## Deployment
 
 - Published to GitHub Pages from the default branch `claude/trusting-knuth-gbbnzv`.
+- Latest deploy: 0.11.0 (monthly league), CI and deploy run #84 on commit `52bb3ef` (2026-10-25),
+  verify and e2e green, then deployed. The live site serves 0.11.0; Chromium (iPhone 14 profile)
+  with seeded scores shows **הליגה החודשית** on **יריבות**, the monthly recap toast, zero console
+  errors.
 - Latest deploy: 0.10.0, CI and deploy run #80 on commit `abd043a` (2026-10-17), all three jobs
   green; Push server run #19 green (deployed `lexbites-tts` version 1 and `supabase/tts.sql`).
   Checked on the real project: the function answers `{"ok":true,"version":1,"dispatch":false}`
