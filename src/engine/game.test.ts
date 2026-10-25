@@ -17,9 +17,15 @@ import {
 } from './game';
 import {
   compareDuel,
+  daysInMonth,
+  daysLeftInMonth,
   duelWords,
   headToHead,
   leagueHistory,
+  monthlyHistory,
+  monthOf,
+  monthXp,
+  prevMonth,
   recallAfterGap,
   weekStart,
 } from './stats';
@@ -154,6 +160,35 @@ describe('league and duel', () => {
       { week: 'y', a: 1, b: 2, winner: 'b' },
     ]);
     expect(r).toMatchObject({ aWins: 1, bWins: 2, draws: 1, longestB: 2, currentRunOwner: 'b' });
+  });
+  it('months: lengths, days left, previous month', () => {
+    expect(monthOf('2026-10-25')).toBe('2026-10');
+    expect(daysInMonth('2026-02')).toBe(28);
+    expect(daysInMonth('2028-02')).toBe(29);
+    expect(daysInMonth('2026-10')).toBe(31);
+    expect(daysLeftInMonth('2026-10-25')).toBe(7);
+    expect(daysLeftInMonth('2026-10-31')).toBe(1);
+    expect(prevMonth('2026-10')).toBe('2026-09');
+    expect(prevMonth('2027-01')).toBe('2026-12');
+  });
+  it('computes finished months only, with the monthly winner', () => {
+    const a = new Map([
+      ['2026-08-31', 300],
+      ['2026-09-01', 100],
+      ['2026-09-30', 100],
+      ['2026-10-01', 999],
+    ]);
+    const b = new Map([
+      ['2026-08-01', 300],
+      ['2026-09-15', 250],
+    ]);
+    expect(monthXp(a, '2026-10')).toBe(999);
+    const h = monthlyHistory(a, b, '2026-10');
+    expect(h).toEqual([
+      { week: '2026-08', a: 300, b: 300, winner: 'draw' },
+      { week: '2026-09', a: 200, b: 250, winner: 'b' },
+    ]);
+    expect(headToHead(h)).toMatchObject({ aWins: 0, bWins: 1, draws: 1 });
   });
   it('duel words are the same for both players on a date and differ across dates', () => {
     const pool = Array.from({ length: 500 }, (_, i) => i + 1);

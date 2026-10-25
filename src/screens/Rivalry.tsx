@@ -1,7 +1,17 @@
 import { useState } from 'react';
 import { todayDuel } from '@/session/duel';
 import { Link, useNavigate } from 'react-router-dom';
-import { compareDuel, headToHead, leagueHistory, weekStart } from '@/engine/stats';
+import {
+  compareDuel,
+  daysLeftInMonth,
+  headToHead,
+  leagueHistory,
+  monthlyHistory,
+  monthOf,
+  monthXp,
+  prevMonth,
+  weekStart,
+} from '@/engine/stats';
 import type { UserId } from '@/engine/types';
 import { db } from '@/data/db';
 import { addEvent, USER_NAMES } from '@/data/repo';
@@ -36,12 +46,22 @@ export function Rivalry() {
       todayDuel(me),
       todayDuel(rival),
     ]);
-    const history = leagueHistory(
-      new Map(aDaily.map((d) => [d.date, d.xp])),
-      new Map(bDaily.map((d) => [d.date, d.xp])),
-      weekStart(todayKey()),
-    );
-    return { a, b, history, h2h: headToHead(history), myDuel, theirDuel };
+    const aXp = new Map(aDaily.map((d) => [d.date, d.xp]));
+    const bXp = new Map(bDaily.map((d) => [d.date, d.xp]));
+    const today = todayKey();
+    const history = leagueHistory(aXp, bXp, weekStart(today));
+    const month = monthOf(today);
+    const months = monthlyHistory(aXp, bXp, month);
+    const monthly = {
+      month,
+      daysLeft: daysLeftInMonth(today),
+      a: monthXp(aXp, month),
+      b: monthXp(bXp, month),
+      last: months.find((m) => m.week === prevMonth(month) && (m.a > 0 || m.b > 0)),
+      h2h: headToHead(months),
+      played: months.length,
+    };
+    return { a, b, history, h2h: headToHead(history), monthly, myDuel, theirDuel };
   }, [me, rival]);
 
   const nudge = async (emoji: string) => {
@@ -52,7 +72,7 @@ export function Rivalry() {
   };
 
   if (!data) return <Header title={t.rivalry.title} />;
-  const { a, b, history, h2h, myDuel, theirDuel } = data;
+  const { a, b, history, h2h, monthly, myDuel, theirDuel } = data;
   const max = Math.max(1, ...a.weekByDay, ...b.weekByDay);
   const lastWeek = history[history.length - 1];
   const duelResult = myDuel && theirDuel ? compareDuel(myDuel, theirDuel) : null;
@@ -142,6 +162,8 @@ export function Rivalry() {
           </div>
         )}
 
+        <MonthLeague me={me} rival={rival} m={monthly} />
+
         <Section title={t.rivalry.history}>
           <div className="card grid grid-cols-3 gap-2 p-4 text-center">
             <div>
@@ -225,6 +247,107 @@ export function Rivalry() {
         </Link>
       </div>
     </div>
+  );
+}
+
+const monthName = (month: string) => t.rivalry.monthNames[Number(month.slice(5, 7)) - 1]!;
+
+interface Monthly {
+  month: string;
+  daysLeft: number;
+  a: number;
+  b: number;
+  last: { week: string; a: number; b: number; winner: 'a' | 'b' | 'draw' } | undefined;
+  h2h: ReturnType<typeof headToHead>;
+  played: number;
+}
+
+/** The monthly league: the month's XP race, played for a date the winner picks and treats. */
+function MonthLeague({ me, rival, m }: { me: UserId; rival: UserId; m: Monthly }) {
+  const leader = m.a > m.b ? me : m.b > m.a ? rival : null;
+  const total = m.a + m.b;
+  const last = m.last;
+  const lastWinner = last ? (last.winner === 'a' ? me : last.winner === 'b' ? rival : null) : null;
+  return (
+    <Section
+      title={t.rivalry.monthLeague}
+      action={
+        <button
+          type="button"
+          className="text-sm font-semibold text-accent"
+          onClick={() =>
+            void shareLeagueCard({
+              a: USER_NAMES[me],
+              b: USER_NAMES[rival],
+              aXp: m.a,
+              bXp: m.b,
+              week: m.month,
+              title: t.rivalry.monthLeague,
+              subtitle: monthName(m.month),
+            })
+          }
+        >
+          {t.rivalry.shareMonth}
+        </button>
+      }
+    >
+      <div className="card flex flex-col gap-4 p-4" data-testid="month-league">
+        <p className="text-sm font-semibold">💘 {t.rivalry.monthStake}</p>
+        <div className="flex items-center justify-around">
+          <Player id={me} xp={m.a} lead={leader === me} />
+          <span className="text-sm font-bold text-ink-3">VS</span>
+          <Player id={rival} xp={m.b} lead={leader === rival} />
+        </div>
+        {/* Right to left like the players above: my share on the right. */}
+        <div className="flex h-3 overflow-hidden rounded-full bg-line">
+          {total > 0 && (
+            <>
+              <div className="bg-accent" style={{ width: `${(m.a / total) * 100}%` }} />
+              <div className="bg-rival" style={{ width: `${(m.b / total) * 100}%` }} />
+            </>
+          )}
+        </div>
+        <div className="flex items-center justify-between gap-2 text-xs text-ink-3">
+          <span className="font-semibold text-ink-2">
+            {leader
+              ? t.rivalry.monthLeading(USER_NAMES[leader], isFemale(leader), Math.abs(m.a - m.b))
+              : t.rivalry.monthTied}
+          </span>
+          <span>{t.rivalry.monthDaysLeft(monthName(m.month), m.daysLeft)}</span>
+        </div>
+        {last && (
+          <div className="flex items-center gap-3 rounded-xl bg-card-2 p-3">
+            <TrophyIcon className="text-warn" />
+            <p className="flex-1 text-sm font-semibold">
+              {lastWinner
+                ? t.rivalry.winnerOfMonth(
+                    USER_NAMES[lastWinner],
+                    isFemale(lastWinner),
+                    monthName(last.week),
+                  )
+                : t.rivalry.monthDraw(monthName(last.week))}
+              <span className="block text-xs font-normal text-ink-3">
+                {lastWinner ? t.rivalry.datePick(isFemale(lastWinner)) : t.rivalry.dateSplit}
+              </span>
+            </p>
+            <span className="text-xs text-ink-3">
+              <Ltr>{last.a}</Ltr> : <Ltr>{last.b}</Ltr>
+            </span>
+          </div>
+        )}
+        {m.played > 0 && (
+          <p className="text-center text-xs text-ink-3">
+            {t.rivalry.monthTally(
+              USER_NAMES[me],
+              m.h2h.aWins,
+              USER_NAMES[rival],
+              m.h2h.bWins,
+              m.h2h.draws,
+            )}
+          </p>
+        )}
+      </div>
+    </Section>
   );
 }
 

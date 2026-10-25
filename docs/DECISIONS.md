@@ -146,6 +146,14 @@ Reported: sometimes the app plays nothing at all (no words, no sentences), not a
 - **Sound effects share the words' context** instead of a second one, so iOS has one context to keep alive and it is replaced with the rest.
 - **The recordings root index has a 5-second network limit and is fetched again when it could not be read**, instead of caching the failure (a weak connection at start meant the system voice for the whole session).
 
+## Monthly league (0.11.0)
+
+Asked by the owner: next to the weekly league, a monthly one; rotem and noa agreed that whoever wins the month picks a date and treats the other.
+
+- **Calendar months on the phone's local date, the same daily XP rows as the weekly league** (`monthlyHistory` in `src/engine/stats.ts`). Nothing new is stored or synced, so no migration and export/import is unchanged. Only finished months count; the current month is a live race. Rejected: rolling 30 days (no clear end, no "end of the month" moment).
+- **The stake is part of the screen**: a line above the race, the month's last winner with "picks the date and treats", and a draw splits the date. A monthly recap toast on the first open of a new month, shown before the weekly one when both are due. Rejected: a push notification on the 1st (the recap on open is enough for two people, and a late sync could announce the wrong winner at midnight).
+- **Head to head of months** in one line under the race; the share card reuses the weekly card with the month's name.
+
 ## Text audio and texts review (0.10.0)
 
 - **Texts get the recordings' voice, rendered on GitHub Actions, not on the phone.** Measured here: Kokoro (int8 or fp32) in WebAssembly runs 2 to 3 times slower than real time even with 4 threads (a 3-minute article would take 6 to 9 minutes with the screen on, and iOS stops it in the background); natively on 4 cores it runs 3.4 times faster than real time. So `scripts/tts/render.py` reuses the recordings pipeline (`scripts/audio/generate.py`: Kokoro v1.0, misaki G2P with the espeak fallback, af_heart for sentences, the accent's voice for words, the same loudness and checks, AAC 48 kbps) in `.github/workflows/tts.yml`. Rejected: Kokoro in the browser (too slow, 100 MB download, memory risk in a home screen app); Hugging Face Spaces or other hosted TTS (needs an account, sleeps, third-party quota); the system voice (the owner's complaint).

@@ -58,6 +58,10 @@ export const SAMPLES: Record<string, unknown[]> = {
   sentences: ['20,292'],
   done: [12],
   names: ['Ava / Zoe', 'Serena / Jamie'],
+  month: ['אוקטובר'],
+  aWins: [0, 3],
+  bWins: [2],
+  ties: [0, 1],
 };
 
 /** Parameter names of a function, from its source. */

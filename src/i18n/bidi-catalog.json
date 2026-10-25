@@ -216,6 +216,70 @@
     "text": "רתם 7/10 (7.2 שנ׳) · נועה 6/10 (8.1 שנ׳)"
   },
   {
+    "key": "rivalry.monthDaysLeft(אוקטובר, 2)",
+    "text": "אוקטובר · נשארו 2 ימים"
+  },
+  {
+    "key": "rivalry.monthDaysLeft(אוקטובר, 12)",
+    "text": "אוקטובר · נשארו 12 ימים"
+  },
+  {
+    "key": "rivalry.monthDaysLeft(אוקטובר, 1234)",
+    "text": "אוקטובר · נשארו 1234 ימים"
+  },
+  {
+    "key": "rivalry.monthLeading(רתם, false, 40)",
+    "text": "רתם מוביל ב־⁠‎40 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(רתם, false, 1250)",
+    "text": "רתם מוביל ב־⁠‎1250 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(רתם, true, 40)",
+    "text": "רתם מובילה ב־⁠‎40 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(רתם, true, 1250)",
+    "text": "רתם מובילה ב־⁠‎1250 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(נועה, false, 40)",
+    "text": "נועה מוביל ב־⁠‎40 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(נועה, false, 1250)",
+    "text": "נועה מוביל ב־⁠‎1250 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(נועה, true, 40)",
+    "text": "נועה מובילה ב־⁠‎40 XP‎"
+  },
+  {
+    "key": "rivalry.monthLeading(נועה, true, 1250)",
+    "text": "נועה מובילה ב־⁠‎1250 XP‎"
+  },
+  {
+    "key": "rivalry.monthTally(רתם, 0, נועה, 2, 0)",
+    "text": "חודשים שניצחתם: רתם 0 · נועה 2"
+  },
+  {
+    "key": "rivalry.monthTally(רתם, 0, נועה, 2, 1)",
+    "text": "חודשים שניצחתם: רתם 0 · נועה 2 · תיקו 1"
+  },
+  {
+    "key": "rivalry.monthTally(רתם, 3, נועה, 2, 0)",
+    "text": "חודשים שניצחתם: רתם 3 · נועה 2"
+  },
+  {
+    "key": "rivalry.monthTally(רתם, 3, נועה, 2, 1)",
+    "text": "חודשים שניצחתם: רתם 3 · נועה 2 · תיקו 1"
+  },
+  {
+    "key": "rivalry.monthRecapToast(נועה ניצחה בשבוע שעבר, 465, 585)",
+    "text": "סיכום חודשי: נועה ניצחה בשבוע שעבר, 465 מול 585"
+  },
+  {
     "key": "session.emptyBy.hard",
     "text": "מילים קשות נפתחות אחרי 3 מילים שלמדת. סשן למידה קצר, וזה כאן"
   },

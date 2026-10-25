@@ -2,7 +2,7 @@
 
 **Live URL:** https://rotembenzur.github.io/EnglishApp/
 
-Last updated: 2026-10-23 · version 0.10.1
+Last updated: 2026-10-25 · version 0.11.0
 
 ## Deployment
 
@@ -32,8 +32,10 @@ Last updated: 2026-10-23 · version 0.10.1
 
 ## Waiting on owner
 
-0. **Sound on the iPhone** (0.10.1): the checks listed under "Silent audio: what to check on the
-   iPhone" below.
+0a. **Monthly league on the iPhone** (0.11.0): the checks listed under "Monthly league: what to
+check on the iPhone" below. 0. **Sound on the iPhone** (0.10.1): the checks listed under "Silent audio: what to check on the
+iPhone" below.
+
 1. **Texts on the iPhone** (0.10.0): the checks listed under "Texts: what to check on the iPhone"
    below.
    0b. **Optional: start text audio in seconds** (`SETUP.md` step 7, one GitHub token). Without it
@@ -51,6 +53,26 @@ Last updated: 2026-10-23 · version 0.10.1
 
 Done by the owner: Pages enabled, `supabase/schema.sql` run with the passphrase, both phones
 installed and syncing, push secrets added and the Push server workflow run (2026-10-13).
+
+## Monthly league (0.11.0)
+
+Asked by the owner: a monthly league next to the weekly one. Whoever wins the month picks a date
+and treats the other.
+
+- **יריבות** has a **הליגה החודשית** section under the weekly league: the stake line, both players'
+  XP this month (crown on the leader), a split bar, the gap and the days left, last month's winner
+  with "בוחר/ת דייט ומזמין/ה" (a draw splits the date), and the months each of you has won.
+- On the first open of a new month a recap toast names last month's winner and the date, before the
+  weekly recap.
+- Built from the same daily XP rows as the weekly league: nothing new is stored or synced.
+- Tests: `src/engine/game.test.ts` (month lengths, finished months, winner) and
+  `e2e/month-league.spec.ts` (the section, the recap once per month).
+
+## Monthly league: what to check on the iPhone
+
+1. Update the app (close and open it once; 0.11.0 at the bottom of **הגדרות**).
+2. **יריבות**: the monthly section shows both of your XP for October and the days left.
+3. On November 1st, the first open shows who won October and who picks the date.
 
 ## Silent audio (fixed in 0.10.1)
 

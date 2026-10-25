@@ -105,6 +105,9 @@ export interface LeagueCard {
   aXp: number;
   bXp: number;
   week: string;
+  /** The monthly league card sets its own title and subtitle (the month's name). */
+  title?: string;
+  subtitle?: string;
 }
 
 function newCanvas(): [HTMLCanvasElement, CanvasRenderingContext2D | null] {
@@ -135,11 +138,11 @@ export async function shareLeagueCard(l: LeagueCard) {
   await share(drawLeagueCard(l), 'lexbites-league.png');
 }
 
-/** Draws the weekly league card; also used by the bidi test page to preview it. */
+/** Draws the weekly (or monthly) league card; also used by the bidi test page to preview it. */
 export function drawLeagueCard(l: LeagueCard): HTMLCanvasElement {
   const [canvas, ctx] = newCanvas();
   if (!ctx) return canvas;
-  base(ctx, t.rivalry.league);
+  base(ctx, l.title ?? t.rivalry.league);
   const max = Math.max(1, l.aXp, l.bXp);
   const bar = (y: number, name: string, xp: number, color: string) => {
     ctx.textAlign = 'right';
@@ -159,6 +162,6 @@ export function drawLeagueCard(l: LeagueCard): HTMLCanvasElement {
   ctx.textAlign = 'right';
   ctx.fillStyle = '#b4b9c8';
   ctx.font = '500 36px "Heebo Variable", Heebo, sans-serif';
-  hebrew(ctx, t.rivalry.weekOf(shortDate(l.week)), W - 90, 250);
+  hebrew(ctx, l.subtitle ?? t.rivalry.weekOf(shortDate(l.week)), W - 90, 250);
   return canvas;
 }

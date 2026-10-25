@@ -189,6 +189,37 @@ const strings = {
       `${a} ${aOk}/10 (${aSec} שנ׳) · ${b} ${bOk}/10 (${bSec} שנ׳)`,
     nudgeLabel: (emoji: string) => `נקירה ${emoji}`,
     shareWeek: 'לשתף את הליגה',
+    monthLeague: 'הליגה החודשית',
+    monthNames: [
+      'ינואר',
+      'פברואר',
+      'מרץ',
+      'אפריל',
+      'מאי',
+      'יוני',
+      'יולי',
+      'אוגוסט',
+      'ספטמבר',
+      'אוקטובר',
+      'נובמבר',
+      'דצמבר',
+    ],
+    monthStake: 'על הכף: דייט. מי שמנצח בחודש בוחר ומזמין',
+    monthDaysLeft: (month: string, n: number) =>
+      n === 1 ? `${month} · יום אחרון` : `${month} · נשארו ${n} ימים`,
+    monthLeading: (name: string, female: boolean, by: number) =>
+      `${name} ${female ? 'מובילה' : 'מוביל'} ב־${by} XP`,
+    monthTied: 'תיקו כרגע. הכול פתוח',
+    winnerOfMonth: (name: string, female: boolean, month: string) =>
+      `${name} ${female ? 'ניצחה' : 'ניצח'} ב${month}`,
+    datePick: (female: boolean) => (female ? 'היא בוחרת דייט ומזמינה' : 'הוא בוחר דייט ומזמין'),
+    monthDraw: (month: string) => `תיקו ב${month}`,
+    dateSplit: 'מתחלקים בדייט',
+    monthTally: (a: string, aWins: number, b: string, bWins: number, ties: number) =>
+      `חודשים שניצחתם: ${a} ${aWins} · ${b} ${bWins}` + (ties ? ` · תיקו ${ties}` : ''),
+    monthRecapToast: (result: string, mine: number, theirs: number) =>
+      `סיכום חודשי: ${result}, ${mine} מול ${theirs}`,
+    shareMonth: 'לשתף את החודש',
   },
   session: {
     exitConfirm: 'לצאת באמצע? כל תשובה כבר נשמרה',

@@ -122,6 +122,61 @@ export function leagueHistory(
   return out;
 }
 
+// ---------------------------------------------------------------------------
+// Monthly league: calendar month XP race. The owners play for a date: whoever wins the month
+// picks a date and treats the other.
+// ---------------------------------------------------------------------------
+
+/** Month key (YYYY-MM) of the month containing `date`. */
+export function monthOf(date: string): string {
+  return date.slice(0, 7);
+}
+
+/** Number of days in the month `month` (YYYY-MM). */
+export function daysInMonth(month: string): number {
+  const [y, m] = month.split('-').map(Number);
+  return new Date(Date.UTC(y!, m!, 0)).getUTCDate();
+}
+
+/** Days left in the month of `date`, today included (1 on the last day). */
+export function daysLeftInMonth(date: string): number {
+  return daysInMonth(monthOf(date)) - Number(date.slice(8, 10)) + 1;
+}
+
+/** The month before `month` (YYYY-MM). */
+export function prevMonth(month: string): string {
+  const [y, m] = month.split('-').map(Number);
+  return m === 1 ? `${y! - 1}-12` : `${y}-${String(m! - 1).padStart(2, '0')}`;
+}
+
+/** XP of one player in `month` from their daily XP map. */
+export function monthXp(xp: ReadonlyMap<string, number>, month: string): number {
+  let sum = 0;
+  for (const [d, v] of xp) if (monthOf(d) === month) sum += v;
+  return sum;
+}
+
+/**
+ * Monthly totals for two players, oldest month first. Only finished months count; the result
+ * reuses the weekly shape (`week` holds the month key) so head to head works on it too.
+ */
+export function monthlyHistory(
+  aXp: ReadonlyMap<string, number>,
+  bXp: ReadonlyMap<string, number>,
+  currentMonth: string,
+): WeekResult[] {
+  const months = new Set<string>();
+  for (const k of [...aXp.keys(), ...bXp.keys()]) months.add(monthOf(k));
+  const out: WeekResult[] = [];
+  for (const m of [...months].sort()) {
+    if (m >= currentMonth) continue;
+    const a = monthXp(aXp, m);
+    const b = monthXp(bXp, m);
+    out.push({ week: m, a, b, winner: a > b ? 'a' : b > a ? 'b' : 'draw' });
+  }
+  return out;
+}
+
 export function headToHead(history: readonly WeekResult[]) {
   let aWins = 0;
   let bWins = 0;
